@@ -18,6 +18,10 @@
             margin: 0 50px;
             color: white;
         }
+        img
+        {
+            width: 90px;
+        }
         .right
         {
             float:right;
@@ -87,7 +91,7 @@
 <body>
 <div class="upper">
     <div class="center" style="float:left;">
-        <a href="#" ><img src="img/logo.png" alt="Shop Logo"></a>
+        <a href="#"  ><img src="image/shopname.png" alt="Shop Logo"></a>
     </div>
     
     <ul >
