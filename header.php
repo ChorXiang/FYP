@@ -10,8 +10,13 @@
         .upper
         {
             padding: 16px 30px;
+
             font-size: 27px;
             background:blue;
+        }
+        *
+        {
+            margin:0;
         }
         .center
         {
@@ -37,7 +42,6 @@
         .middle
         {
             text-align: center;
-
         }
         ul
         {
@@ -95,7 +99,7 @@
     </div>
     
     <ul >
-        <li  style="float: right;"><a href="#"  class="center" ><i class="fa fa-shopping-cart">Shopping cart</i></a></li>
+        <li  style="float: right;"><a href="#"  class="center" ><i class="fa fa-shopping-cart"></i>Shopping cart</a></li>
         <li class="dropdown" style="float: right;"><a href="#"class="javascript:void(0)" class="dropbtn">Login</a>
             <div class="dropdown-content">
                 <a href="#">My Account</a>
