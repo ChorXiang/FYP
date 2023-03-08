@@ -32,10 +32,9 @@
         {
             text-decoration:none;
         }
-        li
+        li 
         {
             padding: 10px 30px 10px 0px ;
-            float:left;
         }
         .left
         {
@@ -66,11 +65,11 @@
         <p><b><u>N I C E</u></b></p>
 
         <ul>
-            <li><a href="#"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>
-            <li><a href="#"><i class='fab fa-youtube' style='color:white'></i> Youtube</a></li>
-            <li><a href="#"><i class='fab fa-facebook' style='color:white'></i> Facebook</a></li>
-            <li><a href="#"><i class='fab fa-instagram' style='color:white'></i> Instagram</a></li>
-            <li><a href="#"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
+            <li style="float:left;"><a href="#"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>
+            <li style="float:left;"><a href="#"><i class='fab fa-youtube' style='color:white'></i> Youtube</a></li>
+            <li style="float:left;"><a href="#"><i class='fab fa-facebook' style='color:white'></i> Facebook</a></li>
+            <li style="float:left;"><a href="#"><i class='fab fa-instagram' style='color:white'></i> Instagram</a></li>
+            <li style="float:left;"><a href="#"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
         </ul>
 
         <p style="color:#3d3d5c; text-align:right; padding-right:25px;">Copyright NICE 2023</p>

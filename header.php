@@ -10,7 +10,6 @@
         .upper
         {
             padding: 16px 30px;
-
             font-size: 27px;
             background:blue;
         }
