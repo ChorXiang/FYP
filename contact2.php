@@ -68,7 +68,7 @@ function test_input($data) {
 
 
 
-/*<?php
+<?php/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -94,4 +94,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Oops! Something went wrong and we couldn't send your message.";
   }
 }
-?>*/
+?>
