@@ -9,7 +9,7 @@
     <style>
         *
         {
-            color:white;
+
         }
         .footer
         {
@@ -17,6 +17,7 @@
             font-size: 27px;
             background:black;
             display:flex;
+            color:white;
         }
         ul
         {
@@ -31,6 +32,7 @@
         a
         {
             text-decoration:none;
+            color:white;
         }
         li 
         {
@@ -55,8 +57,8 @@
 <body>
 <div class="footer">
 
-    <div class="left" >
-        <p><a href="#">About Us</a></p>
+    <div class="left">
+        <p><a href="aboutus.php">About Us</a></p>
         <p><a href="#">Contact Us</a></p>
         <p><a href="#">Comment</a></p>
     </div>

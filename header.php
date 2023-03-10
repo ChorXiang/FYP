@@ -94,7 +94,7 @@
 <body>
 <div class="upper">
     <div class="center" style="float:left;">
-        <a href="#"  ><img src="image/shopname.png" alt="Shop Logo"></a>
+        <a href="homepage.php"  ><img src="image/shopname.png" alt="Shop Logo"></a>
     </div>
     
     <ul >
