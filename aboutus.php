@@ -44,13 +44,13 @@
        <hr>
        <div class="bullet">
         <ol>
-            <li>  Summary </li>
+            <li style="font-size:23px"> <strong> Summary  </strong></li>
             <p> Our company already have 10 years history in Malaysia. Our team to try open more physical shop at all around the world.</p>
 
-            <li>  Latest News </li>
+            <li style="font-size:23px">  <strong> Latest News </strong></li>
             <p> Our team are added a new brand shoes Vans to our store. You can enjoy shopping at our website.</p>
 
-            <li>  Customer Service </li>
+            <li style="font-size:23px">  <strong> Customer Service </strong></li>
             <p>We are provided the best custoemr service about 24 hours to help you when you are facing any problum. You can get the  contact number or email at the contact us page. </P>
          </ol>
 
