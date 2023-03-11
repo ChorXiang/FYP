@@ -1,5 +1,6 @@
-<?php include("config1.php"); 
-    $email=$_GET['email']
+<?php
+    include 'header.php';
+    include 'config.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -148,3 +149,9 @@ fieldset
 </body>
 
 </html>
+
+
+<?php
+    include 'footer.php';
+   
+?>
