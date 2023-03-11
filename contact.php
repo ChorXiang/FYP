@@ -127,22 +127,7 @@ fieldset
       </div>
     </div> 
   </div>
-  <p></p> 
-  <div class="flip-card">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-  
-        <img src="images/leyang.jpg" alt="Leyang" style="border-radius: 50%; width:200px;height:200px;">
-      </div>
-      <div class="flip-card-back">
-        <h2>Murphy Sim Le Yang</h2>
-        <p>Group Member 3</p>
-        <p>Phone Number:0146190390</p>
-        <p>ID: 1211201894</p>
-      </div>
-    </div> 
-  </div>
-  <br><br>
+
 </fieldset>
 </div>
 <a href="Homepage.php?email=<?php echo $email;?>">Return Home page</a>
@@ -152,6 +137,5 @@ fieldset
 
 
 <?php
-    include 'footer.php';
-   
+    include 'footer.php'; 
 ?>

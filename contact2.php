@@ -1,4 +1,8 @@
 <?php
+    include 'config.php'; 
+?>
+
+<?php
 //设置变量并初始化为空
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
 $name = $email = $subject = $message = "";
@@ -46,10 +50,60 @@ function test_input($data) {
 }
 ?>
 
+<style>
+  fieldset{
+    background-color: lightcoral;
+  }
+
+  .center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+  }
+
+  .center h1{
+    text-align: center;
+    padding: 0 0 20px 0;
+    border-bottom: 1px solid silver;
+  }
+
+  .center form{
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+
+
+
+  input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+
+  input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
+</style>
+
 <!-- HTML表单 -->
-<h2>Contact Us</h2>
+<div class="center">
+<fieldset>
+<h1>Contact Us</h1>
 <p>请在下面填写您的联系信息并向我们发送您的消息：</p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+ <div class="txt_field">
   姓名：<input type="text" name="name">
   <span class="error"><?php echo $nameErr;?></span>
   <br><br>
@@ -63,35 +117,13 @@ function test_input($data) {
   <textarea name="message" rows="5" cols="40"></textarea>
   <span class="error"><?php echo $messageErr;?></span>
   <br><br>
-  <input type="submit" name="submit" value="发送">  
+  <input type="submit" name="submit" value="SEND">  
+</div>
 </form>
+</fieldset>
+</div>
 
+<?php
 
-
-<?php/*
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $message = $_POST['message'];
-
-  // Modify these with your own email address and desired subject line
-  $to = "your-email@example.com";
-  $subject = "New Contact Form Submission";
-
-  $headers = "From: " . $name . " <" . $email . ">\r\n";
-  $headers .= "Reply-To: " . $email . "\r\n";
-  $headers .= "Content-type: text/html\r\n";
-
-  $email_body = "<p>You have received a new message from the contact form on your website.</p>";
-  $email_body .= "<p><strong>Name:</strong> " . $name . "</p>";
-  $email_body .= "<p><strong>Email:</strong> " . $email . "</p>";
-  $email_body .= "<p><strong>Message:</strong> " . $message . "</p>";
-
-  if (mail($to, $subject, $email_body, $headers)) {
-    // If the mail function returns true, the email was sent successfully
-    echo "Thank you for contacting us! We will get back to you shortly.";
-  } else {
-    echo "Oops! Something went wrong and we couldn't send your message.";
-  }
-}
 ?>
+
