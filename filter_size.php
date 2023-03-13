@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database";
+$username = "root";
+$password = "";
+$dbname = "shoesshop";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Define desired shoe sizes
-$sizes = array("US8", "US9", "US10");
+$sizes = array("US 8", "US 9", "US 10");
 
 // SQL query to retrieve data for shoes with desired sizes
 $sql = "SELECT * FROM shoes WHERE shoe_size IN ('" . implode("','", $sizes) . "')";
