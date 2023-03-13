@@ -1,5 +1,6 @@
 <?php
     include 'config.php'; 
+    include 'header.php'; 
 ?>
 
 <?php
@@ -10,33 +11,33 @@ $name = $email = $subject = $message = "";
 //表单验证
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
-    $nameErr = "名字是必填的";
+    $nameErr = "*名字是必填的";
   } else {
     $name = test_input($_POST["name"]);
     // 检查名字是否包含字母和空格
     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "只允许字母和空格"; 
+      $nameErr = "*只允许字母和空格"; 
     }
   }
 
   if (empty($_POST["email"])) {
-    $emailErr = "电子邮件是必填的";
+    $emailErr = "*电子邮件是必填的";
   } else {
     $email = test_input($_POST["email"]);
     // 检查电子邮件地址是否合法
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "无效的电子邮件格式"; 
+      $emailErr = "*无效的电子邮件格式"; 
     }
   }
   
   if (empty($_POST["subject"])) {
-    $subjectErr = "主题是必填的";
+    $subjectErr = "*主题是必填的";
   } else {
     $subject = test_input($_POST["subject"]);
   }
 
   if (empty($_POST["message"])) {
-    $messageErr = "消息是必填的";
+    $messageErr = "*消息是必填的";
   } else {
     $message = test_input($_POST["message"]);
   }
@@ -55,26 +56,7 @@ function test_input($data) {
     background-color: lightcoral;
   }
 
-  .center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
-    background: white;
-    border-radius: 10px;
-  }
-
-  .center h1{
-    text-align: center;
-    padding: 0 0 20px 0;
-    border-bottom: 1px solid silver;
-  }
-
-  .center form{
-    padding: 0 40px;
-    box-sizing: border-box;
-  }
+ 
 
 
 
@@ -124,6 +106,6 @@ function test_input($data) {
 </div>
 
 <?php
-
+  include 'footer.php';
 ?>
 

@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "shoesshop";
+$username = "your_username";
+$password = "your_password";
+$dbname = "your_database";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,21 +12,17 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-include 'config.php'; 
-include 'header.php'; 
+// Define desired shoe sizes
+$sizes = array("US8", "US9", "US10");
 
-// SQL query to retrieve all data from shoes table
-$sql = "SELECT * FROM shoes";
+// SQL query to retrieve data for shoes with desired sizes
+$sql = "SELECT * FROM shoes WHERE shoe_size IN ('" . implode("','", $sizes) . "')";
 $result = $conn->query($sql);
 
 // Check if there are any rows returned
 if ($result->num_rows > 0) {
   // Output data of each row
   while($row = $result->fetch_assoc()) {
-
-?>
-
-<?php
     echo "Shoe ID: " . $row["shoe_id"]. " - Shoe Name: " . $row["shoe_name"]. " - Shoe Type: " . $row["shoe_type"]. " - Shoe Image: " . $row["shoe_image"]. " - Shoe Size: " . $row["shoe_size"]. " - Shoe Price: $" . $row["shoe_price"]. "<br>";
   }
 } else {
@@ -35,6 +31,4 @@ if ($result->num_rows > 0) {
 
 // Close connection
 $conn->close();
-
-include 'footer.php'; 
 ?>
