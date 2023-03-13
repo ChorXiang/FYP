@@ -101,7 +101,7 @@
         <li  style="float: right;"><a href="#"  class="center" ><i class="fa fa-shopping-cart"></i>Shopping cart</a></li>
         <li class="dropdown" style="float: right;"><a href="#"class="javascript:void(0)" class="dropbtn">Login</a>
             <div class="dropdown-content">
-                <a href="#">My Account</a>
+                <a href="userprofile.php">My Account</a>
                 <a href="#">My Wish List</a>
                 <a href="#">Create An Account</a>
                 <a href="#">Login</a>
