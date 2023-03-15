@@ -64,7 +64,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
--------------------murphy parts
+-------------------tabel of product info--------------------------
 CREATE TABLE shoes (
   shoe_id INT PRIMARY KEY,
   shoe_name VARCHAR(255) NOT NULL,
@@ -76,3 +76,12 @@ CREATE TABLE shoes (
 
 INSERT INTO shoes (shoe_id, shoe_name, shoe_type, shoe_image, shoe_size, shoe_price) 
 VALUES (1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', 129.99);
+
+--------------------------------table of contact us--------------------
+CREATE TABLE messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  subject VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL
+);
