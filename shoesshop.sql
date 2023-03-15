@@ -63,3 +63,16 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-------------------murphy parts
+CREATE TABLE shoes (
+  shoe_id INT PRIMARY KEY,
+  shoe_name VARCHAR(255) NOT NULL,
+  shoe_type VARCHAR(50) NOT NULL,
+  shoe_image VARCHAR(255) NOT NULL,
+  shoe_size VARCHAR(10) NOT NULL,
+  shoe_price DECIMAL(10, 2) NOT NULL
+);
+
+INSERT INTO shoes (shoe_id, shoe_name, shoe_type, shoe_image, shoe_size, shoe_price) 
+VALUES (1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', 129.99);
