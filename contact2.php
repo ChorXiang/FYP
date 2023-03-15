@@ -91,7 +91,7 @@ function test_input($data) {
 <div class="center">
 <fieldset>
 <h1>Contact Us</h1>
-<p>Please fill in your contact information below and send us your message:</p>
+<br>Please fill in your contact information below and send us your message:<br>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
  <div class="txt_field">
   Name：<input type="text" name="name">
