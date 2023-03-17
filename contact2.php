@@ -16,17 +16,17 @@
 ?>
 
 <?php
-//设置变量并初始化为空
+
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
 $name = $email = $subject = $message = "";
 
-//表单验证
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "* Name is required";
   } else {
     $name = test_input($_POST["name"]);
-    // 检查名字是否包含字母和空格
+
     if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
       $nameErr = "*Only letters and spaces are allowed"; 
     }
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = " * Email is required";
   } else {
     $email = test_input($_POST["email"]);
-    // 检查电子邮件地址是否合法
+ 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "*Invalid Email Format!"; 
     }
@@ -87,7 +87,6 @@ function test_input($data) {
   }
 </style>
 
-<!-- HTML表单 -->
 <div class="center">
 <fieldset>
 <h1>Contact Us</h1>
