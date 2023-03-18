@@ -38,6 +38,117 @@ if(isset($_POST['loginbtn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    /* Global styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+/* Form container */
+.form-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 50px auto;
+  max-width: 400px;
+  padding: 30px;
+}
+
+/* Form elements */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-field {
+  background-color: #f2f2f2;
+  border: none;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+  color: #444;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-field:focus {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5), 0 0 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+.showpw {
+  color: #444;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.error-msg {
+  color: #ff5555;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.btnsubmit {
+  text-align: center;
+}
+
+.submitbtn {
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.submitbtn:hover {
+  background-color: #3e8e41;
+}
+
+.alignfgpw {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.fgpw {
+  color: #2196f3;
+  font-size: 14px;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
+  color: #2196f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
 
 <body>
     <div class="form-container">

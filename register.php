@@ -71,7 +71,77 @@ if (isset($_POST["signupbtn"])) {
 
 <style>
    
-   
+   body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.input-group {
+  width: 400px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
+
+.showpw {
+  font-size: 14px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btnsubmit {
+  text-align: center;
+}
+
+.submit-btn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #3e8e41;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  color: #4caf50;
+}
 </style>
 <body>
    <div class="form-container">
