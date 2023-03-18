@@ -76,6 +76,9 @@ if (isset($_POST['submit'])) {
     border-color: #2691d9;
     transition: .5s;
   }
+
+  
+
 </style>
 <body>
 
@@ -98,7 +101,6 @@ if (isset($_POST['submit'])) {
   <input type="submit" name="submit" value="Submit">
 </form>
 </fieldset>
-
 </body>
 </html>
 
