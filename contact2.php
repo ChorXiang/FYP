@@ -10,7 +10,7 @@
 <body>  
   
   <?php
-    include 'config.php'; 
+    include 'conn.php'; 
     include 'header.php'; 
     $conn = mysqli_connect("localhost","root","","shoesshop");
 ?>
