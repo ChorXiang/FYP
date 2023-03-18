@@ -1,4 +1,8 @@
 <?php
+include 'header.php'; 
+?>
+
+<?php
 
 if (isset($_POST['submit'])) {
 
@@ -41,6 +45,38 @@ if (isset($_POST['submit'])) {
 <head>
   <title>Rate a Shoe</title>
 </head>
+<style>
+    fieldset
+        {
+            height: 200px;
+            width: 75%; /* or a percentage, or whatever */
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+  fieldset{
+    background-color: lightblue;
+  }
+
+  input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+
+  input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
+</style>
 <body>
 
 <?php if (isset($error_message)) { ?>
@@ -51,6 +87,7 @@ if (isset($_POST['submit'])) {
   <div style="color: green;"><?php echo $success_message; ?></div>
 <?php } ?>
 
+<fieldset>
 <form method="POST">
   <label for="shoe_id">Shoe ID:</label>
   <input type="text" name="shoe_id" id="shoe_id" required><br>
@@ -60,6 +97,11 @@ if (isset($_POST['submit'])) {
   <textarea name="review" id="review" required></textarea><br>
   <input type="submit" name="submit" value="Submit">
 </form>
+</fieldset>
 
 </body>
 </html>
+
+<?php
+include 'footer.php'; 
+?>
