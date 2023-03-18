@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "conn.php";
+$dbname = "fyp";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -12,7 +12,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-include 'config.php'; 
+include 'conn.php'; 
 include 'header.php'; 
 
 // SQL query to retrieve all data from shoes table
