@@ -10,51 +10,49 @@
 <body>  
   
   <?php
-    include 'config.php'; 
+    include 'conn.php'; 
     include 'header.php'; 
-    $conn = mysqli_connect("localhost","root","","shoesshop");
+    $conn = mysqli_connect("localhost","root","","fyp");
 ?>
 
 <?php
-//设置变量并初始化为空
-$nameErr = $emailErr = $subjectErr = $messageErr = "";
-$name = $email = $subject = $message = "";
 
-//表单验证
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit'])) {
+  $nameErr = $emailErr = $subjectErr = $messageErr = "";
+  $name = $email = $subject = $message = "";
+
   if (empty($_POST["name"])) {
-    $nameErr = "* Name is required";
+      $nameErr = "* Name is required";
   } else {
-    $name = test_input($_POST["name"]);
-    // 检查名字是否包含字母和空格
-    if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-      $nameErr = "*Only letters and spaces are allowed"; 
-    }
+      $name = test_input($_POST["name"]);
+
+      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+          $nameErr = "*Only letters and spaces are allowed"; 
+      }
   }
 
   if (empty($_POST["email"])) {
-    $emailErr = " * Email is required";
+      $emailErr = " * Email is required";
   } else {
-    $email = test_input($_POST["email"]);
-    // 检查电子邮件地址是否合法
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $emailErr = "*Invalid Email Format!"; 
-    }
+      $email = test_input($_POST["email"]);
+
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $emailErr = "*Invalid Email Format!"; 
+      }
   }
-  
+
   if (empty($_POST["subject"])) {
-    $subjectErr = "*Subject is required";
+      $subjectErr = "*Subject is required";
   } else {
-    $subject = test_input($_POST["subject"]);
+      $subject = test_input($_POST["subject"]);
   }
 
   if (empty($_POST["message"])) {
-    $messageErr = "*Your valuable message is required";
+      $messageErr = "*Your valuable message is required";
   } else {
-    $message = test_input($_POST["message"]);
+      $message = test_input($_POST["message"]);
   }
 }
-
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
@@ -87,7 +85,6 @@ function test_input($data) {
   }
 </style>
 
-<!-- HTML表单 -->
 <div class="center">
 <fieldset>
 <h1>Contact Us</h1>
@@ -121,18 +118,18 @@ if (isset($_POST['submit'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-
-        $sql = "INSERT INTO contact (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
+    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
+        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "New record created successfully.";
+            echo "";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
 
         mysqli_close($conn);
     }
-
+  }
 ?>
 
 <?php
