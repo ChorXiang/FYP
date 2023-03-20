@@ -67,6 +67,15 @@ function test_input($data) {
     color: black;
   }
   
+  .left{
+    float:left;
+    padding-left:80px ;
+  }
+
+  .right{
+    float:right;
+    padding-right:80px ;
+  }
 
   input[type="submit"]{
     width: 100%;
@@ -87,7 +96,32 @@ function test_input($data) {
   }
 </style>
 
-<div class="center">
+<div class="left">
+<fieldset>
+<h1>Contact Us</h1>
+<br>Please fill in your contact information below and send us your message:<br>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+ <div class="txt_field">
+  Name：<input type="text" name="name">
+  <span class="error"><?php echo $nameErr;?></span>
+  <br><br>
+  Email：<input type="email" name="email">
+  <span class="error"><?php echo $emailErr;?></span>
+  <br><br>
+  Subject：<input type="text" name="subject">
+  <span class="error"><?php echo $subjectErr;?></span>
+  <br><br>
+  Message：<br>
+  <textarea name="message" rows="5" cols="40"></textarea>
+  <span class="error"><?php echo $messageErr;?></span>
+  <br><br>
+  <input type="submit" name="submit" value="SEND">  
+</div>
+</form>
+</fieldset>
+</div>
+
+<div class='right'>
 <fieldset>
 <h1>Contact Us</h1>
 <br>Please fill in your contact information below and send us your message:<br>
@@ -135,7 +169,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php
-  include 'footer.php';
+ 
 ?>
 
 </body>
