@@ -23,17 +23,13 @@
     {
       font-size: 29px;
     }
-    .left
+    .right
     {
       float: right;
     }
     td, tr
     {
       padding: 10px 120px 10px 120px;
-    }
-    a:hover
-    {
-      color: red;
     }
     .container
     {
@@ -62,7 +58,7 @@
       <td>Shoes Name </td>
       <td>Shoes Quantity</td>
       <td>Shoes Price</td>
-      <td>Total</td>
+      <td>Total per Item</td>
     </tr>
 
     <?php
@@ -77,9 +73,11 @@
       <td><?php echo $row["quantity"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
       <?php
+        $total=0;
         $p=$row["price"];
         $q=$row["quantity"];
         $subtotal=$p*$q;
+        $total =  $total + $subtotal;
         ?>
       <td>RM<?php echo $subtotal; ?></td>
       <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>&&email=<?php echo $id?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
@@ -92,7 +90,12 @@
     ?>
         </div>
   </table>
-  <div class="left"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></div>
+
+  <div class="right">
+  <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span>
+  <span style="padding: 0px 50px 0px 60px;"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></a></span></p>
+
+</div>
 
 </fieldset>
 
