@@ -15,15 +15,11 @@
     {
         background-color: #f2f2f2;
     }
-    .middle
-    {
-        margin: auto; 
-    }
     *
     {
       font-size: 29px;
     }
-    .right
+    .rightway
     {
       float: right;
     }
@@ -91,9 +87,9 @@
         </div>
   </table>
 
-  <div class="right">
-  <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span>
-  <span style="padding: 0px 50px 0px 60px;"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></a></span></p>
+  <div class="rightway">
+  <p>Total :<span style="color:black"><b>RM <?php echo $total;?></b></span>
+  <span style="padding: 0px 50px 0px 120px;"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></a></span></p>
 
 </div>
 
