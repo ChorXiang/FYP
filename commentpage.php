@@ -90,7 +90,10 @@ if (isset($_POST['submit'])) {
   <div style="color: green;"><?php echo $success_message; ?></div>
 <?php } ?>
 
+<div class="center">
 <fieldset>
+<h1>Contact Us</h1>
+<br>Please fill in your contact information below and send us your message:<br>
 <form method="POST">
   <label for="shoe_id">Shoe ID:</label>
   <input type="text" name="shoe_id" id="shoe_id" required><br>
@@ -101,6 +104,7 @@ if (isset($_POST['submit'])) {
   <input type="submit" name="submit" value="Submit">
 </form>
 </fieldset>
+</div>
 </body>
 </html>
 

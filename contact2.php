@@ -64,7 +64,9 @@ function test_input($data) {
 <style>
   fieldset{
     background-color: lightblue;
+    color: black;
   }
+  
 
   input[type="submit"]{
     width: 100%;
