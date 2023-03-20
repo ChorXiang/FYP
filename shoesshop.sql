@@ -69,13 +69,19 @@ CREATE TABLE shoes (
   shoe_id INT PRIMARY KEY,
   shoe_name VARCHAR(255) NOT NULL,
   shoe_type VARCHAR(50) NOT NULL,
+  shoe_brand VARCHAR(50) NOT NULL,
+  category ENUM('male', 'female') NOT NULL,
   shoe_image VARCHAR(255) NOT NULL,
   shoe_size VARCHAR(10) NOT NULL,
   shoe_price DECIMAL(10, 2) NOT NULL
 );
 
-INSERT INTO shoes (shoe_id, shoe_name, shoe_type, shoe_image, shoe_size, shoe_price) 
-VALUES (1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', 129.99);
+INSERT INTO shoes (shoe_id, shoe_name, shoe_type, shoe_brand, category, shoe_image, shoe_size, shoe_price) VALUES
+  (1, 'Nike Air Max 90', 'Running Shoes', 'Nike', 'male', 'https://example.com/nike-air-max-90.jpg', '10', 129.99),
+  (2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'https://example.com/adidas-ultraboost.jpg', '8.5', 149.99),
+  (3, 'Converse Chuck Taylor All Star', 'Casual Shoes', 'Converse', 'male', 'https://example.com/converse-chuck-taylor.jpg', '9.5', 59.99),
+  (4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'female', 'https://example.com/puma-suede-classic.jpg', '7', 79.99);
+
 
 --------------------------------table of contact us--------------------
 CREATE TABLE messages (

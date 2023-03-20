@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 <style>
     fieldset
         {
-            height: 200px;
+            height: 250px;
             width: 75%; /* or a percentage, or whatever */
             margin-bottom: auto;
             margin-left: auto;
