@@ -89,8 +89,8 @@
 
   <div class="rightway">
   <p>Total :<span style="color:black"><b>RM <?php echo $total;?></b></span>
-  <span style="padding: 0px 50px 0px 120px;"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></a></span></p>
-
+  <span style="padding: 0px 50px 0px 120px;"><a href="payment.php" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></a></span></p>
+                                                          <!-- ?email=<?php echo $id?> -->
 </div>
 
 </fieldset>
