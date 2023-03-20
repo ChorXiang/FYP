@@ -94,8 +94,17 @@ function test_input($data) {
     border-color: #2691d9;
     transition: .5s;
   }
+  .container
+  {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }
 </style>
-
+<div class="container">
 <div class="left">
 <fieldset>
 <h1>Contact Us</h1>
@@ -145,6 +154,7 @@ function test_input($data) {
 </form>
 </fieldset>
 </div>
+</div>
 
 <?php
 if (isset($_POST['submit'])) {
@@ -166,11 +176,14 @@ if (isset($_POST['submit'])) {
         mysqli_close($conn);
     }
   }
+
 ?>
 
-<?php
- 
-?>
 
 </body>
 </html>
+
+<?php
+    include 'footer.php';
+   
+?>
