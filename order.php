@@ -51,14 +51,14 @@
   <h1><i class="fa fa-shopping-cart" style="font-size:50px"></i><b style="font-size: 50px;"> Order</b></h1>
   <table >
     <tr>
-      <td>Shoes Name </td>
-      <td>Shoes Quantity</td>
-      <td>Shoes Price</td>
-      <td>Total per Item</td>
+      <td><strong>Shoes Name </strong></td>
+      <td><strong>Shoes Quantity</strong></td>
+      <td><strong>Shoes Price</strong></td>
+      <td><strong>Total per Item</strong></td>
     </tr>
 
     <?php
-
+        $total=0;
     while($row = mysqli_fetch_array($result))
     {
         ?>
@@ -69,7 +69,7 @@
       <td><?php echo $row["quantity"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
       <?php
-        $total=0;
+
         $p=$row["price"];
         $q=$row["quantity"];
         $subtotal=$p*$q;
