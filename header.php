@@ -104,7 +104,7 @@
                 <a href="userprofile.php">My Account</a>
                 <a href="#">My Wish List</a>
                 <a href="#">Create An Account</a>
-                <a href="#">Login</a>
+                <a href="login.php">Login</a>
             </div>
             </li>
     </ul>

@@ -59,8 +59,8 @@
 
     <div class="left">
         <p><a href="aboutus.php">About Us</a></p>
-        <p><a href="#">Contact Us</a></p>
-        <p><a href="#">Comment</a></p>
+        <p><a href="contact2.php">Contact Us</a></p>
+        <p><a href="commentpage.php#">Comment</a></p>
     </div>
 
     <div class="right" >
