@@ -29,6 +29,23 @@
             width:13px;
             padding:0
         }
+        .container
+        {
+          text-align: center;
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin: 0 auto;
+          border: 1px solid #ccc;
+          padding: 20px;
+        }
+        .box
+        {
+        flex-basis: calc(33.33% - 20px);
+        height: 170px;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        }
         </style>
 </head>
 <body>
@@ -47,7 +64,19 @@
 
 </div> 
 
-<p><img src="image/list.png" style="width:100%"></p>
+<div class="container">
+<div class="box"><p> <i class='fas fa-shoe-prints' style='font-size:80px;'></i></p>
+<p> BUY ONLINE 24/7 </p>
+<p> Shop from the comfort of your home.  </p></div>
+
+<div class="box"><p> <i class='fas fa-reply-all' style='font-size:80px'></i></i></p>
+<p> 15 DAYS RETURN </p>
+<p> Simply return it within 15 days for a refund.  </p></div>
+
+<div class="box"><p> <i class="fa fa-id-card" style="font-size:80px"></i></p>
+<p> PAYMENT METHOD</p>
+<p> Make a payment with debit / credit card  </p></div>
+</div>
 
 <script>
 var slideIndex = 1;
