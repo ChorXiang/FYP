@@ -11,7 +11,7 @@
         {
             padding: 16px 30px;
             font-size: 27px;
-            background:blue;
+            background:black;
         }
         *
         {
@@ -29,10 +29,6 @@
         .right
         {
             float:right;
-        }
-        a:hover
-        {
-            color: yellow;
         }
         a
         {
@@ -82,7 +78,7 @@
         }
         .dropdown-content a:hover 
         {
-            color: blue;
+            color: red;
         }
         .dropdown:hover .dropdown-content 
         {
