@@ -12,7 +12,7 @@
   <?php
     include 'conn.php'; 
     include 'header.php'; 
-    $conn = mysqli_connect("localhost","root","","fyp");
+  
 ?>
 
 <?php
