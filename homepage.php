@@ -28,11 +28,11 @@
         height: 170px;
         border: 1px solid #ccc;
         }
-        .slideshow-container 
+        .slideshow
         {
         position: relative;
         width: 100%;
-        height: 500px;
+        height: 700px;
         margin-top: 20px;
         }
         .mySlides 
@@ -70,7 +70,7 @@
 
 
 
-<div class="slideshow-container">
+<div class="slideshow">
 	<?php
 		$dir = "homepageimg/";
 		$files = glob($dir . "*.{jpg}", GLOB_BRACE);
