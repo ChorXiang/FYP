@@ -17,57 +17,71 @@
     }
     .middle
     {
-        max-width: 800px;
         margin: auto; 
     }
     *
     {
-      font-size: 20px;
+      font-size: 29px;
     }
     .left
     {
       float: right;
-      margin-bottom: 50px;
     }
-    td, th 
+    td, tr
     {
-      text-align: left;
-      padding: 30px;
+      padding: 10px 120px 10px 120px;
     }
     a:hover
     {
       color: red;
+    }
+    .container
+    {
+      border: 1px solid #ccc;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
 <div class="middle">
 
+
+<div class="container">
 <fieldset>
     <?php
     $sql = "SELECT * FROM orders";
     $result = mysqli_query($conn,$sql);
-    $id = $_GET['email'];
-    $host = "SELECT * FROM `user` where Email = '$id'";
-    $query = mysqli_query($conn,$host);
-    $host_image = mysqli_fetch_assoc($query);
+    // $id = $_GET['email'];
+    // $host = "SELECT * FROM `user` where Email = '$id'";
+    // $query = mysqli_query($conn,$host);
+    // $host_image = mysqli_fetch_assoc($query);
     ?>
   <h1><i class="fa fa-shopping-cart" style="font-size:50px"></i><b style="font-size: 50px;"> Order</b></h1>
-  <table border="0px">
+  <table >
     <tr>
-      <td>Food Name </td>
-      <td>Food Quantity</td>
-      <td>Food Price per Item</td>
+      <td>Shoes Name </td>
+      <td>Shoes Quantity</td>
+      <td>Shoes Price</td>
+      <td>Total</td>
     </tr>
+
     <?php
 
     while($row = mysqli_fetch_array($result))
     {
         ?>
+        
     <tr>
-      <td><?php echo $row["foodname"]; ?></td>
+        
+      <td><?php echo $row["shoesname"]; ?></td>
       <td><?php echo $row["quantity"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
+      <?php
+        $p=$row["price"];
+        $q=$row["quantity"];
+        $subtotal=$p*$q;
+        ?>
+      <td>RM<?php echo $subtotal; ?></td>
       <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>&&email=<?php echo $id?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
       </td>
     </tr>
@@ -76,18 +90,12 @@
     }
 
     ?>
-        
+        </div>
   </table>
-  <button style="background-color: gray;">1</button>
-  <button>2</button>
-  <button>3</button>
-  <button>4</button>
-  <button>5</button>
-  <button>Next Page</button><span class="left"><a href="Homepage.php?email=<?php echo $id?>" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="Add-On"></span></p>
-  <a href="Homepage.php?email=<?php echo $id?>">Return Home page
   <div class="left"><a href="payment.php?email=<?php echo $id?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" value="Checkout"></div>
 
 </fieldset>
+
 </div>
 </body>
 </html>
