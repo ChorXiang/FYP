@@ -78,6 +78,15 @@
             border: 1px solid #ccc;
             border-radius: 30px;
         }
+        select
+        {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+        }
         .botton
         {
             margin-top: 20px;
@@ -178,11 +187,24 @@
                         <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
                         <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
 
-                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
+                        <label for="fname"  ><i class="fa fa-user"></i>STATE :</label>
+                        <select id="state">
+                            <option value="melaka">Melaka</option>
+                            <option value="perak">Perak</option>
+                            <option value="johor">Johor</option>
+                            <option value="kl">Kuala Lumpur</option>
+                            <option value="pp">Pulau Penang</option>
+                            <option value="kedah">Kedah</option>
+                            <option value="kelantan">Kelantan</option>
+                            <option value="terengganu">Terangganu</option>
+                            <option value="ns">Negeri Sembilan</option>
+                            <option value="selangor">Selangor</option>
+                            <option value="sabah">Sabahr</option>
+                            <option value="sarawak">Sarawak</option>
+                        </select>
+                        
                         <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+                        <input type="text" name="Fullname" placeholder="Enter">
 
                         </div>
                         </fieldset>
