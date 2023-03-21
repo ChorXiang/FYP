@@ -17,9 +17,11 @@
 
 <?php
 
+$nameErr = $emailErr = $subjectErr = $messageErr = "";
+$name = $email = $subject = $message = "";
+
 if (isset($_POST['submit'])) {
-  $nameErr = $emailErr = $subjectErr = $messageErr = "";
-  $name = $email = $subject = $message = "";
+
 
   if (empty($_POST["name"])) {
       $nameErr = "* Name is required";
@@ -67,6 +69,10 @@ function test_input($data) {
     color: black;
   }
   
+  h1{
+    text-align: center;
+  }
+
   .left{
     float:left;
     padding-left:80px ;
@@ -132,26 +138,10 @@ function test_input($data) {
 
 <div class='right'>
 <fieldset>
-<h1>Contact Us</h1>
-<br>Please fill in your contact information below and send us your message:<br>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
- <div class="txt_field">
-  Name：<input type="text" name="name">
-  <span class="error"><?php echo $nameErr;?></span>
-  <br><br>
-  Email：<input type="email" name="email">
-  <span class="error"><?php echo $emailErr;?></span>
-  <br><br>
-  Subject：<input type="text" name="subject">
-  <span class="error"><?php echo $subjectErr;?></span>
-  <br><br>
-  Message：<br>
-  <textarea name="message" rows="5" cols="40"></textarea>
-  <span class="error"><?php echo $messageErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="SEND">  
-</div>
-</form>
+<table border="1px">
+<h1>-OR-</h1>
+<br>You can contact the creators during working hours.<br>
+</table>
 </fieldset>
 </div>
 </div>
