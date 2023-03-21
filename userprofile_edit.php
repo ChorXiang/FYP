@@ -152,7 +152,8 @@ if (isset($_POST["savebtn"]))
     $mimage = $_POST['image'];		
 	
     
-    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' where Email='$id'");
+    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' ");
+                                                                     // where Email='$id'
 
     if (!$mname)
     {
@@ -173,13 +174,11 @@ if (isset($_POST["savebtn"]))
     else
     {
     //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set name='" . $_POST['name'] . "', email='" . $_POST['email'] . "', phonenumber='" . $_POST['pn'] . "' where Email='$id'");
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "'");
+                                                                                                                                                        //  where Email='$id'
         echo "Updated successfully !";
     }
-    
-	
 
-	
 }
 
 ?>
