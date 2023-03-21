@@ -94,7 +94,7 @@
     </div>
     
     <ul >
-        <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"></i>Shopping cart</a></li>
+        <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
         <li class="dropdown" style="float: right;"><a href="#"class="javascript:void(0)" class="dropbtn">Login</a>
             <div class="dropdown-content">
                 <a href="userprofile.php">My Account</a>

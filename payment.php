@@ -167,6 +167,7 @@
                     <tr>
                     <td>Name </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>Size</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td>Quantity</td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -184,6 +185,7 @@
                     <tr>
                     <td><?php echo $row["shoesname"]; ?></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["shoessize"]; ?></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     <td><?php echo $row["quantity"]; ?></td>
                     <td>&nbsp;&nbsp;&nbsp;</td>
