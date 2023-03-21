@@ -79,7 +79,7 @@ COMMIT;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 03:16 PM
+-- Generation Time: Mar 21, 2023 at 03:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -153,15 +153,16 @@ CREATE TABLE `shoes` (
   `shoe_type` varchar(50) NOT NULL,
   `shoe_image` varchar(255) NOT NULL,
   `shoe_size` varchar(10) NOT NULL,
-  `shoe_price` decimal(10,2) NOT NULL
+  `shoe_price` decimal(10,2) NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shoes`
 --
 
-INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_image`, `shoe_size`, `shoe_price`) VALUES
-(1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', '129.99');
+INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
+(1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', '129.99', 10);
 
 -- --------------------------------------------------------
 
@@ -189,6 +190,26 @@ INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `user
 (1, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '123', ' 123', 'profile.jpg', ''),
 (2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', ''),
 (4, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '12345', '12345', 'profile.jpg', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `wish_id` int(11) NOT NULL,
+  `shoesname` varchar(30) NOT NULL,
+  `price` int(30) NOT NULL,
+  `size` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`) VALUES
+(1, 'dunk low panda', 489, '10.5');
 
 --
 -- Indexes for dumped tables
@@ -219,6 +240,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`wish_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -239,6 +266,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `user`
   MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

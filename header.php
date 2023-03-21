@@ -98,7 +98,7 @@
         <li class="dropdown" style="float: right;"><a href="#"class="javascript:void(0)" class="dropbtn">Login</a>
             <div class="dropdown-content">
                 <a href="userprofile.php">My Account</a>
-                <a href="#">My Wish List</a>
+                <a href="wishlist.php">My Wish List</a>
                 <a href="register.php">Create An Account</a>
                 <a href="login.php">Login</a>
             </div>
