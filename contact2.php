@@ -17,9 +17,11 @@
 
 <?php
 
+$nameErr = $emailErr = $subjectErr = $messageErr = "";
+$name = $email = $subject = $message = "";
+
 if (isset($_POST['submit'])) {
-  $nameErr = $emailErr = $subjectErr = $messageErr = "";
-  $name = $email = $subject = $message = "";
+
 
   if (empty($_POST["name"])) {
       $nameErr = "* Name is required";
@@ -67,6 +69,23 @@ function test_input($data) {
     color: black;
   }
   
+  h1{
+    text-align: center;
+  }
+
+  h3{
+    text-align: center;
+  }
+
+  table{
+    margin-left:50px;
+    margin-right:50px;
+  }
+
+  th{
+    padding:5px;
+  }
+
   .left{
     float:left;
     padding-left:80px ;
@@ -132,26 +151,36 @@ function test_input($data) {
 
 <div class='right'>
 <fieldset>
-<h1>Contact Us</h1>
-<br>Please fill in your contact information below and send us your message:<br>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
- <div class="txt_field">
-  Name：<input type="text" name="name">
-  <span class="error"><?php echo $nameErr;?></span>
-  <br><br>
-  Email：<input type="email" name="email">
-  <span class="error"><?php echo $emailErr;?></span>
-  <br><br>
-  Subject：<input type="text" name="subject">
-  <span class="error"><?php echo $subjectErr;?></span>
-  <br><br>
-  Message：<br>
-  <textarea name="message" rows="5" cols="40"></textarea>
-  <span class="error"><?php echo $messageErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="SEND">  
+<table border="1px">
+<h1>-OR-</h1>
+<h3>You can contact the creators during working hours.</h3>
+<div class="center">
+<tr>
+  <th>PHOTO</th>
+  <th>NAME</th>
+  <th>CONTACT NO.</th>
+  <th>EMAIL</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>TAN CHOR XIANG</th>
+  <th>016-7782792</th>
+  <th>1211201763@student.mmu.edu.my</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>ELWIN WONG</th>
+  <th>016-4452493</th>
+  <th>1211201078@student.mmu.edu.my</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>MURPHY SIM LE YANG</th>
+  <th>014-6190390</th>
+  <th>1211201894@student.mmu.edu.my</th>
+</tr>
+</table>
 </div>
-</form>
 </fieldset>
 </div>
 </div>
@@ -168,7 +197,7 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "";
+            echo "New record created!";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }

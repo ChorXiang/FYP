@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
   <title>Rate a Shoe</title>
 </head>
 <style>
-    fieldset
+  fieldset
         {
             height: 250px;
             width: 75%; /* or a percentage, or whatever */
@@ -57,6 +57,7 @@ if (isset($_POST['submit'])) {
 
   fieldset{
     background-color: lightblue;
+    color: overscroll-behavior-block: ;;
   }
 
   input[type="submit"]{
