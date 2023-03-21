@@ -128,12 +128,14 @@
 
                         <div class="selection">
                             
-                            <select name="choice">
-                                <option value="0">Select payment method :</option>
-                                <option value="1">TnG</option>
-                                <option value="2">Debit or Credit card</option>
-                                <option value="3">Cash</option>
-                            </select>
+
+                            <input  type="radio" name="choice" value="CreditorDebit" > Credit Card / Debit Card
+                            <div class="form-group" id="CdDB">
+                                  <label class="form-label" for="cardholder-name">Cardholder's Name:</label>
+                                  <input class="form-input" type="text" id="cardholder-name" name="cardholder-name" size="40" required>
+                                  
+                                </div>
+
 
                             <label>Accepted Cards :
                             <i class="fa fa-cc-mastercard"></i>
