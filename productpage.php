@@ -1,40 +1,70 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "fyp";
+<!DOCTYPE HTML>  
+<html>
+<head>
+<style>
+.error {
+  color: #FF0000;
+  }
+</style>
+</head>
+<body>  
+  
+  <?php
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-include 'conn.php'; 
-include 'header.php'; 
-
-// SQL query to retrieve all data from shoes table
-$sql = "SELECT * FROM shoes";
-$result = $conn->query($sql);
-
-// Check if there are any rows returned
-if ($result->num_rows > 0) {
-  // Output data of each row
-  while($row = $result->fetch_assoc()) {
-
+    include 'header.php'; 
+  
 ?>
 
 <?php
-    echo "Shoe ID: " . $row["shoe_id"]. " - Shoe Name: " . $row["shoe_name"]. " - Shoe Type: " . $row["shoe_type"]. " - Shoe Image: " . $row["shoe_image"]. " - Shoe Size: " . $row["shoe_size"]. " - Shoe Price: $" . $row["shoe_price"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
 
-// Close connection
-$conn->close();
+    $sizeErr = "";
 
-include 'footer.php'; 
+    if(isset($_POST["submit"])){
+        $sizeErr = "* Size is required";
+    } 
+?>
+
+<?php
+    $db_host = 'localhost';
+    $db_user = 'root';
+    $db_pass = '';
+    $db_name = 'fyp';
+    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+?>
+
+<?php
+    $sql = "SELECT * FROM shoes WHERE shoe_id = 1";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+?>
+<fieldset>
+<h1><?php echo $row["shoe_name"]; ?></h1>
+<p>Type: <?php echo $row["shoe_type"]; ?></p>
+<p>Brand: <?php echo $row["shoe_brand"]; ?></p>
+<p>Category: <?php echo $row["category"]; ?></p>
+<img src="image/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>">
+<p>Price: $<?php echo $row["shoe_price"]; ?></p>
+
+<form action="" method="post">
+    <label for="size">Size:</label>
+    <input type="radio" name="size" value="6">6
+    <input type="radio" name="size" value="7">7
+    <input type="radio" name="size" value="8">8
+    <input type="radio" name="size" value="9">9
+    <input type="radio" name="size" value="10">10
+    <span class="error"><?php echo $sizeErr;?></span>
+    <br><br>
+    <input type="submit" name="submit" value="Add to Cart">
+</form>
+</fieldset>
+
+
+<?php mysqli_close($conn); ?>
+
+</body>
+</html>
+
+<?php
+    include 'footer.php';
+   
 ?>
