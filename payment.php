@@ -12,10 +12,11 @@
     <title>User Payment</title>
     <style>
 
-        .middle
+        .middlee
         {
             max-width: 1500px;
             margin: auto; 
+            display: flex;
         }
         .fa 
         {
@@ -24,14 +25,12 @@
             text-align: center;
             margin: 5px 2px;
         }
-        
         .fa:hover 
         {
             opacity: 0.7;
         }
         * 
         {
-
             box-sizing: border-box;
         }
         h3
@@ -56,6 +55,8 @@
             float: left;
             width: 70%;
             padding: 5px;
+            text-align:left;
+            margin: 20px 0px;
         }
         .box2
         {
@@ -63,9 +64,10 @@
             padding: 5px 20px 15px 20px;
             border: 1px solid lightgrey;
             border-radius: 15px;
-            float: left;
-            width: 30%;
+            float: right;
+            width: 28%;
             padding: 5px;
+            margin: 20px 0px;
         }
         input[type=text] 
         {
@@ -88,21 +90,26 @@
         }
         .selection
         {
-            
             margin-bottom: 20px;
+        }
+        fieldset
+        {
+            margin:20px;
         }
 
     </style>
 </head>
 <body>
-<div class="middle">
+<div class="middlee">
 
-        <fieldset>
+
             <div class="row">
                 <div class="box">
+                <fieldset>
                     <form name="from1"  method="post" action=""  >
                         <label for="fname" ><i class="fa fa-user"></i>Full Name :</label>
                         <input type="text" name="Fullname" placeholder="Ali Lee">
+
                         <p id="full" style="font-size:0.8em; color:red"></p>
                         <label for="email"><i class="fa fa-envelope"></i>Email : </label>
                         <input type="text" name="Email" placeholder="AliLee@example.com">
@@ -110,15 +117,15 @@
                         <label for="fname"><i class="fa fa-phone"></i>Phone number :</label>
                         <input type="text" name="Phonenumber" placeholder="012-3456789">
 
-                        <label for="fname" >Table number :</label>
-                        <select name="tableno" >
-                            <option value="0">Please select the table number</option>
-                            <option value="1">table 1</option>
-                            <option value="2">table 2</option>
-                            <option value="3">table 3</option>
+                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
 
-                        </select>
-                        
+                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
                         <div class="selection">
                             
                             <select name="choice">
@@ -127,22 +134,26 @@
                                 <option value="2">Debit or Credit card</option>
                                 <option value="3">Cash</option>
                             </select>
+
                             <label>Accepted Cards :
                             <i class="fa fa-cc-mastercard"></i>
                             <i class="fa fa-cc-visa"></i>
                             </label><br>
         
                         </div>
+
                         <label>
                             <input type="checkbox" name="tick" > By clicking on, you agree to 1 Coin Sandwich's <a href="#"> Terms and Conditions.</a><br>
                             <input type="checkbox" checked="checked"> Notify me the latest promotion through email<br>
                         </label>
         
-                        <input type="submit" name="saveas" value="Continue to checkout" class="botton">
+                        <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
                         
                     </form>
+                    </fieldset>
                 </div>
                 <div class="box2">
+                <fieldset>
                     <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
                     <table>
                         <hr>
@@ -184,10 +195,11 @@
                     </table>
                     <hr>
                     <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                    </fieldset>
                 </div>
             </div>
-            <p><a href="order.php?email=<?php echo $email?>">Return order page</p></a>
-        </fieldset>
+
+
     </div>
 </body>
 </html>

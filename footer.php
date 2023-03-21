@@ -7,10 +7,6 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>footer</title>
     <style>
-        *
-        {
-
-        }
         .footer
         {
             padding: 30px 30px 60px 30px ;
@@ -18,6 +14,7 @@
             background:black;
             display:flex;
             color:white;
+
         }
         ul
         {
@@ -56,6 +53,7 @@
 </head>
 <body>
 <div class="footer">
+
 
     <div class="left">
         <p><a href="aboutus.php">About Us</a></p>
