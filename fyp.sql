@@ -79,7 +79,7 @@ COMMIT;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 03:30 PM
+-- Generation Time: Mar 21, 2023 at 03:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -130,16 +130,16 @@ CREATE TABLE `orders` (
   `shoesname` varchar(30) NOT NULL,
   `price` int(30) NOT NULL,
   `quantity` int(30) NOT NULL,
-  `username` varchar(30) NOT NULL
+  `shoessize` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `username`) VALUES
-(35, 'dunk low panda', 489, 2, ''),
-(36, 'Air Jordan', 420, 3, '');
+INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`) VALUES
+(35, 'dunk low panda', 489, 2, '10.5'),
+(36, 'Air Jordan', 420, 3, '11.5');
 
 -- --------------------------------------------------------
 
