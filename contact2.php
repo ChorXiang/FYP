@@ -73,6 +73,19 @@ function test_input($data) {
     text-align: center;
   }
 
+  h3{
+    text-align: center;
+  }
+
+  table{
+    margin-left:50px;
+    margin-right:50px;
+  }
+
+  th{
+    padding:5px;
+  }
+
   .left{
     float:left;
     padding-left:80px ;
@@ -140,8 +153,34 @@ function test_input($data) {
 <fieldset>
 <table border="1px">
 <h1>-OR-</h1>
-<br>You can contact the creators during working hours.<br>
+<h3>You can contact the creators during working hours.</h3>
+<div class="center">
+<tr>
+  <th>PHOTO</th>
+  <th>NAME</th>
+  <th>CONTACT NO.</th>
+  <th>EMAIL</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>TAN CHOR XIANG</th>
+  <th>016-7782792</th>
+  <th>1211201763@student.mmu.edu.my</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>ELWIN WONG</th>
+  <th>016-4452493</th>
+  <th>1211201078@student.mmu.edu.my</th>
+</tr>
+<tr>
+<th><img src="image/test.jpeg" alt=""></th>
+  <th>MURPHY SIM LE YANG</th>
+  <th>014-6190390</th>
+  <th>1211201894@student.mmu.edu.my</th>
+</tr>
 </table>
+</div>
 </fieldset>
 </div>
 </div>
@@ -158,7 +197,7 @@ if (isset($_POST['submit'])) {
         $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
 
         if (mysqli_query($conn, $sql)) {
-            echo "";
+            echo "New record created!";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
