@@ -12,10 +12,11 @@
     <title>User Payment</title>
     <style>
 
-        .middle
+        .middlee
         {
             max-width: 1500px;
             margin: auto; 
+            display: flex;
         }
         .fa 
         {
@@ -55,6 +56,7 @@
             width: 70%;
             padding: 5px;
             text-align:left;
+            margin: 20px 0px;
         }
         .box2
         {
@@ -62,9 +64,10 @@
             padding: 5px 20px 15px 20px;
             border: 1px solid lightgrey;
             border-radius: 15px;
-            float: left;
-            width: 30%;
+            float: right;
+            width: 28%;
             padding: 5px;
+            margin: 20px 0px;
         }
         input[type=text] 
         {
@@ -91,17 +94,18 @@
         }
         fieldset
         {
-            margin:20px
+            margin:20px;
         }
 
     </style>
 </head>
 <body>
-<div class="middle">
+<div class="middlee">
 
-        <fieldset>
+
             <div class="row">
                 <div class="box">
+                <fieldset>
                     <form name="from1"  method="post" action=""  >
                         <label for="fname" ><i class="fa fa-user"></i>Full Name :</label>
                         <input type="text" name="Fullname" placeholder="Ali Lee">
@@ -113,8 +117,15 @@
                         <label for="fname"><i class="fa fa-phone"></i>Phone number :</label>
                         <input type="text" name="Phonenumber" placeholder="012-3456789">
 
-                        <label for="fname" ><i class="fa fa-user"></i>Address :</label>
+                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
                         <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
                         <div class="selection">
                             
                             <select name="choice">
@@ -139,8 +150,10 @@
                         <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
                         
                     </form>
+                    </fieldset>
                 </div>
                 <div class="box2">
+                <fieldset>
                     <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
                     <table>
                         <hr>
@@ -182,10 +195,11 @@
                     </table>
                     <hr>
                     <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                    </fieldset>
                 </div>
             </div>
-            <p><a href="order.php?email=<?php echo $email?>">Return order page</p></a>
-        </fieldset>
+
+
     </div>
 </body>
 </html>
