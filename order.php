@@ -32,6 +32,7 @@
       border: 1px solid #ccc;
       padding: 20px;
     }
+
   </style>
 </head>
 <body>
@@ -39,7 +40,10 @@
 
 
 <div class="container">
+<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"></i>Order</b></h1><br>
+
 <fieldset>
+
     <?php
     $sql = "SELECT * FROM orders";
     $result = mysqli_query($conn,$sql);
@@ -48,7 +52,6 @@
     // $query = mysqli_query($conn,$host);
     // $host_image = mysqli_fetch_assoc($query);
     ?>
-  <h1><i class="fa fa-shopping-cart" style="font-size:50px"></i><b style="font-size: 50px;"> Order</b></h1>
   <table >
     <tr>
       <td><strong>Shoes Name </strong></td>
@@ -76,7 +79,8 @@
         $total =  $total + $subtotal;
         ?>
       <td>RM<?php echo $subtotal; ?></td>
-      <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>&&email=<?php echo $id?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
+      <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
+                                                                  <!-- &&email=<?php echo $id?> -->
       </td>
     </tr>
         <?php
@@ -94,6 +98,7 @@
 </div>
 
 </fieldset>
+
 
 </div>
 </body>

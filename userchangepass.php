@@ -37,7 +37,7 @@
     
 <div class="middle">
     <br>
-<h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i> Edit Profile</b></h1>
+<h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i> Change Password</b></h1>
     <div class="box">
 
 		<?php
@@ -53,13 +53,13 @@
 
 		<form name="addfrm" method="post" action="">
 
-			<p><label>Current Password<sup>*</sup> :</label><input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
+			<p><label>Current Password<sup>*</sup> : </label><input type="text" name="name" size="50" >
 
-            <p><label>New Password<sup>*</sup> :</label><input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
+            <p><label>New Password<sup>*</sup> : </label><input type="text" name="email" size="50" >
 		 
-			<p><label>Confirm New Password<sup>*</sup> :</label><input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
+			<p><label>Confirm New Password<sup>*</sup> : </label><input type="text" name="pn" size="50" >
             
-			<p><input type="submit" name="savebtn" value="UPDATE">
+			<p><input type="submit" name="savebtn" value="SAVE">
 
 
 
