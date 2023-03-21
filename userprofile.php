@@ -27,12 +27,12 @@
             margin-bottom: 20px;
             text-align: right;
         }
-        img
+        .imgg
         {
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 20%;
+            width: 25%;
         }
         .bottom
         {
@@ -97,7 +97,7 @@
                 
  
                 
-                    <p><img class='img' src="<?php echo "images/".$row['Image'];?>" ></p>
+                    <p><img class='imgg' src="<?php echo "image/".$row['image'];?>" ></p>
                     <br>
                 <div class="label">
                     <label for="fname" ><i class="fa fa-user"></i> Full Name : <?php echo $row["full_name"]; ?></label>
