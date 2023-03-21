@@ -110,14 +110,17 @@
                     <br>                    <br>                    <br>
 
 
-                    <a class="profile" href="user_edit.php?email=<?php echo $id ?>" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
+                    <a class="profile" href="userprofile_edit.php" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
+                                                                <!-- ?email=<?php echo $id ?> -->
 
-                    <a class="profile" href="user_edit.php?email=<?php echo $id ?>" alt="change">Change Password<i class="fa fa-pencil"></i></a>
+                    <a class="profile" href="userchangepass.php" alt="change">Change Password<i class="fa fa-pencil"></i></a>
+                                                                <!-- ?email=<?php echo $id ?> -->
 
-                    <a class="profile" href="user_edit.php?email=<?php echo $id ?>" alt="change">Logout<i class="fa fa-pencil"></i></a>
+                    <a class="profile" href="homepage.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
+                                                         <!-- ?email=<?php echo $id ?> -->
                 </div>
                 <?php echo "<br><br>";?>
-                <i class="fa fa-sign-out"></i>          
+                    
             </form>
         </div>
 
