@@ -16,18 +16,9 @@
     {
       font-size: 29px;
     }
-    .rightway
-    {
-      float: right;
-    }
     td, tr
     {
       padding: 10px 120px 10px 120px;
-    }
-    .container
-    {
-      border: 1px solid #ccc;
-      padding: 20px;
     }
     .box
     {
@@ -38,6 +29,7 @@
      width:50%;
      padding: 5px;
      margin: 20px 460px;
+     padding: 20px;
     }
     </style>
 
@@ -47,7 +39,7 @@
 <div class="middle">
 
 
-<div class="container">
+
 <h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"></i>My Wishlist</b></h1><br>
 
 <fieldset>
@@ -65,7 +57,6 @@
       <td><strong>Shoes Name </strong></td>
       <td><strong>Shoes Size</strong></td>
       <td><strong>Shoes Price</strong></td>
-      <td><strong>Total per Item</strong></td>
     </tr>
 
     <?php
@@ -79,9 +70,7 @@
       <td><?php echo $row["shoesname"]; ?></td>
       <td><?php echo $row["size"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
-
-      <td>RM</td>
-      <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
+      <td><a href="deletewishlist.php?order_ID=<?php echo $row['order_ID']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
                                                                   <!-- &&email=<?php echo $id?> -->
       </td>
     </tr>
@@ -90,7 +79,7 @@
     }
 
     ?>
-        </div>
+
   </table>
 
 

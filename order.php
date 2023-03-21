@@ -25,12 +25,12 @@
     }
     td, tr
     {
-      padding: 10px 120px 10px 120px;
+      padding: 10px 100px 10px 100px;
     }
     .container
     {
       border: 1px solid #ccc;
-      padding: 20px;
+      padding: 20px 20px;
     }
 
   </style>
@@ -55,6 +55,7 @@
   <table >
     <tr>
       <td><strong>Shoes Name </strong></td>
+      <td><strong>Shoes Size (UK) </strong></td>
       <td><strong>Shoes Quantity</strong></td>
       <td><strong>Shoes Price</strong></td>
       <td><strong>Total per Item</strong></td>
@@ -69,6 +70,7 @@
     <tr>
         
       <td><?php echo $row["shoesname"]; ?></td>
+      <td><?php echo $row["shoessize"]; ?></td>
       <td><?php echo $row["quantity"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
       <?php
