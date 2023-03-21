@@ -96,7 +96,10 @@
         {
             margin:20px;
         }
-
+        a.paymentlink
+        {
+            color:black;
+        }
     </style>
 </head>
 <body>
@@ -117,44 +120,10 @@
                         <label for="fname"><i class="fa fa-phone"></i>Phone number :</label>
                         <input type="text" name="Phonenumber" placeholder="012-3456789">
 
-                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
-                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
-                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
-                        <div class="selection">
-                            
-
-                            <input  type="radio" name="choice" value="CreditorDebit" > Credit Card / Debit Card
-                            <div class="form-group" id="CdDB">
-                                  <label class="form-label" for="cardholder-name">Cardholder's Name:</label>
-                                  <input class="form-input" type="text" id="cardholder-name" name="cardholder-name" size="40" required>
-                                  
-                                </div>
-
-
-                            <label>Accepted Cards :
-                            <i class="fa fa-cc-mastercard"></i>
-                            <i class="fa fa-cc-visa"></i>
-                            </label><br>
-        
                         </div>
+                        </fieldset>
 
-                        <label>
-                            <input type="checkbox" name="tick" > By clicking on, you agree to 1 Coin Sandwich's <a href="#"> Terms and Conditions.</a><br>
-                            <input type="checkbox" checked="checked"> Notify me the latest promotion through email<br>
-                        </label>
-        
-                        <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
-                        
-                    </form>
-                    </fieldset>
-                </div>
-                <div class="box2">
+                        <div class="box2">
                 <fieldset>
                     <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
                     <table>
@@ -201,6 +170,55 @@
                     <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
                     </fieldset>
                 </div>
+
+
+                        <div class="box">
+                         <fieldset>
+
+                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
+                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                        </div>
+                        </fieldset>
+
+                        <div class="box">
+                         <fieldset>
+
+                        <div class="selection">
+                            
+
+                            <input  type="radio" name="choice" value="CreditorDebit" > Credit Card / Debit Card
+                            <div class="form-group" id="CdDB">
+                                  <label class="form-label" for="cardholder-name">Cardholder's Name:</label>
+                                  <input class="form-input" type="text" id="cardholder-name" name="cardholder-name" size="40" required>
+                                  
+                                </div>
+
+
+                            <label>Accepted Cards :
+                            <i class="fa fa-cc-mastercard"></i>
+                            <i class="fa fa-cc-visa"></i>
+                            </label><br>
+        
+                        </div>
+
+                        <label>
+                            <input type="checkbox" name="tick" > By clicking on, you agree to N I C E's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br>
+                            <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
+                        </label>
+        
+                        <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
+                        
+                    </form>
+                    </fieldset>
+                </div>
+                
             </div>
 
 
