@@ -85,6 +85,9 @@ function test_input($data) {
 <html>
 <head>
   <style>
+    .error {
+  color: #FF0000;
+  }
     fieldset{
     background-color: lightblue;
     color: black;
