@@ -72,7 +72,7 @@
             <li style="float:left;"><a href="#"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
         </ul>
 
-        <p style="color:#3d3d5c; text-align:right; padding-right:25px;">Copyright NICE 2023</p>
+        <p style="color:#3d3d5c; text-align:right; padding-right:25px;">Copyright FOOT 2023</p>
 
 
     </div>

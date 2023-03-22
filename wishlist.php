@@ -1,6 +1,26 @@
 <?php
     include 'header.php';
     include 'conn.php'; 
+
+    if(isset($_POST['submit']))
+    {
+
+      // $shoesname = mysqli_real_escape_string($conn,$_POST['shoesname']);
+      // $price = mysqli_real_escape_string($conn,$_POST['price']);
+      // $size = mysqli_real_escape_string($conn,$_POST['size']);
+      // $value = mysqli_real_escape_string($conn,$_POST['range']);
+
+      $shoesname = $_POST['shoesname'];
+      $price = $_POST['price'];
+      $size = $_POST['size'];
+      $value = $_POST['range'];
+      mysqli_query($conn,"INSERT INTO `orders`(shoesname,quantity,price,shoessize) VALUES ('$shoesname','$value','$price','$size')");   
+
+
+      // $sql = "INSERT INTO `orders`(shoesname,quantity,price,shoessize) VALUES ('$foodname','$value','$price',$size)";
+
+      echo "Add to Cart Successfully !";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +38,7 @@
     }
     td, tr
     {
-      padding: 10px 160px 10px 160px;
+      padding: 10px 100px 10px 100px;
     }
     .container
     {
@@ -65,17 +85,24 @@
         ?>
         
     <tr>
-        
-      <td><?php echo $row["shoesname"]; ?></td>
-      <td><?php echo $row["size"];	?></td>
-      <td>RM<?php echo $row["price"];?></td>
+    <form action="" method="POST"> 
+      <td><?php echo $row["shoesname"]; ?>     <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">   </td>
+      <td><?php echo $row["size"];	?>   <input type="hidden" name="size" value="<?php echo $row["size"];?>">   </td>
+      <td>RM<?php echo $row["price"];?>     <input type="hidden" name="price" value="<?php echo $row["price"];?>"> </td>
+      <td>  <input id="range" name="range" type="number" min="1" max="5" value="1">    <button type="submit" name="submit">Add to cart</button></td>
       <td><a href="deletewishlist.php?wish_id=<?php echo $row['wish_id']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
                                                                   <!-- &&email=<?php echo $id?> -->
       </td>
+    </form>
     </tr>
+
+
+
         <?php
     
     }
+
+
 
     ?>
         </div>

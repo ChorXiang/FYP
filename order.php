@@ -25,7 +25,7 @@
     }
     td, tr
     {
-      padding: 10px 100px 10px 100px;
+      padding: 10px 70px 10px 70px;
     }
     .container
     {
