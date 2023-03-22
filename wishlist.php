@@ -18,29 +18,28 @@
     }
     td, tr
     {
-      padding: 10px 120px 10px 120px;
+      padding: 10px 160px 10px 160px;
     }
-    .box
+    .container
     {
-     background-color: #f2f2f2;
-     padding: 5px 20px 15px 20px;
-     border: 1px solid lightgrey;
-     border-radius: 15px;
-     width:50%;
-     padding: 5px;
-     margin: 20px 460px;
-     padding: 20px;
+      border: 1px solid #ccc;
+      padding: 20px 20px;
+    }
+    fieldset
+    {
+      background-color: #f2f2f2;
     }
     </style>
 
 </head>
 <body>
+    
 
 <div class="middle">
 
+<div class="container">
 
-
-<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"></i>My Wishlist</b></h1><br>
+<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"> </i> My Wishlist</b></h1><br>
 
 <fieldset>
 
@@ -70,7 +69,7 @@
       <td><?php echo $row["shoesname"]; ?></td>
       <td><?php echo $row["size"];	?></td>
       <td>RM<?php echo $row["price"];?></td>
-      <td><a href="deletewishlist.php?order_ID=<?php echo $row['order_ID']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
+      <td><a href="deletewishlist.php?wish_id=<?php echo $row['wish_id']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
                                                                   <!-- &&email=<?php echo $id?> -->
       </td>
     </tr>
@@ -79,7 +78,7 @@
     }
 
     ?>
-
+        </div>
   </table>
 
 

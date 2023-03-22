@@ -78,6 +78,15 @@
             border: 1px solid #ccc;
             border-radius: 30px;
         }
+        select
+        {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 30px;
+        }
         .botton
         {
             margin-top: 20px;
@@ -96,7 +105,10 @@
         {
             margin:20px;
         }
-
+        a.paymentlink
+        {
+            color:black;
+        }
     </style>
 </head>
 <body>
@@ -117,14 +129,88 @@
                         <label for="fname"><i class="fa fa-phone"></i>Phone number :</label>
                         <input type="text" name="Phonenumber" placeholder="012-3456789">
 
+                        </div>
+                        </fieldset>
+
+                        <div class="box2">
+                <fieldset>
+                    <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
+                    <table>
+                        <hr>
+                    <?php
+                    $sql = "SELECT * FROM orders";
+                    $result = mysqli_query($conn,$sql);
+                    $total=0;
+                    ?>
+                    <tr>
+                    <td>Name </td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>Size</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>Quantity</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>Price</td>
+                    </tr>
+
+                    <?php
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        $p=$row["price"];
+                        $q=$row["quantity"];
+                        $subtotal=$p*$q;
+                        $total =  $total + $subtotal;
+                    ?>
+                    <tr>
+                    <td><?php echo $row["shoesname"]; ?></td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["shoessize"]; ?></td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><?php echo $row["quantity"]; ?></td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+
+                    <td>RM<?php echo $subtotal; ?></td>
+                    </tr>
+                    <?php
+                    
+                    }
+                    ?>
+                    </table>
+                    <hr>
+                    <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                    </fieldset>
+                </div>
+
+
+                        <div class="box">
+                         <fieldset>
+
                         <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
                         <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
 
-                        <label for="fname" ><i class="fa fa-user"></i>STATE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
+                        <label for="fname"  ><i class="fa fa-user"></i>STATE :</label>
+                        <select id="state">
+                            <option value="melaka">Melaka</option>
+                            <option value="perak">Perak</option>
+                            <option value="johor">Johor</option>
+                            <option value="kl">Kuala Lumpur</option>
+                            <option value="pp">Pulau Penang</option>
+                            <option value="kedah">Kedah</option>
+                            <option value="kelantan">Kelantan</option>
+                            <option value="terengganu">Terangganu</option>
+                            <option value="ns">Negeri Sembilan</option>
+                            <option value="selangor">Selangor</option>
+                            <option value="sabah">Sabahr</option>
+                            <option value="sarawak">Sarawak</option>
+                        </select>
+                        
                         <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+                        <input type="text" name="Fullname" placeholder="Enter">
+
+                        </div>
+                        </fieldset>
+
+                        <div class="box">
+                         <fieldset>
 
                         <div class="selection">
                             
@@ -145,8 +231,8 @@
                         </div>
 
                         <label>
-                            <input type="checkbox" name="tick" > By clicking on, you agree to 1 Coin Sandwich's <a href="#"> Terms and Conditions.</a><br>
-                            <input type="checkbox" checked="checked"> Notify me the latest promotion through email<br>
+                            <input type="checkbox" name="tick" > By clicking on, you agree to N I C E's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br>
+                            <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
                         </label>
         
                         <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
@@ -154,51 +240,7 @@
                     </form>
                     </fieldset>
                 </div>
-                <div class="box2">
-                <fieldset>
-                    <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
-                    <table>
-                        <hr>
-                    <?php
-                    $sql = "SELECT * FROM orders";
-                    $result = mysqli_query($conn,$sql);
-                    $total=0;
-                    ?>
-                    <tr>
-                    <td>Name </td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>Quantity</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>Price</td>
-                    </tr>
-
-                    <?php
-                    while($row = mysqli_fetch_array($result))
-                    {
-                        $p=$row["price"];
-                        $q=$row["quantity"];
-                        $subtotal=$p*$q;
-                        $total =  $total + $subtotal;
-                    ?>
-                    <tr>
-                    <td><?php echo $row["shoesname"]; ?></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><?php echo $row["quantity"]; ?></td>
-                    <td>&nbsp;&nbsp;&nbsp;</td>
-
-                    <td>RM<?php echo $subtotal; ?></td>
-                    </tr>
-                    <?php
-                    
-                    }
-                    ?>
-                    </table>
-                    <hr>
-                    <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
-                    </fieldset>
-                </div>
+                
             </div>
 
 

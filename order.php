@@ -40,7 +40,7 @@
 
 
 <div class="container">
-<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"></i>Order</b></h1><br>
+<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"> </i> Order</b></h1><br>
 
 <fieldset>
 
