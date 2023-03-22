@@ -62,7 +62,7 @@
     </div>
 
     <div class="right" >
-        <p><b><u>N I C E</u></b></p>
+        <p><b><u>F O O T</u></b></p>
 
         <ul>
             <li style="float:left;"><a href="#"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>

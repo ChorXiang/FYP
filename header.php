@@ -90,12 +90,12 @@
 <body>
 <div class="upper">
     <div class="center" style="float:left;">
-        <a href="homepage.php"  ><img src="image/shopname.png" alt="Shop Logo"></a>
+        <a href="homepage.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
     </div>
     
     <ul >
         <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
-        <li class="dropdown" style="float: right;"><a href="#"class="javascript:void(0)" class="dropbtn">Login</a>
+        <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
             <div class="dropdown-content">
                 <a href="userprofile.php">My Account</a>
                 <a href="wishlist.php">My Wish List</a>
@@ -108,7 +108,7 @@
     <hr>
         <div class="middle">
         <ul >
-            <li class="dropdown"><a href="#"class="javascript:void(0)" class="dropbtn">Brands</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
                     <a href="#">Nike</a>
                     <a href="#">Puma</a>
@@ -117,7 +117,7 @@
                 </div>
             </li>
 
-            <li class="dropdown"><a href="#"class="javascript:void(0)" class="dropbtn">Category</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Category</a>
                 <div class="dropdown-content">
                     <a href="#">Man</a>
                     <a href="#">Woman</a>
