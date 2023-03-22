@@ -109,6 +109,10 @@
         {
             color:black;
         }
+        sup
+        {
+            color:red;
+        }
     </style>
 </head>
 <body>
@@ -119,14 +123,14 @@
                 <div class="box">
                 <fieldset>
                     <form name="from1"  method="post" action=""  >
-                        <label for="fname" ><i class="fa fa-user"></i>Full Name :</label>
+                        <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
                         <input type="text" name="Fullname" placeholder="Ali Lee">
 
                         <p id="full" style="font-size:0.8em; color:red"></p>
-                        <label for="email"><i class="fa fa-envelope"></i>Email : </label>
+                        <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
                         <input type="text" name="Email" placeholder="AliLee@example.com">
 
-                        <label for="fname"><i class="fa fa-phone"></i>Phone number :</label>
+                        <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
                         <input type="text" name="Phonenumber" placeholder="012-3456789">
 
                         </div>
@@ -184,10 +188,10 @@
                         <div class="box">
                          <fieldset>
 
-                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS :</label>
+                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
                         <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
 
-                        <label for="fname"  ><i class="fa fa-user"></i>STATE :</label>
+                        <label for="fname"  ><i class="fa fa-user"></i>STATE : <sup>*</sup></label>
                         <select id="state">
                             <option value="melaka">Melaka</option>
                             <option value="perak">Perak</option>
@@ -203,7 +207,7 @@
                             <option value="sarawak">Sarawak</option>
                         </select>
                         
-                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE :</label>
+                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE : <sup>*</sup></label>
                         <input type="text" name="Fullname" placeholder="Enter">
 
                         </div>
@@ -212,26 +216,72 @@
                         <div class="box">
                          <fieldset>
 
-                        <div class="selection">
-                            
+                         
+                            <div id="inputDiv" style="display:none;">
+                                    <label for="userInput">CARD NUMBER : <sup>*</sup></label>
+                                    <input type="text" id="userInput" name="userInput">
 
-                            <input  type="radio" name="choice" value="CreditorDebit" > Credit Card / Debit Card
-                            <div class="form-group" id="CdDB">
-                                  <label class="form-label" for="cardholder-name">Cardholder's Name:</label>
-                                  <input class="form-input" type="text" id="cardholder-name" name="cardholder-name" size="40" required>
-                                  
-                                </div>
+                                    <label for="userInput">NAME ON CARD : <sup>*</sup></label>
+                                    <input type="text" id="userInput" name="userInput">
+
+                                    <label for="userInput">EXPIRY DATE : <sup>*</sup></label>
+                                    <input type="text" id="userInput" name="userInput" placeholder="Month">
+                                    <input type="text" id="userInput" name="userInput" placeholder="Year">
+
+                                    <label for="userInput">SECURITY CODE : <sup>*</sup></label>
+                                    <input type="text" id="userInput" name="userInput">
+                            </div>
+
+                            <div id="inputDivv" style="display:none;">
+                            <label for="fname"  >E-WALLET : <sup>*</sup></label>
+                                <select id="state">
+                                    <option value="Tng">TnG</option>
+                                    <option value="Boost">Boost</option>
+                                    <option value="GrabPay">GrabPay</option>
+                                    <option value="ShopeePay">ShopeePay</option>
+                                </select>
+
+                                    <label for="userInput">ENTER YOUR EMAIL : <sup>*</sup></label>
+                                    <input type="text" id="userInputt" name="userInput">
+                            </div>
 
 
-                            <label>Accepted Cards :
-                            <i class="fa fa-cc-mastercard"></i>
-                            <i class="fa fa-cc-visa"></i>
-                            </label><br>
-        
-                        </div>
 
-                        <label>
-                            <input type="checkbox" name="tick" > By clicking on, you agree to F O O T's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br>
+                    </form>
+
+                    <script type="text/javascript">
+                        function showInput(){
+                            var inputDiv = document.getElementById("inputDiv");
+                            var userInput = document.getElementById("userInput");
+
+                            if(document.getElementById("option1").checked )
+                            {
+                                inputDiv.style.display = "block";
+                                userInput.required = true;
+                                inputDivv.style.display = "none";
+                                userInputt.required = false;
+                            }
+                            else if (document.getElementById("option2").checked )
+                            {
+                                inputDivv.style.display = "block";
+                                userInputt.required = true;
+                                inputDiv.style.display = "none";
+                                userInput.required = false;
+                            }
+                            else
+                            {
+                                inputDiv.style.display = "none";
+                                userInput.required = false;
+                                inputDivv.style.display = "none";
+                                userInputt.required = false;
+                            }
+                        }
+                    </script>
+
+   
+
+                        <label><br>
+                            <input type="checkbox" name="tick" > By clicking on, you agree to F O O T's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br> <br>
                             <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
                         </label>
         
@@ -239,8 +289,22 @@
                         
                     </form>
                     </fieldset>
+
                 </div>
                 
+                <div class="box2">
+                        <fieldset>
+                            <b>Payment Method</b><br><br><hr><br>
+                            <form action="radio_input.php" method="POST">
+                            <label for="option1"> Credit Card / Debit Card </label>
+                            <input type="radio" id="option1" name="option" value="1" onclick="showInput()"><br><br>
+
+                            <label for="option2"> TNG eWallet  </label>
+                            <input type="radio" id="option2" name="option" value="2" onclick="showInput()"><br>
+
+                        </div>
+                        </fieldset>
+
             </div>
 
 
