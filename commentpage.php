@@ -1,41 +1,65 @@
 <?php
 include 'header.php'; 
-?>
+include 'conn.php'; 
 
-<?php
+// Initialize variables
+$email = "";
+$emailErr = "";
+$shipping_ratingErr = "";
+$customer_service_ratingErr = "";
+$product_quality_ratingErr = "";
 
-if (isset($_POST['submit'])) {
+// Check if the user has submitted a rating
+if (isset($_POST['submit_rating'])) {
 
-  $shoe_id = $_POST['shoe_id'];
-  $rating = $_POST['rating'];
-  $review = $_POST['review'];
-
-  if (empty($shoe_id) || empty($rating) || empty($review)) {
-    $error_message = 'Please fill in all fields';
-  } elseif (!is_numeric($rating) || $rating < 1 || $rating > 5) {
-    $error_message = 'Please enter a valid rating between 1 and 5';
+  // Validate email
+  if (empty($_POST["email"])) {
+    $emailErr = " * Email is required";
   } else {
+    $email = test_input($_POST["email"]);
 
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $db_pass = '';
-    $db_name = 'fyp';
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
-
-    if (!$conn) {
-      die('Could not connect to the database: ' . mysqli_connect_error());
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $emailErr = "*Invalid Email Format!"; 
     }
-
-    $query = "INSERT INTO comment (shoe_id, rating, review) VALUES ('$shoe_id', '$rating', '$review')";
-    if (mysqli_query($conn, $query)) {
-      $success_message = 'Thank you for your comment!';
-    } else {
-      $error_message = 'Error: ' . mysqli_error($conn);
-    }
-
-    mysqli_close($conn);
-
   }
+
+  // Validate shipping rating
+  if (empty($_POST["shipping_rating"])) {
+    $shipping_ratingErr = " * Rating is required";
+  }
+
+  // Validate customer service rating
+  if (empty($_POST["customer_service_rating"])) {
+    $customer_service_ratingErr = " * Rating is required";
+  }
+
+  // Validate product quality rating
+  if (empty($_POST["product_quality_rating"])) {
+    $product_quality_ratingErr = " * Rating is required";
+  }
+
+  // If all fields are valid, store the ratings in the session
+  if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "") {
+    $shipping_rating = $_POST['shipping_rating'];
+    $customer_service_rating = $_POST['customer_service_rating'];
+    $product_quality_rating = $_POST['product_quality_rating'];
+
+    $_SESSION['email'] = $email;
+    $_SESSION['shipping_rating'] = $shipping_rating;
+    $_SESSION['customer_service_rating'] = $customer_service_rating;
+    $_SESSION['product_quality_rating'] = $product_quality_rating;
+
+    // Display a message to the user
+    echo "Thank you for rating our services!";
+  }
+}
+
+// This PHP function takes a string input and applies various sanitization techniques, such as removing whitespace and special characters, to ensure that the data is safe and secure for further processing.
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 
 ?>
@@ -43,69 +67,51 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rate a Shoe</title>
-</head>
-<style>
-  fieldset
-        {
-            height: 250px;
-            width: 75%; /* or a percentage, or whatever */
-            margin-bottom: auto;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-  fieldset{
+  <style>
+    fieldset{
     background-color: lightblue;
-    color: overscroll-behavior-block: ;;
+    color: black;
   }
-
-  input[type="submit"]{
-    width: 100%;
-    height: 50px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 25px;
-    font-size: 18px;
-    color: #e9f4fb;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
-  }
-
-  input[type="submit"]:hover{
-    border-color: #2691d9;
-    transition: .5s;
-  }
-
-  
-
-</style>
+  </style>  
+</head>
 <body>
+<fieldset> 
+	<h1>Online Shoe Selling Store Service Rating</h1>
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+  <br><br>
+  Email：<input type="email" name="email" value="<?php echo $email;?>">
+  <span class="error"><?php echo $emailErr;?></span>
+  <br><br>
+		<h2>Shipping Service</h2>
+		<input type="radio" name="shipping_rating" value="1">1
+		<input type="radio" name="shipping_rating" value="2">2
+		<input type="radio" name="shipping_rating" value="3">3
+		<input type="radio" name="shipping_rating" value="4">4
+		<input type="radio" name="shipping_rating" value="5">5
+    <span class="error"><?php echo $shipping_ratingErr;?></span>
+		<br>
 
-<?php if (isset($error_message)) { ?>
-  <div style="color: red;"><?php echo $error_message; ?></div>
-<?php } ?>
+		<h2>Customer Service</h2>
+		<input type="radio" name="customer_service_rating" value="1">1
+		<input type="radio" name="customer_service_rating" value="2">2
+		<input type="radio" name="customer_service_rating" value="3">3
+		<input type="radio" name="customer_service_rating" value="4">4
+		<input type="radio" name="customer_service_rating" value="5">5
+    <span class="error"><?php echo $customer_service_ratingErr;?></span>
+		<br>
 
-<?php if (isset($success_message)) { ?>
-  <div style="color: green;"><?php echo $success_message; ?></div>
-<?php } ?>
+		<h2>Product Quality</h2>
+		<input type="radio" name="product_quality_rating" value="1">1
+		<input type="radio" name="product_quality_rating" value="2">2
+		<input type="radio" name="product_quality_rating" value="3">3
+		<input type="radio" name="product_quality_rating" value="4">4
+		<input type="radio" name="product_quality_rating" value="5">5
+    <span class="error"><?php echo $product_quality_ratingErr;?></span>
+		<br>
 
-<div class="center">
-<fieldset>
-<h1>Contact Us</h1>
-<br>Please fill in your contact information below and send us your message:<br>
-<form method="POST">
-  <label for="shoe_id">Shoe ID:</label>
-  <input type="text" name="shoe_id" id="shoe_id" required><br>
-  <label for="rating">Rating (1-5):</label>
-  <input type="number" name="rating" id="rating" min="1" max="5" required><br>
-  <label for="review">Review:</label><br>
-  <textarea name="review" id="review" required></textarea><br>
-  <input type="submit" name="submit" value="Submit">
-</form>
+		<input type="submit" name="submit_rating" value="Submit Rating">
+	</form>
 </fieldset>
-</div>
 </body>
 </html>
 
