@@ -126,8 +126,8 @@
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-            
+           
+            mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
             // $sql = "INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
             $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
         
@@ -148,18 +148,7 @@
     }
     else
     {
-        mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-        
-        // $sql = "INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
-        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
-       
-        // if (mysqli_query($conn, $sql)) {
-            
-        //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
-        //   } else {
-        //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
-        //   }
-        //   mysqli_close($conn);
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Payment Method</div>";
     }
 
     
@@ -332,14 +321,14 @@
                                     $total =  $total + $subtotal;
                                 ?>
                                 <tr>
-                                <td><?php echo $row["shoesname"]; ?></td>
+                                <td><?php echo $row["shoesname"]; ?> <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">  </td>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><?php echo $row["shoessize"]; ?></td>
+                                <td><?php echo $row["shoessize"]; ?> <input type="hidden" name="size" value="<?php echo $row["shoessize"]?>">  </td>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><?php echo $row["quantity"]; ?></td>
-                                <td>&nbsp;&nbsp;&nbsp;</td>
+                                <td><?php echo $row["quantity"]; ?> <input type="hidden" name="quantity" value="<?php echo $row["quantity"]?>">   </td>
+                                <td>&nbsp;&nbsp;&nbsp; </td>
 
-                                <td>RM<?php echo $subtotal; ?></td>
+                                <td>RM<?php echo $subtotal; ?> <input type="hidden" name="price" value="<?php echo $row["price"]?>">   </td>
                                 </tr>
                                 <?php
                                 
