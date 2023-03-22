@@ -151,7 +151,7 @@ function test_input($data) {
 </html>
 
 <?php
-if (isset($_POST['submit'])) {
+if (isset($_POST['submit_rating'])) {
   $email = $_POST['email'];
   $shipping_rating = $_POST['shipping_rating'];
   $customer_service_rating = $_POST['customer_service_rating'];
