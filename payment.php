@@ -133,7 +133,7 @@
                         </fieldset>
 
                         <div class="box2">
-                <fieldset>
+                        <fieldset>
                     <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
                     <table>
                         <hr>
@@ -231,7 +231,7 @@
                         </div>
 
                         <label>
-                            <input type="checkbox" name="tick" > By clicking on, you agree to N I C E's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br>
+                            <input type="checkbox" name="tick" > By clicking on, you agree to F O O T's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br>
                             <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
                         </label>
         
@@ -260,27 +260,32 @@
     
     if (!$mname)
     {
-        $msg= "Please Key in Name !";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
+        // $msg= "Please Key in Name !";
         
     }
     else if(!$memail)
     {
-        $msg= "Please Key in Email !";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+        // $msg= "Please Key in Email !";
         
     }
     else if(!$mph)
     {
-        $msg= "Please Key in Phone Number !";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
+        // $msg= "Please Key in Phone Number !";
         
     }
     else if(!isset($_POST['tick']))
     {
-        $msg= "Must agree the Terms and Conditions";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
+        // $msg= "Must agree the Terms and Conditions";
         
     }
     else if($selected==0)
     {
-        $msg= "Please select the payment method";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please select the payment method</div>";
+        // $msg= "Please select the payment method";
     }
     else if($tabletable==0)
     {
