@@ -1,6 +1,169 @@
 <?php
     include 'header.php';
     include 'conn.php'; 
+    $msg = '';
+?>
+
+
+<?php
+
+  if(isset($_POST['saveas']))
+  {	 
+    $mname = $_POST['Fullname'];
+    $memail = $_POST['Email'];
+    $mph = $_POST['Phonenumber'];
+    $maddress = $_POST['address'];
+    $mstate = $_POST['state'];
+    $mpostcode = $_POST['postcode'];
+    $mcardnum = $_POST['cardnum'];
+    $mcardname = $_POST['cardname'];
+    $mcardmonth = $_POST['cardmonth'];
+    $mcardyear = $_POST['cardyear'];
+    $msecurecode = $_POST['securecode'];
+    $mewallet = $_POST['ewallet'];
+    $meemail = $_POST['eemail'];
+
+
+    
+    if (!$mname)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
+        // $msg= "Please Key in Name !";
+        
+    }
+    else if(!$memail)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+        // $msg= "Please Key in Email !";
+        
+    }
+    else if(!$mph)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
+        // $msg= "Please Key in Phone Number !";
+    }
+    else if(!$maddress)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Address !</div>";
+        // $msg= "Please select the payment method";
+    }
+    else if(!$mstate)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in State !</div>";
+        // $msg= "Please select the payment method";
+    }
+    else if(!$mpostcode)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Post Code !</div>";
+        // $msg= "Please select the payment method";
+    }
+    else if(isset($_POST['option1']))
+    {
+        if(!$mcardnum)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Card Number !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!$mcardname)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name of Card !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!$mcardmonth)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Month ) !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!$mcardyear)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Year ) !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!$msecurecode )
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Security Code !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!isset($_POST['tick']))
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
+            // $msg= "Must agree the Terms and Conditions";
+        }
+        else
+        {
+            mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
+            
+            // $sql = "INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
+            $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+        
+            // if (mysqli_query($conn, $sql)) {
+                
+            //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
+            //   } else {
+            //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
+            //   }
+            //   mysqli_close($conn);
+        }
+        
+    }
+
+    else if(isset($_POST['option2']))
+    {
+        if(!$mewallet)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the E-Wallet !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!$meemail)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email for E-Wallet !</div>";
+            // $msg= "Please select the payment method";
+        }
+        else if(!isset($_POST['tick']))
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
+            // $msg= "Must agree the Terms and Conditions";
+        }
+        else
+        {
+            mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
+            
+            // $sql = "INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
+            $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+        
+            // if (mysqli_query($conn, $sql)) {
+                
+            //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
+            //   } else {
+            //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
+            //   }
+            //   mysqli_close($conn);
+        }
+    }
+
+    else if(!isset($_POST['tick']))
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
+        // $msg= "Must agree the Terms and Conditions";
+    }
+    else
+    {
+        mysqli_query($conn,"INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
+        
+        // $sql = "INSERT INTO history (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
+        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+       
+        // if (mysqli_query($conn, $sql)) {
+            
+        //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
+        //   } else {
+        //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
+        //   }
+        //   mysqli_close($conn);
+    }
+
+    
+  }
 ?>
 
 <!DOCTYPE html>
@@ -113,6 +276,10 @@
         {
             color:red;
         }
+        .center_payment
+        {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -121,138 +288,146 @@
 
             <div class="row">
                 <div class="box">
-                <fieldset>
-                    <form name="from1"  method="post" action=""  >
-                        <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
-                        <input type="text" name="Fullname" placeholder="Ali Lee">
+                    <fieldset>
+                        <form name="from1"  method="post" action=""  >
+                            <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
+                            <input type="text" name="Fullname" placeholder="Ali Lee">
 
-                        <p id="full" style="font-size:0.8em; color:red"></p>
-                        <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
-                        <input type="text" name="Email" placeholder="AliLee@example.com">
+                            <p id="full" style="font-size:0.8em; color:red"></p>
+                            <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
+                            <input type="text" name="Email" placeholder="AliLee@example.com">
 
-                        <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
-                        <input type="text" name="Phonenumber" placeholder="012-3456789">
-
-                        </div>
-                        </fieldset>
-
-                        <div class="box2">
-                        <fieldset>
-                    <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
-                    <table>
-                        <hr>
-                    <?php
-                    $sql = "SELECT * FROM orders";
-                    $result = mysqli_query($conn,$sql);
-                    $total=0;
-                    ?>
-                    <tr>
-                    <td>Name </td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>Size</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>Quantity</td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td>Price</td>
-                    </tr>
-
-                    <?php
-                    while($row = mysqli_fetch_array($result))
-                    {
-                        $p=$row["price"];
-                        $q=$row["quantity"];
-                        $subtotal=$p*$q;
-                        $total =  $total + $subtotal;
-                    ?>
-                    <tr>
-                    <td><?php echo $row["shoesname"]; ?></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><?php echo $row["shoessize"]; ?></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><?php echo $row["quantity"]; ?></td>
-                    <td>&nbsp;&nbsp;&nbsp;</td>
-
-                    <td>RM<?php echo $subtotal; ?></td>
-                    </tr>
-                    <?php
-                    
-                    }
-                    ?>
-                    </table>
-                    <hr>
-                    <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                            <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
+                            <input type="text" name="Phonenumber" placeholder="012-3456789">
+                        <!-- </form> -->
+                            
                     </fieldset>
                 </div>
+                        <div class="box2">
+                            <fieldset>
+                                <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
+                                <table>
+                                    <hr>
+                                <?php
+                                $sql = "SELECT * FROM orders";
+                                $result = mysqli_query($conn,$sql);
+                                $total=0;
+                                ?>
+                                <tr>
+                                <td>Name </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Size</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Quantity</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Price</td>
+                                </tr>
 
+                                <?php
+                                while($row = mysqli_fetch_array($result))
+                                {
+                                    $p=$row["price"];
+                                    $q=$row["quantity"];
+                                    $subtotal=$p*$q;
+                                    $total =  $total + $subtotal;
+                                ?>
+                                <tr>
+                                <td><?php echo $row["shoesname"]; ?></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><?php echo $row["shoessize"]; ?></td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><?php echo $row["quantity"]; ?></td>
+                                <td>&nbsp;&nbsp;&nbsp;</td>
 
-                        <div class="box">
-                         <fieldset>
-
-                        <label for="fname" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
-                        <input type="text" name="Fullname" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
-                        <label for="fname"  ><i class="fa fa-user"></i>STATE : <sup>*</sup></label>
-                        <select id="state">
-                            <option value="melaka">Melaka</option>
-                            <option value="perak">Perak</option>
-                            <option value="johor">Johor</option>
-                            <option value="kl">Kuala Lumpur</option>
-                            <option value="pp">Pulau Penang</option>
-                            <option value="kedah">Kedah</option>
-                            <option value="kelantan">Kelantan</option>
-                            <option value="terengganu">Terangganu</option>
-                            <option value="ns">Negeri Sembilan</option>
-                            <option value="selangor">Selangor</option>
-                            <option value="sabah">Sabahr</option>
-                            <option value="sarawak">Sarawak</option>
-                        </select>
-                        
-                        <label for="fname" ><i class="fa fa-user"></i>POSTAL CODE : <sup>*</sup></label>
-                        <input type="text" name="Fullname" placeholder="Enter">
-
+                                <td>RM<?php echo $subtotal; ?></td>
+                                </tr>
+                                <?php
+                                
+                                }
+                                ?>
+                                </table>
+                                <hr>
+                                <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                            </fieldset>
                         </div>
-                        </fieldset>
+
+
+                        <div class="box">
+                            <fieldset>
+                                <!-- <form action="" method="POST">  -->
+                                    <label for="address" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
+                                    <input type="text" name="address" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+
+                                    <label for="state"  ><i class="fa fa-user"></i>STATE : <sup>*</sup></label>
+                                        <select id="state" name="state">
+                                            <option value="melaka">Melaka</option>
+                                            <option value="perak">Perak</option>
+                                            <option value="johor">Johor</option>
+                                            <option value="kl">Kuala Lumpur</option>
+                                            <option value="pp">Pulau Penang</option>
+                                            <option value="kedah">Kedah</option>
+                                            <option value="kelantan">Kelantan</option>
+                                            <option value="terengganu">Terangganu</option>
+                                            <option value="ns">Negeri Sembilan</option>
+                                            <option value="selangor">Selangor</option>
+                                            <option value="sabah">Sabahr</option>
+                                            <option value="sarawak">Sarawak</option>
+                                        </select>
+                                    
+                                    <label for="postcode" ><i class="fa fa-user"></i>POSTAL CODE : <sup>*</sup></label>
+                                    <input type="text" name="postcode" placeholder="Enter">
+                                <!-- </form> -->
+                            </fieldset>
+                        </div>
+
 
                         <div class="box">
                          <fieldset>
 
-                         
+                         <!-- <form action="" method="POST">  -->
                             <div id="inputDiv" style="display:none;">
                                     <label for="userInput">CARD NUMBER : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="userInput">
+                                    <input type="text" id="userInput" name="cardnum">
 
                                     <label for="userInput">NAME ON CARD : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="userInput">
+                                    <input type="text" id="userInput" name="cardname">
 
                                     <label for="userInput">EXPIRY DATE : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="userInput" placeholder="Month">
-                                    <input type="text" id="userInput" name="userInput" placeholder="Year">
+                                    <input type="text" id="cuserInput" name="cardmonth" placeholder="Month">
+                                    <input type="text" id="userInput" name="cardyear" placeholder="Year">
 
                                     <label for="userInput">SECURITY CODE : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="userInput">
+                                    <input type="text" id="userInput" name="securecode">
                             </div>
+                       <!-- </form> -->
 
+                       <!-- <form action="" method="POST">  -->
                             <div id="inputDivv" style="display:none;">
-                            <label for="fname"  >E-WALLET : <sup>*</sup></label>
-                                <select id="state">
+                            <label for="userInputt"  >E-WALLET : <sup>*</sup></label>
+                                <select id="userInputt" name="ewallet">
                                     <option value="Tng">TnG</option>
                                     <option value="Boost">Boost</option>
                                     <option value="GrabPay">GrabPay</option>
                                     <option value="ShopeePay">ShopeePay</option>
                                 </select>
 
-                                    <label for="userInput">ENTER YOUR EMAIL : <sup>*</sup></label>
-                                    <input type="text" id="userInputt" name="userInput">
+                                    <label for="userInputt">ENTER YOUR EMAIL : <sup>*</sup></label>
+                                    <input type="text" id="userInputt" name="eemail">
                             </div>
+                        <!-- </form> -->
 
 
 
-                    </form>
+                    <!-- </form> -->
 
                     <script type="text/javascript">
-                        function showInput(){
+                        function showInput()
+                        {
                             var inputDiv = document.getElementById("inputDiv");
                             var userInput = document.getElementById("userInput");
+                            var inputDivv = document.getElementById("inputDivv");
+                            var userInputt = document.getElementById("userInputt");
+
 
                             if(document.getElementById("option1").checked )
                             {
@@ -287,7 +462,7 @@
         
                         <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
                         
-                    </form>
+                    <!-- </form> -->
                     </fieldset>
 
                 </div>
@@ -295,12 +470,12 @@
                 <div class="box2">
                         <fieldset>
                             <b>Payment Method</b><br><br><hr><br>
-                            <form action="radio_input.php" method="POST">
+                            <!-- <form action="radio_input.php" method="POST"> -->
                             <label for="option1"> Credit Card / Debit Card </label>
-                            <input type="radio" id="option1" name="option" value="1" onclick="showInput()"><br><br>
+                            <input type="radio" id="option1" name="option1" value="1" onclick="showInput()"><br><br>
 
                             <label for="option2"> TNG eWallet  </label>
-                            <input type="radio" id="option2" name="option" value="2" onclick="showInput()"><br>
+                            <input type="radio" id="option2" name="option2" value="2" onclick="showInput()"><br>
 
                         </div>
                         </fieldset>
@@ -309,67 +484,14 @@
 
 
     </div>
+
+    </form>
+                    <div class="center_payment">
+    <?php echo "<div>".$msg."</div>"?>
+                    </div>
 </body>
 </html>
 
-<?php
-    $msg = '';
-  if(isset($_POST['saveas']))
-  {	 
-    $mname = $_POST['Fullname'];
-    $memail = $_POST['Email'];
-    $mph = $_POST['Phonenumber'];
-    $tabletable = $_POST['tableno'];
-    $selected = $_POST['choice'];
-    
-    if (!$mname)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
-        // $msg= "Please Key in Name !";
-        
-    }
-    else if(!$memail)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
-        // $msg= "Please Key in Email !";
-        
-    }
-    else if(!$mph)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
-        // $msg= "Please Key in Phone Number !";
-        
-    }
-    else if(!isset($_POST['tick']))
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
-        // $msg= "Must agree the Terms and Conditions";
-        
-    }
-    else if($selected==0)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please select the payment method</div>";
-        // $msg= "Please select the payment method";
-    }
-    else if($tabletable==0)
-    {
-        $msg= "Please select the table of your seet";        
-    }
-    else
-    {
-        $sql = "INSERT INTO checkout (Name,Email,Phonenumber,payment_method,table_number,total) VALUES ('$mname','$memail','$mph','$tabletable','$selected','$total')";
-        if (mysqli_query($conn, $sql)) {
-            $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
-          } else {
-            $msg= "Error: " . $sql . "" . mysqli_error($conn);
-          }
-          mysqli_close($conn);
-    }
-
-    
-  }
-?>
-<?php echo $msg?>
 
 <?php
     include 'footer.php';
