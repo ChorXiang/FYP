@@ -1,6 +1,54 @@
 <?php
     include 'header.php';
     include 'conn.php'; 
+    $msg='';
+?>
+
+<?php
+
+
+if (isset($_POST["savebtn"])) 	
+{
+	$mname = $_POST["name"];  	
+    $memail = $_POST["email"];  
+	$mpn = $_POST["pn"];  
+    $mimage = $_POST['image'];		
+	
+    
+    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' ");
+                                                                     // where Email='$id'
+
+    if (!$mname)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
+        // echo "";
+    }
+    else if(!$memail)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+        // echo "Please Key in Email !";
+    }
+    else if(!$mpn)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
+        // echo "Please Key in Phone Number !";
+    }
+    else if(!$mimage)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please put the image ! </div>";
+        // echo "Please put the image ! ";
+    }
+    else
+    {
+    //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "'");
+                                                                                                                                                        //  where Email='$id'
+
+        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -135,53 +183,15 @@
 		</form>
 
     </div>
+    <?php echo "<div>".$msg."</div>"?>
 </div>
+
     
 
 </body>
 </html>
 
-<?php
 
-
-if (isset($_POST["savebtn"])) 	
-{
-	$mname = $_POST["name"];  	
-    $memail = $_POST["email"];  
-	$mpn = $_POST["pn"];  
-    $mimage = $_POST['image'];		
-	
-    
-    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' ");
-                                                                     // where Email='$id'
-
-    if (!$mname)
-    {
-        echo "Please Key in Name !";
-    }
-    else if(!$memail)
-    {
-        echo "Please Key in Email !";
-    }
-    else if(!$mpn)
-    {
-        echo "Please Key in Phone Number !";
-    }
-    else if(!$mimage)
-    {
-        echo "Please put the image ! ";
-    }
-    else
-    {
-    //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "'");
-                                                                                                                                                        //  where Email='$id'
-        echo "Updated successfully !";
-    }
-
-}
-
-?>
 
 <?php
     include 'footer.php';
