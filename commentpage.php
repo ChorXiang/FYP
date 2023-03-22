@@ -151,5 +151,29 @@ function test_input($data) {
 </html>
 
 <?php
+if (isset($_POST['submit'])) {
+  $email = $_POST['email'];
+  $shipping_rating = $_POST['shipping_rating'];
+  $customer_service_rating = $_POST['customer_service_rating'];
+  $product_quality_rating = $_POST['product_quality_rating'];
+  $user_interface_rating = $_POST['user_interface_rating'];
+  $message = $_POST['message'];
+
+    if ($emailErr == "" && $user_interface_ratingErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $messageErr == "") {
+        $sql = "INSERT INTO comment (email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message)VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "New comment created!";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+  }
+
+?>
+
+<?php
 include 'footer.php'; 
 ?>
