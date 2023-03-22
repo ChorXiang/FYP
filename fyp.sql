@@ -72,14 +72,13 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 21/3/2023 --------------------------------------------------------------
-
+---------------------------------------------------------------- Latest Database 22/3/2023 --------------------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2023 at 03:48 PM
+-- Generation Time: Mar 22, 2023 at 06:24 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -201,15 +200,17 @@ CREATE TABLE `wishlist` (
   `wish_id` int(11) NOT NULL,
   `shoesname` varchar(30) NOT NULL,
   `price` int(30) NOT NULL,
-  `size` varchar(30) NOT NULL
+  `size` varchar(30) NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `wishlist`
 --
 
-INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`) VALUES
-(1, 'dunk low panda', 489, '10.5');
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`) VALUES
+(1, 'dunk low panda', 489, '10.5', 0),
+(3, 'Air Jordan', 420, '11.5', 0);
 
 --
 -- Indexes for dumped tables
@@ -259,7 +260,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -271,7 +272,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
