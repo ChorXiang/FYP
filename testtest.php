@@ -276,114 +276,72 @@
 
 
             <div class="row">
-                
+                <div class="box">
+                    <fieldset>
+                        <form name="from1"  method="post" action=""  >
+                            <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
+                            <input type="text" name="Fullname" placeholder="Ali Lee">
 
-                        <div class="box">
-                         <fieldset>
+                            <p id="full" style="font-size:0.8em; color:red"></p>
+                            <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
+                            <input type="text" name="Email" placeholder="AliLee@example.com">
 
-                         <!-- <form action="" method="POST">  -->
-                            <div id="inputDiv" style="display:none;">
-                                    <label for="userInput">CARD NUMBER : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="cardnum">
-
-                                    <label for="userInput">NAME ON CARD : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="cardname">
-
-                                    <label for="userInput">EXPIRY DATE : <sup>*</sup></label>
-                                    <input type="text" id="cuserInput" name="cardmonth" placeholder="Month">
-                                    <input type="text" id="userInput" name="cardyear" placeholder="Year">
-
-                                    <label for="userInput">SECURITY CODE : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="securecode">
-                            </div>
-                       <!-- </form> -->
-
-                       <!-- <form action="" method="POST">  -->
-                            <div id="inputDivv" style="display:none;">
-                            <label for="userInputt"  >E-WALLET : <sup>*</sup></label>
-                                <select id="userInputt" name="ewallet">
-                                    <option value="none">Please select the E-Wallet</option>
-                                    <option value="Tng">TnG</option>
-                                    <option value="Boost">Boost</option>
-                                    <option value="GrabPay">GrabPay</option>
-                                    <option value="ShopeePay">ShopeePay</option>
-                                </select>
-
-                                    <label for="userInputt">ENTER YOUR EMAIL : <sup>*</sup></label>
-                                    <input type="text" id="userInputt" name="eemail">
-                            </div>
+                            <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
+                            <input type="text" name="Phonenumber" placeholder="012-3456789">
                         <!-- </form> -->
-
-
-
-                    <!-- </form> -->
-
-                    <script type="text/javascript">
-                        function showInput()
-                        {
-                            var inputDiv = document.getElementById("inputDiv");
-                            var userInput = document.getElementById("userInput");
-                            var inputDivv = document.getElementById("inputDivv");
-                            var userInputt = document.getElementById("userInputt");
-
-
-                            if(document.getElementById("option1").checked )
-                            {
-                                inputDiv.style.display = "block";
-                                userInput.required = true;
-                                inputDivv.style.display = "none";
-                                userInputt.required = false;
-                            }
-                            else if (document.getElementById("option2").checked )
-                            {
-                                inputDivv.style.display = "block";
-                                userInputt.required = true;
-                                inputDiv.style.display = "none";
-                                userInput.required = false;
-                            }
-                            else
-                            {
-                                inputDiv.style.display = "none";
-                                userInput.required = false;
-                                inputDivv.style.display = "none";
-                                userInputt.required = false;
-                            }
-                        }
-                    </script>
-
-   
-
-                        <label><br>
-                            <input type="checkbox" name="tick" > By clicking on, you agree to F O O T's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br> <br>
-                            <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
-                        </label>
-        
-                        <input type="submit" name="saveas" value="Continue to checkout" class="botton" style="float:right;">
-                        
-                    <!-- </form> -->
-                    </fieldset>
-
-                </div>
-                
-                <div class="box2">
-                        <fieldset>
-                            <b>Payment Method</b><br><br><hr><br>
-                            <!-- <form action="radio_input.php" method="POST"> -->
-                            <label for="option1"> Credit Card / Debit Card </label>
-                            <input type="radio" id="option1" name="option1" value="1" onclick="showInput()"><br><br>
-
-                            <label for="option2"> TNG eWallet  </label>
-                            <input type="radio" id="option2" name="option2" value="2" onclick="showInput()"><br>
-
-
-                            <label for="option1"> Credit Card / Debit Card </label>
-                            <input type="radio" id="option1" name="option1" value="1" onclick="showInput()"><br><br>
-
-                            <label for="option2"> TNG eWallet  </label>
-                            <input type="radio" id="option2" name="option1" value="1" onclick="showInput()"><br>
                             
+                    </fieldset>
+                </div>
+                        <div class="box2">
+                            <fieldset>
+                                <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
+                                <table>
+                                    <hr>
+                                <?php
+                                $sql = "SELECT * FROM orders";
+                                $result = mysqli_query($conn,$sql);
+                                $total=0;
+                                ?>
+                                <tr>
+                                <td>Name </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Size</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Quantity</td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td>Price</td>
+                                </tr>
+
+                                <?php
+                                while($row = mysqli_fetch_array($result))
+                                {
+                                    $p=$row["price"];
+                                    $q=$row["quantity"];
+                                    $subtotal=$p*$q;
+                                    $total =  $total + $subtotal;
+                                ?>
+                                <tr>
+                                <td><?php echo $row["shoesname"]; ?> <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">  </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><?php echo $row["shoessize"]; ?> <input type="hidden" name="size" value="<?php echo $row["shoessize"]?>">  </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                <td><?php echo $row["quantity"]; ?> <input type="hidden" name="quantity" value="<?php echo $row["quantity"]?>">   </td>
+                                <td>&nbsp;&nbsp;&nbsp; </td>
+
+                                <td>RM<?php echo $subtotal; ?> <input type="hidden" name="price" value="<?php echo $row["price"]?>">   </td>
+                                </tr>
+                                <?php
+                                
+                                }
+                                ?>
+                                </table>
+                                <hr>
+                                <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
+                            </fieldset>
                         </div>
-                        </fieldset>
+
+
+                     
 
             </div>
 
