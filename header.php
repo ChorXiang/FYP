@@ -99,6 +99,7 @@
             <div class="dropdown-content">
                 <a href="userprofile.php">My Account</a>
                 <a href="wishlist.php">My Wish List</a>
+                <a href="#">My Order History</a>
                 <a href="register.php">Create An Account</a>
                 <a href="login.php">Login</a>
             </div>
