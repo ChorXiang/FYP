@@ -276,99 +276,7 @@
 
 
             <div class="row">
-                <div class="box">
-                    <fieldset>
-                        <form name="from1"  method="post" action=""  >
-                            <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
-                            <input type="text" name="Fullname" placeholder="Ali Lee">
-
-                            <p id="full" style="font-size:0.8em; color:red"></p>
-                            <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
-                            <input type="text" name="Email" placeholder="AliLee@example.com">
-
-                            <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
-                            <input type="text" name="Phonenumber" placeholder="012-3456789">
-                        <!-- </form> -->
-                            
-                    </fieldset>
-                </div>
-                        <div class="box2">
-                            <fieldset>
-                                <h4><i class="fa fa-shopping-cart"></i>Cart <span class="price" style="color:black"> </span>
-                                <table>
-                                    <hr>
-                                <?php
-                                $sql = "SELECT * FROM orders";
-                                $result = mysqli_query($conn,$sql);
-                                $total=0;
-                                ?>
-                                <tr>
-                                <td>Name </td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Size</td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Quantity</td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>Price</td>
-                                </tr>
-
-                                <?php
-                                while($row = mysqli_fetch_array($result))
-                                {
-                                    $p=$row["price"];
-                                    $q=$row["quantity"];
-                                    $subtotal=$p*$q;
-                                    $total =  $total + $subtotal;
-                                ?>
-                                <tr>
-                                <td><?php echo $row["shoesname"]; ?> <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">  </td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><?php echo $row["shoessize"]; ?> <input type="hidden" name="size" value="<?php echo $row["shoessize"]?>">  </td>
-                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><?php echo $row["quantity"]; ?> <input type="hidden" name="quantity" value="<?php echo $row["quantity"]?>">   </td>
-                                <td>&nbsp;&nbsp;&nbsp; </td>
-
-                                <td>RM<?php echo $subtotal; ?> <input type="hidden" name="price" value="<?php echo $row["price"]?>">   </td>
-                                </tr>
-                                <?php
-                                
-                                }
-                                ?>
-                                </table>
-                                <hr>
-                                <p>Total :<span class="price" style="color:black"><b>RM <?php echo $total;?></b></span></p>
-                            </fieldset>
-                        </div>
-
-
-                        <div class="box">
-                            <fieldset>
-                                <!-- <form action="" method="POST">  -->
-                                    <label for="address" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
-                                    <input type="text" name="address" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
-
-                                    <label for="state"  ><i class="fa fa-user"></i>STATE : <sup>*</sup></label>
-                                        <select id="state" name="state">
-                                            <option value="melaka">Melaka</option>
-                                            <option value="perak">Perak</option>
-                                            <option value="johor">Johor</option>
-                                            <option value="kl">Kuala Lumpur</option>
-                                            <option value="pp">Pulau Penang</option>
-                                            <option value="kedah">Kedah</option>
-                                            <option value="kelantan">Kelantan</option>
-                                            <option value="terengganu">Terangganu</option>
-                                            <option value="ns">Negeri Sembilan</option>
-                                            <option value="selangor">Selangor</option>
-                                            <option value="sabah">Sabahr</option>
-                                            <option value="sarawak">Sarawak</option>
-                                        </select>
-                                    
-                                    <label for="postcode" ><i class="fa fa-user"></i>POSTAL CODE : <sup>*</sup></label>
-                                    <input type="text" name="postcode" placeholder="Enter">
-                                <!-- </form> -->
-                            </fieldset>
-                        </div>
-
+                
 
                         <div class="box">
                          <fieldset>
@@ -462,11 +370,18 @@
                             <b>Payment Method</b><br><br><hr><br>
                             <!-- <form action="radio_input.php" method="POST"> -->
                             <label for="option1"> Credit Card / Debit Card </label>
-                            <input type="radio" id="option1" name="option" value="1" onclick="showInput()"><br><br>
+                            <input type="radio" id="option1" name="option1" value="1" onclick="showInput()"><br><br>
 
                             <label for="option2"> TNG eWallet  </label>
-                            <input type="radio" id="option2" name="option" value="2" onclick="showInput()"><br>
+                            <input type="radio" id="option2" name="option2" value="2" onclick="showInput()"><br>
 
+
+                            <label for="option1"> Credit Card / Debit Card </label>
+                            <input type="radio" id="option1" name="option1" value="1" onclick="showInput()"><br><br>
+
+                            <label for="option2"> TNG eWallet  </label>
+                            <input type="radio" id="option2" name="option1" value="1" onclick="showInput()"><br>
+                            
                         </div>
                         </fieldset>
 
