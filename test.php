@@ -18,9 +18,12 @@
 <?php
 
 $emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
-$email = $shipping_rating = $customer_service_rating = $product_quality_rating = $user_interface_rating = $message = "";
-?>
-<?php
+$email = "";
+$shipping_rating = "";
+$customer_service_rating = "";
+$product_quality_rating = "";
+$user_interface_rating = "";
+$message = "";
 
 if (isset($_POST['submit_rating'])) {
 
@@ -29,9 +32,6 @@ if (isset($_POST['submit_rating'])) {
   } else {
       $email = test_input($_POST["email"]);
 
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "*Invalid Email Format!"; 
-      }
   }
 
   if (empty($_POST["shipping_rating"])) {
@@ -77,33 +77,6 @@ function test_input($data) {
     background-color: lightblue;
     color: black;
   }
-  
-  h1{
-    text-align: center;
-  }
-
-  h3{
-    text-align: center;
-  }
-
-  table{
-    margin-left:50px;
-    margin-right:50px;
-  }
-
-  th{
-    padding:5px;
-  }
-
-  .left{
-    float:left;
-    padding-left:80px ;
-  }
-
-  .right{
-    float:right;
-    padding-right:80px ;
-  }
 
   input[type="submit"]{
     width: 100%;
@@ -122,60 +95,33 @@ function test_input($data) {
     border-color: #2691d9;
     transition: .5s;
   }
-  .container
-  {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  padding: 20px;
-  }
+  
 </style>
-<fieldset> 
-	<h1>Online Shoe Selling Store Service Rating</h1>
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-  <br><br>
-  Email：<input type="email" name="email" value="<?php echo $email;?>">
-  <span class="error"><?php echo $emailErr;?></span>
-  <br><br>
 
-    <h2>User Interface</h2>
-    <input type="radio" name="user_interface_rating" value="1">1
-    <input type="radio" name="user_interface_rating" value="2">2
-    <input type="radio" name="user_interface_rating" value="3">3
-    <input type="radio" name="user_interface_rating" value="4">4
-    <input type="radio" name="user_interface_rating" value="5">5
+<fieldset> 
+    <h1>Online Shoe Selling Store Service Rating</h1>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <br><br>
+    Email：<input type="email" name="email" value="<?php echo $email;?>">
+    <span class="error"><?php echo $emailErr;?></span>
+    <br><br>
+    <label for="Shipping Service">Rating (1-5):</label>
+    <input type="number" name="shipping_rating" id="shipping_rating" min="1" max="5" required>
+    <span class="error"><?php echo $shipping_ratingErr;?></span>
+    <br>
+    <label for="Customer Service">Rating (1-5):</label>
+    <input type="number" name="customer_service_rating" id="customer_service_rating" min="1" max="5" required>
+    <span class="error"><?php echo $customer_service_ratingErr;?></span>
+    <br>
+    <label for="Product Quality">Rating (1-5):</label>
+    <input type="number" name="product_quality_rating" id="product_quality_rating" min="1" max="5" required>
+    <span class="error"><?php echo $product_quality_ratingErr;?></span>
+    <br>
+    <label for="User Interface">Rating (1-5):</label>
+    <input type="number" name="user_interface_rating" id="user_interface_rating" min="1" max="5" required>
     <span class="error"><?php echo $user_interface_ratingErr;?></span>
     <br>
-
-		<h2>Shipping Service</h2>
-		<input type="radio" name="shipping_rating" value="1">1
-		<input type="radio" name="shipping_rating" value="2">2
-		<input type="radio" name="shipping_rating" value="3">3
-		<input type="radio" name="shipping_rating" value="4">4
-		<input type="radio" name="shipping_rating" value="5">5
-    <span class="error"><?php echo $shipping_ratingErr;?></span>
-		<br>
-
-		<h2>Customer Service</h2>
-		<input type="radio" name="customer_service_rating" value="1">1
-		<input type="radio" name="customer_service_rating" value="2">2
-		<input type="radio" name="customer_service_rating" value="3">3
-		<input type="radio" name="customer_service_rating" value="4">4
-		<input type="radio" name="customer_service_rating" value="5">5
-    <span class="error"><?php echo $customer_service_ratingErr;?></span>
-		<br>
-
-		<h2>Product Quality</h2>
-		<input type="radio" name="product_quality_rating" value="1">1
-		<input type="radio" name="product_quality_rating" value="2">2
-		<input type="radio" name="product_quality_rating" value="3">3
-		<input type="radio" name="product_quality_rating" value="4">4
-		<input type="radio" name="product_quality_rating" value="5">5
-    <span class="error"><?php echo $product_quality_ratingErr;?></span>
-		<br>
-
+  
     <h2>Message</h2>
     <textarea name="message" rows="5" cols="40"></textarea>
     <span class="error"><?php echo $messageErr;?></span>
@@ -185,8 +131,8 @@ function test_input($data) {
 	</form>
 </fieldset>
 
-
 <?php
+
 if (isset($_POST['submit_rating'])) {
 
     $email = $_POST['email'];
