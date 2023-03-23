@@ -5,11 +5,6 @@
     if(isset($_POST['submit']))
     {
 
-      // $shoesname = mysqli_real_escape_string($conn,$_POST['shoesname']);
-      // $price = mysqli_real_escape_string($conn,$_POST['price']);
-      // $size = mysqli_real_escape_string($conn,$_POST['size']);
-      // $value = mysqli_real_escape_string($conn,$_POST['range']);
-
       $shoesname = $_POST['shoesname'];
       $price = $_POST['price'];
       $size = $_POST['size'];
@@ -20,18 +15,21 @@
       {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item is sold out</div>";
       }
+      else if($stock<$value)
+      {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item left $stock only</div>";
+      }
       else
       {
         mysqli_query($conn,"INSERT INTO `orders`(shoesname,quantity,price,shoessize) VALUES ('$shoesname','$value','$price','$size')");  
+
+          // $newstock = 0;
+          // $newstock = $stock - $value;
+          // $wishid = $_POST['id'];
+          // mysqli_query($conn,"UPDATE wishlist SET stock = $newstock where wish_id='$wishid'");
         
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add to Cart Successfully !</div>";
       }
-
-      
-
-
-      // $sql = "INSERT INTO `orders`(shoesname,quantity,price,shoessize) VALUES ('$foodname','$value','$price',$size)";
-
 
     }
 ?>
@@ -79,6 +77,7 @@
     <?php
     $sql = "SELECT * FROM wishlist";
     $result = mysqli_query($conn,$sql);
+
     // $id = $_GET['email'];
     // $host = "SELECT * FROM `user` where Email = '$id'";
     // $query = mysqli_query($conn,$host);
@@ -95,10 +94,12 @@
         $total=0;
     while($row = mysqli_fetch_array($result))
     {
+
         ?>
         
     <tr>
     <form action="" method="POST"> 
+    <input type="hidden" name="id" value="<?php echo $row["wish_id"]?>">
       <td><?php echo $row["shoesname"]; ?>     <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">   </td>
       <td><?php echo $row["size"];	?>   <input type="hidden" name="size" value="<?php echo $row["size"];?>">   </td>
       <td>RM<?php echo $row["price"];?>     <input type="hidden" name="price" value="<?php echo $row["price"];?>"> </td>
