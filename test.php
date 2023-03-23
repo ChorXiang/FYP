@@ -1,46 +1,219 @@
-<?php
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $db_pass = '';
-    $db_name = 'fyp';
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+<!DOCTYPE HTML>  
+<html>
+<head>
+<style>
+.error {
+  color: #FF0000;
+  }
+</style>
+</head>
+<body>  
+  
+  <?php
+    include 'conn.php'; 
+    include 'header.php'; 
+  
 ?>
+
 <?php
-// Retrieve the shoe information
 
-//$shoe_id = $_GET["id"]; // assuming the shoe ID is passed as a query parameter
-$sql = "SELECT * FROM shoes WHERE shoe_id = 1";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+$emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
+$email = $shipping_rating = $customer_service_rating = $product_quality_rating = $user_interface_rating = $message = "";
 
-// $shoe_id = $_GET["id"]; // assuming the shoe ID is passed as a query parameter
-// $sql = "SELECT * FROM shoes WHERE shoe_id = $shoe_id";
-// $result = mysqli_query($conn, $sql);
-// $row = mysqli_fetch_assoc($result);
+if (isset($_POST['submit_rating'])) {
 
-// Display the shoe information
-echo "<h1>" . $row["shoe_name"] . "</h1>";
-echo "<p>Type: " . $row["shoe_type"] . "</p>";
-echo "<p>Brand: " . $row["shoe_brand"] . "</p>";
-echo "<p>Category: " . $row["category"] . "</p>";
-echo "<img src='" . $row["shoe_image"] . "' alt='" . $row["shoe_name"] . "'>";
-echo "<p>Price: $" . $row["shoe_price"] . "</p>";
+  if (empty($_POST["email"])) {
+      $emailErr = " * Email is required";
+  } else {
+      $email = test_input($_POST["email"]);
 
-// Display the shoe size buttons
-$sizes = explode(",", $row["shoe_size"]);
-echo "<p>Select a size:</p>";
-foreach ($sizes as $size) {
-  echo "<button>" . $size . "</button>";
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $emailErr = "*Invalid Email Format!"; 
+      }
+  }
+
+  if (empty($_POST["shipping_rating"])) {
+    $shipping_ratingErr = "*shipping_rating is required";
+  } else {
+      $shipping_rating = test_input($_POST["shipping_rating"]);
+  }
+
+  if (empty($_POST["customer_service_rating"])) {
+    $customer_service_ratingErr = "*customer_service_rating is required";
+  } else {
+    $customer_service_rating = test_input($_POST["customer_service_rating"]);
+  }
+
+  if (empty($_POST["product_quality_rating"])) {
+    $product_quality_ratingErr = "*product_quality_rating is required";
+  } else {
+    $product_quality_rating = test_input($_POST["product_quality_rating"]);
+  }
+
+  if (empty($_POST["user_interface_rating"])) {
+      $user_interface_ratingErr = "*user_interface_rating is required";
+  } else {
+      $user_interface_rating = test_input($_POST["user_interface_rating"]);
+  }
+
+  if (empty($_POST["message"])) {
+      $messageErr = "*Your valuable message is required";
+  } else {
+      $message = test_input($_POST["message"]);
+  }
 }
-
-// Display the shoe size checkboxes
-$sizes = explode(",", $row["shoe_size"]);
-echo "<p>Select sizes:</p>";
-foreach ($sizes as $size) {
-  echo "<label><input type='checkbox' name='sizes[]' value='" . $size . "'>" . $size . "</label><br>";
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
+?>
+
+<style>
+  fieldset{
+    background-color: lightblue;
+    color: black;
+  }
+  
+  h1{
+    text-align: center;
+  }
+
+  h3{
+    text-align: center;
+  }
+
+  table{
+    margin-left:50px;
+    margin-right:50px;
+  }
+
+  th{
+    padding:5px;
+  }
+
+  .left{
+    float:left;
+    padding-left:80px ;
+  }
+
+  .right{
+    float:right;
+    padding-right:80px ;
+  }
+
+  input[type="submit"]{
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
+
+  input[type="submit"]:hover{
+    border-color: #2691d9;
+    transition: .5s;
+  }
+  .container
+  {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }
+</style>
+<fieldset> 
+	<h1>Online Shoe Selling Store Service Rating</h1>
+	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+  <br><br>
+  Email：<input type="email" name="email" value="<?php echo $email;?>">
+  <span class="error"><?php echo $emailErr;?></span>
+  <br><br>
+
+    <h2>User Interface</h2>
+    <input type="radio" name="user_interface_rating" value="1">1
+    <input type="radio" name="user_interface_rating" value="2">2
+    <input type="radio" name="user_interface_rating" value="3">3
+    <input type="radio" name="user_interface_rating" value="4">4
+    <input type="radio" name="user_interface_rating" value="5">5
+    <span class="error"><?php echo $user_interface_ratingErr;?></span>
+    <br>
+
+		<h2>Shipping Service</h2>
+		<input type="radio" name="shipping_rating" value="1">1
+		<input type="radio" name="shipping_rating" value="2">2
+		<input type="radio" name="shipping_rating" value="3">3
+		<input type="radio" name="shipping_rating" value="4">4
+		<input type="radio" name="shipping_rating" value="5">5
+    <span class="error"><?php echo $shipping_ratingErr;?></span>
+		<br>
+
+		<h2>Customer Service</h2>
+		<input type="radio" name="customer_service_rating" value="1">1
+		<input type="radio" name="customer_service_rating" value="2">2
+		<input type="radio" name="customer_service_rating" value="3">3
+		<input type="radio" name="customer_service_rating" value="4">4
+		<input type="radio" name="customer_service_rating" value="5">5
+    <span class="error"><?php echo $customer_service_ratingErr;?></span>
+		<br>
+
+		<h2>Product Quality</h2>
+		<input type="radio" name="product_quality_rating" value="1">1
+		<input type="radio" name="product_quality_rating" value="2">2
+		<input type="radio" name="product_quality_rating" value="3">3
+		<input type="radio" name="product_quality_rating" value="4">4
+		<input type="radio" name="product_quality_rating" value="5">5
+    <span class="error"><?php echo $product_quality_ratingErr;?></span>
+		<br>
+
+    <h2>Message</h2>
+    <textarea name="message" rows="5" cols="40"></textarea>
+    <span class="error"><?php echo $messageErr;?></span>
+    <br><br>
+
+		<input type="submit" name="submit_rating" value="Submit Rating">
+	</form>
+</fieldset>
 
 
-// Close the database connection
-mysqli_close($conn);
+<?php
+if (isset($_POST['submit_rating'])) {
+
+    $email = $_POST['email'];
+    $shipping_rating = $_POST['shipping_rating'];
+    $customer_service_rating = $_POST['customer_service_rating'];
+    $product_quality_rating = $_POST['product_quality_rating'];
+    $user_interface_rating = $_POST['user_interface_rating'];
+    $message = $_POST['message'];
+
+    if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $user_interface_ratingErr == "" && $messageErr == "") {
+      $sql = "INSERT INTO comment (email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message)VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "New record created!";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+  }
+
+?>
+
+
+</body>
+</html>
+
+<?php
+    include 'footer.php';
+   
 ?>
