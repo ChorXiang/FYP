@@ -24,7 +24,10 @@
     $meemail = $_POST['eemail'];
     $value = $_POST['option'];
     $select = $_POST['ewallet'];
-
+    $shoesname = $_POST['shoesname'];
+    $price = $_POST['price'];
+    $size = $_POST['size'];
+    $qty = $_POST['quantity'];
     
     if (!$mname)
     {
@@ -93,9 +96,17 @@
         else
         {
             mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-            
-            // $sql = "INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
-            $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+            $sql = "SELECT * FROM orders";
+            $result = mysqli_query($conn,$sql);
+           while($row = mysqli_fetch_array($result))
+           {
+               $shoesname = $row["shoesname"];
+               $price = $row['price'];
+               $size = $row['shoessize'];
+               $qty = $row['quantity'];
+
+               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
+           }$msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
         
             // if (mysqli_query($conn, $sql)) {
                 
@@ -132,8 +143,18 @@
         }
         else
         {
-           
             mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
+            $sql = "SELECT * FROM orders";
+            $result = mysqli_query($conn,$sql);
+           while($row = mysqli_fetch_array($result))
+           {
+               $shoesname = $row["shoesname"];
+               $price = $row['price'];
+               $size = $row['shoessize'];
+               $qty = $row['quantity'];
+
+               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
+           }
             // $sql = "INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
             $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
         
