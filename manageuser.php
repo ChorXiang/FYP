@@ -20,12 +20,13 @@
     }
     .middle
     {
-        max-width: 800px;
+        max-width: 1280px;
         margin: auto; 
+        padding:50px;
     }
     *
     {
-      font-size: 20px;
+      font-size: 30px;
     }
     .left
     {

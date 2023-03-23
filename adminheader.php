@@ -103,7 +103,7 @@
                 <a href="#">Manage Category</a>
                 <a href="#">Manage Product</a>
                 <a href="#">Manage Order</a>
-                <a href="#">Manage Customer</a>
+                <a href="manageuser.php">Manage Customer</a>
                 <a href="#">Manage Staff </a>
                 <a href="#">View n Print Report </a>
             </div>
