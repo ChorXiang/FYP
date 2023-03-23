@@ -19,6 +19,8 @@
 
 $emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
 $email = $shipping_rating = $customer_service_rating = $product_quality_rating = $user_interface_rating = $message = "";
+?>
+<?php
 
 if (isset($_POST['submit_rating'])) {
 
