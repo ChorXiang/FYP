@@ -20,7 +20,7 @@
     }
     .middle
     {
-        max-width: 1280px;
+        max-width: 1680px;
         margin: auto; 
         padding:50px;
     }
@@ -70,8 +70,10 @@
           <td>ID</td>
           <td>Image</td>
           <td>Name</td>
+          <td>Contact No</td>
           <td>Email</td>
-          <td>Role</td>
+          <td>Username</td>
+          <td>Password</td>
           <td>Status</td>
           <td>Manage</td>
         </tr>
@@ -87,10 +89,12 @@
           <td><?php echo $row["full_name"];	?></td>
           <td><?php echo $row["contact_no"];?></td>
           <td><?php echo $row["email_address"];?></td>
+          <td><?php echo $row["username"];?></td>
+          <td><?php echo $row["userpassword"];?></td>
           <td><?php echo $row["status"];?></td>
           <td>           <a href="deletemanageuser.php?user_id=<?php echo $row['user_id']; ?>"><i class="fa fa-close" style="font-size:36px"></i></a>
                                                    <!-- ?No=<?php echo $row['No']; ?> -->
-            <a href="updatemanageuser.php" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+            <a href="editmanageuser.php" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
                                                                        <!-- ?email=<?php echo $row['Email']; ?>&&name=<?php echo $name?> -->
             </td>
         </tr>
