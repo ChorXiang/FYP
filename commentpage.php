@@ -1,17 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+  color: #FF0000;
+  }
+    fieldset{
+    background-color: lightblue;
+    color: black;
+  }
+  </style>  
+</head>
+<body>
+  
 <?php
-include 'header.php'; 
 include 'conn.php'; 
+include 'header.php'; 
+?>
 
+<?php
 // Initialize variables
-$email = "";
-$emailErr = "";
-$shipping_ratingErr = "";
-$customer_service_ratingErr = "";
-$product_quality_ratingErr = "";
-$user_interface_rating = "";
-$user_interface_ratingErr = "";
-$message = "";
-$messageErr = "";
+$emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
+$email = $shipping_rating = $customer_service_rating = $product_quality_rating = $user_interface_rating = $message = "";
 
 // Check if the user has submitted a rating
 if (isset($_POST['submit_rating'])) {
@@ -30,44 +40,62 @@ if (isset($_POST['submit_rating'])) {
   // Validate shipping rating
   if (empty($_POST["shipping_rating"])) {
     $shipping_ratingErr = " * Rating is required";
-  }
+  } else {
+    $shipping_rating = test_input($_POST["shipping_rating"]);
+  } 
 
   // Validate customer service rating
   if (empty($_POST["customer_service_rating"])) {
     $customer_service_ratingErr = " * Rating is required";
-  }
+  } else {
+    $customer_service_rating = test_input($_POST["customer_service_rating"]);
+  } 
 
   // Validate product quality rating
   if (empty($_POST["product_quality_rating"])) {
     $product_quality_ratingErr = " * Rating is required";
-  }
+  } else {
+    $product_quality_rating = test_input($_POST["product_quality_rating"]);
+  } 
 
   if (empty($_POST["user_interface_rating"])) {
     $user_interface_ratingErr = " * Rating is required";
-  }
+  } else {
+    $user_interface_rating = test_input($_POST["user_interface_rating"]);
+  } 
   
   if (empty($_POST["message"])) {
     $messageErr = "*Your valuable message is required";
+  } else {
+    $message = test_input($_POST["message"]);
   } 
 
-  // If all fields are valid, store the ratings in the session
-  if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $user_interface_ratingErr == "" && $messageErr == "") {
-    $shipping_rating = $_POST['shipping_rating'];
-    $customer_service_rating = $_POST['customer_service_rating'];
-    $product_quality_rating = $_POST['product_quality_rating'];
-    $user_interface_rating = $_POST['user_interface_rating'];
-    $message = $_POST['message'];
   
-    $_SESSION['email'] = $email;
+  $_SESSION['email'] = $email;
     $_SESSION['shipping_rating'] = $shipping_rating;
     $_SESSION['customer_service_rating'] = $customer_service_rating;
     $_SESSION['product_quality_rating'] = $product_quality_rating;
     $_SESSION['user_interface_rating'] = $user_interface_rating;
     $_SESSION['message'] = $message;
+
+  // If all fields are valid, store the ratings in the session
+  // if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $user_interface_ratingErr == "" && $messageErr == "") {
+  //   $shipping_rating = $_POST['shipping_rating'];
+  //   $customer_service_rating = $_POST['customer_service_rating'];
+  //   $product_quality_rating = $_POST['product_quality_rating'];
+  //   $user_interface_rating = $_POST['user_interface_rating'];
+  //   $message = $_POST['message'];
   
-    // Display a message to the user
-    echo "Thank you for rating our services!";
-  }
+  //   $_SESSION['email'] = $email;
+  //   $_SESSION['shipping_rating'] = $shipping_rating;
+  //   $_SESSION['customer_service_rating'] = $customer_service_rating;
+  //   $_SESSION['product_quality_rating'] = $product_quality_rating;
+  //   $_SESSION['user_interface_rating'] = $user_interface_rating;
+  //   $_SESSION['message'] = $message;
+  
+  //   // Display a message to the user
+  //   echo "Thank you for rating our services!";
+  // }
   
 }
 
@@ -81,20 +109,7 @@ function test_input($data) {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    .error {
-  color: #FF0000;
-  }
-    fieldset{
-    background-color: lightblue;
-    color: black;
-  }
-  </style>  
-</head>
-<body>
+
 <fieldset> 
 	<h1>Online Shoe Selling Store Service Rating</h1>
 	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -147,8 +162,7 @@ function test_input($data) {
 		<input type="submit" name="submit_rating" value="Submit Rating">
 	</form>
 </fieldset>
-</body>
-</html>
+
 
 <?php
 if (isset($_POST['submit_rating'])) {
@@ -158,6 +172,7 @@ if (isset($_POST['submit_rating'])) {
   $product_quality_rating = $_POST['product_quality_rating'];
   $user_interface_rating = $_POST['user_interface_rating'];
   $message = $_POST['message'];
+
 
     if ($emailErr == "" && $user_interface_ratingErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $messageErr == "") {
         $sql = "INSERT INTO comment (email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message)VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )";
@@ -173,6 +188,9 @@ if (isset($_POST['submit_rating'])) {
   }
 
 ?>
+
+</body>
+</html>
 
 <?php
 include 'footer.php'; 
