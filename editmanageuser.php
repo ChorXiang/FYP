@@ -18,6 +18,7 @@
     {
         max-width: 800px;
         margin: auto; 
+        padding:50px;
     }
     *
     {
@@ -45,10 +46,11 @@
 
 <fieldset>
     <?php
-        $name=$_GET['name'];
+        // $name=$_GET['name'];
 
-        $id = $_REQUEST["email"];
-        $result = mysqli_query($conn, "select * from user where Email = '$id'");
+        // $id = $_REQUEST["email"];
+
+        $result = mysqli_query($conn, "select * from user where email_address = '$id'"); 
         $row = mysqli_fetch_assoc($result);
 
     //     $id = $_GET['name'];

@@ -94,8 +94,8 @@
           <td><?php echo $row["status"];?></td>
           <td>           <a href="deletemanageuser.php?user_id=<?php echo $row['user_id']; ?>"><i class="fa fa-close" style="font-size:36px"></i></a>
                                                    <!-- ?No=<?php echo $row['No']; ?> -->
-            <a href="editmanageuser.php" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-                                                                       <!-- ?email=<?php echo $row['Email']; ?>&&name=<?php echo $name?> -->
+            <a href="editmanageuser.php?email=<?php echo $row['email_address'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+                                                                       <!--  &&name=<?php echo $name?> -->
             </td>
         </tr>
             <?php
