@@ -72,12 +72,13 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 23/3/2023 ---------------------------------------------------------------- phpMyAdmin SQL Dump
+---------------------------------------------------------------- Latest Database 23/3/2023 ---------------------------------------------------------------- 
+-- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 06:43 AM
+-- Generation Time: Mar 23, 2023 at 07:18 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -151,16 +152,17 @@ CREATE TABLE `orders` (
   `shoesname` varchar(30) NOT NULL,
   `price` int(30) NOT NULL,
   `quantity` int(30) NOT NULL,
-  `shoessize` varchar(10) NOT NULL
+  `shoessize` varchar(10) NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`) VALUES
-(35, 'dunk low panda', 489, 2, '10.5'),
-(36, 'Air Jordan', 420, 3, '11.5');
+INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `email`) VALUES
+(36, 'dunk low panda', 489, 3, '10.5', ''),
+(37, 'Air Jordan', 420, 2, '11.5', '');
 
 -- --------------------------------------------------------
 
@@ -191,8 +193,7 @@ CREATE TABLE `payment` (
 
 INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`) VALUES
 (1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'Tng', ' '),
-(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com '),
-(12, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'GrabPay', '1211201763@student.m');
+(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com ');
 
 -- --------------------------------------------------------
 
@@ -338,7 +339,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -356,7 +357,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `purchase`
