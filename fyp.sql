@@ -72,13 +72,12 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 22/3/2023 --------------------------------------------------------------
--- phpMyAdmin SQL Dump
+---------------------------------------------------------------- Latest Database 23/3/2023 ---------------------------------------------------------------- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2023 at 06:24 AM
+-- Generation Time: Mar 23, 2023 at 06:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -95,6 +94,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `fyp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `her_id` int(11) NOT NULL,
+  `her_shoesname` varchar(50) NOT NULL,
+  `her_size` varchar(10) NOT NULL,
+  `her_quantity` int(11) NOT NULL,
+  `her_price` int(11) NOT NULL,
+  `her_email` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`) VALUES
+(6, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com'),
+(7, 'Air Jordan', '11.5', 3, 420, 'dasd@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -139,6 +161,50 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`) VALUES
 (35, 'dunk low panda', 489, 2, '10.5'),
 (36, 'Air Jordan', 420, 3, '11.5');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `his_id` int(11) NOT NULL,
+  `his_name` varchar(50) NOT NULL,
+  `his_email` varchar(30) NOT NULL,
+  `his_pn` varchar(30) NOT NULL,
+  `his_address` varchar(30) NOT NULL,
+  `his_state` varchar(20) NOT NULL,
+  `his_code` varchar(20) NOT NULL,
+  `his_cardnum` varchar(30) NOT NULL,
+  `his_cardname` varchar(30) NOT NULL,
+  `his_cardmonth` varchar(10) NOT NULL,
+  `his_cardyear` varchar(10) NOT NULL,
+  `his_securecode` varchar(20) NOT NULL,
+  `his_ewallet` varchar(20) NOT NULL,
+  `his_eemail` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`) VALUES
+(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'Tng', ' '),
+(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com '),
+(12, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'GrabPay', '1211201763@student.m');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purchase`
+--
+
+CREATE TABLE `purchase` (
+  `pur_id` int(11) NOT NULL,
+  `her_id` int(11) NOT NULL,
+  `his_email` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -209,12 +275,18 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`) VALUES
-(1, 'dunk low panda', 489, '10.5', 0),
+(1, 'dunk low panda', 489, '10.5', 2),
 (3, 'Air Jordan', 420, '11.5', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`her_id`);
 
 --
 -- Indexes for table `messages`
@@ -227,6 +299,18 @@ ALTER TABLE `messages`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_ID`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`his_id`);
+
+--
+-- Indexes for table `purchase`
+--
+ALTER TABLE `purchase`
+  ADD PRIMARY KEY (`pur_id`);
 
 --
 -- Indexes for table `shoes`
@@ -251,6 +335,12 @@ ALTER TABLE `wishlist`
 --
 
 --
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -260,7 +350,19 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `purchase`
+--
+ALTER TABLE `purchase`
+  MODIFY `pur_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
