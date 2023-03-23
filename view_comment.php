@@ -1,7 +1,9 @@
 <?php
 include 'header.php'; 
 include 'conn.php'; 
+?>
 
+<?php
 // Retrieve comments from database
 $sql = "SELECT * FROM comment";
 $result = $conn->query($sql);
