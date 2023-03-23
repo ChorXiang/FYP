@@ -94,7 +94,7 @@
 
         <div class="box">
 
-        <a href="#" class="select">Manage Customer</a>
+        <a href="manageuser.php" class="select">Manage Customer</a>
 
 
         </div>
