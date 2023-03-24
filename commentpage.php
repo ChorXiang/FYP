@@ -18,7 +18,12 @@
 <?php
 
 $emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
-$email = $shipping_rating = $customer_service_rating = $product_quality_rating = $user_interface_rating = $message = "";
+$email = "";
+$shipping_rating = "";
+$customer_service_rating = "";
+$product_quality_rating = "";
+$user_interface_rating = "";
+$message = "";
 
 if (isset($_POST['submit_rating'])) {
 
@@ -90,63 +95,51 @@ function test_input($data) {
     border-color: #2691d9;
     transition: .5s;
   }
+
+  .center{
+    text-align: center;
+    color: black;
+  }
   
 </style>
 
 <fieldset> 
-	<h1>Online Shoe Selling Store Service Rating</h1>
-	<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-  <br><br>
-  Email：<input type="email" name="email" value="<?php echo $email;?>">
-  <span class="error"><?php echo $emailErr;?></span>
-  <br><br>
-
-    <h2>User Interface</h2>
-    <input type="radio" name="user_interface_rating" value="1">1
-    <input type="radio" name="user_interface_rating" value="2">2
-    <input type="radio" name="user_interface_rating" value="3">3
-    <input type="radio" name="user_interface_rating" value="4">4
-    <input type="radio" name="user_interface_rating" value="5">5
-    <span class="error"><?php echo $user_interface_ratingErr;?></span>
-    <br>
-
-		<h2>Shipping Service</h2>
-		<input type="radio" name="shipping_rating" value="1">1
-		<input type="radio" name="shipping_rating" value="2">2
-		<input type="radio" name="shipping_rating" value="3">3
-		<input type="radio" name="shipping_rating" value="4">4
-		<input type="radio" name="shipping_rating" value="5">5
+  <div class="center">
+    <h1>Online Shoe Selling Store Service Rating</h1>
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <br><br>
+    <b>Email：</b><input type="email" name="email" value="<?php echo $email;?>">
+    <span class="error"><?php echo $emailErr;?></span>
+    <br><br>
+    <label for="Shipping Service"><b>Shipping Service Rating (1-5):</b></label>
+    <input type="number" name="shipping_rating" id="shipping_rating" min="1" max="5" required>
     <span class="error"><?php echo $shipping_ratingErr;?></span>
-		<br>
-
-		<h2>Customer Service</h2>
-		<input type="radio" name="customer_service_rating" value="1">1
-		<input type="radio" name="customer_service_rating" value="2">2
-		<input type="radio" name="customer_service_rating" value="3">3
-		<input type="radio" name="customer_service_rating" value="4">4
-		<input type="radio" name="customer_service_rating" value="5">5
+    <br><br>
+    <label for="Customer Service"><b>Customer Service Rating (1-5):</b></label>
+    <input type="number" name="customer_service_rating" id="customer_service_rating" min="1" max="5" required>
     <span class="error"><?php echo $customer_service_ratingErr;?></span>
-		<br>
-
-		<h2>Product Quality</h2>
-		<input type="radio" name="product_quality_rating" value="1">1
-		<input type="radio" name="product_quality_rating" value="2">2
-		<input type="radio" name="product_quality_rating" value="3">3
-		<input type="radio" name="product_quality_rating" value="4">4
-		<input type="radio" name="product_quality_rating" value="5">5
+    <br><br>
+    <label for="Product Quality"><b>Product Quality Rating (1-5):</b></label>
+    <input type="number" name="product_quality_rating" id="product_quality_rating" min="1" max="5" required>
     <span class="error"><?php echo $product_quality_ratingErr;?></span>
-		<br>
-
-    <h2>Message</h2>
+    <br><br>
+    <label for="User Interface"><b>User Interface Rating (1-5):</b></label>
+    <input type="number" name="user_interface_rating" id="user_interface_rating" min="1" max="5" required>
+    <span class="error"><?php echo $user_interface_ratingErr;?></span>
+    <br><br>
+  
+    <h2><b>Message:</b></h2>
     <textarea name="message" rows="5" cols="40"></textarea>
-    <span class="error"><?php echo $messageErr;?></span>
+    <span class="error"><br><?php echo $messageErr;?></span>
     <br><br>
 
 		<input type="submit" name="submit_rating" value="Submit Rating">
 	</form>
+</div>
 </fieldset>
 
 <?php
+
 if (isset($_POST['submit_rating'])) {
 
     $email = $_POST['email'];
