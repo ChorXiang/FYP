@@ -377,10 +377,10 @@
                         <div class="box">
                             <fieldset>
                                 <!-- <form action="" method="POST">  -->
-                                    <label for="address" ><i class="fa fa-user"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
+                                    <label for="address" ><i class="fa fa-address-book"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
                                     <input type="text" name="address" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
 
-                                    <label for="state"  ><i class="fa fa-user"></i>STATE : <sup>*</sup></label>
+                                    <label for="state"  ><i class="fa fa-address-book"></i>STATE : <sup>*</sup></label>
                                         <select id="state" name="state">
                                             <option value="melaka">Melaka</option>
                                             <option value="perak">Perak</option>
@@ -396,7 +396,7 @@
                                             <option value="sarawak">Sarawak</option>
                                         </select>
                                     
-                                    <label for="postcode" ><i class="fa fa-user"></i>POSTAL CODE : <sup>*</sup></label>
+                                    <label for="postcode" ><i class="fa fa-address-book"></i>POSTAL CODE : <sup>*</sup></label>
                                     <input type="text" name="postcode" placeholder="Enter">
                                 <!-- </form> -->
                             </fieldset>
