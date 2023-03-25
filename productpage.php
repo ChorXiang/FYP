@@ -103,6 +103,12 @@
     <br><br>
     <input type="submit" name="submit" value="Add to Cart">
 </form>
+
+<form action="" method="post">
+  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="submit" name="wishlist" value="Add to Wishlist">
+</form>
+
 </fieldset>
 </div>
 </div>
@@ -127,6 +133,18 @@ if (isset($_POST['submit'])) {
         mysqli_close($conn);
     }
   }
+
+  if (isset($_POST['wishlist'])) {
+    // Insert the shoe into the user's wishlist
+    $shoe_id = $_POST['shoe_id'];
+    //$user_id = $_SESSION['user_id']; 
+    // replace this with your user authentication logic
+  
+    // perform database insertion
+    $sql = "INSERT INTO wishlist (user_id, shoe_id) VALUES ($user_id, $shoe_id)";
+    mysqli_query($conn, $sql);
+  }
+  
 
 ?>
 </body>
