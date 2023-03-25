@@ -42,7 +42,7 @@
 <p>Type: <?php echo $row["shoe_type"]; ?></p>
 <p>Brand: <?php echo $row["shoe_brand"]; ?></p>
 <p>Category: <?php echo $row["category"]; ?></p>
-<img src="image/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>">
+<img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>">
 <p>Price: $<?php echo $row["shoe_price"]; ?></p>
 
 <form action="" method="post">
