@@ -72,13 +72,13 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 23/3/2023 ---------------------------------------------------------------- 
+---------------------------------------------------------------- Latest Database 25/3/2023 by CX ---------------------------------------------------------------- 
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2023 at 07:18 AM
+-- Generation Time: Mar 25, 2023 at 04:56 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -161,8 +161,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `email`) VALUES
-(36, 'dunk low panda', 489, 3, '10.5', ''),
-(37, 'Air Jordan', 420, 2, '11.5', '');
+(60, 'dunk low panda', 489, 3, '10.5', ''),
+(61, 'Air Jordan', 420, 2, '11.5', '');
 
 -- --------------------------------------------------------
 
@@ -228,7 +228,10 @@ CREATE TABLE `shoes` (
 --
 
 INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
-(1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', '129.99', 10);
+(0, '', '', '', '', '0.00', 0),
+(1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', '129.99', 10),
+(2, 'Dunk Low Panda', 'lifestyle', '', '9.5', '489.00', 5),
+(3, 'Air Jordan', 'lifestyle', '', '10.5', '420.00', 5);
 
 -- --------------------------------------------------------
 
@@ -253,9 +256,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `username`, `userpassword`, `confirm_password`, `image`, `status`) VALUES
-(1, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '123', ' 123', 'profile.jpg', ''),
-(2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', ''),
-(4, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '12345', '12345', 'profile.jpg', '');
+(1, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '123', ' 123', 'profile.jpg', 'active'),
+(2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', 'active');
 
 -- --------------------------------------------------------
 
@@ -339,7 +341,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -351,13 +353,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `purchase`
