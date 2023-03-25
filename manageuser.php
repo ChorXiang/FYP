@@ -105,8 +105,11 @@
 		?>
 			
       </table>
+<p>
         
-      <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span></p>
+      <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span>
+    
+      <span class="left" ><a href="reportuser.php" alt="insert"> <input type="button" value="View n Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
