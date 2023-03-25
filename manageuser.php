@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
     <title>Admin Manage Customer / User Page</title>
 
@@ -109,7 +110,7 @@
         
       <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span>
     
-      <span class="left" ><a href="reportuser.php" alt="insert"> <input type="button" value="View n Print Report"></span></p>
+      <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
