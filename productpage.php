@@ -2,8 +2,41 @@
 <html>
 <head>
 <style>
-.error {
+  .error {
   color: #FF0000;
+  }
+
+  .left{
+    float:left;
+    padding-left:80px ;
+  }
+
+  .right{
+    float:right;
+    padding-right:80px ;
+  }
+  .container
+  {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }
+
+  .imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+
+  .wordcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   }
 </style>
 </head>
@@ -37,12 +70,26 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
+
+<div class="container">
+<div class="left">
 <fieldset>
+<div class="wordcenter">
+<h2><b>PRODUCT IMAGE</b></h2><br>
+</div>
+<img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+
+</fieldset>
+</div>
+
+<div class='right'>
+<fieldset>
+<div class="wordcenter">
 <h1><?php echo $row["shoe_name"]; ?></h1>
+</div>
 <p>Type: <?php echo $row["shoe_type"]; ?></p>
 <p>Brand: <?php echo $row["shoe_brand"]; ?></p>
 <p>Category: <?php echo $row["category"]; ?></p>
-<img src="image/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>">
 <p>Price: $<?php echo $row["shoe_price"]; ?></p>
 
 <form action="" method="post">
@@ -56,11 +103,50 @@
     <br><br>
     <input type="submit" name="submit" value="Add to Cart">
 </form>
+
+<form action="" method="post">
+  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="submit" name="wishlist" value="Add to Wishlist">
+</form>
+
 </fieldset>
+</div>
+</div>
 
+<?php
+if (isset($_POST['submit'])) {
+//名字要改
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
 
-<?php mysqli_close($conn); ?>
+    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
+        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
 
+        if (mysqli_query($conn, $sql)) {
+            echo "Add to cart successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+  }
+
+  if (isset($_POST['wishlist'])) {
+    // Insert the shoe into the user's wishlist
+    $shoe_id = $_POST['shoe_id'];
+    //$user_id = $_SESSION['user_id']; 
+    // replace this with your user authentication logic
+  
+    // perform database insertion
+    $sql = "INSERT INTO wishlist (user_id, shoe_id) VALUES ($user_id, $shoe_id)";
+    mysqli_query($conn, $sql);
+  }
+  
+
+?>
 </body>
 </html>
 
