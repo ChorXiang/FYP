@@ -96,7 +96,7 @@ function test_input($data) {
     transition: .5s;
   }
 
-  .center{
+  .black{
     text-align: center;
     color: black;
   }
@@ -104,7 +104,7 @@ function test_input($data) {
 </style>
 
 <fieldset> 
-  <div class="center">
+  <div class="black">
     <h1>Online Shoe Selling Store Service Rating</h1>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <br><br>
