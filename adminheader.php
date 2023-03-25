@@ -105,7 +105,7 @@
                 <a href="#">Manage Order</a>
                 <a href="manageuser.php">Manage Customer</a>
                 <a href="#">Manage Staff </a>
-                <a href="#">View n Print Report </a>
+                <a href="#">Manage comment </a>
             </div>
             </li>
     </ul>

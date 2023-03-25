@@ -119,7 +119,7 @@
 
         <div class="box2">
 
-        <a href="#" class="select">View n Print Report </a>
+        <a href="#" class="select">Manage comment  </a>
 
 
         </div>
