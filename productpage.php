@@ -45,24 +45,51 @@
   <?php
 
     include 'header.php'; 
-  
+    include 'conn.php'; 
 ?>
 
 <?php
 
-    $sizeErr = "";
+  $sizeErr = "";
+  $size = "";
+  $shoe_name = "";
+  $shoe_price = "";
+  $quantity = "";
+  $quantityErr = "";
+  
 
     if(isset($_POST["submit"])){
-        $sizeErr = "* Size is required";
-    } 
-?>
+        if (empty($_POST["size"])) {
+          $sizeErr = "* Size is required";
+        } else {
+          $size = test_input($_POST["size"]);
+      }
 
-<?php
-    $db_host = 'localhost';
-    $db_user = 'root';
-    $db_pass = '';
-    $db_name = 'fyp';
-    $conn = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
+        if (empty($_POST["quantity"])) {
+          if (empty($_POST["quantity"])) {
+            $quantityErr = "* Quantity is required";
+          } else {
+            $quantity = test_input($_POST["quantity"]);
+        }
+    }
+  }
+    
+    if(isset($_POST["wishlist"])){
+      if (empty($_POST["size"])) {
+        $sizeErr = "* Size is required";
+      } else {
+        $size = test_input($_POST["size"]);
+    }
+
+  } 
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 ?>
 
 <?php
@@ -93,21 +120,38 @@
 <p>Price: $<?php echo $row["shoe_price"]; ?></p>
 
 <form action="" method="post">
-    <label for="size">Size:</label>
-    <input type="radio" name="size" value="6">6
-    <input type="radio" name="size" value="7">7
-    <input type="radio" name="size" value="8">8
-    <input type="radio" name="size" value="9">9
-    <input type="radio" name="size" value="10">10
-    <span class="error"><?php echo $sizeErr;?></span>
-    <br><br>
-    <input type="submit" name="submit" value="Add to Cart">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <br>
+  <label for="quantity"><b>Quantity (Max 5):</b></label>
+  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
+  <span class="error"><?php echo $quantityErr;?></span>
+  <br>
+  <label for="size">Size:</label>
+  <input type="radio" name="size" value="6">6
+  <input type="radio" name="size" value="7">7
+  <input type="radio" name="size" value="8">8
+  <input type="radio" name="size" value="9">9
+  <input type="radio" name="size" value="10">10
+  <span class="error"><?php echo $sizeErr;?></span>
+  <br><br>
+  <input type="submit" name="submit" value="Add to Cart">
 </form>
 
 <form action="" method="post">
-  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <input type="radio" name="size" value="6">6
+  <input type="radio" name="size" value="7">7
+  <input type="radio" name="size" value="8">8
+  <input type="radio" name="size" value="9">9
+  <input type="radio" name="size" value="10">10
+  <span class="error"><?php echo $sizeErr;?></span>
+  <br><br>
   <input type="submit" name="wishlist" value="Add to Wishlist">
 </form>
+
+
 
 </fieldset>
 </div>
@@ -116,41 +160,45 @@
 <?php
 if (isset($_POST['submit'])) {
 //名字要改
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
+  $shoe_name = $_POST['shoe_name'];
+  $shoe_price = $_POST['shoe_price'];
+  $quantity = $_POST['quantity'];
+  $size = $_POST['size'];
 
-    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "Add to cart successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-
-        mysqli_close($conn);
-    }
+  // perform database insertion
+  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size')";
+  if (mysqli_query($conn, $sql)) {
+    echo "Add Successfully!";
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
 
-  if (isset($_POST['wishlist'])) {
-    // Insert the shoe into the user's wishlist
-    $shoe_id = $_POST['shoe_id'];
-    //$user_id = $_SESSION['user_id']; 
-    // replace this with your user authentication logic
-  
-    // perform database insertion
-    $sql = "INSERT INTO wishlist (user_id, shoe_id) VALUES ($user_id, $shoe_id)";
-    mysqli_query($conn, $sql);
-  }
-  
+  mysqli_close($conn);
+}  
+?>
+<?php
 
+if (isset($_POST['wishlist'])) {
+  $shoe_name = $_POST['shoe_name'];
+  $shoe_price = $_POST['shoe_price'];
+  $size = $_POST['size'];
+
+  // perform database insertion
+  if ($sizeErr == "" ) {
+  $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
+  if (mysqli_query($conn, $sql)) {
+    echo "Add Successfully!";
+  } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+
+  mysqli_close($conn);
+  }  
+}
 ?>
 </body>
 </html>
 
 <?php
     include 'footer.php';
-   
 ?>
