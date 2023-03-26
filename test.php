@@ -2,173 +2,204 @@
 <html>
 <head>
 <style>
-.error {
+  .error {
   color: #FF0000;
+  }
+
+  .left{
+    float:left;
+    padding-left:80px ;
+  }
+
+  .right{
+    float:right;
+    padding-right:80px ;
+  }
+  .container
+  {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  }
+
+  .imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  }
+
+  .wordcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
   }
 </style>
 </head>
 <body>  
   
   <?php
-    include 'conn.php'; 
+
     include 'header.php'; 
-  
+    include 'conn.php'; 
 ?>
 
 <?php
 
-$emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
-$email = "";
-$shipping_rating = "";
-$customer_service_rating = "";
-$product_quality_rating = "";
-$user_interface_rating = "";
-$message = "";
-
-if (isset($_POST['submit_rating'])) {
-
-  if (empty($_POST["email"])) {
-      $emailErr = " * Email is required";
-  } else {
-      $email = test_input($_POST["email"]);
-
-  }
-
-  if (empty($_POST["shipping_rating"])) {
-    $shipping_ratingErr = "*shipping_rating is required";
-  } else {
-      $shipping_rating = test_input($_POST["shipping_rating"]);
-  }
-
-  if (empty($_POST["customer_service_rating"])) {
-    $customer_service_ratingErr = "*customer_service_rating is required";
-  } else {
-    $customer_service_rating = test_input($_POST["customer_service_rating"]);
-  }
-
-  if (empty($_POST["product_quality_rating"])) {
-    $product_quality_ratingErr = "*product_quality_rating is required";
-  } else {
-    $product_quality_rating = test_input($_POST["product_quality_rating"]);
-  }
-
-  if (empty($_POST["user_interface_rating"])) {
-      $user_interface_ratingErr = "*user_interface_rating is required";
-  } else {
-      $user_interface_rating = test_input($_POST["user_interface_rating"]);
-  }
-
-  if (empty($_POST["message"])) {
-      $messageErr = "*Your valuable message is required";
-  } else {
-      $message = test_input($_POST["message"]);
-  }
-}
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-?>
-
-<style>
-  fieldset{
-    background-color: lightblue;
-    color: black;
-  }
-
-  input[type="submit"]{
-    width: 100%;
-    height: 50px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 25px;
-    font-size: 18px;
-    color: #e9f4fb;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
-  }
-
-  input[type="submit"]:hover{
-    border-color: #2691d9;
-    transition: .5s;
-  }
-
-  .center{
-    text-align: center;
-    color: black;
-  }
+  $sizeErr = "";
+  $size = "";
+  $shoe_name = "";
+  $shoe_price = "";
+  $quantity = "";
+  $quantityErr = "";
   
-</style>
 
-<fieldset> 
-  <div class="center">
-    <h1>Online Shoe Selling Store Service Rating</h1>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-    <br><br>
-    <b>Email：</b><input type="email" name="email" value="<?php echo $email;?>">
-    <span class="error"><?php echo $emailErr;?></span>
-    <br><br>
-    <label for="Shipping Service"><b>Shipping Service Rating (1-5):</b></label>
-    <input type="number" name="shipping_rating" id="shipping_rating" min="1" max="5" required>
-    <span class="error"><?php echo $shipping_ratingErr;?></span>
-    <br><br>
-    <label for="Customer Service"><b>Customer Service Rating (1-5):</b></label>
-    <input type="number" name="customer_service_rating" id="customer_service_rating" min="1" max="5" required>
-    <span class="error"><?php echo $customer_service_ratingErr;?></span>
-    <br><br>
-    <label for="Product Quality"><b>Product Quality Rating (1-5):</b></label>
-    <input type="number" name="product_quality_rating" id="product_quality_rating" min="1" max="5" required>
-    <span class="error"><?php echo $product_quality_ratingErr;?></span>
-    <br><br>
-    <label for="User Interface"><b>User Interface Rating (1-5):</b></label>
-    <input type="number" name="user_interface_rating" id="user_interface_rating" min="1" max="5" required>
-    <span class="error"><?php echo $user_interface_ratingErr;?></span>
-    <br><br>
-  
-    <h2><b>Message:</b></h2>
-    <textarea name="message" rows="5" cols="40"></textarea>
-    <span class="error"><br><?php echo $messageErr;?></span>
-    <br><br>
-
-		<input type="submit" name="submit_rating" value="Submit Rating">
-	</form>
-</div>
-</fieldset>
-
-<?php
-
-if (isset($_POST['submit_rating'])) {
-
-    $email = $_POST['email'];
-    $shipping_rating = $_POST['shipping_rating'];
-    $customer_service_rating = $_POST['customer_service_rating'];
-    $product_quality_rating = $_POST['product_quality_rating'];
-    $user_interface_rating = $_POST['user_interface_rating'];
-    $message = $_POST['message'];
-
-    if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $user_interface_ratingErr == "" && $messageErr == "") {
-      $sql = "INSERT INTO comment (email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message)VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "New record created!";
+    if(isset($_POST["submit"])){
+        if (empty($_POST["size"])) {
+          $sizeErr = "* Size is required";
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
+          $size = test_input($_POST["size"]);
+      }
 
-        mysqli_close($conn);
+        if (empty($_POST["quantity"])) {
+          if (empty($_POST["quantity"])) {
+            $quantityErr = "* Quantity is required";
+          } else {
+            $quantity = test_input($_POST["quantity"]);
+        }
     }
   }
+    
+    if(isset($_POST["wishlist"])){
+      if (empty($_POST["size"])) {
+        $sizeErr = "* Size is required";
+      } else {
+        $size = test_input($_POST["size"]);
+    }
+
+  } 
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 
 ?>
 
+<?php
+    $sql = "SELECT * FROM shoes WHERE shoe_id = 1";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+?>
 
+<div class="container">
+<div class="left">
+<fieldset>
+<div class="wordcenter">
+<h2><b>PRODUCT IMAGE</b></h2><br>
+</div>
+<img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+
+</fieldset>
+</div>
+
+<div class='right'>
+<fieldset>
+<div class="wordcenter">
+<h1><?php echo $row["shoe_name"]; ?></h1>
+</div>
+<p>Type: <?php echo $row["shoe_type"]; ?></p>
+<p>Brand: <?php echo $row["shoe_brand"]; ?></p>
+<p>Category: <?php echo $row["category"]; ?></p>
+<p>Price: $<?php echo $row["shoe_price"]; ?></p>
+
+<form action="" method="post">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <br>
+  <label for="quantity"><b>Quantity (Max 5):</b></label>
+  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
+  <span class="error"><?php echo $quantityErr;?></span>
+  <br>
+  <label for="size">Size:</label>
+  <input type="radio" name="size" value="6">6
+  <input type="radio" name="size" value="7">7
+  <input type="radio" name="size" value="8">8
+  <input type="radio" name="size" value="9">9
+  <input type="radio" name="size" value="10">10
+  <span class="error"><?php echo $sizeErr;?></span>
+  <br><br>
+  <input type="submit" name="submit" value="Add to Cart">
+</form>
+<br>
+<form action="" method="post">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <button type="submit" name="size" value="6">Size 6</button>
+  <button type="submit" name="size" value="7">Size 7</button>
+  <button type="submit" name="size" value="8">Size 8</button>
+  <button type="submit" name="size" value="9">Size 9</button>
+  <button type="submit" name="size" value="10">Size 10</button>
+  <span class="error"><?php echo $sizeErr;?></span>
+  <br><br>
+  <input type="submit" name="wishlist" value="Add to Wishlist">
+</form>
+
+
+
+
+</fieldset>
+</div>
+</div>
+
+<?php
+if (isset($_POST['submit'])) {
+//名字要改
+  $shoe_name = $_POST['shoe_name'];
+  $shoe_price = $_POST['shoe_price'];
+  $quantity = $_POST['quantity'];
+  $size = $_POST['size'];
+
+  // perform database insertion
+  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size')";
+  if (mysqli_query($conn, $sql)) {
+    echo "Add Successfully!";
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+
+  mysqli_close($conn);
+}  
+?>
+<?php
+
+if (isset($_POST['wishlist'])) {
+  $shoe_name = $_POST['shoe_name'];
+  $shoe_price = $_POST['shoe_price'];
+  $size = $_POST['size'];
+
+  // perform database insertion
+  if ($sizeErr == "" ) {
+  $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
+  if (mysqli_query($conn, $sql)) {
+    echo "Add Successfully!";
+  } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+
+  mysqli_close($conn);
+  }  
+}
+?>
 </body>
 </html>
 
 <?php
     include 'footer.php';
-   
 ?>
