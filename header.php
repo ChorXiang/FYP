@@ -126,7 +126,7 @@
                 </div>
             </li>
 
-            <li class="dropdown"><a href="#">Sales</a>
+            <li class="dropdown"><a href="#">All Product</a>
             </li>
         </ul>
 
