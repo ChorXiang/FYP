@@ -95,7 +95,7 @@ h3 {
   color: #444;
   cursor: pointer;
   font-size: 14px;
-  margin-left: 10px;
+  
 }
 
 .error-msg {
@@ -166,7 +166,12 @@ a:hover {
             <br>
             <input type="text" class="input-field" placeholder="Username" name="username">
             <input type="password" class="input-field" placeholder="Password" name="password" id="p">
-            <input type="checkbox" onclick="loginshowpw()"><span class="showpw">Show Password</span>
+            <div style="display: flex; align-items: center;">
+  <input type="checkbox" onclick="loginshowpw()">
+  <span class="showpw">Show Password</span>
+</div>
+<br>
+            
             <script>
                 function loginshowpw() {
                 var x = document.getElementById("p");
@@ -185,7 +190,7 @@ a:hover {
             </div>
             <div class="alignfgpw">
                 <br>
-            <a href="forgotpw.php"><span class="fgpw">forgot password?</span></a>
+            <a href="reset.php"><span class="fgpw">forgot password?</span></a>
             </div>
         
 
