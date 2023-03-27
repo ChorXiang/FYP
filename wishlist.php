@@ -8,7 +8,7 @@
       $shoesname = $_POST['shoesname'];
       $price = $_POST['price'];
       $size = $_POST['size'];
-      $stock = $_POST['stock'];
+      $stock = $_POST['inventory'];
       $value = $_POST['range'];
       $proo_id = $_POST['pro_id'];
 
@@ -36,7 +36,7 @@
       } 
       else 
       {
-        mysqli_query($conn,"INSERT INTO `orders`(shoesname,quantity,price,shoessize,pro_id) VALUES ('$shoesname','$value','$price','$size','$proo_id')");  
+        mysqli_query($conn,"INSERT INTO `orders`(shoesname,quantity,price,shoessize,pro_id,stock) VALUES ('$shoesname','$value','$price','$size','$proo_id','$stock')");  
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add to Cart Successfully !</div>";
       }
 
@@ -121,7 +121,7 @@
     <form action="" method="POST"> 
     <input type="hidden" name="id" value="<?php echo $row["wish_id"]?>">
       <td><?php echo $row["shoesname"]; ?>     <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">   </td>
-      <td><?php echo $row["size"];	?>   <input type="hidden" name="size" value="<?php echo $row["size"];?>">   </td>
+      <td><?php echo $row["size"];	?>   <input type="hidden" name="size" value="<?php echo $row["size"];?>">  <input type="hidden" name="inventory" value="<?php echo $row["stock"];?>"> </td>
       <td>RM<?php echo $row["price"];?>     <input type="hidden" name="price" value="<?php echo $row["price"];?>"> <input type="hidden" name="pro_id" value="<?php echo $row["pro_id"];?>"> </td>
       <td>  <input id="range" name="range" type="number" min="1" max="5" value="1">   <input type="hidden" name="stock" value="<?php echo $row["stock"];?>">   <button type="submit" name="submit">Add to cart</button></td>
       <td><a href="deletewishlist.php?wish_id=<?php echo $row['wish_id']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
