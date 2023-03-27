@@ -6,19 +6,19 @@ session_start();
 
 if(isset($_POST['loginbtn'])){
 
-    $name = $_POST['username'];
-    $pass = $_POST['password'];
+    $name = $_POST['admin_id'];
+    $pass = $_POST['admin_password'];
  
-    $select = "SELECT * FROM user WHERE username = '$name' && userpassword = '$pass'";
+    $select = "SELECT * FROM admin WHERE admin_id = '$name' && admin_password = '$pass'";
     $result = mysqli_query($conn, $select);
 
     if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['userpassword'] = $row['userpassword'];
-        header('Location: user.php');
+        $_SESSION['admin_id'] = $row['admin_id'];
+        $_SESSION['admin_password'] = $row['admin_password'];
+        header('Location: admin.php');
     }else{
-        $error[] = "Incorrect username or password";
+        $error[] = "Incorrect AdminId or password";
     }
 }
     
@@ -164,8 +164,8 @@ a:hover {
       };
       ?>
             <br>
-            <input type="text" class="input-field" placeholder="Username" name="username">
-            <input type="password" class="input-field" placeholder="Password" name="password" id="p">
+            <input type="number" class="input-field" placeholder="AdminId" name="admin_id">
+            <input type="password" class="input-field" placeholder="Password" name="admin_password" id="p">
             <div style="display: flex; align-items: center;">
   <input type="checkbox" onclick="loginshowpw()">
   <span class="showpw">Show Password</span>
@@ -187,14 +187,7 @@ a:hover {
             <div class="btnsubmit" style="padding-top:20px;">
             <button type="submit" class="submitbtn" name="loginbtn">Log In</button>
             
-            </div>
-            <div class="alignfgpw">
-                <br>
-            <a href="reset.php"><span class="fgpw">forgot password?</span></a>
-            </div>
-        
-
-           <p>don't have an account? <a href="register.php">register now</a></p>
+          
         </form>
      
      </div>
