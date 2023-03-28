@@ -91,13 +91,13 @@
 </head>
 <body>
 <div class="upper">
-    <div class="center" style="float:left;">
-        <a href="homepage.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
-    </div>
+    <?php if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];   ?>
+        <div class="center" style="float:left;">
+            <a href="homepage.php?user_id=<?php echo $id ?>"  ><img src="image/foot.png" alt="Shop Logo"></a>
+        </div>
 
     <ul >
-        <?php if (isset($_SESSION['user_id'])) {       $id =$_GET['user_id']; ?>
-            <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
+            <li  style="float: right;"><a href="order.php?user_id=<?php echo $id ?>"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
             <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
                 <div class="dropdown-content">
                     <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
@@ -105,16 +105,22 @@
                     <a href="#">My Order History</a>
                 </div>
                 </li>
-        <?php } else { ?>
+    </ul>
+
+    <?php   } else { ?>
+        <div class="center" style="float:left;">
+            <a href="homepage.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
+        </div>
+
+        <ul >
             <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
                 <div class="dropdown-content">
                     <a href="register.php">Create An Account</a>
                     <a href="login.php">Login</a>
                 </div>
-                </li>
-
-        <?php } ?>
-    </ul>
+            </li>
+        </ul>
+    <?php } ?>
 
     <hr>
         <div class="middle">

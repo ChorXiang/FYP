@@ -77,12 +77,13 @@ $msg='';
 
 
 <div class="container">
-<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"> </i> Order</b></h1><br>
+<h1><b style="font-size: 50px;"><i class="fa fa-shopping-cart" style="font-size:50px;"> </i> Shopping Cart </b></h1><br>
 
 <fieldset>
 
     <?php
-    $sql = "SELECT * FROM orders";
+    $id =$_GET['user_id'];
+    $sql = "SELECT * FROM orders where user_id = '$id' ";
     $result = mysqli_query($conn,$sql);
     // $id = $_GET['email'];
     // $host = "SELECT * FROM `user` where Email = '$id'";
@@ -134,7 +135,7 @@ $msg='';
   <!-- <form action="" method="post">  -->
   <p>Total :<span style="color:black"><b>RM <?php echo $total;?></b></span>
 
-  <span style="padding: 0px 0px 0px 50px;"><a href="payment.php" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" name="saveas" value="Checkout"></a></span></p>
+  <span style="padding: 0px 0px 0px 50px;"><a href="payment.php?user_id=<?php echo $id ?>" alt="payment"><i class="fa fa-plus-square"></i> <input type="button" name="saveas" value="Checkout"></a></span></p>
                                                           <!--  ?email=<?php echo $id?> </form> -->
 </div>
 

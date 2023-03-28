@@ -331,7 +331,8 @@
                                 <table>
                                     <hr>
                                 <?php
-                                $sql = "SELECT * FROM orders";
+                                $id = $_GET['user_id'];
+                                $sql = "SELECT * FROM orders where user_id = '$id' ";
                                 $result = mysqli_query($conn,$sql);
                                 $total=0;
                                 ?>
