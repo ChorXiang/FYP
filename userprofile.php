@@ -18,7 +18,8 @@
         }
         .label
         {
-            padding-right: 20px;
+            display: flex;
+           flex-wrap: wrap;
         }
         label
         {
@@ -66,22 +67,27 @@
             background-color: #fff;
             border-radius: 4px;
             border: 1px solid #ddd;
-
             padding: 10px 15px;
             margin:10px 20px;
+            display: block;
         }
-        .boxleft
+        .box3 
         {
-            padding: 5px 0px 15px 330px;
-            float: left;
-            text-align:left;
- 
+        width: 25%;
+        height: 130px;
+        text-align:left;
         }
-        .box2
+        .box5
         {
-            padding: 5px 200px 15px 0px;
-            float: right;
-            text-align:left;
+        width: 38%;
+        height: 100px;
+        text-align:left;
+        }
+        .box4
+        {
+        width: 15%;
+        height: 100px;
+        text-align:left;
         }
     </style>
 </head>
@@ -113,24 +119,32 @@
 
                 <div class="label">
 
-                        <div class="boxleft">
+                        <div class="box5">
+                        </div>
+
+                        <div class="box4">
                             <label for="fname"><i class="fa fa-user"></i> Full Name<br><br></label>
 
                             <label for="email"><i class="fa fa-envelope"></i> Email<br><br></label>
 
-                            <label for="fname"><i class="fa fa-phone"></i> Phone number</label>
+                            <label for="fname"><i class="fa fa-phone"></i> Phone number<br><br></label>
+
+                            <label for="fname"><i class="fa fa-user"></i> User Name</label>
+                        </div>
+
+                        <div class="box3">
+
+                        : <?php echo $row["full_name"]; ?><br><br>
+
+                        : <?php echo $row["email_address"]; ?><br><br>
+
+                        : <?php echo $row["contact_no"]; ?><br><br>
+
+                        : <?php echo $row["username"]; ?>
 
                         </div>
 
-                        <div class="box2">
 
-                        <span>: <?php echo $row["full_name"]; ?><br><br></span>
-
-                        <span>: <?php echo $row["email_address"]; ?><br><br></span>
-
-                        <span>: <?php echo $row["contact_no"]; ?></span>
-
-                        </div>
 
                 </div>
                 

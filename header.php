@@ -1,5 +1,6 @@
 <?php
     session_start();
+
 ?>
 
 
@@ -91,23 +92,26 @@
 </head>
 <body>
 <div class="upper">
-    <?php if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];   ?>
+
+    <?php  if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];   ?> 
+
         <div class="center" style="float:left;">
             <a href="homepage.php?user_id=<?php echo $id ?>"  ><img src="image/foot.png" alt="Shop Logo"></a>
         </div>
 
-    <ul >
-            <li  style="float: right;"><a href="order.php?user_id=<?php echo $id ?>"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
-            <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
-                <div class="dropdown-content">
-                    <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
-                    <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
-                    <a href="#">My Order History</a>
-                </div>
-                </li>
-    </ul>
+        <ul >
+                <li  style="float: right;"><a href="order.php?user_id=<?php echo $id ?>"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
+                <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
+                    <div class="dropdown-content">
+                        <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
+                        <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
+                        <a href="#">My Order History</a>
+                    </div>
+                    </li>
+        </ul>
 
     <?php   } else { ?>
+
         <div class="center" style="float:left;">
             <a href="homepage.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
         </div>
@@ -120,6 +124,7 @@
                 </div>
             </li>
         </ul>
+
     <?php } ?>
 
     <hr>

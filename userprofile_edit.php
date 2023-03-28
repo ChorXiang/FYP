@@ -42,7 +42,7 @@ if (isset($_POST["savebtn"]))
     else
     {
     //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "' where user_id = '$id' ");
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "' , username='" . $_POST['user'] . "' where user_id = '$id' ");
                                                                                                                                                       
 
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
@@ -135,6 +135,7 @@ if (isset($_POST["savebtn"]))
     body
     {
      background: #DDDDDD;
+
     }
     .box
     {
@@ -145,6 +146,29 @@ if (isset($_POST["savebtn"]))
      width:50%;
      margin: 20px 460px;
     }
+    .box3 
+    {
+     width: 40%;
+     height: 130px;
+     text-align:left;
+    }
+    .box5
+    {
+     width: 20%;
+     height: 100px;
+     text-align:left;
+    }
+    .box4
+    {
+     width: 15%;
+     height: 100px;
+     text-align:left;
+    }
+    .label
+    {
+     display: flex;
+     flex-wrap: wrap;
+     }
     </style>
 </head>
 <body>
@@ -162,26 +186,44 @@ if (isset($_POST["savebtn"]))
                                                             
 			$row = mysqli_fetch_assoc($result);
 		?>
-		
-
 
 		<form name="addfrm" method="post" action="">
+            <div class="label">
+                <div class="box5">
+                </div>
 
-			<p><label>Full Name<sup>*</sup> : </label><input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
+                <div class="box4">
+                    <label>Full Name <sup>*</sup>  <br><br></label>
 
-            <p><label>Email<sup>*</sup> : </label><input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
-		 
-			<p><label>PhoneNumber<sup>*</sup> : </label><input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
-            
-            <p>User Image<sup>*</sup> : (insert image files)<br>
+                    <label>Email <sup>*</sup> <br><br></label>
+
+                    <label>PhoneNumber <sup>*</sup> <br><br></label>
+
+                    <label>User Name <sup>*</sup>  <br><br></label>
+                </div>
+
+                <div class="box3">
+
+                    : <input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
+
+                    : <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
+
+                    : <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
+
+                    : <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>">
+
+                </div>
+
+             </div>
+
+             <br><br> <p>User Image<sup>*</sup> : (insert image files)<br></P>
 
             <p><input type="file" id="file"  name="image" class="form-control" multiple ></P>
-			
-			<p><input type="submit" name="savebtn" value="UPDATE">
 
-
+            <p><input type="submit" name="savebtn" value="UPDATE"></P>
 
 		</form>
+
 
     </div>
     <?php echo "<div>".$msg."</div>"?>
