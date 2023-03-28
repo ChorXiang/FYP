@@ -101,7 +101,7 @@
             <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
                 <div class="dropdown-content">
                     <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
-                    <a href="wishlist.php">My Wish List</a>
+                    <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
                     <a href="#">My Order History</a>
                 </div>
                 </li>

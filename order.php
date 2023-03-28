@@ -119,7 +119,7 @@ $msg='';
         $total =  $total + $subtotal;
         ?>
       <td>RM<?php echo $subtotal; ?></td>
-      <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
+      <td><a href="deleteorder.php?order_ID=<?php echo $row['order_ID']; ?>&&user_id=<?php echo $id ?>"><i class="fa fa-close" style="font-size:36px;color:#dc3545;"></i></a>
                                                                   <!-- &&email=<?php echo $id?> -->
       </td>
     </tr>

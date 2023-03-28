@@ -11,9 +11,10 @@
     include("conn.php");
     
 	$id=$_GET['wish_id'];
+    $idd =$_GET['user_id']; 
 	// $email = $_GET['email'];
 	mysqli_query($conn,"delete from wishlist where wish_id='$id'");
-	header("Location: wishlist.php");
+	header("Location: wishlist.php?user_id=".$idd);
 							// ?email=".$email
 ?>
 </body>
