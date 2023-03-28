@@ -34,15 +34,17 @@ if (isset($_POST["signupbtn"])) {
     if (mysqli_num_rows($result) > 0) {
         $errors[] = 'User already exists';
     } else {
-        // insert user data into database
+        
         $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
         $contact = mysqli_real_escape_string($conn, $_POST['contactno']);
-        $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+ 
         $name = mysqli_real_escape_string($conn, $_POST['username']);
-        $pass_hash = password_hash($_POST['userpassword'], PASSWORD_DEFAULT);
-        $insert = "INSERT INTO user(full_name, contact_no, address, postcode, email_address, username, userpassword) 
-                   VALUES('$fullname', '$contact', '$address', '$postcode', '$email', '$name', '$pass_hash')";
+        $pass_hash = ($_POST['userpassword'] );
+        $com_pass = ($_POST['confirm_password'] );
+
+
+        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword,confirm_password) 
+                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass_hash','$com_pass')";
         if (mysqli_query($conn, $insert)) {
             header('Location: user.php');
             exit();
