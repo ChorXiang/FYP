@@ -10,10 +10,9 @@
 <body>  
   
   <?php
-    include 'conn.php'; 
-    include 'header.php'; 
-  
-?>
+      include 'conn.php'; 
+      include 'header.php'; 
+  ?>
 
 <?php
 
