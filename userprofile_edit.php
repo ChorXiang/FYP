@@ -142,7 +142,6 @@ if (isset($_POST["savebtn"]))
      border: 1px solid lightgrey;
      border-radius: 15px;
      width:50%;
-     padding: 5px;
      margin: 20px 460px;
     }
     </style>
@@ -166,11 +165,11 @@ if (isset($_POST["savebtn"]))
 
 		<form name="addfrm" method="post" action="">
 
-			<p><label>Full Name<sup>*</sup> :</label><input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
+			<p><label>Full Name<sup>*</sup> : </label><input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
 
-            <p><label>Email<sup>*</sup> :</label><input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
+            <p><label>Email<sup>*</sup> : </label><input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
 		 
-			<p><label>PhoneNumber<sup>*</sup> :</label><input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
+			<p><label>PhoneNumber<sup>*</sup> : </label><input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
             
             <p>User Image<sup>*</sup> : (insert image files)<br>
 

@@ -41,8 +41,8 @@ if (isset($_POST["signupbtn"])) {
         $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
         $name = mysqli_real_escape_string($conn, $_POST['username']);
         $pass_hash = password_hash($_POST['userpassword'], PASSWORD_DEFAULT);
-        $insert = "INSERT INTO user(full_name, contact_no, address, postcode, email_address, username, userpassword) 
-                   VALUES('$fullname', '$contact', '$address', '$postcode', '$email', '$name', '$pass_hash')";
+        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword) 
+                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass_hash')";
         if (mysqli_query($conn, $insert)) {
             header('Location: user.php');
             exit();

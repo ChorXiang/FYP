@@ -58,8 +58,6 @@
             padding: 5px 20px 15px 20px;
             border: 1px solid lightgrey;
             border-radius: 15px;
-            width:50%;
-            padding: 5px;
             margin: 20px 460px;
         }
         a.profile
@@ -68,10 +66,22 @@
             background-color: #fff;
             border-radius: 4px;
             border: 1px solid #ddd;
-            display: block;
+
             padding: 10px 15px;
             margin:10px 20px;
-
+        }
+        .boxleft
+        {
+            padding: 5px 0px 15px 330px;
+            float: left;
+            text-align:left;
+ 
+        }
+        .box2
+        {
+            padding: 5px 200px 15px 0px;
+            float: right;
+            text-align:left;
         }
     </style>
 </head>
@@ -99,16 +109,30 @@
                 
                     <p><img class='imgg' src="<?php echo "image/".$row['image'];?>" ></p>
                     <br>
-                <div class="label">
-                    <label for="fname" ><i class="fa fa-user"></i> Full Name : <?php echo $row["full_name"]; ?></label>
-                    <br>
-                    <br>
-                    <label for="email"><i class="fa fa-envelope"></i> Email : <?php echo $row["email_address"];?></label>
-                    <br>
-                    <br>
-                    <label for="fname"><i class="fa fa-phone"></i> Phone number : <?php echo $row["contact_no"];?></label>
-                    <br>                    <br>                    <br>
 
+                <div class="label">
+
+                        <div class="boxleft">
+                            <label for="fname"><i class="fa fa-user"></i> Full Name<br><br></label>
+
+                            <label for="email"><i class="fa fa-envelope"></i> Email<br><br></label>
+
+                            <label for="fname"><i class="fa fa-phone"></i> Phone number</label>
+
+                        </div>
+
+                        <div class="box2">
+
+                        <span>: <?php echo $row["full_name"]; ?><br><br></span>
+
+                        <span>: <?php echo $row["email_address"]; ?><br><br></span>
+
+                        <span>: <?php echo $row["contact_no"]; ?></span>
+
+                        </div>
+
+                </div>
+                
 
                     <a class="profile" href="userprofile_edit.php" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
@@ -118,8 +142,8 @@
 
                     <a class="profile" href="homepage.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
                                                          <!-- ?email=<?php echo $id ?> -->
-                </div>
-                <?php echo "<br><br>";?>
+
+
                     
             </form>
         </div>
