@@ -2,7 +2,7 @@
 
 include_once 'conn.php';
 
-session_start();
+session_start(); 
 
 if(isset($_POST['loginbtn'])){
 
@@ -16,7 +16,10 @@ if(isset($_POST['loginbtn'])){
         $row = mysqli_fetch_assoc($result);
         $_SESSION['username'] = $row['username'];
         $_SESSION['userpassword'] = $row['userpassword'];
-        header('Location: user.php');
+        $user_id = $row['user_id'];
+        $_SESSION['user_id'] = $user_id; 
+        
+        header('Location: homepage.php');
     }else{
         $error[] = "Incorrect username or password";
     }

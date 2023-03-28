@@ -140,7 +140,7 @@
                     <a class="profile" href="userchangepass.php" alt="change">Change Password<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
 
-                    <a class="profile" href="homepage.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
+                    <a class="profile" href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
                                                          <!-- ?email=<?php echo $id ?> -->
 
 

@@ -94,16 +94,24 @@
     </div>
     
     <ul >
-        <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
-        <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
-            <div class="dropdown-content">
-                <a href="userprofile.php">My Account</a>
-                <a href="wishlist.php">My Wish List</a>
-                <a href="#">My Order History</a>
-                <a href="register.php">Create An Account</a>
-                <a href="login.php">Login</a>
-            </div>
-            </li>
+        <?php if (isset($_SESSION['user_id'])) { ?>
+            <li  style="float: right;"><a href="order.php"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
+            <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
+                <div class="dropdown-content">
+                    <a href="userprofile.php">My Account</a>
+                    <a href="wishlist.php">My Wish List</a>
+                    <a href="#">My Order History</a>
+                </div>
+                </li>
+        <?php } else { ?>
+            <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
+                <div class="dropdown-content">
+                    <a href="register.php">Create An Account</a>
+                    <a href="login.php">Login</a>
+                </div>
+                </li>
+
+        <?php } ?>
     </ul>
 
     <hr>
