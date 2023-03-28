@@ -145,13 +145,13 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 25/3/2023 by CX ---------------------------------------------------------------- 
+---------------------------------------------------------------- Latest Database 28/3/2023 by CX ---------------------------------------------------------------- 
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2023 at 04:56 PM
+-- Generation Time: Mar 28, 2023 at 01:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -226,16 +226,18 @@ CREATE TABLE `orders` (
   `price` int(30) NOT NULL,
   `quantity` int(30) NOT NULL,
   `shoessize` varchar(10) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `pro_id` int(11) NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `email`) VALUES
-(60, 'dunk low panda', 489, 3, '10.5', ''),
-(61, 'Air Jordan', 420, 2, '11.5', '');
+INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `email`, `pro_id`, `stock`) VALUES
+(80, 'Air Jordan', 420, 1, '11.5', '', 2, 1),
+(83, 'dunk low panda', 489, 1, '10.5', '', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -271,18 +273,6 @@ INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address
 -- --------------------------------------------------------
 
 --
--- Table structure for table `purchase`
---
-
-CREATE TABLE `purchase` (
-  `pur_id` int(11) NOT NULL,
-  `her_id` int(11) NOT NULL,
-  `his_email` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `shoes`
 --
 
@@ -290,6 +280,8 @@ CREATE TABLE `shoes` (
   `shoe_id` int(11) NOT NULL,
   `shoe_name` varchar(255) NOT NULL,
   `shoe_type` varchar(50) NOT NULL,
+  `shoe_brand` varchar(50) NOT NULL,
+  `category` enum('male','female') NOT NULL,
   `shoe_image` varchar(255) NOT NULL,
   `shoe_size` varchar(10) NOT NULL,
   `shoe_price` decimal(10,2) NOT NULL,
@@ -300,11 +292,11 @@ CREATE TABLE `shoes` (
 -- Dumping data for table `shoes`
 --
 
-INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
-(0, '', '', '', '', '0.00', 0),
-(1, 'Nike Air Max', 'Running', 'https://example.com/images/nike-air-max.jpg', 'US 10', '129.99', 10),
-(2, 'Dunk Low Panda', 'lifestyle', '', '9.5', '489.00', 5),
-(3, 'Air Jordan', 'lifestyle', '', '10.5', '420.00', 5);
+INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_brand`, `category`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
+(1, 'Nike Air Max 90', 'Running Shoes', 'Nike', 'male', 'nike_air_max_90.png', '10', '129.99', 0),
+(2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'https://example.com/adidas-ultraboost.jpg', '8.5', '149.99', 0),
+(3, 'Converse Chuck Taylor All Star', 'Casual Shoes', 'Converse', 'male', 'https://example.com/converse-chuck-taylor.jpg', '9.5', '59.99', 0),
+(4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'female', 'https://example.com/puma-suede-classic.jpg', '7', '79.99', 0);
 
 -- --------------------------------------------------------
 
@@ -330,7 +322,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `username`, `userpassword`, `confirm_password`, `image`, `status`) VALUES
 (1, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '123', ' 123', 'profile.jpg', 'active'),
-(2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', 'active');
+(2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', 'active'),
+(5, 'Tan', '0123456789', '1211201763@student.mmu.edu.my', 'asd', '$2y$10$sc4Nux5E2PTVeAgy7bureeL', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -343,16 +336,18 @@ CREATE TABLE `wishlist` (
   `shoesname` varchar(30) NOT NULL,
   `price` int(30) NOT NULL,
   `size` varchar(30) NOT NULL,
-  `stock` int(11) NOT NULL
+  `stock` int(11) NOT NULL,
+  `pro_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `wishlist`
 --
 
-INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`) VALUES
-(1, 'dunk low panda', 489, '10.5', 2),
-(3, 'Air Jordan', 420, '11.5', 0);
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`) VALUES
+(1, 'dunk low panda', 489, '10.5', 2, 1),
+(3, 'Air Jordan', 420, '11.5', 1, 2),
+(9, 'Nike Air Max 90', 130, '8', 0, 3);
 
 --
 -- Indexes for dumped tables
@@ -383,12 +378,6 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`his_id`);
 
 --
--- Indexes for table `purchase`
---
-ALTER TABLE `purchase`
-  ADD PRIMARY KEY (`pur_id`);
-
---
 -- Indexes for table `shoes`
 --
 ALTER TABLE `shoes`
@@ -414,7 +403,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -426,31 +415,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `purchase`
---
-ALTER TABLE `purchase`
-  MODIFY `pur_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
