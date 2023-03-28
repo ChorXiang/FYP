@@ -2,6 +2,7 @@
     include 'header.php';
     include 'conn.php'; 
     $msg='';
+    $id = $_GET['user_id']; 
 ?>
 
 <?php
@@ -15,8 +16,8 @@ if (isset($_POST["savebtn"]))
     $mimage = $_POST['image'];		
 	
     
-    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' ");
-                                                                     // where Email='$id'
+    mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' where user_id = '$id'  ");
+                                                                   
 
     if (!$mname)
     {
@@ -41,8 +42,8 @@ if (isset($_POST["savebtn"]))
     else
     {
     //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "'");
-                                                                                                                                                        //  where Email='$id'
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "' where user_id = '$id' ");
+                                                                                                                                                      
 
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
     }
@@ -154,10 +155,11 @@ if (isset($_POST["savebtn"]))
 
 		<?php
 		 
-			// $id = $_REQUEST["email"]; 
+			// $id = $_REQUEST["email"];
+  
 
-			$result = mysqli_query($conn, "select * from user "); 
-                                                                 // where Email = '$id'
+			$result = mysqli_query($conn, "select * from user where user_id = '$id' "); 
+                                                            
 			$row = mysqli_fetch_assoc($result);
 		?>
 		

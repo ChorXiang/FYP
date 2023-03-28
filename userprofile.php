@@ -93,9 +93,10 @@
         <br>
             <h2> Account Information </h2>
             <?php
+            $id = $_GET['user_id'];  
             // $id = $_GET['email']; 
             // $login_no=$_REQUEST["no"]; --------------------- no use ------------   // put from the user check login  ( where no=$login_no ) // 
-            $sql = "select * from user  "; //where Email = '$id'
+            $sql = "select * from user where user_id = '$id' "; //
             $result = mysqli_query($conn,$sql);
            
             ?> 
@@ -134,14 +135,14 @@
                 </div>
                 
 
-                    <a class="profile" href="userprofile_edit.php" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
+                    <a class="profile" href="userprofile_edit.php?user_id=<?php echo $id ?>" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
 
                     <a class="profile" href="userchangepass.php" alt="change">Change Password<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
 
                     <a class="profile" href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
-                                                         <!-- ?email=<?php echo $id ?> -->
+                                                        
 
 
                     

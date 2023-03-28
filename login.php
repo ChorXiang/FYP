@@ -19,7 +19,8 @@ if(isset($_POST['loginbtn'])){
         $user_id = $row['user_id'];
         $_SESSION['user_id'] = $user_id; 
         
-        header('Location: homepage.php');
+
+        header('Location: homepage.php?user_id='.$row['user_id']);
     }else{
         $error[] = "Incorrect username or password";
     }
@@ -154,6 +155,7 @@ a:hover {
 </style>
 
 <body>
+  
     <div class="form-container">
 
              
