@@ -46,6 +46,7 @@
 
     include 'header.php'; 
     include 'conn.php'; 
+    $msg='';
 ?>
 
 <?php
@@ -93,7 +94,7 @@
 ?>
 
 <?php
-    $sql = "SELECT * FROM shoes WHERE shoe_id = 1";
+    $sql = "SELECT * FROM shoes WHERE shoe_id = 1 ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
@@ -154,7 +155,9 @@
 
 
 </fieldset>
+
 </div>
+
 </div>
 
 <?php
@@ -179,23 +182,25 @@ if (isset($_POST['submit'])) {
 <?php
 
 if (isset($_POST['wishlist'])) {
-  $shoe_name = $_POST['shoe_name'];
-  $shoe_price = $_POST['shoe_price'];
-  $size = $_POST['size'];
+
 
   // perform database insertion
   if ($sizeErr == "" ) {
-  $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
+  // $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
+  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "'  ");
+
   if (mysqli_query($conn, $sql)) {
-    echo "Add Successfully!";
+
+    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
   } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
   }
 
   mysqli_close($conn);
   }  
 }
 ?>
+<?php echo "<div>".$msg."</div>"?>
 </body>
 </html>
 

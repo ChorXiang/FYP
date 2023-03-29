@@ -105,7 +105,7 @@
                     <div class="dropdown-content">
                         <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
                         <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
-                        <a href="#">My Order History</a>
+                        <a href="order_his.php?user_id=<?php echo $id ?>">My Order History</a>
                     </div>
                     </li>
         </ul>
