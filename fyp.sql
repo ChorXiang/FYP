@@ -145,13 +145,14 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 28/3/2023 by CX ---------------------------------------------------------------- 
+---------------------------------------------------------------- Latest Database 29/3/2023 by CX ---------------------------------------------------------------- 
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2023 at 01:35 PM
+-- Generation Time: Mar 29, 2023 at 06:56 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -181,16 +182,17 @@ CREATE TABLE `history` (
   `her_size` varchar(10) NOT NULL,
   `her_quantity` int(11) NOT NULL,
   `her_price` int(11) NOT NULL,
-  `her_email` varchar(30) NOT NULL
+  `her_email` varchar(30) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `history`
 --
 
-INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`) VALUES
-(6, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com'),
-(7, 'Air Jordan', '11.5', 3, 420, 'dasd@gmail.com');
+INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`) VALUES
+(6, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 0),
+(7, 'Air Jordan', '11.5', 3, 420, 'dasd@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -203,16 +205,17 @@ CREATE TABLE `messages` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `message` text NOT NULL
+  `message` text NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `messages`
 --
 
-INSERT INTO `messages` (`id`, `name`, `email`, `subject`, `message`) VALUES
-(1, 'testing', 'test@gmail.com', 'no', 'no'),
-(2, 'key', 'test@gmail.com', 'key', 'key');
+INSERT INTO `messages` (`id`, `name`, `email`, `subject`, `message`, `user_id`) VALUES
+(1, 'testing', 'test@gmail.com', 'no', 'no', 0),
+(2, 'key', 'test@gmail.com', 'key', 'key', 0);
 
 -- --------------------------------------------------------
 
@@ -226,7 +229,7 @@ CREATE TABLE `orders` (
   `price` int(30) NOT NULL,
   `quantity` int(30) NOT NULL,
   `shoessize` varchar(10) NOT NULL,
-  `email` varchar(30) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `pro_id` int(11) NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -235,9 +238,9 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `email`, `pro_id`, `stock`) VALUES
-(80, 'Air Jordan', 420, 1, '11.5', '', 2, 1),
-(83, 'dunk low panda', 489, 1, '10.5', '', 1, 2);
+INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`) VALUES
+(87, 'Air Jordan', 420, 1, '11.5', 2, 2, 1),
+(88, 'dunk low panda', 489, 1, '10.5', 2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -259,16 +262,17 @@ CREATE TABLE `payment` (
   `his_cardyear` varchar(10) NOT NULL,
   `his_securecode` varchar(20) NOT NULL,
   `his_ewallet` varchar(20) NOT NULL,
-  `his_eemail` varchar(20) NOT NULL
+  `his_eemail` varchar(20) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`) VALUES
-(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'Tng', ' '),
-(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com ');
+INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`, `user_id`) VALUES
+(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'Tng', ' ', 0),
+(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com ', 0);
 
 -- --------------------------------------------------------
 
@@ -321,9 +325,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `username`, `userpassword`, `confirm_password`, `image`, `status`) VALUES
-(1, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'elwin', '123', ' 123', 'profile.jpg', 'active'),
-(2, 'abccccc', '0000000000', 'elwinwong@gmail.com', 'Elwinwong03', '123', ' 123', 'profile.jpg', 'active'),
-(5, 'Tan', '0123456789', '1211201763@student.mmu.edu.my', 'asd', '$2y$10$sc4Nux5E2PTVeAgy7bureeL', '', '', '');
+(1, 'abccccc', '0123456789', '123@gmail.com', 'elwin', '123', ' 123', 'management.png', 'active'),
+(2, 'abccccc', '0123456789', '456@gmail.com', '123', '234', '234', 'profile.jpg', 'active');
 
 -- --------------------------------------------------------
 
@@ -337,17 +340,18 @@ CREATE TABLE `wishlist` (
   `price` int(30) NOT NULL,
   `size` varchar(30) NOT NULL,
   `stock` int(11) NOT NULL,
-  `pro_id` int(11) NOT NULL
+  `pro_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `wishlist`
 --
 
-INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`) VALUES
-(1, 'dunk low panda', 489, '10.5', 2, 1),
-(3, 'Air Jordan', 420, '11.5', 1, 2),
-(9, 'Nike Air Max 90', 130, '8', 0, 3);
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`, `user_id`) VALUES
+(1, 'dunk low panda', 489, '10.5', 2, 1, 2),
+(3, 'Air Jordan', 420, '11.5', 1, 2, 2),
+(9, 'Nike Air Max 90', 130, '8', 0, 3, 2);
 
 --
 -- Indexes for dumped tables
@@ -415,7 +419,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -427,7 +431,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -439,3 +443,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
