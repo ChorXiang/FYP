@@ -21,6 +21,10 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .more{
+            color: black;
+        }
         
     </style>
 </head>
@@ -76,6 +80,12 @@
     mysqli_close($conn);
 ?>
 </table>
+        <div class="more">
+        <br><br>
+        <a href="more_history.php">
+				<i class="fa fa-edit">More Detail</i> 
+		    </a>
+        <div>
         </div>
         </fieldset> 
 </body>
