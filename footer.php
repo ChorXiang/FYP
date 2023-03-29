@@ -37,7 +37,7 @@
         }
         .left
         {
-            width: 400px;
+            width: 500px;
             flex-grow: 3;
         }
         p

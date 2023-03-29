@@ -109,8 +109,8 @@
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
                
-           }$msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
-        
+               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+           }
             // if (mysqli_query($conn, $sql)) {
                 
             //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
@@ -178,8 +178,8 @@
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
                
-           }$msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
-        
+               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+           }
         }
     }
 
