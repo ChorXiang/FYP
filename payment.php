@@ -95,8 +95,8 @@
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-            $sql = "SELECT * FROM orders";
+            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ','$id '  )");
+            $sql = "SELECT * FROM orders where user_id = '$id'";
             $result = mysqli_query($conn,$sql);
            while($row = mysqli_fetch_array($result))
            {
@@ -104,10 +104,10 @@
                $price = $row['price'];
                $size = $row['shoessize'];
                $qty = $row['quantity'];
-               $id=$row['order_ID'];
+               $idd=$row['order_ID'];
 
-               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
-               mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$id'");
+               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
+               mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
                
            }$msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
         
@@ -146,8 +146,26 @@
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-            $sql = "SELECT * FROM orders";
+        //     mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
+        //     $sql = "SELECT * FROM orders";
+        //     $result = mysqli_query($conn,$sql);
+        //    while($row = mysqli_fetch_array($result))
+        //    {
+        //        $shoesname = $row["shoesname"];
+        //        $price = $row['price'];
+        //        $size = $row['shoessize'];
+        //        $qty = $row['quantity'];
+        //        $id=$row['order_ID'];
+
+        //        mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
+        //        mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$id'");
+
+        //    }
+        //     // $sql = "INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
+        //     $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+        
+            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ','$id '  )");
+            $sql = "SELECT * FROM orders where user_id = '$id'";
             $result = mysqli_query($conn,$sql);
            while($row = mysqli_fetch_array($result))
            {
@@ -155,22 +173,13 @@
                $price = $row['price'];
                $size = $row['shoessize'];
                $qty = $row['quantity'];
-               $id=$row['order_ID'];
+               $idd=$row['order_ID'];
 
-               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
-               mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$id'");
-
-           }
-            // $sql = "INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
-            $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
+               mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
+               
+           }$msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
         
-            // if (mysqli_query($conn, $sql)) {
-                
-            //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
-            //   } else {
-            //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
-            //   }
-            //   mysqli_close($conn);
         }
     }
 

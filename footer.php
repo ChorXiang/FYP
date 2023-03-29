@@ -37,7 +37,7 @@
         }
         .left
         {
-            width: 300px;
+            width: 400px;
             flex-grow: 3;
         }
         p
@@ -46,7 +46,7 @@
         }
         .right
         {
-            width: 600px;
+            width: 500px;
             flex-grow: 3;
         }
     </style>
@@ -56,13 +56,7 @@
 
 
     <div class="left">
-        <p><a href="aboutus.php">About Us</a></p>
-        <p><a href="contact2.php">Contact Us</a></p>
-        <p><a href="commentpage.php#">Comment</a></p>
-    </div>
-
-    <div class="right" >
-        <p><b><u>F O O T</u></b></p>
+    <p><b><u>F O O T</u></b></p>
 
         <ul>
             <li style="float:left;"><a href="#"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>
@@ -72,6 +66,11 @@
             <li style="float:left;"><a href="#"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
         </ul>
 
+    </div>
+
+    <div class="right" >
+
+        <p></p><p></p><p></p><p></p><p></p>
         <p style="color:#3d3d5c; text-align:right; padding-right:25px;">Copyright FOOT 2023</p>
 
 

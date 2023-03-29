@@ -110,6 +110,35 @@
                     </li>
         </ul>
 
+        <hr>
+        <div class="middle">
+        <ul >
+            <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
+                <div class="dropdown-content">
+                    <a href="#">Nike</a>
+                    <a href="#">Puma</a>
+                    <a href="#">Adidas</a>
+                    <a href="#">Vans</a>
+                </div>
+            </li>
+
+            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
+                <div class="dropdown-content">
+                    <a href="aboutus.php?user_id=<?php echo $id ?>">About Us</a>
+                    <a href="contact2.php?user_id=<?php echo $id ?>">Contact Us</a>
+                    <a href="commentpage.php?user_id=<?php echo $id ?>">Comment</a>
+                </div>
+            </li>
+
+            <li class="dropdown"><a href="#">All Product</a>
+            </li>
+        </ul>
+
+        </div>
+
+
+        </div>
+
     <?php   } else { ?>
 
         <div class="center" style="float:left;">
@@ -125,8 +154,7 @@
             </li>
         </ul>
 
-    <?php } ?>
-
+        
     <hr>
         <div class="middle">
         <ul >
@@ -139,11 +167,11 @@
                 </div>
             </li>
 
-            <li class="dropdown"><a href="#" class="dropbtn">Category</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
                 <div class="dropdown-content">
-                    <a href="#">Man</a>
-                    <a href="#">Woman</a>
-                    <a href="#">Kid</a>
+                    <a href="aboutus.php">About Us</a>
+                    <a href="contact2.php">Contact Us</a>
+                    <a href="commentpage.php">Comment</a>
                 </div>
             </li>
 
@@ -155,6 +183,9 @@
 
 
         </div>
+
+    <?php } ?>
+
 
     
 </body>
