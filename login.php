@@ -8,23 +8,41 @@ if(isset($_POST['loginbtn'])){
 
     $name = $_POST['username'];
     $pass = $_POST['password'];
- 
+    $status = '';
     $select = "SELECT * FROM user WHERE username = '$name' && userpassword = '$pass'";
     $result = mysqli_query($conn, $select);
 
-    if(mysqli_num_rows($result) == 1){
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        $_SESSION['userpassword'] = $row['userpassword'];
-        $user_id = $row['user_id'];
-        $_SESSION['user_id'] = $user_id; 
-        
 
-        header('Location: homepage.php?user_id='.$row['user_id']);
-    }else{
-        $error[] = "Incorrect username or password";
-    }
+
+      if(mysqli_num_rows($result) == 1)
+      {
+        
+      $row = mysqli_fetch_assoc($result);
+      $status = $row['status'];
+        if($status=="active")
+        {
+
+          $_SESSION['username'] = $row['username'];
+          $_SESSION['userpassword'] = $row['userpassword'];
+
+          $user_id = $row['user_id'];
+          $_SESSION['user_id'] = $user_id; 
+          header('Location: homepage.php?user_id='.$row['user_id']);
+        }
+        else
+        {
+          $error[] = "Incorrect user status";
+        }
+
+
+
+      }else{
+          $error[] = "Incorrect username or password";
+      }
+
+
 }
+
     
 
 
@@ -40,7 +58,7 @@ if(isset($_POST['loginbtn'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>login page</title>
 </head>
 <style>
     /* Global styles */
