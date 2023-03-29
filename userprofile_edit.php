@@ -150,6 +150,7 @@ if (isset($_POST["savebtn"]))
     {
      width: 35%;
      height: 100px;
+     margin:5px;
      text-align:left;
     }
     .box5

@@ -134,13 +134,13 @@
 
                         <div class="box3">
 
-                        : <?php echo $row["full_name"]; ?><br><br>
+                            : <?php echo $row["full_name"]; ?><br><br>
 
-                        : <?php echo $row["email_address"]; ?><br><br>
+                            : <?php echo $row["email_address"]; ?><br><br>
 
-                        : <?php echo $row["contact_no"]; ?><br><br>
+                            : <?php echo $row["contact_no"]; ?><br><br>
 
-                        : <?php echo $row["username"]; ?>
+                            : <?php echo $row["username"]; ?>
 
                         </div>
 
@@ -152,8 +152,10 @@
                     <a class="profile" href="userprofile_edit.php?user_id=<?php echo $id ?>" alt="update">Edit Profile<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
 
-                    <a class="profile" href="userchangepass.php" alt="change">Change Password<i class="fa fa-pencil"></i></a>
+                    <a class="profile" href="userchangepass.php?user_id=<?php echo $id ?>" alt="change">Change Password<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
+
+                    <a class="profile" href="#" alt="change">Forget Password<i class="fa fa-pencil"></i></a>
 
                     <a class="profile" href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
                                                         
