@@ -11,24 +11,14 @@
     <style>
         fieldset{
             background-color: lightblue;
-            color: black;      
-            text-align: center;    
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .table{
-            margin-left: auto;
-            margin-right: auto;
+            color: black;           
         }
         
     </style>
 </head>
 <body>
 <fieldset> 
-    <div class=".table_center">
     <h1>VIEW ORDER HISTORY</h1>
-    <div class=".table_center">
     <table class="table" border="1px">
 		<thead>
 			<th> ID</th>
@@ -76,7 +66,6 @@
     mysqli_close($conn);
 ?>
 </table>
-        </div>
         </fieldset> 
 </body>
 </html>
