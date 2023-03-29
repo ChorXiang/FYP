@@ -148,8 +148,8 @@ if (isset($_POST["savebtn"]))
     }
     .box3 
     {
-     width: 40%;
-     height: 130px;
+     width: 35%;
+     height: 100px;
      text-align:left;
     }
     .box5
@@ -199,19 +199,17 @@ if (isset($_POST["savebtn"]))
 
                     <label>PhoneNumber <sup>*</sup> <br><br></label>
 
-                    <label>User Name <sup>*</sup>  <br><br></label>
+                    <label>User Name <sup>*</sup> <br><br> </label>
                 </div>
 
                 <div class="box3">
+                    <input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>"><br><br>
 
-                    : <input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>">
+                    <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>"><br><br>
 
-                    : <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>">
+                    <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>"><br><br>
 
-                    : <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>">
-
-                    : <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>">
-
+                    <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>">
                 </div>
 
              </div>
