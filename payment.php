@@ -9,19 +9,29 @@
 
   if(isset($_POST['saveas']))
   {	 
+    $value = 0; 
+
     $mname = $_POST['Fullname'];
     $memail = $_POST['Email'];
+    $mmemail = filter_var($memail, FILTER_SANITIZE_EMAIL);
     $mph = $_POST['Phonenumber'];
+    $mmph = filter_var($mph);
     $maddress = $_POST['address'];
     $mstate = $_POST['state'];
     $mpostcode = $_POST['postcode'];
+    $mmpostcode = filter_var($mpostcode);
     $mcardnum = $_POST['cardnum'];
+    $mmcardnum = filter_var($mcardnum);
     $mcardname = $_POST['cardname'];
     $mcardmonth = $_POST['cardmonth'];
+    $mmcardmonth = filter_var($mcardmonth);
     $mcardyear = $_POST['cardyear'];
+    $mmcardyear = filter_var($mcardyear);
     $msecurecode = $_POST['securecode'];
+    $mmsecurecode = filter_var($msecurecode);
     $mewallet = $_POST['ewallet'];
     $meemail = $_POST['eemail'];
+    $mmeemail = filter_var($meemail, FILTER_SANITIZE_EMAIL);
     $value = $_POST['option'];
     $select = $_POST['ewallet'];
     $shoesname = $_POST['shoesname'];
@@ -39,12 +49,23 @@
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
         // $msg= "Please Key in Email !";
-        
+    }
+    else if(!filter_var($mmemail, FILTER_VALIDATE_EMAIL) === true)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
     }
     else if(!$mph)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
         // $msg= "Please Key in Phone Number !";
+    }
+    else if(strlen($mmph)<10)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
+    }
+    else if(strlen($mmph)>12)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
     }
     else if(!$maddress)
     {
@@ -61,12 +82,37 @@
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Post Code !</div>";
         // $msg= "Please select the payment method";
     }
+    else if(strlen($mmpostcode)<5)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+    }
+    else if(strlen($mmpostcode)>5)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+    }
+    else if(!isset($_POST['tick']))
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
+        // $msg= "Must agree the Terms and Conditions";
+    }
+    else if($value==0)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Payment Method</div>";
+    }
     else if($value==1)
     {
         if(!$mcardnum)
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Card Number !</div>";
             // $msg= "Please select the payment method";
+        }
+        else if(strlen($mmcardnum )<16)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
+        }
+        else if(strlen($mmcardnum )>16)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
         }
         else if(!$mcardname)
         {
@@ -78,15 +124,39 @@
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Month ) !</div>";
             // $msg= "Please select the payment method";
         }
+        else if(strlen($mmcardmonth)<2)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Month Format !</div>";
+        }
+        else if(strlen($mmcardmonth)>2)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Month Format !</div>";
+        }
         else if(!$mcardyear)
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Year ) !</div>";
             // $msg= "Please select the payment method";
         }
+        else if(strlen($mmcardyear)<2)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Year Format !</div>";
+        }
+        else if(strlen($mmcardyear)>2)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Year Format !</div>";
+        }
         else if(!$msecurecode )
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Security Code !</div>";
             // $msg= "Please select the payment method";
+        }
+        else if(strlen($mmsecurecode)<3)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
+        }
+        else if(strlen($mmsecurecode)>3)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
         }
         else if(!isset($_POST['tick']))
         {
@@ -139,6 +209,10 @@
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email for E-Wallet !</div>";
             // $msg= "Please select the payment method";
         }
+        else if(!filter_var($mmeemail, FILTER_VALIDATE_EMAIL) === true)
+        {
+            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
+        }
         else if(!isset($_POST['tick']))
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
@@ -183,15 +257,8 @@
         }
     }
 
-    else if(!isset($_POST['tick']))
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
-        // $msg= "Must agree the Terms and Conditions";
-    }
-    else
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Payment Method</div>";
-    }
+
+
 
     
   }
@@ -407,7 +474,7 @@
                                         </select>
                                     
                                     <label for="postcode" ><i class="fa fa-address-book"></i>POSTAL CODE : <sup>*</sup></label>
-                                    <input type="text" name="postcode" placeholder="Enter">
+                                    <input type="text" name="postcode" placeholder="75450">
                                 <!-- </form> -->
                             </fieldset>
                         </div>
@@ -417,9 +484,9 @@
                          <fieldset>
 
                          <!-- <form action="" method="POST">  -->
-                            <div id="inputDiv" style="display:none;">
+                            <div id="inputDiv" style="display:block;">
                                     <label for="userInput">CARD NUMBER : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="cardnum">
+                                    <input type="text" id="userInput" name="cardnum" placeholder="1111 2222 3333 4444">
 
                                     <label for="userInput">NAME ON CARD : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="cardname">
@@ -429,7 +496,7 @@
                                     <input type="text" id="userInput" name="cardyear" placeholder="Year">
 
                                     <label for="userInput">SECURITY CODE : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="securecode">
+                                    <input type="text" id="userInput" name="securecode" placeholder="123">
                             </div>
                        <!-- </form> -->
 
@@ -465,21 +532,18 @@
                             if(document.getElementById("option1").checked )
                             {
                                 inputDiv.style.display = "block";
-                                userInput.required = true;
                                 inputDivv.style.display = "none";
                                 userInputt.required = false;
                             }
                             else if (document.getElementById("option2").checked )
                             {
                                 inputDivv.style.display = "block";
-                                userInputt.required = true;
                                 inputDiv.style.display = "none";
                                 userInput.required = false;
                             }
                             else
                             {
                                 inputDiv.style.display = "none";
-                                userInput.required = false;
                                 inputDivv.style.display = "none";
                                 userInputt.required = false;
                             }
@@ -505,14 +569,15 @@
                             <b>Payment Method</b><br><br><hr><br>
                             <!-- <form action="radio_input.php" method="POST"> -->
                             <label for="option1"> Credit Card / Debit Card </label>
-                            <input type="radio" id="option1" name="option" value="1" onclick="showInput()"><br><br>
+                            <input type="radio" checked="checked" id="option1" name="option" value="1" onclick="showInput()" ><br><br>
 
                             <label for="option2"> TNG eWallet  </label>
                             <input type="radio" id="option2" name="option" value="2" onclick="showInput()"><br>
 
-                        </div>
-                        </fieldset>
 
+                        </fieldset>
+                </div>
+                
             </div>
 
 
