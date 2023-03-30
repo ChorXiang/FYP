@@ -15,6 +15,7 @@
             text-align: center;    
             margin-left: auto;
             margin-right: auto;
+            
         }
 
         .table{
@@ -22,9 +23,6 @@
             margin-right: auto;
         }
 
-        .more{
-            color: black;
-        }
         a.detail
         {
             color:black;
@@ -33,6 +31,7 @@
 </head>
 <body>
 <fieldset> 
+    
     <div class=".table_center">
     <h1>VIEW ORDER HISTORY</h1>
     <div class=".table_center">
@@ -73,7 +72,7 @@
                         <th><?php echo $her_quantity; ?></th>
                         <th>RM <?php echo $her_price; ?></th>
                         <th>RM <?php echo $total; ?></th>
-                        <td><?php echo $her_email; ?></td>
+                        <th><?php echo $her_email; ?></th>
                     </tr>
                 
 
@@ -88,13 +87,10 @@
     mysqli_close($conn);
 ?>
 </table>
-        <div class="more">
         <br><br>
         <a href="more_history.php?user_id=<?php echo $id ?>" class="detail">
 				<i class="fa fa-edit">More Detail</i> 
 		    </a>
-        <div>
-        </div>
         </fieldset> 
 </body>
 </html>
