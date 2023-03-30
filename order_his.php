@@ -25,7 +25,10 @@
         .more{
             color: black;
         }
-        
+        a.detail
+        {
+            color:black;
+        }
     </style>
 </head>
 <body>
@@ -40,6 +43,7 @@
 			<th> Size </th>
 			<th> Quantity</th>
 			<th> Price</th>
+            <th> Total</th>
             <th> Email</th>
 		</thead>
         <tbody>                       
@@ -57,14 +61,18 @@
                     $her_size = $row["her_size"];
                     $her_quantity = $row["her_quantity"];
                     $her_price = $row["her_price"];
-                    $her_email = $row["her_email"];                   
+                    $her_email = $row["her_email"];    
+                    $total =0;
+                    $subtotal=$her_price*$her_quantity;
+                    $total =  $total + $subtotal;               
                     ?>
                     <tr>
                         <th><?php echo $her_id; ?></th>
                         <th><?php echo $her_shoesname; ?></th>
                         <th><?php echo $her_size; ?></th>
                         <th><?php echo $her_quantity; ?></th>
-                        <th><?php echo $her_price; ?></th>
+                        <th>RM <?php echo $her_price; ?></th>
+                        <th>RM <?php echo $total; ?></th>
                         <td><?php echo $her_email; ?></td>
                     </tr>
                 
@@ -82,7 +90,7 @@
 </table>
         <div class="more">
         <br><br>
-        <a href="more_history.php">
+        <a href="more_history.php?user_id=<?php echo $id ?>" class="detail">
 				<i class="fa fa-edit">More Detail</i> 
 		    </a>
         <div>

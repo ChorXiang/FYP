@@ -44,7 +44,8 @@
         <tbody>                       
             <?php
             // Select data from the history table
-            $sql = "SELECT * FROM payment"; 
+            $id =$_GET['user_id'];
+            $sql = "SELECT * FROM payment where user_id = '$id'"; 
             $result = mysqli_query($conn, $sql);
 
             // Display the data in a table
@@ -69,7 +70,7 @@
                         <th><?php echo $his_name; ?></th>
                         <th><?php echo $his_email; ?></th>
                         <th><?php echo $his_pn; ?></th>
-                        <th><?php echo $his_address; ?>,<?php echo $his_state; ?>,<?php echo $his_code; ?></th>
+                        <th><?php echo $his_address; ?>,<?php echo $his_code; ?>,<?php echo $his_state; ?></th>
                         <th><?php echo $his_cardnum; ?></th>
                         <th><?php echo $his_cardname; ?></th>
                         <th><?php echo $his_cardmonth; ?>/<?php echo $his_cardyear;?></th>
