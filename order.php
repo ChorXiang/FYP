@@ -96,12 +96,64 @@
         </div>
   </table>
 
-  <div class="rightway">
-  <!-- <form action="" method="post">  -->
-  <p>Total :<span style="color:black"><b>RM <?php echo $total;?></b></span>
+  <?php
 
-  <span style="padding: 0px 0px 0px 50px;"><a href="payment.php?user_id=<?php echo $id ?>" alt="payment">      <i class="fa fa-plus-square"></i> <input type="button" name="saveas" value="Checkout"></a></span></p>
-                                     <!--                  ?email=<?php echo $id?>        </form> -->
+
+
+  if(isset($_POST['saveas']))
+  {
+
+    $found_unavailable_item="false";
+    $sql = "SELECT * FROM orders where user_id = '$id' ";
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_array($result))
+    {
+      $qty = $row['quantity'];
+      $stock = $row['stock'];
+      $shoesname = $row['shoesname'];
+
+      if($stock===0)
+      {
+         $found_unavailable_item = 1;
+        break;
+      }
+      else if($stock<$qty)
+      {
+        $found_unavailable_item = 2;
+        break;
+      }
+      else 
+      { 
+        $found_unavailable_item = 3;
+         
+      }
+    }
+ 
+      if ($found_unavailable_item==1) 
+      {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname is sold out. Please Remove this item to proceed checkout</div>";
+      }
+      else if ($found_unavailable_item==2) 
+      {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname left $stock only. Please Remove this item to proceed checkout</div>";
+      }
+      else if( $found_unavailable_item == 3)
+      {
+        echo '<script>window.location.href = "payment.php?user_id=' . $id . '";</script>';
+      }
+
+
+  }
+
+?>
+
+  <div class="rightway">
+ <form action="" method="post"> 
+  <p>Total :<span style="color:black"><b>RM <?php echo $total;?></b></span>
+   
+  <span style="padding: 0px 0px 0px 50px;">    <button type="submit" name="saveas" ><i class="fa fa-plus-square"></i> Checkout</button></span></p> </form>
+                                  <!--         <a href="payment.php?user_id=<?php echo $id ?>" alt="payment">       </a>    ?email=<?php echo $id?>        -->
+   
                             
 </div>
 
@@ -112,42 +164,7 @@
  <?php echo "<div>".$msg."</div>"?>
 </body>
 
-<?php
 
-
-
-  if(isset($_POST['saveas']))
-  {
-
-    $sql = "SELECT * FROM orders where user_id = '$id' ";
-    $result = mysqli_query($conn,$sql);
-    while($row = mysqli_fetch_array($result))
-    {
-      $qty = $row['quantity'];
-      $stock = $row['stocks'];
-      $shoesname = $row['shoesname'];
-
-      if($stock==0)
-      {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname is sold out. Please Remove this item to proceed checkout</div>";
-        // header("Location: order.php");
-      }
-      else if($stock<$qty)
-      {
-         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname left $stock only. Please Remove this item to proceed checkout</div>";
-        //  header("Location: order.php");
-      }
-      else
-      { 
-         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add to Cart Successfully !</div>";
-         header("Location: payment.php");
-      }
-
-    }
-
-  }
-
-?>
  
 </html>
 
