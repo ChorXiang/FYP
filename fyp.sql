@@ -145,14 +145,14 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 29/3/2023 by CX ---------------------------------------------------------------- 
+---------------------------------------------------------------- Latest Database 30/3/2023 by CX ---------------------------------------------------------------- 
 
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2023 at 06:56 AM
+-- Generation Time: Mar 30, 2023 at 04:10 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -191,8 +191,8 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`) VALUES
-(6, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 0),
-(7, 'Air Jordan', '11.5', 3, 420, 'dasd@gmail.com', 0);
+(16, 'Air Jordan', '11.5', 1, 420, 'dasd@gmail.com', 2),
+(17, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 2);
 
 -- --------------------------------------------------------
 
@@ -239,8 +239,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`) VALUES
-(87, 'Air Jordan', 420, 1, '11.5', 2, 2, 1),
-(88, 'dunk low panda', 489, 1, '10.5', 2, 1, 2);
+(96, 'dunk low panda', 489, 1, '10.5', 2, 1, 2),
+(97, 'Air Jordan', 420, 2, '11.5', 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -253,7 +253,7 @@ CREATE TABLE `payment` (
   `his_name` varchar(50) NOT NULL,
   `his_email` varchar(30) NOT NULL,
   `his_pn` varchar(30) NOT NULL,
-  `his_address` varchar(30) NOT NULL,
+  `his_address` varchar(80) NOT NULL,
   `his_state` varchar(20) NOT NULL,
   `his_code` varchar(20) NOT NULL,
   `his_cardnum` varchar(30) NOT NULL,
@@ -271,8 +271,8 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`, `user_id`) VALUES
-(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'Tng', ' ', 0),
-(5, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '', '', '', '', '', 'ShopeePay', 'dasd@gmail.com ', 0);
+(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'none', ' ', 2),
+(17, 'a', 'dasd@gmail.com', '0123456789', '12, jalan semabok 1/1, taman semabok sek 1', 'melaka', '75450', '', '', '', '', '', 'GrabPay', '456@gmail.com ', 2);
 
 -- --------------------------------------------------------
 
@@ -407,7 +407,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -419,13 +419,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -437,10 +437,9 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
