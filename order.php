@@ -111,6 +111,7 @@
       $qty = $row['quantity'];
       $stock = $row['stock'];
       $shoesname = $row['shoesname'];
+      $size = $row['shoessize'];
 
       if($stock===0)
       {
@@ -131,11 +132,11 @@
  
       if ($found_unavailable_item==1) 
       {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname is sold out. Please Remove this item to proceed checkout</div>";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size is sold out. Please Remove this item to proceed checkout</div>";
       }
       else if ($found_unavailable_item==2) 
       {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname left $stock only. Please Remove this item to proceed checkout</div>";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size left $stock only. Please Remove this item to proceed checkout</div>";
       }
       else if( $found_unavailable_item == 3)
       {
