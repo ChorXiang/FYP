@@ -115,6 +115,7 @@ function test_input($data) {
   }
   .container
   {
+  background-color: lightblue;
   display: flex;
   justify-content: space-between;
   width: 100%;
