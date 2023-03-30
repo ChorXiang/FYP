@@ -10,7 +10,6 @@
     <title>VIEW ORDER HISTORY</title>
     <style>
         fieldset{
-            background-color: lightblue;
             color: black;      
             text-align: center;    
             margin-left: auto;
@@ -20,8 +19,13 @@
         .table{
             margin-left: auto;
             margin-right: auto;
+            background-color: #f2f2f2;
+            width: 100%;
+            border: none;
+            font-size: 1em;
         }
         
+       
     </style>
 </head>
 <body>
@@ -29,7 +33,7 @@
     <div class=".table_center">
     <h1>VIEW ORDER HISTORY</h1>
     <div class=".table_center">
-    <table class="table" border="1px">
+    <table class="table" >
 		<thead>
 			<th>History ID</th>
 			<th>Name</th>

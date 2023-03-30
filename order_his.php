@@ -10,7 +10,6 @@
     <title>VIEW ORDER HISTORY</title>
     <style>
         fieldset{
-            background-color: lightblue;
             color: black;      
             text-align: center;    
             margin-left: auto;
@@ -21,12 +20,13 @@
         .table{
             margin-left: auto;
             margin-right: auto;
+            background-color: #f2f2f2;
         }
 
-        a.detail
-        {
-            color:black;
+        th{
+            padding: 10px 70px 10px 70px;
         }
+
     </style>
 </head>
 <body>
@@ -37,18 +37,21 @@
     <div class=".table_center">
     <table class="table" border="1px">
 		<thead>
-			<th> ID</th>
+			<th> Order ID</th>
 			<th> Shoes Name</th>
 			<th> Size </th>
 			<th> Quantity</th>
 			<th> Price</th>
             <th> Total</th>
             <th> Email</th>
+            <th> Email</th>
+            <th> Email</th>
 		</thead>
         <tbody>                       
             <?php
             // Select data from the history table
-            $sql = "SELECT * FROM history"; 
+            $id =$_GET['user_id'];
+            $sql = "SELECT * FROM history where user_id = '$id'"; 
             $result = mysqli_query($conn, $sql);
 
             // Display the data in a table
@@ -87,11 +90,7 @@
     mysqli_close($conn);
 ?>
 </table>
-        <br><br>
-        <a href="more_history.php?user_id=<?php echo $id ?>" class="detail">
-				<i class="fa fa-edit">More Detail</i> 
-		    </a>
-        </fieldset> 
+</fieldset> 
 </body>
 </html>
 <?php
