@@ -1,4 +1,5 @@
 <?php
+/*
     include 'conn.php'; 
     include 'header.php'; 
 
@@ -21,10 +22,5 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
-
-
-?>
-
-<?php
-    include 'footer.php';
+*/
 ?>
