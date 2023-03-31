@@ -184,6 +184,7 @@ CREATE TABLE `history` (
   `her_price` int(11) NOT NULL,
   `her_email` varchar(30) NOT NULL,
   `user_id` int(11) NOT NULL
+  `order_status` VARCHAR(20) NOT NULL DEFAULT 'Pending';
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
