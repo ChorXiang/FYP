@@ -39,12 +39,12 @@
 		<thead>
 			<th> Order ID</th>
 			<th> Shoes Name</th>
-			<th> Size </th>
+			<th> Shoes Size </th>
 			<th> Quantity</th>
-			<th> Price</th>
-            <th> Total</th>
+			<th> Shoes Price</th>
+            <th> Total Price</th>
             <th> Email</th>
-            <th> status</th>
+            <th> Order Status</th>
 		</thead>
         <tbody>                       
             <?php
