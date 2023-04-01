@@ -9,23 +9,23 @@
 <head>
     <title>VIEW ORDER HISTORY</title>
     <style>
+        body{
+  
+        }
+
         fieldset{
             color: black;      
             text-align: center;    
-            margin-left: auto;
-            margin-right: auto;
-            
         }
 
         .table{
             margin-left: auto;
             margin-right: auto;
             background-color: #f2f2f2;
+            width: 100%;
         }
 
-        th{
-            padding: 10px 70px 10px 70px;
-        }
+       
 
     </style>
 </head>
