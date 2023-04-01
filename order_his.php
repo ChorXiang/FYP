@@ -45,6 +45,7 @@
             <th> Total Price</th>
             <th> Email</th>
             <th> Order Status</th>
+            <th> Payment Method</th>
 		</thead>
         <tbody>                       
             <?php
