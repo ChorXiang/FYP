@@ -47,6 +47,9 @@
     include 'header.php'; 
     include 'conn.php'; 
     $msg='';
+
+    
+    
 ?>
 
 <?php
@@ -75,14 +78,15 @@
     }
   }
     
-    if(isset($_POST["wishlist"])){
-      if (empty($_POST["size"])) {
-        $sizeErr = "* Size is required";
-      } else {
-        $size = test_input($_POST["size"]);
+  if(isset($_POST["wishlist"])){
+    if (empty($_POST["size"])) {
+      $sizeErr = "* Size is required";
+    } else {
+      $size = test_input($_POST["size"]);
+      $id = $_POST["id"]; // retrieve the value of $id from the form
     }
-
-  } 
+  }
+  
 
   function test_input($data) {
     $data = trim($data);
@@ -94,6 +98,7 @@
 ?>
 
 <?php
+    $id =$_GET['user_id']; 
     $sql = "SELECT * FROM shoes WHERE shoe_id = 1 ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -118,11 +123,12 @@
 <p>Type: <?php echo $row["shoe_type"]; ?></p>
 <p>Brand: <?php echo $row["shoe_brand"]; ?></p>
 <p>Category: <?php echo $row["category"]; ?></p>
-<p>Price: $<?php echo $row["shoe_price"]; ?></p>
+<p>Price: RM<?php echo $row["shoe_price"]; ?></p>
 
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <input type="hidden" name="id" value="<?php echo $id; ?>">
   <br>
   <label for="quantity"><b>Quantity (Max 5):</b></label>
   <input type="number" name="quantity" id="quantity" min="1" max="5" required>
@@ -142,6 +148,7 @@
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
+  <input type="hidden" name="id" value="<?php echo $id; ?>">
   <input type="radio" name="size" value="6">6
   <input type="radio" name="size" value="7">7
   <input type="radio" name="size" value="8">8
@@ -151,6 +158,7 @@
   <br><br>
   <input type="submit" name="wishlist" value="Add to Wishlist">
 </form>
+
 
 
 
@@ -167,9 +175,11 @@ if (isset($_POST['submit'])) {
   $shoe_price = $_POST['shoe_price'];
   $quantity = $_POST['quantity'];
   $size = $_POST['size'];
+  $id = $_POST['id'];
 
   // perform database insertion
-  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size')";
+  $id =$_GET['user_id'];
+  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id' ) ";
   if (mysqli_query($conn, $sql)) {
     echo "Add Successfully!";
   } else {
@@ -183,11 +193,10 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['wishlist'])) {
 
-
   // perform database insertion
   if ($sizeErr == "" ) {
   // $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
-  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "'  ");
+  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "' , user_id='" . $_POST['id'] . "' ");
 
   if (mysqli_query($conn, $sql)) {
 
