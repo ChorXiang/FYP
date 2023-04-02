@@ -115,7 +115,7 @@
         <ul >
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
-                    <a href="#">Nike</a>
+                    <a href="productpage.php?user_id=<?php echo $id ?>">Nike</a>
                     <a href="#">Puma</a>
                     <a href="#">Adidas</a>
                     <a href="#">Vans</a>
