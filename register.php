@@ -4,52 +4,75 @@ include_once 'conn.php';
 
 $errors = array();
 
-if (isset($_POST["signupbtn"])) {
+if (isset($_POST['signupbtn'])) {
+    // check if user already exists
+    if (isset($_POST['email'])) {
+        $email = ($_POST['email']);
+        $select = "SELECT * FROM user WHERE email_address = '$email'";
+        $result = mysqli_query($conn, $select);
+        if (mysqli_num_rows($result) > 0) {
+            $errors[] = 'User already exists';
+        }
+    } else {
+        $errors[] = 'Email is required';
+    }
 
-    // validate input data
-    if (empty($_POST['fullname'])) {
+    // insert user data into database
+    if (isset($_POST['fullname'])) {
+        $fullname = ( $_POST['fullname']);
+    } else {
         $errors[] = 'Full Name is required';
     }
-    if (empty($_POST['contactno'])) {
-        $errors[] = 'Phone Number is required';
+
+    if (isset($_POST['contactno'])) {
+        $contact =($_POST['contactno']);
+    } else {
+        $errors[] = 'Contact Number is required';
     }
-   
-    if (empty($_POST['email'])) {
-        $errors[] = 'Email is required';
-    } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Invalid email format';
+
+    if (isset($_POST['address'])) {
+        $address = ($_POST['address']);
     }
-    if (empty($_POST['username'])) {
+
+    if (isset($_POST['postcode'])) {
+        $postcode = ($_POST['postcode']);
+    }
+
+    if (isset($_POST['username'])) {
+        $name = ($_POST['username']);
+    } else {
         $errors[] = 'Username is required';
     }
-    if (empty($_POST['userpassword'])) {
+
+    if (isset($_POST['userpassword'])) {
+        $pass = ($_POST['userpassword']);
+    } else {
         $errors[] = 'Password is required';
     }
-    
-    // check if user already exists
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $pass = mysqli_real_escape_string($conn, $_POST['userpassword']);
-    $select = "SELECT * FROM user WHERE email_address = '$email'";
-    $result = mysqli_query($conn, $select);
-    if (mysqli_num_rows($result) > 0) {
-        $errors[] = 'User already exists';
+
+    if (isset($_POST['confirm_password'])) {
+        $cpass = ($_POST['confirm_password']);
     } else {
-        // insert user data into database
-        $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
-        $contact = mysqli_real_escape_string($conn, $_POST['contactno']);
-        $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
-        $name = mysqli_real_escape_string($conn, $_POST['username']);
-        $pass_hash = password_hash($_POST['userpassword'], PASSWORD_DEFAULT);
-        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword) 
-                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass_hash')";
+        $errors[] = 'Confirm Password is required';
+    }
+
+    if ($pass !== $cpass) {
+        $errors[] = 'Passwords do not match';
+    }
+
+    if (empty($errors)) {
+        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword, confirm_password) 
+                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass', '$cpass')";
         if (mysqli_query($conn, $insert)) {
-            header('Location: user.php');
+            header('Location: login.php');
             exit();
         } else {
             $errors[] = 'Database error: '.mysqli_error($conn);
         }
     }
+
+    
+  
 }
 
 ?>
@@ -92,10 +115,10 @@ if (isset($_POST["signupbtn"])) {
 }
 
 /* Error message */
-.error-msg {
-  display: block;
-  margin-bottom: 10px;
-  color: red;
+.error-msg
+{
+  position:relative;
+  top:10px;
 }
 
 /* Input fields */
