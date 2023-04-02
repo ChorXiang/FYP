@@ -65,7 +65,7 @@ function test_input($data) {
 
 <style>
   fieldset{
-    background-color: lightblue;
+    background-color:  lightblue;
     color: black;
   }
   
@@ -115,7 +115,7 @@ function test_input($data) {
   }
   .container
   {
-  background-color: lightblue;
+  background-color: ;
   display: flex;
   justify-content: space-between;
   width: 100%;
