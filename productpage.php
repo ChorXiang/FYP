@@ -162,7 +162,7 @@
 
 <?php
 if (isset($_POST['submit'])) {
-//名字要改
+
   $shoe_name = $_POST['shoe_name'];
   $shoe_price = $_POST['shoe_price'];
   $quantity = $_POST['quantity'];

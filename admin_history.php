@@ -1,4 +1,7 @@
-<style>
+<!DOCTYPE HTML>  
+<html>
+<head>
+  <style>
         fieldset{
             color: black;      
             text-align: center;    
@@ -8,7 +11,13 @@
             background-color: #f2f2f2;
         }
 
+        .error {
+          color: #FF0000;
+        }
+
     </style>
+</head>
+<body>  
 <?php
  
     include 'conn.php'; 
@@ -17,8 +26,9 @@
 
 <?php
   $statusErr = "";
-  $status = "";
-
+  $status = " ";
+  $msg = "";
+  
   if(isset($_POST["order_status"])){
     if (empty($_POST["status"])) {
       $statusErr = "* Order status is required";
@@ -26,6 +36,7 @@
       $status = test_input($_POST["status"]);
     }
   } 
+  
 
 function test_input($data) {
   $data = trim($data);
@@ -66,35 +77,27 @@ if ($result->num_rows > 0) {
     <br>Total Price: RM <?php echo $total; ?><br>
     <br>Email: <?php echo $her_email; ?><br>
     <br>Order Status: <?php echo $status; ?><br>
-    </fieldset>
 
     <form action="" method="post">
-      <input type="radio" name="status" value="6">Pending
-      <input type="radio" name="status" value="7">Delivering
-      <input type="radio" name="status" value="7">Deliverd
-      <span class="error"><?php echo $statusErr;?></span>
+      <input type="hidden" name="her_id" value="<?php echo $row['her_id']; ?>">
+      <input type="hidden" name="her_shoesname" value="<?php echo $row['her_shoesname']; ?>">
+      <input type="hidden" name="her_size" value="<?php echo $row['her_size']; ?>">
+      <input type="hidden" name="her_quantity" value="<?php echo $row['her_quantity']; ?>">
+      <input type="hidden" name="her_price" value="<?php echo $row['her_price']; ?>">
+      <input type="hidden" name="her_email" value="<?php echo $row['her_email']; ?>">  
+      <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">  
+      <input type="radio" name="status" value="Pending">Pending
+      <input type="radio" name="status" value="Delivering">Delivering
+      <input type="radio" name="status" value="Deliverd">Deliverd
+      <span class="error"><br><?php echo $statusErr;?></span>
       <br><br>
       <input type="submit" name="order_status" value="Update Status">
     </form>
-    <?php
-    /*
-    echo $her_id; 
-    echo $her_shoesname; 
-    echo $her_size; 
-    echo $her_quantity; 
-    echo $her_price; 
-    echo $total; 
-    echo $her_email; 
-    */
+    </fieldset>
 
-    /*echo "Order ID: " . $row["her_id"]. "<br>";
-    echo" - Shoes Name: " . $row["her_shoesname"]. "<br>";
-    echo" - Shoes Size: " . $row["her_size"]. "<br>";
-    echo" - Quantity: " . $row["her_quantity"]. "<br>";
-    echo" - Shoes Price: RM" . $row["her_price"]. "<br>";
-    //echo" - Total Price: " . $row[" "]. "<br>"
-    echo" - Email: " . $row["her_email"]. "<br>";*/
     
+    <?php
+  
   }
 } else {
   echo "0 results";
@@ -102,27 +105,38 @@ if ($result->num_rows > 0) {
 
 ?>
 <?php
-if (isset($_POST['order_status'])) {
+
+$statusErr = "";
+$msg = "";
+$status = "";
+
+if(isset($_POST["order_status"])){
+  if (empty($_POST["status"])) {
+    $statusErr = "* Order status is required";
+  } else {
+    $status = test_input($_POST["status"]);
+  }
 
 
-// perform database insertion
-if ($statusErr == "" ) {
-// $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
-mysqli_query($conn," INSERT INTO history set order_status='" . $_POST['status'] . "'");
+  // perform database update
+  if ($statusErr == "") {
+  
+    $sql = "UPDATE history SET order_status='$status' WHERE her_id='16'";
 
-if (mysqli_query($conn, $sql)) {
 
-  $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
-} else {
-  $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
-}
+    if (mysqli_query($conn, $sql)) {
+      $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Edit Successfully!</div>";
+  } else {
+    $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
+  }
 
-mysqli_close($conn);
-}  
+  mysqli_close($conn);
+  }  
 }
 ?>
 <?php echo "<div>".$msg."</div>"?>
-
+</body>
+</html>
 <?php
     include 'footer.php';
 ?>
