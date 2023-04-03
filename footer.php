@@ -19,14 +19,14 @@
         ul
         {
             list-style-type: none;
-            margin: 0;
+            margin: 0px;
             overflow: hidden;
         }
         a:hover
         {
             color: red;
         }
-        a
+        a.none
         {
             text-decoration:none;
             color:white;
@@ -59,11 +59,11 @@
     <p><b><u>F O O T</u></b></p>
 
         <ul>
-            <li style="float:left;"><a href="#"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>
-            <li style="float:left;"><a href="#"><i class='fab fa-youtube' style='color:white'></i> Youtube</a></li>
-            <li style="float:left;"><a href="#"><i class='fab fa-facebook' style='color:white'></i> Facebook</a></li>
-            <li style="float:left;"><a href="#"><i class='fab fa-instagram' style='color:white'></i> Instagram</a></li>
-            <li style="float:left;"><a href="#"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
+            <li style="float:left;"><a href="#" class="none"><i class='fab fa-twitter' style='color:white'></i> Twitter</a></li>
+            <li style="float:left;"><a href="#" class="none"><i class='fab fa-youtube' style='color:white'></i> Youtube</a></li>
+            <li style="float:left;"><a href="#" class="none"><i class='fab fa-facebook' style='color:white'></i> Facebook</a></li>
+            <li style="float:left;"><a href="#" class="none"><i class='fab fa-instagram' style='color:white'></i> Instagram</a></li>
+            <li style="float:left;"><a href="#" class="none"><i class='fab fa-whatsapp' style='color:white'></i> Whatsapp</a></li>
         </ul>
 
     </div>

@@ -99,7 +99,8 @@
 
 <?php
     $id =$_GET['user_id']; 
-    $sql = "SELECT * FROM shoes WHERE shoe_id = 1 ";
+    $sid = $_GET['shoe_id'];
+    $sql = "SELECT * FROM shoes WHERE shoe_id = $sid ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>

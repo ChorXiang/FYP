@@ -1,7 +1,12 @@
+<?php
+    include 'header.php';
+    include 'conn.php'; 
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
-<!-- HTML code for the product list page -->
 <html>
 <head>
   <title>Shoes Product List</title>
@@ -72,6 +77,14 @@ nav a:hover {
   background-color: white;
   color: black;
 }
+.imgcenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 50%;
+  background-color: powderblue;
+  }
 
 </style>
 <body>
@@ -87,18 +100,23 @@ nav a:hover {
   <h1>Shoes Product List</h1>
   <div class="product-list">
     <?php
-              
-      include_once 'shoe.php';
+                  $id =$_GET['user_id'];
+      // include_once 'shoe.php';
 
       // Retrieve the product data
       $result = mysqli_query($conn, "SELECT * FROM shoes");
 
       // Loop through the product data and generate HTML code for each product
-      while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="product-card">';
-        echo '<img src="shoesimg/' . $row['shoe_image'] . '">';
+      while ($row = mysqli_fetch_assoc($result)) 
+      {
+        $sid = $row['shoe_id'];
+        echo '<div class="product-card">';     ?>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+        <?php
         echo '<h2>' . $row['category'] . '</h2>';
-        echo '<p>' . $row['shoe_name'] . '</p>';
+        ?>
+        <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+        <?php
         echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
         echo '</div>';
       }
@@ -114,3 +132,10 @@ nav a:hover {
 
   </body>
 </html>
+
+
+
+<?php
+    include 'footer.php';
+   
+?>

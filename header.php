@@ -44,7 +44,7 @@
         ul
         {
             list-style-type: none;
-            margin: 0;
+            margin: 15px;
             overflow: hidden;
         }
         li a 
@@ -115,10 +115,10 @@
         <ul >
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
-                    <a href="productpage.php?user_id=<?php echo $id ?>">Nike</a>
+                    <a href="#">Nike</a>
                     <a href="#">Puma</a>
                     <a href="#">Adidas</a>
-                    <a href="#">Vans</a>
+                    <a href="#">Convers</a>
                 </div>
             </li>
 
@@ -130,7 +130,7 @@
                 </div>
             </li>
 
-            <li class="dropdown"><a href="#">All Product</a>
+            <li class="dropdown"><a href="product.php?user_id=<?php echo $id ?>">All Product</a>
             </li>
         </ul>
 
