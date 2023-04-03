@@ -12,28 +12,103 @@
   <title>Shoes Product List</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<style>
-  .product-list {
+
+  <style>
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  height: 100%;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  display: block;
+  margin-right: 10px;
+}
+
+.sidebar li:last-child {
+  margin-right: 0;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.sidebar a:hover {
+  background-color: #444;
+}
+
+.product-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 200px;
+  padding: 20px;
 }
 
 .product-card {
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
+  width: calc((100% / 3) - 20px);
+  margin: 20px;
+  padding: 20px;
   border: 1px solid #ddd;
   box-shadow: 0 0 5px #ddd;
   text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
 }
 
 .product-card img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 10px;
 }
 
 .product-card h2 {
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.product-card a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.product-card a:hover {
+  color: #c00;
 }
 
 .product-card p {
@@ -45,59 +120,49 @@
   font-size: 16px;
   font-weight: bold;
   color: #c00;
-}
-nav {
-  background-color: #333;
-  color: white;
-  padding: 10px;
+  margin-top: 10px;
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-nav li:last-child {
-  margin-right: 0;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 5px;
-}
-
-nav a:hover {
-  background-color: white;
-  color: black;
-}
-.imgcenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  height: 300px;
-  width: 50%;
-  background-color: powderblue;
+@media (max-width: 992px) {
+  .product-card {
+    width: calc((100% / 2) - 20px);
   }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+  }
+
+  .product-list {
+    margin-left: 0;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+  
+}
 
 </style>
 <body>
-<nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Men's Shoes</a></li>
-        <li><a href="#">Women's Shoes</a></li>
-        <li><a href="#">Kids' Shoes</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
-  <h1>Shoes Product List</h1>
+<div class="container">
+  <div class="sidebar-wrapper">
+    <div class="sidebar">
+      <nav>
+        <ul>
+          <li>Category</a></li>
+          <li><a href="#">Sneakers</a></li>
+          <li><a href="#">Boots</a></li>
+          <li><a href="#">Sandals</a></li>
+          <li><a href="#">Slides</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  
   <div class="product-list">
     <?php
                   $id =$_GET['user_id'];
