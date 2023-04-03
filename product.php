@@ -87,7 +87,7 @@ nav a:hover {
   <h1>Shoes Product List</h1>
   <div class="product-list">
     <?php
-      // Connect to the database
+              
       include_once 'shoe.php';
 
       // Retrieve the product data
