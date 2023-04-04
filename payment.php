@@ -129,6 +129,10 @@
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Month Format !</div>";
         }
+        // else if($mmcardmonth<13)
+        // {
+        //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Make Sure the Month Cannot Over 13 !</div>";
+        // }
         else if(!$mcardyear)
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Year ) !</div>";
@@ -142,6 +146,10 @@
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Year Format !</div>";
         }
+        // else if($mmcardyear>22)
+        // {
+        //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Make Sure the Yaer is Above 22 Year !</div>";
+        // }
         else if(!$msecurecode )
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Security Code !</div>";
@@ -164,6 +172,7 @@
         {
             mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$id '  )");
             $sql = "SELECT * FROM orders where user_id = '$id'";
+            $msg = '';
             $result = mysqli_query($conn,$sql);
            while($row = mysqli_fetch_array($result))
            {
@@ -172,14 +181,20 @@
                $size = $row['shoessize'];
                $qty = $row['quantity'];
                $idd=$row['order_ID'];
+               $datetime = date('Y-m-d H:i:s');
 
-               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
+               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ', '$datetime' )");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
-               
-               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully !</div>";
 
+               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully ! </div>";
+               sleep(1);
                echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
+               
+
            }
+
+
+           
             // if (mysqli_query($conn, $sql)) {
                 
             //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
@@ -493,7 +508,7 @@
                          <!-- <form action="" method="POST">  -->
                             <div id="inputDiv" style="display:block;">
                                     <label for="userInput">CARD NUMBER : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="cardnum" placeholder="1111 2222 3333 4444">
+                                    <input type="text" id="userInput" name="cardnum" placeholder="1111222233334444">
 
                                     <label for="userInput">NAME ON CARD : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="cardname">

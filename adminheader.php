@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Admin Header</title>
     <style>
-        .upper
+        /* .upper
         {
             padding: 35px 30px;
             font-size: 27px;
@@ -19,16 +19,17 @@
         *
         {
             margin:0;
-        }
+        } */
         .center
         {
-            margin: 0 50px;
             color: white;
         }
+        
         img
         {
             width: 90px;
         }
+        /*
         .right
         {
             float:right;
@@ -86,12 +87,45 @@
         .dropdown:hover .dropdown-content 
         {
             display: block;
-        }
+        } */
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
     </style>
 </head>
 <body>
     
-<div class="upper">
+<!-- <div class="upper">
     <div class="center" style="float:left;">
         <a href="admindashboard.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
     </div>
@@ -113,8 +147,19 @@
 
 
 
-        </div>
+        </div> -->
 
-    
+        
+<div class="sidenav">
+        <a href="admindashboard.php" class="center" ><img src="image/foot.png" alt="Shop Logo"></a><br><br> 
+        <a href="#">Manage Category</a>
+        <a href="#">Manage Product</a>
+        <a href="#">Manage Order</a>
+        <a href="manageuser.php">Manage Customer</a>
+        <a href="#">Manage Staff </a>
+        <a href="#">Manage comment </a>
+</div>
+
+
 </body>
 </html>

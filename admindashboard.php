@@ -24,7 +24,7 @@
             display: flex;
             text-align:center;
         }
-        .box
+        /* .box
         {
             background-color: #f2f2f2;
             padding: 25px 20px 15px 20px;
@@ -45,7 +45,7 @@
             width: 55%;
             margin: 20px 30px;
             box-shadow: 3px 3px 5px gray;
-        }
+        } */
         .select
         {
             color:white;
@@ -69,62 +69,6 @@
     </style>
 </head>
 <body>
-    <div class="middlee">
-
-        <div class="box">
-
-        <a href="#" class="select">Manage Category</a>
-
-        </div>
-
-        <div class="box2">
-
-        <a href="#" class="select">Manage Product</a>
-
-        </div>
-
-
-
-
-
-
-    </div>
-
-    <div class="middlee">
-
-        <div class="box">
-
-        <a href="manageuser.php" class="select">Manage Customer</a>
-
-
-        </div>
-
-        <div class="box2">
-
-        <a href="#" class="select">Manage Staff </a>
-
-
-        </div>
-
-    </div>
-
-    <div class="middlee">
-
-        <div class="box">
-
-        <a href="#" class="select">Manage Order</a>
-
-
-        </div>
-
-        <div class="box2">
-
-        <a href="#" class="select">Manage comment  </a>
-
-
-        </div>
-
-    </div>
 
 
 </body>
