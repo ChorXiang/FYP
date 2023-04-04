@@ -182,16 +182,21 @@
                $qty = $row['quantity'];
                $idd=$row['order_ID'];
                $datetime = date('Y-m-d H:i:s');
+               $proo_id = $row['pro_id'];
 
+               mysqli_query($conn, "UPDATE shoes SET stock = stock - '$qty' WHERE shoe_id = '$proo_id'");
+               mysqli_query($conn, "UPDATE wishlist SET stock = stock - '$qty' WHERE pro_id = '$proo_id' ");
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ', '$datetime' )");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
 
                $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully ! </div>";
                sleep(1);
                echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
-               
-
            }
+
+
+ 
+
 
 
            
