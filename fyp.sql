@@ -145,14 +145,14 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
----------------------------------------------------------------- Latest Database 30/3/2023 by CX ---------------------------------------------------------------- 
+---------------------------------------------------------------- Latest Database 4/4/2023 by CX ---------------------------------------------------------------- 
 
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2023 at 04:10 PM
+-- Generation Time: Apr 04, 2023 at 04:12 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -184,7 +184,6 @@ CREATE TABLE `history` (
   `her_price` int(11) NOT NULL,
   `her_email` varchar(30) NOT NULL,
   `user_id` int(11) NOT NULL
-  `order_status` VARCHAR(20) NOT NULL DEFAULT 'Pending';
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -241,7 +240,8 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`) VALUES
 (96, 'dunk low panda', 489, 1, '10.5', 2, 1, 2),
-(97, 'Air Jordan', 420, 2, '11.5', 2, 2, 1);
+(97, 'Air Jordan', 420, 4, '11.5', 2, 2, 1),
+(99, 'Converse Chuck Taylor All Star', 60, 1, '', 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -299,9 +299,9 @@ CREATE TABLE `shoes` (
 
 INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_brand`, `category`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
 (1, 'Nike Air Max 90', 'Running Shoes', 'Nike', 'male', 'nike_air_max_90.png', '10', '129.99', 0),
-(2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'https://example.com/adidas-ultraboost.jpg', '8.5', '149.99', 0),
-(3, 'Converse Chuck Taylor All Star', 'Casual Shoes', 'Converse', 'male', 'https://example.com/converse-chuck-taylor.jpg', '9.5', '59.99', 0),
-(4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'female', 'https://example.com/puma-suede-classic.jpg', '7', '79.99', 0);
+(2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'adidas.png', '8.5', '149.99', 0),
+(3, 'Converse Chuck Taylor All Star', 'Casual Shoes', 'Converse', 'male', 'convers.png', '9.5', '59.99', 0),
+(4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'female', 'puma.png', '7', '79.99', 0);
 
 -- --------------------------------------------------------
 
@@ -420,7 +420,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -438,7 +438,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
