@@ -177,15 +177,15 @@ if (isset($_POST['submit'])) {
   $quantity = $_POST['quantity'];
   $size = $_POST['size'];
   $id = $_POST['id'];
-
+  $msg='';
   // perform database insertion
-  $id =$_GET['user_id'];
-  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id' ) ";
-  if (mysqli_query($conn, $sql)) {
-    echo "Add Successfully!";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
+    $id =$_GET['user_id'];
+    $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id' ) ";
+    if (mysqli_query($conn, $sql)) {
+      echo "Add Successfully!";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 
   mysqli_close($conn);
 }  
