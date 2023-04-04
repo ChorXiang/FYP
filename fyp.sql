@@ -146,13 +146,12 @@ COMMIT;
 
 
 ---------------------------------------------------------------- Latest Database 4/4/2023 by CX ---------------------------------------------------------------- 
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2023 at 04:12 AM
+-- Generation Time: Apr 04, 2023 at 07:02 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -192,7 +191,8 @@ CREATE TABLE `history` (
 
 INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`) VALUES
 (16, 'Air Jordan', '11.5', 1, 420, 'dasd@gmail.com', 2),
-(17, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 2);
+(17, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 2),
+(20, 'dunk low panda', '10.5', 1, 489, 'dasd@gmail.com', 2);
 
 -- --------------------------------------------------------
 
@@ -239,9 +239,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`) VALUES
-(96, 'dunk low panda', 489, 1, '10.5', 2, 1, 2),
-(97, 'Air Jordan', 420, 4, '11.5', 2, 2, 1),
-(99, 'Converse Chuck Taylor All Star', 60, 1, '', 2, 0, 0);
+(104, 'Air Jordan', 420, 1, '11.5', 2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -262,8 +260,6 @@ CREATE TABLE `payment` (
   `his_cardmonth` varchar(10) NOT NULL,
   `his_cardyear` varchar(10) NOT NULL,
   `his_securecode` varchar(20) NOT NULL,
-  `his_ewallet` varchar(20) NOT NULL,
-  `his_eemail` varchar(20) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -271,9 +267,9 @@ CREATE TABLE `payment` (
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `his_ewallet`, `his_eemail`, `user_id`) VALUES
-(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 'none', ' ', 2),
-(17, 'a', 'dasd@gmail.com', '0123456789', '12, jalan semabok 1/1, taman semabok sek 1', 'melaka', '75450', '', '', '', '', '', 'GrabPay', '456@gmail.com ', 2);
+INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `user_id`) VALUES
+(1, 'a', 'dasd@gmail.com', '0123456789', '12', 'melaka', '1111', '1111 1111 1111 1111', 'test', '11', '22', '333', 2),
+(17, 'a', 'dasd@gmail.com', '0123456789', '12, jalan semabok 1/1, taman semabok sek 1', 'melaka', '75450', '', '', '', '', '', 2);
 
 -- --------------------------------------------------------
 
@@ -408,7 +404,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -420,13 +416,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
