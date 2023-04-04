@@ -45,6 +45,7 @@
             <th> Total Price</th>
             <th> Email</th>
             <th> Order Status</th>
+            <th> Payment Date</th>
 		</thead>
         <tbody>                       
             <?php
@@ -66,7 +67,8 @@
                     $total =0;
                     $subtotal=$her_price*$her_quantity;
                     $total =  $total + $subtotal;
-                    $status = $row["order_status"];           
+                    $status = $row["order_status"];    
+                    $her_date = $row["her_date"];             
                     ?>
                     <tr>
                         <th><?php echo $her_id; ?></th>
@@ -77,6 +79,7 @@
                         <th>RM <?php echo $total; ?></th>
                         <th><?php echo $her_email; ?></th>
                         <th><?php echo $status; ?></th>
+                        <th><?php echo $her_date; ?></th>     
                     </tr>
                 
 
