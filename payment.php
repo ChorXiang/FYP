@@ -29,9 +29,6 @@
     $mmcardyear = filter_var($mcardyear);
     $msecurecode = $_POST['securecode'];
     $mmsecurecode = filter_var($msecurecode);
-    $mewallet = $_POST['ewallet'];
-    $meemail = $_POST['eemail'];
-    $mmeemail = filter_var($meemail, FILTER_SANITIZE_EMAIL);
     $value = $_POST['option'];
     $select = $_POST['ewallet'];
     $shoesname = $_POST['shoesname'];
@@ -165,7 +162,7 @@
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ','$id '  )");
+            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$id '  )");
             $sql = "SELECT * FROM orders where user_id = '$id'";
             $result = mysqli_query($conn,$sql);
            while($row = mysqli_fetch_array($result))
@@ -179,7 +176,9 @@
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
                
-               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully !</div>";
+
+               echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
            }
             // if (mysqli_query($conn, $sql)) {
                 
@@ -252,7 +251,7 @@
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
                
-               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
+               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";           
            }
         }
     }
@@ -381,8 +380,16 @@
     </style>
 </head>
 <body>
-<div class="middlee">
+    
 
+<div class="center_payment">
+
+    <br>
+<h1><b style="font-size: 50px;">Payment Page </b></h1><br>
+<?php echo "<div>".$msg."</div>"?>
+
+                    </div>
+<div class="middlee">
 
             <div class="row">
                 <div class="box">
@@ -571,9 +578,6 @@
                             <label for="option1"> Credit Card / Debit Card </label>
                             <input type="radio" checked="checked" id="option1" name="option" value="1" onclick="showInput()" ><br><br>
 
-                            <label for="option2"> TNG eWallet  </label>
-                            <input type="radio" id="option2" name="option" value="2" onclick="showInput()"><br>
-
 
                         </fieldset>
                 </div>
@@ -584,9 +588,7 @@
     </div>
 
     </form>
-                    <div class="center_payment">
-    <?php echo "<div>".$msg."</div>"?>
-                    </div>
+
 </body>
 </html>
 

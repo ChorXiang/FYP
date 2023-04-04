@@ -155,9 +155,7 @@
                     <a class="profile" href="userchangepass.php?user_id=<?php echo $id ?>" alt="change">Change Password<i class="fa fa-pencil"></i></a>
                                                                 <!-- ?email=<?php echo $id ?> -->
 
-                    <a class="profile" href="#" alt="change">Forget Password<i class="fa fa-pencil"></i></a>
-
-                    <a class="profile" href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
+                    
                                                         
 
 

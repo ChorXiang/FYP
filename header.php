@@ -101,11 +101,12 @@
 
         <ul >
                 <li  style="float: right;"><a href="order.php?user_id=<?php echo $id ?>"  class="center" ><i class="fa fa-shopping-cart"> </i> Shopping cart</a></li>
-                <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
+                <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Welcome Back</a>
                     <div class="dropdown-content">
                         <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
                         <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
                         <a href="order_his.php?user_id=<?php echo $id ?>">My Order History</a>
+                        <a href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
                     </div>
                     </li>
         </ul>
@@ -113,6 +114,8 @@
         <hr>
         <div class="middle">
         <ul >
+        <li class="dropdown"><a href="aboutus.php?user_id=<?php echo $id ?>">About Us</a>
+            </li>
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
                     <a href="#">Nike</a>
@@ -122,15 +125,16 @@
                 </div>
             </li>
 
+
+
+            <li class="dropdown"><a href="product.php?user_id=<?php echo $id ?>">All Product</a>
+            </li>
+
             <li class="dropdown"><a href="#" class="dropbtn">Support</a>
                 <div class="dropdown-content">
-                    <a href="aboutus.php?user_id=<?php echo $id ?>">About Us</a>
                     <a href="contact2.php?user_id=<?php echo $id ?>">Contact Us</a>
                     <a href="commentpage.php?user_id=<?php echo $id ?>">Comment</a>
                 </div>
-            </li>
-
-            <li class="dropdown"><a href="product.php?user_id=<?php echo $id ?>">All Product</a>
             </li>
         </ul>
 
@@ -158,6 +162,8 @@
     <hr>
         <div class="middle">
         <ul >
+        <li class="dropdown"><a href="aboutus.php">About Us</a>
+            </li>
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
                     <a href="#">Nike</a>
@@ -167,15 +173,15 @@
                 </div>
             </li>
 
-            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
-                <div class="dropdown-content">
-                    <a href="aboutus.php">About Us</a>
-                    <a href="contact2.php">Contact Us</a>
-                    <a href="commentpage.php">Comment</a>
-                </div>
+
+            <li class="dropdown"><a href="product.php">All Product</a>
             </li>
 
-            <li class="dropdown"><a href="#">All Product</a>
+            
+            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
+                <div class="dropdown-content">
+                    <a href="contact2.php">Contact Us</a>
+                </div>
             </li>
         </ul>
 
