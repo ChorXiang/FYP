@@ -229,7 +229,17 @@ if (isset($_POST['submit'])) {
   ?>
 <?php
 
+$sizeErr ="";
+$size ="";
+
 if (isset($_POST['wishlist'])) {
+
+  if (empty($_POST['size'])) {
+    $sizeErr = '* Size is required';
+  } else {
+      $size = test_input($_POST['size']);
+      // process wishlist form data
+  }
 
   // perform database insertion
   if ($sizeErr == "" ) {
