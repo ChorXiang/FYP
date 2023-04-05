@@ -63,20 +63,20 @@
   
 
     if(isset($_POST["submit"])){
+      
         if (empty($_POST["size"])) {
           $sizeErr = "* Size is required";
         } else {
           $size = test_input($_POST["size"]);
       }
 
-        if (empty($_POST["quantity"])) {
           if (empty($_POST["quantity"])) {
             $quantityErr = "* Quantity is required";
           } else {
             $quantity = test_input($_POST["quantity"]);
         }
     }
-  }
+  
     
   if(isset($_POST["wishlist"])){
     if (empty($_POST["size"])) {
@@ -136,11 +136,18 @@
   <span class="error"><?php echo $quantityErr;?></span>
   <br>
   <label for="size">Size:</label>
-  <input type="radio" name="size" value="6">6
   <input type="radio" name="size" value="7">7
+  <input type="radio" name="size" value="7.5">7.5
   <input type="radio" name="size" value="8">8
+  <input type="radio" name="size" value="8.5">8.5
   <input type="radio" name="size" value="9">9
-  <input type="radio" name="size" value="10">10
+  <input type="radio" name="size" value="9.5">9.5
+  <br><input type="radio" name="size" value="10">10
+  <input type="radio" name="size" value="10.5">10.5
+  <input type="radio" name="size" value="11">11
+  <input type="radio" name="size" value="11.5">11.5
+  <input type="radio" name="size" value="12">12
+  <input type="radio" name="size" value="12.5">12.5
   <span class="error"><?php echo $sizeErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Add to Cart">
@@ -150,11 +157,18 @@
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>">
-  <input type="radio" name="size" value="6">6
   <input type="radio" name="size" value="7">7
+  <input type="radio" name="size" value="7.5">7.5
   <input type="radio" name="size" value="8">8
+  <input type="radio" name="size" value="8.5">8.5
   <input type="radio" name="size" value="9">9
-  <input type="radio" name="size" value="10">10
+  <input type="radio" name="size" value="9.5">9.5
+  <br><input type="radio" name="size" value="10">10
+  <input type="radio" name="size" value="10.5">10.5
+  <input type="radio" name="size" value="11">11
+  <input type="radio" name="size" value="11.5">11.5
+  <input type="radio" name="size" value="12">12
+  <input type="radio" name="size" value="12.5">12.5
   <span class="error"><?php echo $sizeErr;?></span>
   <br><br>
   <input type="submit" name="wishlist" value="Add to Wishlist">
@@ -169,7 +183,14 @@
 
 </div>
 
-<?php
+  <?php
+$sizeErr = "";
+$size = "";
+$shoe_name = "";
+$shoe_price = "";
+$quantity = "";
+$quantityErr = "";
+
 if (isset($_POST['submit'])) {
 
   $shoe_name = $_POST['shoe_name'];
@@ -178,8 +199,22 @@ if (isset($_POST['submit'])) {
   $size = $_POST['size'];
   $id = $_POST['id'];
   $msg='';
+
+  if (empty($size)) {
+    $sizeErr = "* Size is required";
+  } else {
+    $size = test_input($size);
+  }
+
+  if (empty($_POST["quantity"])) {
+    $quantityErr = "* Quantity is required";
+  } else {
+    $quantity = test_input($quantity);
+  }
+
   // perform database insertion
-    $id =$_GET['user_id'];
+  $id =$_GET['user_id'];
+  if ($sizeErr == "" && $quantityErr == "") {
     $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id' ) ";
     if (mysqli_query($conn, $sql)) {
       echo "Add Successfully!";
@@ -188,8 +223,10 @@ if (isset($_POST['submit'])) {
     }
 
   mysqli_close($conn);
+  }
 }  
-?>
+
+  ?>
 <?php
 
 if (isset($_POST['wishlist'])) {
