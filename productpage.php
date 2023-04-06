@@ -135,7 +135,7 @@
   <input type="number" name="quantity" id="quantity" min="1" max="5" required>
   <span class="error"><?php echo $quantityErr;?></span>
   <br>
-  <label for="size">Size:</label>
+  <label for="size"><b>Size:</b></label><br>
   <input type="radio" name="size" value="7">7
   <input type="radio" name="size" value="7.5">7.5
   <input type="radio" name="size" value="8">8
@@ -152,6 +152,8 @@
   <br><br>
   <input type="submit" name="submit" value="Add to Cart">
 </form>
+
+<br><br>
 
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
