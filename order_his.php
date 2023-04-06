@@ -44,8 +44,8 @@
 			<th> Shoes Price</th>
             <th> Total Price</th>
             <th> Email</th>
-            <th> Order Status</th>
             <th> Payment Date</th>
+            <th> Order Status</th>
 		</thead>
         <tbody>                       
             <?php
@@ -78,8 +78,9 @@
                         <th>RM <?php echo $her_price; ?></th>
                         <th>RM <?php echo $total; ?></th>
                         <th><?php echo $her_email; ?></th>
+                        <th><?php echo $her_date; ?></th>  
                         <th><?php echo $status; ?></th>
-                        <th><?php echo $her_date; ?></th>     
+
                     </tr>
                 
 
