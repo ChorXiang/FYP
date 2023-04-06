@@ -9,23 +9,24 @@
 <head>
     <title>VIEW ORDER HISTORY</title>
     <style>
-        body{
-  
+        body
+        {
+            font-size: 25px;
         }
 
-        fieldset{
+        fieldset
+        {
             color: black;      
             text-align: center;    
         }
 
-        .table{
+        .table
+        {
             margin-left: auto;
             margin-right: auto;
             background-color: #f2f2f2;
             width: 100%;
         }
-
-       
 
     </style>
 </head>
@@ -33,10 +34,11 @@
 <fieldset> 
     
     <div class=".table_center">
-    <h1>VIEW ORDER HISTORY</h1>
+    <br><h1>VIEW ORDER HISTORY</h1><br>
     <div class=".table_center">
     <table class="table" border="1px">
 		<thead>
+            <th> Shoes Image</th>
 			<th> Order ID</th>
 			<th> Shoes Name</th>
 			<th> Shoes Size </th>
@@ -71,9 +73,10 @@
                     $her_date = $row["her_date"];             
                     ?>
                     <tr>
+                        <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" ></th>
                         <th><?php echo $her_id; ?></th>
                         <th><?php echo $her_shoesname; ?></th>
-                        <th><?php echo $her_size; ?></th>
+                        <th>UK <?php echo $her_size; ?></th>
                         <th><?php echo $her_quantity; ?></th>
                         <th>RM <?php echo $her_price; ?></th>
                         <th>RM <?php echo $total; ?></th>
