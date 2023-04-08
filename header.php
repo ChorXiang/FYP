@@ -121,7 +121,7 @@
                     <a href="#">Nike</a>
                     <a href="#">Puma</a>
                     <a href="#">Adidas</a>
-                    <a href="#">Convers</a>
+                    <a href="#">Converse</a>
                 </div>
             </li>
 
