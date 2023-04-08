@@ -1,205 +1,174 @@
-<!DOCTYPE HTML>  
-<html>
-<head>
-<style>
-  .error {
-  color: #FF0000;
-  }
-
-  .left{
-    float:left;
-    padding-left:80px ;
-  }
-
-  .right{
-    float:right;
-    padding-right:80px ;
-  }
-  .container
-  {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid #ccc;
-  padding: 20px;
-  }
-
-  .imgcenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  }
-
-  .wordcenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  }
-</style>
-</head>
-<body>  
-  
-  <?php
-
-    include 'header.php'; 
+<?php
     include 'conn.php'; 
 ?>
 
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
-  $sizeErr = "";
-  $size = "";
-  $shoe_name = "";
-  $shoe_price = "";
-  $quantity = "";
-  $quantityErr = "";
-  
+    <title>Admin Manage Customer / User Page</title>
 
-    if(isset($_POST["submit"])){
-        if (empty($_POST["size"])) {
-          $sizeErr = "* Size is required";
-        } else {
-          $size = test_input($_POST["size"]);
-      }
+    <style>
 
-        if (empty($_POST["quantity"])) {
-          if (empty($_POST["quantity"])) {
-            $quantityErr = "* Quantity is required";
-          } else {
-            $quantity = test_input($_POST["quantity"]);
-        }
+    /* Main column */
+    .container {
+      display: flex;
+      height: 100%;
     }
-  }
+
+    .sidenav {
+      height: 100%;
+      flex: 30%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .main {
+      flex: 0 0 70%;
+      background-color: white;
+      padding: 20px;
+      height: 100%;
+      float: right;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 2em;
+    }
+
+
+    .sidenav a {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav img
+    {
+      height: 50px;
+      width: 90px;
+    }
+
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+    .img
+    {
+      width: 80px;
+    }
+
+    th
+    {
+      padding: 5px;
+    }
+
+    fieldset
+    {
+      background-color: lightgrey;
+    }
     
-    if(isset($_POST["wishlist"])){
-      if (empty($_POST["size"])) {
-        $sizeErr = "* Size is required";
-      } else {
-        $size = test_input($_POST["size"]);
-    }
+</style>
 
-  } 
+</head>
+<body>
 
-  function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-
-?>
-
-<?php
-    $sql = "SELECT * FROM shoes WHERE shoe_id = 1";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-?>
-
-<div class="container">
-<div class="left">
-<fieldset>
-<div class="wordcenter">
-<h2><b>PRODUCT IMAGE</b></h2><br>
-</div>
-<img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-
-</fieldset>
-</div>
-
-<div class='right'>
-<fieldset>
-<div class="wordcenter">
-<h1><?php echo $row["shoe_name"]; ?></h1>
-</div>
-<p>Type: <?php echo $row["shoe_type"]; ?></p>
-<p>Brand: <?php echo $row["shoe_brand"]; ?></p>
-<p>Category: <?php echo $row["category"]; ?></p>
-<p>Price: $<?php echo $row["shoe_price"]; ?></p>
-
-<form action="" method="post">
-  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
-  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
-  <br>
-  <label for="quantity"><b>Quantity (Max 5):</b></label>
-  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
-  <span class="error"><?php echo $quantityErr;?></span>
-  <br>
-  <label for="size">Size:</label>
-  <input type="radio" name="size" value="6">6
-  <input type="radio" name="size" value="7">7
-  <input type="radio" name="size" value="8">8
-  <input type="radio" name="size" value="9">9
-  <input type="radio" name="size" value="10">10
-  <span class="error"><?php echo $sizeErr;?></span>
-  <br><br>
-  <input type="submit" name="submit" value="Add to Cart">
-</form>
-<br>
-<form action="" method="post">
-  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
-  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
-  <button type="submit" name="size" value="6">Size 6</button>
-  <button type="submit" name="size" value="7">Size 7</button>
-  <button type="submit" name="size" value="8">Size 8</button>
-  <button type="submit" name="size" value="9">Size 9</button>
-  <button type="submit" name="size" value="10">Size 10</button>
-  <span class="error"><?php echo $sizeErr;?></span>
-  <br><br>
-  <input type="submit" name="wishlist" value="Add to Wishlist">
-</form>
-
-
-
-
-</fieldset>
+<div class="side">
+<div class="sidenav">
+        <a href="admindashboard.php"><img src="image/foot.png" alt="Shop Logo" width="10px" height="10px"></a><br><br> 
+        <a href="#">Manage Category</a>
+        <a href="#">Manage Product</a>
+        <a href="#">Manage Order</a>
+        <a href="manageuser.php">Manage Customer</a>
+        <a href="#">Manage Staff </a>
+        <a href="#">Manage comment </a>
 </div>
 </div>
 
-<?php
-if (isset($_POST['submit'])) {
-//名字要改
-  $shoe_name = $_POST['shoe_name'];
-  $shoe_price = $_POST['shoe_price'];
-  $quantity = $_POST['quantity'];
-  $size = $_POST['size'];
+<div class="main">
 
-  // perform database insertion
-  $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size')";
-  if (mysqli_query($conn, $sql)) {
-    echo "Add Successfully!";
-  } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
+<div class="middle">
+    <fieldset>
+    <?php
+    //   $name = $_GET['name'];
+        $sql = "select * from user";
+        $result = mysqli_query($conn,$sql);
 
-  mysqli_close($conn);
-}  
-?>
-<?php
+        // $host = "SELECT * FROM `admin`";
+        // $query = mysqli_query($conn,$host);
+        // $host_image = mysqli_fetch_assoc($query);
+        ?>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Customer</b></h1>
+      <table border="0px">
+        <tr>
+          <th>ID</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Contact No</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Status</th>
+          <th>Manage</th>
+        </tr>
+        <?php
 
-if (isset($_POST['wishlist'])) {
-  $shoe_name = $_POST['shoe_name'];
-  $shoe_price = $_POST['shoe_price'];
-  $size = $_POST['size'];
+        while($row = mysqli_fetch_array($result))
+        {
+            ?>
+      
+        <tr>
+          <th><?php echo $row["user_id"]; ?></th>
+          <th><img class='img' src="<?php echo "image/".$row['image'];?>" ></th>
+          <th><?php echo $row["full_name"];	?></th>
+          <th><?php echo $row["contact_no"];?></th>
+          <th><?php echo $row["email_address"];?></th>
+          <th><?php echo $row["username"];?></th>
+          <th><?php echo $row["userpassword"];?></th>
+          <th><?php echo $row["status"];?></th>
+          <th><a href="deletemanageuser.php?user_id=<?php echo $row['user_id']; ?>"><i class="fa fa-close" style="font-size:36px"></i></a>
+                                                   <!-- ?No=<?php echo $row['No']; ?> -->
+            <a href="editmanageuser.php?email=<?php echo $row['email_address'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+                                                                       <!--  &&name=<?php echo $name?> -->
+            </th>
+        </tr>
+            <?php
 
-  // perform database insertion
-  if ($sizeErr == "" ) {
-  $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
-  if (mysqli_query($conn, $sql)) {
-    echo "Add Successfully!";
-  } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
+        }
 
-  mysqli_close($conn);
-  }  
-}
-?>
+		?>
+			
+      </table>
+<p>
+        
+      <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span>
+    
+      <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
+                                                     <!-- ?name=<?php echo $name?> -->
+
+      <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
+
+    </fieldset>
+  </div>
+
+</div>
+</div>
 </body>
 </html>
-
-<?php
-    include 'footer.php';
-?>
