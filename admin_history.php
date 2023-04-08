@@ -21,7 +21,7 @@
 <?php
  
     include 'conn.php'; 
-    include 'header.php'; 
+    
 ?>
 
 <?php
@@ -48,7 +48,7 @@ function test_input($data) {
 ?>
 <?php
 // SQL query to retrieve all data from shoes table
-$sql = "SELECT * FROM history where her_id=16";
+$sql = "SELECT * FROM history where her_id=1";
 $result = $conn->query($sql);
 
 // Check if there are any rows returned
@@ -121,7 +121,7 @@ if(isset($_POST["order_status"])){
   // perform database update
   if ($statusErr == "") {
   
-    $sql = "UPDATE history SET order_status='$status' WHERE her_id='16'";
+    $sql = "UPDATE history SET order_status='$status' WHERE her_id='1'";
 
 
     if (mysqli_query($conn, $sql)) {
@@ -137,6 +137,3 @@ if(isset($_POST["order_status"])){
 <?php echo "<div>".$msg."</div>"?>
 </body>
 </html>
-<?php
-    include 'footer.php';
-?>
