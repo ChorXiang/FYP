@@ -1,6 +1,95 @@
 <?php
     include 'adminheader.php';
     include 'conn.php'; 
+    $msg = '';
+    $id = $_REQUEST["email"];
+?>
+
+
+<?php
+
+if (isset($_POST["savebtn"])) 	
+{
+	$mname = $_POST["name"];  	
+    $memail = $_POST["email"];  
+    $mmemail = filter_var($memail, FILTER_SANITIZE_EMAIL);
+    $mph = $_POST["contact"];  
+    $mmph = filter_var($mph);
+    $musername = $_POST["username"];  
+    $mstatus = $_POST['status'];
+    $mimage = $_POST['image'];
+
+
+        
+
+	if (!$mname)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
+    }
+    else if(!$memail)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+ 
+    }
+    else if(!filter_var($mmemail, FILTER_VALIDATE_EMAIL) === true)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
+    }
+    else if(!$mph)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
+
+    }
+    else if(strlen($mmph)<10)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
+    }
+    else if(strlen($mmph)>12)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
+    }
+    else if(!$musername)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in User Name !</div>";
+ 
+    }
+    else if(!$mstatus)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Status !</div>";
+ 
+    }
+    else if(!$mimage)
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Put the Image !</div>";
+ 
+    }
+    else
+    {
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', status='" . $_POST['status'] . "' , image='" . $_POST['image'] . "', username='" . $_POST['username'] . "', contact_no='" . $_POST['contact'] . "' where email_address = '$id'");            
+        // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
+        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
+ 
+    }
+    
+    //         
+    //         if (mysqli_query($conn, $sql)) {
+    //             echo "Updated successfully !";
+    //           } 
+    //     else
+    //     {
+    //         echo "Please Key the Correct Role and Status follow the two selection !";
+    //     }
+    
+    // else
+    // {
+    //     echo "Please Key the Correct Role and Status follow the two selection !";
+    // }
+
+
+
+	
+	
+}
 
 ?>
 
@@ -48,7 +137,7 @@
     <?php
         // $name=$_GET['name'];
 
-        // $id = $_REQUEST["email"];
+
 
         $result = mysqli_query($conn, "select * from user where email_address = '$id'"); 
         $row = mysqli_fetch_assoc($result);
@@ -64,31 +153,27 @@
 
     <form name="addfrm" method="post" action="">
 
-        <p><label>Name<sup>*</sup> :</label><input type="text" name="name" size="50" value="<?php echo $row['fullname']; ?>">
+        <label>Name<sup>*</sup> :</label><input type="text" name="name" size="0" value="<?php echo $row['full_name']; ?>">
 
-        <p><label>Email<sup>*</sup> :</label><input type="email" name="email" value="<?php echo $row['email_address']; ?>">
+        <br><label>Email<sup>*</sup> :</label><input type="email" name="email" value="<?php echo $row['email_address']; ?>">
      
-        <p><label>Role<sup>*</sup> :</label><input type="text" name="contact" size="10" value="<?php echo $row['contact_no']; ?>">
+        <br><label>Phone Number<sup>*</sup> :</label><input type="text" name="contact" size="10" value="<?php echo $row['contact_no']; ?>">
 
-        <p><label>Username<sup>*</sup> :</label><input type="text" name="username" size="15" value="<?php echo $row['username']; ?>">
+        <br><label>Username<sup>*</sup> :</label><input type="text" name="username" size="15" value="<?php echo $row['username']; ?>">
 
-        <p><label>Password<sup>*</sup> :</label><input type="text" name="password" size="15" value="<?php echo $row['userpassword']; ?>">
-
-        <p><label>Status<sup>*</sup> (Active / Inactive) :</label><input type="text" name="status" size="15" value="<?php echo $row['status']; ?>">
+        <br><label for="status"  >Status<sup>*</sup> : </label>
+                <select id="status" name="status">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
 
         <p>User Image<sup>*</sup> : (insert the file picture)<br><br><input type="file" id="file"  name="image" class="form-control" multiple></P>
         
-        <p><input type="submit" name="savebtn" value="UPDATE">
-
-        <div style="padding-bottom:5px;">
-        <i class="fa fa-mail-forward"></i>
-
-
-
-        </div>
-
+        <br><input type="submit" name="savebtn" value="UPDATE">
 
     </form>
+    <div style=text-align:center;>
+    <?php echo "<div>".$msg."</div>"?></dev>
 </fieldset>
 </div>
 
@@ -96,101 +181,3 @@
 </html>
 
 
-<?php
-
-if (isset($_POST["savebtn"])) 	
-{
-	$mname = $_POST["name"];  	
-    $memail = $_POST["email"];  
-	$mrole = $_POST["role"];  	
-	$mstatus = $_POST["status"];  		
-    $mimage = $_POST['image'];
-
-
-        
-
-	if (!$mname)
-    {
-        echo "Please Key in Name !";
-    }
-    else if(!$memail)
-    {
-        echo "Please Key in Email !";
-    }
-    else if(!$mrole)
-    {
-        echo "Please Key in Role !";
-    }
-    else if(!$mstatus)
-    {
-        echo "Please Key in Status !";
-    }
-    else if(!$mimage)
-    {
-        echo "Please put the image ! ";
-    }
-    else if($mrole=="VIP")
-    {
-
-        if($mstatus == "Active")
-        {
-            mysqli_query($conn,"UPDATE user set Name='" . $_POST['name'] . "', Email='" . $_POST['email'] . "', Role='" . $_POST['role'] . "' ,Status='" . $_POST['status'] . "' where Email = '$id'");
-            $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,$sql);
-            if (mysqli_query($conn, $sql)) {
-                echo "Updated successfully !";
-              } 
-        }
-        else if($mstatus == "Inactive")
-        {
-            mysqli_query($conn,"UPDATE user set Name='" . $_POST['name'] . "', Email='" . $_POST['email'] . "', Role='" . $_POST['role'] . "' ,Status='" . $_POST['status'] . "' where Email = '$id'");
-            $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,$sql);
-            if (mysqli_query($conn, $sql)) {
-                echo "Updated successfully !";
-              } 
-        }
-        else
-        {
-            echo "Please Key the Correct Role and Status follow the two selection !";
-        }
-    }
-    else if($mrole=="Customer")
-    {
-
-        if($mstatus == "Active")
-        {
-            mysqli_query($conn,"UPDATE user set Name='" . $_POST['name'] . "', Email='" . $_POST['email'] . "', Role='" . $_POST['role'] . "' ,Status='" . $_POST['status'] . "' where Email = '$id'");
-            $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,$sql);
-            if (mysqli_query($conn, $sql)) {
-                echo "Updated successfully !";
-              } 
-            
-        }
-        else if($mstatus == "Inactive")
-        {
-            mysqli_query($conn,"UPDATE user set Name='" . $_POST['name'] . "', Email='" . $_POST['email'] . "', Role='" . $_POST['role'] . "' ,Status='" . $_POST['status'] . "' where Email = '$id'");            
-            $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,$sql);
-            if (mysqli_query($conn, $sql)) {
-                echo "Updated successfully !";
-              } 
-        }
-        else
-        {
-            echo "Please Key the Correct Role and Status follow the two selection !";
-        }
-    }
-    else
-    {
-        echo "Please Key the Correct Role and Status follow the two selection !";
-    }
-
-
-
-	
-	
-}
-
-?>
