@@ -25,16 +25,17 @@
     }
     *
     {
-      font-size: 30px;
+      font-size: 20px;
     }
     .left
     {
       float: right;
       margin-bottom: 50px;
     }
-    td, th 
+    
+    th 
     {
-      text-align: left;
+      
       padding: 30px;
     }
     a:hover
@@ -66,14 +67,14 @@
       <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Comment </b></h1>
       <table border="0px">
         <tr>
-          <td>Comment ID </td>
-          <td>Email </td>
-          <td>User Interface Rating</td>
-          <td>Shipping Rating</td>
-          <td>Customer Service Rating</td>
-          <td>Product Quality Rating</td>
-          <td>Message</td>
-          <td>Date</td>
+          <th>Comment ID </th>
+          <th>Email </th>
+          <th>User Interface Rating</th>
+          <th>Shipping Rating</th>
+          <th>Customer Service Rating</th>
+          <th>Product Quality Rating</th>
+          <th>Message</th>
+          <th>Date</th>
 
         </tr>
         <?php
@@ -83,14 +84,14 @@
             ?>
       
         <tr>
-          <td><?php echo $row["comment_id"]; ?></td>         
-          <td><?php echo $row["email"];	?></td>
-          <td><?php echo $row["user_interface_rating"];	?></td>
-          <td><?php echo $row["shipping_rating"];?></td>
-          <td><?php echo $row["customer_service_rating"];?></td>
-          <td><?php echo $row["product_quality_rating"];?></td>
-          <td><?php echo $row["message"];?></td>
-          <td><?php echo $row["created_at"];?></td>
+          <th><?php echo $row["comment_id"]; ?></th>         
+          <th><?php echo $row["email"];	?></th>
+          <th><?php echo $row["user_interface_rating"];	?></th>
+          <th><?php echo $row["shipping_rating"];?></th>
+          <th><?php echo $row["customer_service_rating"];?></th>
+          <th><?php echo $row["product_quality_rating"];?></th>
+          <th><?php echo $row["message"];?></th>
+          <th><?php echo $row["created_at"];?></th>
         </tr>
             <?php
 
