@@ -1,3 +1,4 @@
+
 <?php
     include 'header.php';
     include 'conn.php'; 
@@ -10,7 +11,7 @@
 <html>
 <head>
   <title>Shoes Product List</title>
-  
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
   <style>
@@ -61,24 +62,6 @@
 .sidebar a:hover {
   background-color: #444;
 }
-
-.sidebar .all-link {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 18px; /* 设置字体大小 */
-  font-weight: bold; /* 设置字体粗细 */
-  font-family: Arial, sans-serif; /* 设置字体 */
-  /* 这里可以添加其他样式 */
-}
-
-
-.sidebar .all-link:hover {
-  background-color: #444;
-}
-
 
 .product-list {
   display: flex;
@@ -172,7 +155,7 @@
         <ul>
         <li><a href="productlist.php" class="all-link">All</a></li>
 
-        
+       
   <?php
 // Retrieve the unique shoe categories
 $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
@@ -196,46 +179,47 @@ while ($row = mysqli_fetch_assoc($result))
         </ul>
       </nav>
     </div>
+<div class="product-list">
+			<?php
 
-  
-  <div class="product-list">
-    <?php
-                  $id =$_GET['user_id'];
-      // include_once 'shoe.php';
+$id =$_GET['user_id'];
 
-      // Retrieve the product data
-      $result = mysqli_query($conn, "SELECT * FROM shoes");
 
-      // Loop through the product data and generate HTML code for each product
-      while ($row = mysqli_fetch_assoc($result)) 
-      {
-        $sid = $row['shoe_id'];
-        echo '<div class="product-card">';     ?>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-        <?php
-        echo '<h2>' . $row['category'] . '</h2>';
-        ?>
-        <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-        <?php
-        echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-        echo '</div>';
-      }
+			// Check if a shoe type has been selected
+			if (isset($_GET['shoe_type'])) {
+				// Retrieve the selected shoe type
+				$shoe_type = $_GET['shoe_type'];
 
-      // Close the database connection
-      mysqli_close($conn);
-    ?>
-  </div>
+				// Retrieve the shoes that match the selected type
+				$result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type'");
+			} else {
+				// Retrieve all the shoes
+				$result = mysqli_query($conn, "SELECT * FROM shoes");
+			}
+
+			// Check if there are any shoes to display
+			if (mysqli_num_rows($result) > 0) {
+				// Loop through the shoes and generate HTML code for each shoe
+				while ($row = mysqli_fetch_assoc($result)) {
+                    $sid = $row['shoe_id'];
+                    echo '<div class="product-card">';     ?>
+                    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+                    <?php
+                    echo '<h2>' . $row['category'] . '</h2>';
+                    ?>
+                    <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+                    <?php
+                    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+                    echo '</div>';
+				}
+			} else {
+				echo '<p>No shoes found.</p>';
+			}
+
+			// Close the database connection
+			mysqli_close($conn);
+			?>
+		</div>
+	</div>
 </body>
-
-
-
-
-  </body>
 </html>
-
-
-
-<?php
-    include 'footer.php';
-   
-?>
