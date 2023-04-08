@@ -3,14 +3,15 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Order</title>
-    
+    <title>Admin | Report Staff</title>
+
     <style>
         table 
         {
@@ -77,7 +78,6 @@
           padding: 0;
         
         }
-
 
         table 
         {
@@ -147,18 +147,19 @@
 
         </style>
 </head>
+
+</head>
 <body>
     
 
-
 <?php
-        $sql = "select * from history";
+        $sql = "select * from admin";
         $result = mysqli_query($conn,$sql);
     ?>
       
       <div >
         
-        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Order Informations</h1>
+        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Staff Informations</h1>
       </div>
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
@@ -169,18 +170,13 @@
             </tr>
 
 
-            <tr >
+            <tr>
            
           
-          <td>Order ID</td>
-          <td>Shoes Name </td>
-          <td>Shoes Size</td>
-          <td>Quantity</td>
-          <td>Price</td>
-          <td>Total Price</td>
-          <td>Email</td>
-          <td>Date</td>
-          <td>Order Status</td>
+            <td>Admin ID</td>
+          <td>Admin Name</td>
+          <td>status</td>
+          <td>Authority</td>
                 
              
                 
@@ -191,15 +187,10 @@
      
          ?>
             <tr>
-          <td><?php echo $row["her_id"]; ?></td>         
-          <td><?php echo $row["her_shoesname"];	?></td>
-          <td><?php echo $row["her_size"];	?></td>
-          <td><?php echo $row["her_quantity"];?></td>
-          <td><?php echo $row["her_price"];?></td>
-          <td><?php echo $row["her_price"];?></td>
-          <td><?php echo $row["her_date"];?></td>
-          <td><?php echo $row["her_date"];?></td>
-          <td><?php echo $row["order_status"];?></td>
+          <td><?php echo $row["admin_id"]; ?></td>         
+          <td></td>   
+          <td></td>   
+          <td></td>   
   
             </tr>
             <?php
@@ -209,7 +200,7 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="manageorder.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Back to Manage Order </button></a>
+        <a href="managestaff.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Back to Manage Staff </button></a>
     
         <?php
     if(isset($_POST["backbtn"]))
@@ -221,8 +212,6 @@
     ?>
 </div>
 
-
-   
 
 </body>
 </html>
