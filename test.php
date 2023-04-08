@@ -95,10 +95,10 @@
         <a href="admindashboard.php"><img src="image/foot.png" alt="Shop Logo" width="10px" height="10px"></a><br><br> 
         <a href="#">Manage Category</a>
         <a href="#">Manage Product</a>
-        <a href="#">Manage Order</a>
+        <a href="admin_history.php">Manage Order</a>
         <a href="manageuser.php">Manage Customer</a>
         <a href="#">Manage Staff </a>
-        <a href="#">Manage comment </a>
+        <a href="managecomment.php">Manage comment </a>
 </div>
 </div>
 
