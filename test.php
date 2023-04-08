@@ -42,6 +42,7 @@
       position: absolute;
       top: 0;
       right: 0;
+      font-size: 2em;
     }
 
 
@@ -76,10 +77,13 @@
 
     th
     {
-      padding: 25px;
+      padding: 5px;
     }
 
-    
+    fieldset
+    {
+      background-color: lightgrey;
+    }
     
 </style>
 
