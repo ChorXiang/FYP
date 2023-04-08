@@ -159,7 +159,7 @@
 <p>
         
       <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span>
-    
+        <br>
       <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
