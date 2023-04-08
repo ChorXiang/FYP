@@ -4,20 +4,32 @@
 ?>
 <?php
 
-  if(isset($_POST["submit"])){
+//   if(isset($_POST["submit"])){
     
-      if (empty($_POST["size"])) {
-        $sizeErr = "* Size is required";
-      } else {
-        $size = test_input($_POST["size"]);
-    }
+//       if (empty($_POST["shoe_name"])) {
+//         $shoe_name = "* Shoe Name is required";
+//       } else {
+//         $shoe_name = test_input($_POST["shoe_name"]);
+//     }
 
-        if (empty($_POST["quantity"])) {
-          $quantityErr = "* Quantity is required";
-        } else {
-          $quantity = test_input($_POST["quantity"]);
-      }
-  }
+//         if (empty($_POST["quantity"])) {
+//           $quantityErr = "* Quantity is required";
+//         } else {
+//           $quantity = test_input($_POST["quantity"]);
+//       }
+
+//       if (empty($_POST["quantity"])) {
+//           $quantityErr = "* Quantity is required";
+//         } else {
+//           $quantity = test_input($_POST["quantity"]);
+//       }
+
+//       if (empty($_POST["quantity"])) {
+//           $quantityErr = "* Quantity is required";
+//         } else {
+//           $quantity = test_input($_POST["quantity"]);
+//       }
+//   }
 
 
 
@@ -70,7 +82,7 @@ function test_input($data) {
 
     form input
     {
-        font-size: 20px;
+        font-size: 25px;
     }
 
 
@@ -98,7 +110,10 @@ function test_input($data) {
       .sidenav a {font-size: 18px;}
     }
 
-    
+    select
+    {
+        font-size: 25px;
+    }
 
     th
     {
@@ -132,26 +147,13 @@ function test_input($data) {
 <div class="middle">
 <fieldset>
     <?php
-        $errors = [];
-
-        // If the form is submitted, update the record
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (empty($_POST["shoe_name"])) {
-                $errors[] = "Shoe name is required";
-            } else {
-                $shoe_name = $_POST["shoe_name"];
-            }
-    
-            if (empty($_POST["shoe_type"])) {
-                $errors[] = "Shoe type is required";
-            } else {
-                $shoe_type = $_POST["shoe_type"];
-            }
     
             // Add validation rules for the other input fields
     
-            if (empty($errors)) {
+            if(isset($_POST["submit"])){
                 $shoe_id = $_POST["shoe_id"];
+                $shoe_name = $_POST["shoe_name"];
+                $shoe_type = $_POST["shoe_type"];
                 $shoe_brand = $_POST["shoe_brand"];
                 $category = $_POST["category"];
                 $shoe_image = $_POST["shoe_image"];
@@ -168,7 +170,7 @@ function test_input($data) {
                     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
                   }
             }
-        }
+        
     
         // Get the shoe record to be edited
         //$requested_shoe_id = $_GET["shoe_id"];
@@ -189,15 +191,41 @@ function test_input($data) {
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
     Shoe Name: <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
-    Shoe Type: <input type="text" name="shoe_type" value="<?php echo $row["shoe_type"]; ?>"><br>
-    Shoe Brand: <input type="text" name="shoe_brand" value="<?php echo $row["shoe_brand"]; ?>"><br>
+    <label for="shoe_type"  >Shoe Type:</label>
+                <select id="shoe_type" name="shoe_type">
+                    <option value="Running Shoes">Running Shoes</option>
+                    <option value="Casual Shoes">Casual Shoes</option>
+                    <option value="Sneakers">Sneakers</option>
+                    <option value="Lifestyle">Lifestyle</option>
+                </select><br>
+    <label for="shoe_brand"  >Shoe Brand:</label>
+                <select id="shoe_brand" name="shoe_brand">
+                    <option value="Nike">Nike</option>
+                    <option value="Puma">Puma </option>
+                    <option value="Adidas">Adidas</option>
+                    <option value="Converse">Converse</option>
+                </select><br>    
     Category:
     <input type="radio" name="category" value="male" <?php if($row["category"]=="male"){echo "checked";} ?>> Male
     <input type="radio" name="category" value="female" <?php if($row["category"]=="female"){echo "checked";} ?>> Female<br>
     Shoe Image: <input type="text" name="shoe_image" value="<?php echo $row["shoe_image"]; ?>"><br>
-    Shoe Size: <input type="text" name="shoe_size" value="<?php echo $row["shoe_size"]; ?>"><br>
-    Shoe Price: <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
-    Stock: <input type="text" name="stock" value="<?php echo $row["stock"]; ?>"><br>
+    <label for="shoe_size"  >Shoe Size:</label>
+                <select id="shoe_size" name="shoe_size">
+                    <option value="7">7</option>
+                    <option value="7.5">7.5 </option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                </select><br>  
+    Shoe Price: RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
+    Stock: <input type="number" name="stock" value="<?php echo $row["stock"]; ?>"><br>
     <input type="submit" name="submit" value="Update">
   </form>
   <?php echo "<div>".$msg."</div>"?>
