@@ -63,7 +63,7 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Comment Customer </b></h1>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Comment </b></h1>
       <table border="0px">
         <tr>
           <td>Comment ID </td>
@@ -102,7 +102,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
+      <span class="left" ><a href="reportcomment.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
