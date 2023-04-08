@@ -10,7 +10,7 @@
   if(isset($_POST['saveas']))
   {	 
     $value = 0; 
-
+    // $mherid = $_POST['herid'];
     $mname = $_POST['Fullname'];
     $memail = $_POST['Email'];
     $mmemail = filter_var($memail, FILTER_SANITIZE_EMAIL);
@@ -170,7 +170,7 @@
         }
         else
         {
-            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$id '  )");
+            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$id ' )");
             $sql = "SELECT * FROM orders where user_id = '$id'";
             $msg = '';
             $result = mysqli_query($conn,$sql);
@@ -461,7 +461,7 @@
                                 <tr>
                                 <td><?php echo $row["shoesname"]; ?> <input type="hidden" name="shoesname" value="<?php echo $row["shoesname"]?>">  </td>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td><?php echo $row["shoessize"]; ?> <input type="hidden" name="size" value="<?php echo $row["shoessize"]?>">  </td>
+                                <td><?php echo $row["shoessize"]; ?> <input type="hidden" name="size" value="<?php echo $row["shoessize"]?>">   </td></td>
                                 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                                 <td><?php echo $row["quantity"]; ?> <input type="hidden" name="quantity" value="<?php echo $row["quantity"]?>">   </td>
                                 <td>&nbsp;&nbsp;&nbsp; </td>
