@@ -151,7 +151,7 @@ COMMIT;
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 08:06 AM
+-- Generation Time: Apr 08, 2023 at 06:20 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -172,6 +172,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `a_id` int(100) NOT NULL,
+  `admin_id` int(100) NOT NULL,
+  `admin_password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`a_id`, `admin_id`, `admin_password`) VALUES
+(1, 1211201078, '12345]');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `user_interface_rating` int(11) NOT NULL,
+  `shipping_rating` int(11) NOT NULL,
+  `customer_service_rating` int(11) NOT NULL,
+  `product_quality_rating` int(11) NOT NULL,
+  `message` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`comment_id`, `email`, `user_interface_rating`, `shipping_rating`, `customer_service_rating`, `product_quality_rating`, `message`, `created_at`) VALUES
+(24, 'muphysly@gmail.com', 5, 5, 5, 5, 'test', '2023-03-27 14:51:06');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `history`
 --
 
@@ -184,16 +227,16 @@ CREATE TABLE `history` (
   `her_email` varchar(30) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_status` varchar(20) NOT NULL DEFAULT 'Pending',
-  `her_date` date NOT NULL
+  `her_date` date NOT NULL,
+  `shoe_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `history`
 --
 
-INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`, `order_status`, `her_date`) VALUES
-(16, 'Air Jordan', '11.5', 1, 420, 'dasd@gmail.com', 2, 'Deliverd', '2023-04-04'),
-(17, 'dunk low panda', '10.5', 2, 489, 'dasd@gmail.com', 2, 'Pending', '0000-00-00');
+INSERT INTO `history` (`her_id`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`, `order_status`, `her_date`, `shoe_image`) VALUES
+(0, 'Adidas Ultraboost', '8.5', 2, 150, 'dasd@gmail.com', 2, 'Pending', '2023-04-06', 'adidas.png');
 
 -- --------------------------------------------------------
 
@@ -232,15 +275,9 @@ CREATE TABLE `orders` (
   `shoessize` varchar(10) NOT NULL,
   `user_id` int(11) NOT NULL,
   `pro_id` int(11) NOT NULL,
-  `stock` int(11) NOT NULL
+  `stock` int(11) NOT NULL,
+  `shoe_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`) VALUES
-(129, 'dunk low panda', 489, 1, '12', 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -277,7 +314,8 @@ INSERT INTO `payment` (`his_id`, `his_name`, `his_email`, `his_pn`, `his_address
 (42, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111222233335555', 'a', '45', '54', '125', 2),
 (43, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '5555444477778888', 'asd', '12', '23', '545', 2),
 (44, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '5555555555555555', 'sda', '12', '32', '132', 2),
-(45, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '5555555555555555', 'dasd', '12', '23', '123', 2);
+(45, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '5555555555555555', 'dasd', '12', '23', '123', 2),
+(46, 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111222244445555', 'test', '45', '54', '223', 2);
 
 -- --------------------------------------------------------
 
@@ -303,7 +341,7 @@ CREATE TABLE `shoes` (
 
 INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_brand`, `category`, `shoe_image`, `shoe_size`, `shoe_price`, `stock`) VALUES
 (1, 'Nike Air Max 90', 'Running Shoes', 'Nike', 'male', 'nike_air_max_90.png', '10', '129.99', 2),
-(2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'adidas.png', '8.5', '149.99', 1),
+(2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'female', 'adidas.png', '8.5', '149.99', -1),
 (3, 'Converse Chuck Taylor All Star', 'Casual Shoes', 'Converse', 'male', 'convers.png', '9.5', '59.99', 2),
 (4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'female', 'puma.png', '7', '79.99', 4),
 (5, 'dunk low panda', 'lifestyle', 'nike', 'male', '', '11.5', '489.00', 0),
@@ -348,19 +386,32 @@ CREATE TABLE `wishlist` (
   `size` varchar(30) NOT NULL,
   `stock` int(11) NOT NULL,
   `pro_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `shoe_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `wishlist`
 --
 
-INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`, `user_id`) VALUES
-(20, 'dunk low panda', 489, '9', 0, 5, 2);
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`, `user_id`, `shoe_image`) VALUES
+(23, 'Adidas Ultraboost', 150, '8.5', 0, 2, 2, 'adidas.png');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`a_id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`);
 
 --
 -- Indexes for table `messages`
@@ -385,54 +436,3 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `shoes`
   ADD PRIMARY KEY (`shoe_id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- Indexes for table `wishlist`
---
-ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`wish_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
-
---
--- AUTO_INCREMENT for table `payment`
---
-ALTER TABLE `payment`
-  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
---
--- AUTO_INCREMENT for table `wishlist`
---
-ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
