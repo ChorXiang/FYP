@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Admin | Manage Order </title>
 
     
@@ -20,9 +21,7 @@
     }
     .middle
     {
-        max-width: 1680px;
-        margin: auto; 
-        padding:50px;
+        margin: auto;  
     }
     *
     {
@@ -66,7 +65,7 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Comment </b></h1>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Order </b></h1>
       <table border="0px">
         <tr>
           <td>Shoes Iamge</td>
@@ -79,6 +78,7 @@
           <td>Email</td>
           <td>Date</td>
           <td>Order Status</td>
+          <td>Manage</td>
 
 
         </tr>
@@ -96,9 +96,17 @@
           <td><?php echo $row["her_quantity"];?></td>
           <td><?php echo $row["her_price"];?></td>
           <td><?php echo $row["her_price"];?></td>
-          <td><?php echo $row["her_date"];?></td>
+          <td><?php echo $row["her_email"];?></td>
           <td><?php echo $row["her_date"];?></td>
           <td><?php echo $row["order_status"];?></td>
+          <td>       
+            <a href="moreorder.php?herid=<?php echo $row['her_id'];?>" alt="update">More Detail</a>
+                                                                       <!--  &&name=<?php echo $name?> -->
+            </td>
+          <td>       
+            <a href="editmanageorder.php?herid=<?php echo $row['her_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+                                                                       <!--  &&name=<?php echo $name?> -->
+            </td>
         </tr>
             <?php
 
