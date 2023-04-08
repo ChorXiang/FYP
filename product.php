@@ -170,7 +170,7 @@
     <div class="sidebar">
       <nav>
         <ul>
-        <li><a href="productlist.php" class="all-link">All</a></li>
+        
 
         
   <?php
