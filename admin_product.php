@@ -77,14 +77,13 @@ function test_input($data) {
       position: absolute;
       top: 0;
       right: 0;
-      font-size: 2em;
+      font-size: 25px;
     }
 
     form input
     {
-        font-size: 25px;
+        font-size: 15px;
     }
-
 
     .sidenav a {
       padding: 6px 8px 6px 16px;
@@ -112,7 +111,7 @@ function test_input($data) {
 
     select
     {
-        font-size: 25px;
+        font-size: 15px;
     }
 
     th
@@ -123,6 +122,32 @@ function test_input($data) {
     fieldset
     {
       background-color: lightgrey;
+    }
+
+    .left{
+      float:left;
+      padding-left:160px ;
+    }
+
+    .right{
+      float:right;
+      padding-right:60px ;
+    }
+    .container
+    {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+
+    .imgcenter {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
     }
     
 </style>
@@ -144,7 +169,6 @@ function test_input($data) {
 
 <div class="main">
 
-<div class="middle">
 <fieldset>
     <?php
     
@@ -187,10 +211,24 @@ function test_input($data) {
         $conn->close();
   
   ?>
-  
+
+
+
+<div class="container">
+  <div class="left">
+  <fieldset>
+  <div class="wordcenter">
+  <b>PRODUCT IMAGE</b><br>
+  <h3><?php echo $row["shoe_name"]; ?></h3>
+  </div>
+    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+  </fieldset>
+</div>
+
+<div class='right'>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
-    Shoe Name: <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
+    <input type="hidden" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
     <label for="shoe_type"  >Shoe Type:</label>
                 <select id="shoe_type" name="shoe_type">
                     <option value="Running Shoes">Running Shoes</option>
