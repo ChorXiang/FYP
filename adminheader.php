@@ -153,7 +153,7 @@
 <div class="sidenav">
         <a href="admindashboard.php" class="center" ><img src="image/foot.png" alt="Shop Logo"></a><br><br> 
         <a href="#">Manage Category</a>
-        <a href="admin-product.php">Manage Product</a>
+        <a href="admin_product.php">Manage Product</a>
         <a href="admin_history.php">Manage Order</a>
         <a href="manageuser.php">Manage Customer</a>
         <a href="#">Manage Staff </a>
