@@ -163,7 +163,8 @@ function test_input($data) {
         <a href="admin_history.php">Manage Order</a>
         <a href="manageuser.php">Manage Customer</a>
         <a href="#">Manage Staff </a>
-        <a href="managecomment.php">Manage comment </a>
+        <a href="managecomment.php">Manage Comment </a>       
+        <a href="#">Manage Contact Us </a>
 </div>
 </div>
 
