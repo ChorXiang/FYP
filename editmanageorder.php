@@ -58,7 +58,7 @@ if (isset($_POST["savebtn"]))
 <style>
     .middle
     {
-        max-width: 800px;
+        max-width: 1100px;
         margin: auto; 
         padding:50px;
     }
@@ -95,7 +95,12 @@ if (isset($_POST["savebtn"]))
 
         $result = mysqli_query($conn, "select * from history where her_id = '$id'"); 
         $row = mysqli_fetch_assoc($result);
-
+        $subtotal=0;
+        $total=0;
+        $p=$row["her_price"];
+        $q=$row["her_quantity"];
+        $subtotal=$p*$q;
+        $total =  $total + $subtotal;
     //     $id = $_GET['name'];
     // $host = "SELECT * FROM `admin` where username = '$id'";
     // $query = mysqli_query($conn,$host);
@@ -113,17 +118,24 @@ if (isset($_POST["savebtn"]))
      
         <br><label>Shoes Name :</label> <?php echo $row["her_shoesname"];	?>
 
-        <br><label>Shoes Size :</label> <?php echo $row["her_size"];	?>
+        <br><label>Shoes Size : UK</label> <?php echo $row["her_size"];	?>
 
         <br><label>Quantity :</label> <?php echo $row["her_quantity"];?>
         
-        <br><label>Price :</label> <?php echo $row["her_price"];?>
+        <br><label>Price : RM </label> <?php echo $row["her_price"];?>
         
-        <br><label>Total Price :</label> <?php echo $row["her_price"];?>
+        <br><label>Total Price : RM </label> <?php echo $total;?>
         
         <br><label>Email :</label> <?php echo $row["her_email"];?>
         
         <br><label>Date :</label> <?php echo $row["her_date"];?>
+
+        <br><label>Customer name :</label> <?php echo $row["his_name"];?>
+
+        <br><label>Customer phone number :</label> <?php echo $row["his_pn"];?>
+
+        <br><label>Customer address :</label> <?php echo $row["his_address"];?> <?php echo $row["his_state"];?>
+
 
         <br><label for="status"  >Order Status<sup>*</sup> : </label>
                 <select id="status" name="status">

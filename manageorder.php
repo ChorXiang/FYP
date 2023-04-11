@@ -25,7 +25,7 @@
     }
     *
     {
-      font-size: 30px;
+      font-size: 25px;
     }
     .left
     {
@@ -35,7 +35,7 @@
     td, th 
     {
       text-align: left;
-      padding: 30px;
+      padding: 30px ;
     }
     a:hover
     {
@@ -77,8 +77,11 @@
           <td>Total Price</td>
           <td>Email</td>
           <td>Date</td>
+
           <td>Order Status</td>
-          <td>Manage</td>
+          
+
+          <td>Manage & Order Detail</td>
 
 
         </tr>
@@ -86,23 +89,28 @@
 
         while($row = mysqli_fetch_array($result))
         {
+
+          $subtotal=0;
+          $total=0;
+          $p=$row["her_price"];
+          $q=$row["her_quantity"];
+          $subtotal=$p*$q;
+          $total =  $total + $subtotal;
             ?>
       
         <tr>
           <td><img class='img' src="<?php echo "image/shoesimg/".$row['shoe_image'];?>" ></td>
           <td><?php echo $row["user_id"]; ?></td>         
           <td><?php echo $row["her_shoesname"];	?></td>
-          <td><?php echo $row["her_size"];	?></td>
+          <td>UK <?php echo $row["her_size"];	?></td>
           <td><?php echo $row["her_quantity"];?></td>
-          <td><?php echo $row["her_price"];?></td>
-          <td><?php echo $row["her_price"];?></td>
+          <td>RM <?php echo $row["her_price"];?></td>
+          <td>RM <?php echo  $total;?></td>
           <td><?php echo $row["her_email"];?></td>
           <td><?php echo $row["her_date"];?></td>
+
           <td><?php echo $row["order_status"];?></td>
-          <td>       
-            <a href="moreorder.php?herid=<?php echo $row['her_id'];?>" alt="update">More Detail</a>
-                                                                       <!--  &&name=<?php echo $name?> -->
-            </td>
+          
           <td>       
             <a href="editmanageorder.php?herid=<?php echo $row['her_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
                                                                        <!--  &&name=<?php echo $name?> -->
@@ -113,6 +121,7 @@
         }
 
 		?>
+
 			
       </table>
 <p>
