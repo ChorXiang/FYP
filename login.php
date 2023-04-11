@@ -22,7 +22,7 @@ if(isset($_POST['loginbtn'])){
         if($status=="active")
         {
 
-          $_SESSION['username'] = $row['username'];
+          $_SESSION['email_address'] = $row['email_address'];
           $_SESSION['userpassword'] = $row['userpassword'];
 
           $user_id = $row['user_id'];
