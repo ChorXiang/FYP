@@ -10,62 +10,17 @@
 
 if (isset($_POST["savebtn"])) 	
 {
-	$mname = $_POST["name"];  	
-    $memail = $_POST["email"];  
-    $mmemail = filter_var($memail, FILTER_SANITIZE_EMAIL);
-    $mph = $_POST["contact"];  
-    $mmph = filter_var($mph);
-    $musername = $_POST["username"];  
+ 
     $mstatus = $_POST['status'];
-    $mimage = $_POST['image'];
 
-
-        
-
-	if (!$mname)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
-    }
-    else if(!$memail)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
- 
-    }
-    else if(!filter_var($mmemail, FILTER_VALIDATE_EMAIL) === true)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
-    }
-    else if(!$mph)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
-
-    }
-    else if(strlen($mmph)<10)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
-    }
-    else if(strlen($mmph)>12)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
-    }
-    else if(!$musername)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in User Name !</div>";
- 
-    }
-    else if(!$mstatus)
+    if(!$mstatus)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Status !</div>";
  
     }
-    else if(!$mimage)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Put the Image !</div>";
- 
-    }
     else
     {
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', status='" . $_POST['status'] . "' , image='" . $_POST['image'] . "', username='" . $_POST['username'] . "', contact_no='" . $_POST['contact'] . "' where email_address = '$id'");            
+        mysqli_query($conn,"UPDATE user set status='" . $_POST['status'] . "' where email_address = '$id'");            
         // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
  
