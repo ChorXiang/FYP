@@ -6,10 +6,10 @@ session_start();
 
 if(isset($_POST['loginbtn'])){
 
-    $name = $_POST['username'];
+    $email_address = $_POST['email_address'];
     $pass = $_POST['password'];
     $status = '';
-    $select = "SELECT * FROM user WHERE username = '$name' && userpassword = '$pass'";
+    $select = "SELECT * FROM user WHERE email_address = '$email_address' && userpassword = '$pass'";
     $result = mysqli_query($conn, $select);
 
 
@@ -37,7 +37,7 @@ if(isset($_POST['loginbtn'])){
 
 
       }else{
-          $error[] = "Incorrect username or password";
+          $error[] = "Incorrect email or password";
       }
 
 
@@ -187,7 +187,7 @@ a:hover {
       };
       ?>
             <br>
-            <input type="text" class="input-field" placeholder="Username" name="username">
+            <input type="email" class="input-field" placeholder="Email" name="email_address">
             <input type="password" class="input-field" placeholder="Password" name="password" id="p">
             <div style="display: flex; align-items: center;">
   <input type="checkbox" onclick="loginshowpw()">
@@ -213,11 +213,11 @@ a:hover {
             </div>
             <div class="alignfgpw">
                 <br>
-            <a href="reset.php"><span class="fgpw">forgot password?</span></a>
+            <a href="reset.php"><span class="fgpw">Forgot password?</span></a>
             </div>
         
 
-           <p>don't have an account? <a href="register.php">register now</a></p>
+           <p>Don't have an account? <a href="register.php">Register now</a></p>
         </form>
      
      </div>
