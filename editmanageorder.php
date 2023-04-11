@@ -103,7 +103,7 @@ if (isset($_POST["savebtn"]))
 
     ?>
     
-    <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Customer / User</b></h1>
+    <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Order</b></h1>
 
     <form name="addfrm" method="post" action="">
 
