@@ -1,0 +1,115 @@
+<?php
+    include 'conn.php'; 
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <title>Admin | Contect Us Admin</title>
+
+    <style>
+    fieldset
+    {
+        background-color: #f2f2f2;
+    }
+    .middle
+    {
+        margin: 100px;  
+    }
+    *
+    {
+      font-size: 30px;
+    }
+    .left
+    {
+      float: right;
+      margin-bottom: 50px;
+    }
+    td, th 
+    {
+      text-align: left;
+      padding: 50px 100px;
+    }
+    a:hover
+    {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+    
+
+<div id="wrapper">
+
+<div class="middle">
+    <fieldset>
+    <?php
+    //   $name = $_GET['name'];
+        $sql = "select * from messages";
+        $result = mysqli_query($conn,$sql);
+
+        // $host = "SELECT * FROM `admin`";
+        // $query = mysqli_query($conn,$host);
+        // $host_image = mysqli_fetch_assoc($query);
+        ?>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Contact </b></h1>
+      <table border="0px">
+        <tr>
+          <td>Customer Name</td>
+          <td>Customer Email</td>
+          <td>Subject</td>
+          <td>Message</td>
+        
+
+        </tr>
+        <?php
+
+        while($row = mysqli_fetch_array($result))
+        {
+
+
+            ?>
+      
+        <tr>
+
+          <td><?php echo $row["name"]; ?></td>         
+          <td><?php echo $row["email"];	?></td>
+          <td><?php echo $row["subject"];	?></td>
+          <td><?php echo $row["message"];?></td>
+
+          
+
+        </tr>
+            <?php
+
+        }
+
+		?>
+
+			
+      </table>
+<p>
+        
+    
+      <span class="left" ><a href="reportcontactus.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
+                                                     <!-- ?name=<?php echo $name?> -->
+
+      <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
+
+    </fieldset>
+  </div>
+
+	<div>
+
+	</div>
+	
+</div>
+
+</body>
+</html>
