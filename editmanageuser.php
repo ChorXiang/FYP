@@ -153,13 +153,13 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name<sup>*</sup> :</label><input type="text" name="name" size="0" value="<?php echo $row['full_name']; ?>">
+        <label>Name<sup>*</sup> :</label> <?php echo $row['full_name']; ?> 
 
-        <br><label>Email<sup>*</sup> :</label><input type="email" name="email" value="<?php echo $row['email_address']; ?>">
+        <br><label>Email<sup>*</sup> :</label> <?php echo $row["email_address"]; ?> 
      
-        <br><label>Phone Number<sup>*</sup> :</label><input type="text" name="contact" size="10" value="<?php echo $row['contact_no']; ?>">
+        <br><label>Phone Number<sup>*</sup> :</label> <?php echo $row["contact_no"]; ?>
 
-        <br><label>Username<sup>*</sup> :</label><input type="text" name="username" size="15" value="<?php echo $row['username']; ?>">
+        <br><label>Username<sup>*</sup> :</label> <?php echo $row["username"]; ?> 
 
         <br><label for="status"  >Status<sup>*</sup> : </label>
                 <select id="status" name="status">
@@ -167,9 +167,8 @@ if (isset($_POST["savebtn"]))
                     <option value="inactive">Inactive</option>
                 </select>
 
-        <p>User Image<sup>*</sup> : (insert the file picture)<br><br><input type="file" id="file"  name="image" class="form-control" multiple></P>
-        
-        <br><input type="submit" name="savebtn" value="UPDATE">
+       
+        <br><br><input type="submit" name="savebtn" value="UPDATE">
 
     </form>
     <div style=text-align:center;>
