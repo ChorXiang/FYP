@@ -69,7 +69,7 @@
       <table border="0px">
         <tr>
           <td>Shoes Iamge</td>
-          <td>Order ID</td>
+          <td>Customer ID</td>
           <td>Shoes Name </td>
           <td>Shoes Size</td>
           <td>Quantity</td>
@@ -90,7 +90,7 @@
       
         <tr>
           <td><img class='img' src="<?php echo "image/shoesimg/".$row['shoe_image'];?>" ></td>
-          <td><?php echo $row["her_id"]; ?></td>         
+          <td><?php echo $row["user_id"]; ?></td>         
           <td><?php echo $row["her_shoesname"];	?></td>
           <td><?php echo $row["her_size"];	?></td>
           <td><?php echo $row["her_quantity"];?></td>

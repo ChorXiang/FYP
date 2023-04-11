@@ -1,5 +1,5 @@
 <?php
-    include 'adminheader.php';
+    // include 'adminheader.php';
     include 'conn.php'; 
 
 ?>
