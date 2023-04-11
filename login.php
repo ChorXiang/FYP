@@ -31,7 +31,7 @@ if(isset($_POST['loginbtn'])){
         }
         else
         {
-          $error[] = "Incorrect user status";
+          $error[] = "Incorrect user status, Please <a href='contact2.php'>contact us</a> ";
         }
 
 

@@ -131,47 +131,48 @@
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>">
   <br>
+  <label for="size"  >Shoe Size:</label>
+                <select id="size" name="size">
+                    <option value="7">7</option>
+                    <option value="7.5">7.5 </option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                </select>
+  <br>
   <label for="quantity"><b>Quantity (Max 5):</b></label>
   <input type="number" name="quantity" id="quantity" min="1" max="5" required>
   <span class="error"><?php echo $quantityErr;?></span>
-  <br>
-  <label for="size"><b>Size:</b></label><br>
-  <input type="radio" name="size" value="7">7
-  <input type="radio" name="size" value="7.5">7.5
-  <input type="radio" name="size" value="8">8
-  <input type="radio" name="size" value="8.5">8.5
-  <input type="radio" name="size" value="9">9
-  <input type="radio" name="size" value="9.5">9.5
-  <br><input type="radio" name="size" value="10">10
-  <input type="radio" name="size" value="10.5">10.5
-  <input type="radio" name="size" value="11">11
-  <input type="radio" name="size" value="11.5">11.5
-  <input type="radio" name="size" value="12">12
-  <input type="radio" name="size" value="12.5">12.5
-  <span class="error"><?php echo $sizeErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Add to Cart">
 </form>
 
-<br><br>
-
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">
-  <input type="hidden" name="id" value="<?php echo $id; ?>">
-  <input type="radio" name="size" value="7">7
-  <input type="radio" name="size" value="7.5">7.5
-  <input type="radio" name="size" value="8">8
-  <input type="radio" name="size" value="8.5">8.5
-  <input type="radio" name="size" value="9">9
-  <input type="radio" name="size" value="9.5">9.5
-  <br><input type="radio" name="size" value="10">10
-  <input type="radio" name="size" value="10.5">10.5
-  <input type="radio" name="size" value="11">11
-  <input type="radio" name="size" value="11.5">11.5
-  <input type="radio" name="size" value="12">12
-  <input type="radio" name="size" value="12.5">12.5
-  <span class="error"><?php echo $sizeErr;?></span>
+  <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
+  <label for="size"  >Shoe Size:</label>
+                <select id="size" name="size">
+                    <option value="7">7</option>
+                    <option value="7.5">7.5 </option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                </select>
   <br><br>
   <input type="submit" name="wishlist" value="Add to Wishlist">
 </form>
@@ -219,13 +220,14 @@ if (isset($_POST['submit'])) {
   if ($sizeErr == "" && $quantityErr == "") {
     $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id' ) ";
     if (mysqli_query($conn, $sql)) {
-      echo "Add Successfully!";
-    } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
 
-  mysqli_close($conn);
-  }
+      $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
+    } else {
+      $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
+    }
+  
+    mysqli_close($conn);
+    }
 }  
 
   ?>

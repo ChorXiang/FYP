@@ -74,7 +74,6 @@
           <td>Contact No</td>
           <td>Email</td>
           <td>Username</td>
-          <td>Password</td>
           <td>Status</td>
           <td>Manage</td>
         </tr>
@@ -91,10 +90,8 @@
           <td><?php echo $row["contact_no"];?></td>
           <td><?php echo $row["email_address"];?></td>
           <td><?php echo $row["username"];?></td>
-          <td><?php echo $row["userpassword"];?></td>
           <td><?php echo $row["status"];?></td>
-          <td>           <a href="deletemanageuser.php?user_id=<?php echo $row['user_id']; ?>"><i class="fa fa-close" style="font-size:36px"></i></a>
-                                                   <!-- ?No=<?php echo $row['No']; ?> -->
+          <td>       
             <a href="editmanageuser.php?email=<?php echo $row['email_address'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
                                                                        <!--  &&name=<?php echo $name?> -->
             </td>
@@ -108,7 +105,6 @@
       </table>
 <p>
         
-      <span class="left"><a href="insertmanageuser.php" alt="insert"><i class="fa fa-plus-square"></i> <input type="button" value="ADD New User"></span>
     
       <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
