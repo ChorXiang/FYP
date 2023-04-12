@@ -1,5 +1,6 @@
 <?php
     include 'conn.php'; 
+    include 'adminheader.php'; 
     $msg='';
 ?>
 <?php
@@ -54,23 +55,10 @@ function test_input($data) {
 
     <style>
 
-
-    .sidenav {
-      height: 100%;
-      flex: 30%;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      padding-top: 20px;
-    }
-
     .main {
       flex: 0 0 70%;
       background-color: white;
-      padding: 20px;
+      padding-left: 160px
       height: 100%;
       float: right;
       text-align: center;
@@ -85,30 +73,6 @@ function test_input($data) {
         font-size: 15px;
     }
 
-    .sidenav a {
-      padding: 6px 8px 6px 16px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-    }
-
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
-
-    .sidenav img
-    {
-      height: 50px;
-      width: 90px;
-    }
-
-
-    @media screen and (max-height: 450px) {
-      .sidenav {padding-top: 15px;}
-      .sidenav a {font-size: 18px;}
-    }
-
     select
     {
         font-size: 15px;
@@ -116,7 +80,7 @@ function test_input($data) {
 
     th
     {
-      padding: 5px;
+      padding: 20px;
     }
 
     fieldset
@@ -154,19 +118,6 @@ function test_input($data) {
 
 </head>
 <body>
-
-<div class="side">
-<div class="sidenav">
-        <a href="admindashboard.php"><img src="image/foot.png" alt="Shop Logo" width="10px" height="10px"></a><br><br> 
-        <a href="#">Manage Category</a>
-        <a href="admin_product.php">Manage Product</a>
-        <a href="admin_history.php">Manage Order</a>
-        <a href="manageuser.php">Manage Customer</a>
-        <a href="#">Manage Staff </a>
-        <a href="managecomment.php">Manage Comment </a>       
-        <a href="#">Manage Contact Us </a>
-</div>
-</div>
 
 <div class="main">
 
