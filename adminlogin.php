@@ -164,7 +164,7 @@ a:hover {
       };
       ?>
             <br>
-            <input type="number" class="input-field" placeholder="AdminId" name="admin_id">
+            <input type="text" class="input-field" placeholder="AdminId" name="admin_id">
             <input type="password" class="input-field" placeholder="Password" name="admin_password" id="p">
             <div style="display: flex; align-items: center;">
   <input type="checkbox" onclick="loginshowpw()">
