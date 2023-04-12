@@ -58,7 +58,7 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Contact </b></h1>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Support </b></h1>
       <table border="0px">
         <tr>
           <td>Customer Name</td>
