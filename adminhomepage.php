@@ -96,7 +96,7 @@
         <a href="#">Manage Category</a>
         <a href="admin_product.php">Manage Product</a>
         <a href="admin_history.php">Manage Order</a>
-        <a href="test.php">Manage Customer</a>
+        <a href="adminhomepage.php">Manage Customer</a>
         <a href="#">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
         <a href="managecontactus.php">Manage Support</a>

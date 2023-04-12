@@ -1,6 +1,6 @@
 <?php
     include 'conn.php'; 
-
+    include 'adminheader.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +19,7 @@
     }
     .middle
     {
+      padding-left: 160px;
         margin: 100px;  
     }
     *
@@ -33,7 +34,7 @@
     td, th 
     {
       text-align: left;
-      padding: 50px 100px;
+      padding: 20px 40px;
     }
     a:hover
     {
