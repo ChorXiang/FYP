@@ -1,7 +1,7 @@
 <?php
     // include 'adminheader.php';
     include 'conn.php'; 
-
+    include 'adminheader.php';
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +21,8 @@
     }
     .middle
     {
-        max-width: 1680px;
         margin: auto; 
-        padding:50px;
+        padding-left: 160px;
     }
     *
     {
@@ -37,7 +36,7 @@
     td, th 
     {
       text-align: left;
-      padding: 30px;
+      padding: 20px;
     }
     a:hover
     {
