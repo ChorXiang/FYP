@@ -94,11 +94,12 @@
 <div class="sidenav">
         <a href="admindashboard.php"><img src="image/foot.png" alt="Shop Logo" width="10px" height="10px"></a><br><br> 
         <a href="#">Manage Category</a>
-        <a href="#">Manage Product</a>
+        <a href="admin_product.php">Manage Product</a>
         <a href="admin_history.php">Manage Order</a>
-        <a href="manageuser.php">Manage Customer</a>
+        <a href="test.php">Manage Customer</a>
         <a href="#">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
+        <a href="managecontactus.php">Manage Support</a>
 </div>
 </div>
 
