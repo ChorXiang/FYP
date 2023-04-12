@@ -21,14 +21,12 @@
     }
     .middle
     {
-        max-width: 1680px;
         margin: auto; 
-        padding:50px;
         padding-left: 160px;
     }
     *
     {
-      font-size: 30px;
+      font-size: 20px;
     }
     .left
     {
@@ -38,7 +36,7 @@
     td, th 
     {
       text-align: left;
-      padding: 30px;
+      padding: 20px;
     }
     a:hover
     {
