@@ -1,5 +1,5 @@
 <?php
-    // include 'adminheader.php';
+    include 'adminheader.php';
     include 'conn.php'; 
 
 ?>
@@ -24,6 +24,7 @@
         max-width: 1680px;
         margin: auto; 
         padding:50px;
+        padding-left: 160px;
     }
     *
     {
