@@ -16,7 +16,7 @@ if(isset($_POST['loginbtn'])){
         $row = mysqli_fetch_assoc($result);
         $_SESSION['admin_id'] = $row['admin_id'];
         $_SESSION['admin_password'] = $row['admin_password'];
-        header('Location: test.php');
+        header('Location: manageuser.php');
     }else{
         $error[] = "Incorrect AdminId or password";
     }
