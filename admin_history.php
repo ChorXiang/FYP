@@ -77,6 +77,10 @@ if ($result->num_rows > 0) {
     <br>Shoes Price: RM <?php echo $her_price; ?><br>
     <br>Total Price: RM <?php echo $total; ?><br>
     <br>Email: <?php echo $her_email; ?><br>
+    <br>Date : <?php echo $row["her_date"];?><br>
+    <br>Customer name : <?php echo $row["his_name"];?><br>
+    <br>Customer phone number : <?php echo $row["his_pn"];?><br>
+    <br>Customer address : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>
     <br>Current Order Status: <?php echo $status; ?><br>
 
     <form action="" method="post">
