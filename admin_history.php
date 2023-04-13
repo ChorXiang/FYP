@@ -1,3 +1,9 @@
+<?php
+ 
+    include 'conn.php'; 
+    
+?>
+
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -18,11 +24,6 @@
     </style>
 </head>
 <body>  
-<?php
- 
-    include 'conn.php'; 
-    
-?>
 
 <?php
   $statusErr = "";

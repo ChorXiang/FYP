@@ -107,7 +107,7 @@ body {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #818181;
   display: block;
 }
@@ -121,6 +121,7 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
     </style>
 </head>
 <body>
@@ -159,7 +160,7 @@ body {
         <a href="managestaff.php">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
         <a href="managecontactus.php">Manage Support </a>
-        <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out">Logout</i></a>
+        <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
 
 </div>
 
