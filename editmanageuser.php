@@ -108,13 +108,13 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name<sup>*</sup> :</label> <?php echo $row['full_name']; ?> 
+        <label>Name :</label> <?php echo $row['full_name']; ?> 
 
-        <br><label>Email<sup>*</sup> :</label> <?php echo $row["email_address"]; ?> 
+        <br><label>Email :</label> <?php echo $row["email_address"]; ?> 
      
-        <br><label>Phone Number<sup>*</sup> :</label> <?php echo $row["contact_no"]; ?>
+        <br><label>Phone Number :</label> <?php echo $row["contact_no"]; ?>
 
-        <br><label>Username<sup>*</sup> :</label> <?php echo $row["username"]; ?> 
+        <br><label>Username :</label> <?php echo $row["username"]; ?> 
 
         <br><label for="status"  >Status<sup>*</sup> : </label>
                 <select id="status" name="status">
