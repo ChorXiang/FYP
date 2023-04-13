@@ -58,13 +58,11 @@ function test_input($data) {
     .main {
       flex: 0 0 70%;
       background-color: white;
-      padding-left: 160px
+      padding-left: 160px;
       height: 100%;
       float: right;
       text-align: center;
       position: absolute;
-      top: 0;
-      right: 0;
       font-size: 25px;
     }
 
@@ -86,16 +84,16 @@ function test_input($data) {
     fieldset
     {
       background-color: lightgrey;
-    }
-
-    .left{
-      float:left;
-      padding-left:160px ;
+      width: auto;
+      height: auto;
     }
 
     .right{
       float:right;
-      padding-right:60px ;
+      padding-right:160px ;
+      margin-left: auto;
+      margin-right: auto;
+      width: 20%;
     }
     .container
     {
@@ -105,6 +103,7 @@ function test_input($data) {
       margin: 0 auto;
       border: 1px solid #ccc;
       padding: 20px;
+      padding-right:0px ;
     }
 
     .imgcenter {
@@ -112,8 +111,10 @@ function test_input($data) {
       margin-left: auto;
       margin-right: auto;
       width: 40%;
+      padding-left: 20px;
+      text-align:"center";  
     }
-    
+
 </style>
 
 </head>
@@ -168,16 +169,16 @@ function test_input($data) {
 
 <div class="container">
   <div class="left">
-  <fieldset>
-  <div class="wordcenter">
-  <b>PRODUCT IMAGE</b><br>
-  <h3><?php echo $row["shoe_name"]; ?></h3>
+         
+        <div class="imgcenter">
+        <br><b>PRODUCT IMAGE</b><br>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="150px" width="150px" >
   </div>
-    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-  </fieldset>
 </div>
 
-<div class='right'>
+<div>
+  <fieldset>
+  <b><?php echo $row["shoe_name"]; ?></b>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
     <input type="hidden" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>

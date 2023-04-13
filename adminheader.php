@@ -28,11 +28,6 @@
         {
             color: white;
         }
-        
-        img
-        {
-            width: 90px;
-        }
         /*
         .right
         {
@@ -156,7 +151,7 @@ body {
 
         
 <div class="sidenav">
-        <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo"></a><br><br> 
+        <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
         <a href="#">Manage Category</a>
         <a href="admin_product.php">Manage Product</a>
         <a href="manageorder.php">Manage Order</a>
