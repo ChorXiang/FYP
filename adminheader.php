@@ -88,7 +88,7 @@
         {
             display: block;
         } */
-        body {
+body {
   font-family: "Lato", sans-serif;
 }
 
@@ -159,6 +159,7 @@
         <a href="managestaff.php">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
         <a href="managecontactus.php">Manage Support </a>
+        <a href="adminlogout.php">Logout </a>
 </div>
 
 
