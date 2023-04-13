@@ -22,7 +22,7 @@
         margin: auto; 
         padding-left: 160px;
     }
-    *
+    .wrapper
     {
       font-size: 20px;
     }

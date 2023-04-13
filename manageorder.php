@@ -1,5 +1,5 @@
 <?php
-    // include 'adminheader.php';
+    include 'adminheader.php';
     include 'conn.php'; 
 
 ?>
@@ -22,8 +22,9 @@
     .middle
     {
         margin: auto;  
+        padding-left: 160px;
     }
-    *
+    .wrapper
     {
       font-size: 25px;
     }
@@ -35,7 +36,7 @@
     td, th 
     {
       text-align: left;
-      padding: 30px ;
+      padding: 20px ;
     }
     a:hover
     {
@@ -68,7 +69,7 @@
       <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Order </b></h1>
       <table border="0px">
         <tr>
-          <td>Shoes Iamge</td>
+          <td>Order ID</td>
           <td>Customer ID</td>
           <td>Shoes Name </td>
           <td>Shoes Size</td>
@@ -77,13 +78,8 @@
           <td>Total Price</td>
           <td>Email</td>
           <td>Date</td>
-
           <td>Order Status</td>
-          
-
           <td>Manage & Order Detail</td>
-
-
         </tr>
         <?php
 
@@ -99,22 +95,20 @@
             ?>
       
         <tr>
-          <td><img class='img' src="<?php echo "image/shoesimg/".$row['shoe_image'];?>" ></td>
+          <td><?php echo $row["her_id"]; ?></td>         
           <td><?php echo $row["user_id"]; ?></td>         
           <td><?php echo $row["her_shoesname"];	?></td>
           <td>UK <?php echo $row["her_size"];	?></td>
           <td><?php echo $row["her_quantity"];?></td>
-          <td>RM <?php echo $row["her_price"];?></td>
-          <td>RM <?php echo  $total;?></td>
+          <td>RM<?php echo $p;?></td>
+          <td>RM<?php echo $total;?></td>
           <td><?php echo $row["her_email"];?></td>
           <td><?php echo $row["her_date"];?></td>
-
           <td><?php echo $row["order_status"];?></td>
-          
+
           <td>       
-            <a href="editmanageorder.php?herid=<?php echo $row['her_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-                                                                       <!--  &&name=<?php echo $name?> -->
-            </td>
+            <a href="admin_history.php?her_id=<?php echo $row["her_id"];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+          </td>
         </tr>
             <?php
 

@@ -81,8 +81,8 @@
 
           <td><?php echo $row["name"]; ?></td>         
           <td><?php echo $row["email"];	?></td>
-          <td><?php echo $row["subject"];	?></td>
-          <td><?php echo $row["message"];?></td>
+          <td style="max-width: 300px, text-overflow: ellipsis;"><?php echo $row["subject"];	?></td>
+          <td style="max-width: 300px, text-overflow: ellipsis;"><?php echo $row["message"];?></td>
 
           
 
