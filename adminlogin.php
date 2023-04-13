@@ -154,7 +154,7 @@ a:hover {
     <div class="form-container">
 
              
-    <form id="login" class="input-group" action="" method="POST" autocomplete="off">
+    <form id="login" class="input-group" action="manageuser.php" method="POST" target="_blank" autocomplete="off">
     <h3>Login now</h3>
     <?php
       if(isset($error)){
