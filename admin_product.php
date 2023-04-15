@@ -218,7 +218,9 @@ function test_input($data) {
     Shoe Price: RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
     Stock: <input type="number" name="stock" value="<?php echo $row["stock"]; ?>"><br>
     <input type="submit" name="submit" value="Update">
+    <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
   </form>
+
   <?php echo "<div>".$msg."</div>"?>
 
 </fieldset>
