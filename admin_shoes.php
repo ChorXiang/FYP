@@ -30,6 +30,11 @@
   padding: 20px;
   } */
 
+  fieldset
+  {
+    padding-left: 160px;
+  }
+
   .imgcenter {
       display: block;
       margin-left: auto;
@@ -71,6 +76,7 @@
         <th>Shoe Name</th>
         <th>Shoe Image</th>
         <th>Shoe Price</th>
+        <th>Edit</th>
         </tr>
     </thead>
         <?php
@@ -80,10 +86,11 @@
             ?>
       <tbody>
       <tr>
-        <td><?php echo $row['shoe_id']; ?></td>
-        <td><?php echo $row['shoe_name']; ?></td>
+        <th><?php echo $row['shoe_id']; ?></th>
+        <th><?php echo $row['shoe_name']; ?></th>
         <td><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></td>
-        <td><?php echo $row['shoe_price']; ?></td>
+        <th><?php echo $row['shoe_price']; ?></th>
+        <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
     </tbody>
             <?php

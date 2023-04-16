@@ -115,7 +115,7 @@ function test_input($data) {
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 40%;
+      width: 20%;
       padding-left: 20px;
       text-align:"center";  
     }
@@ -156,8 +156,8 @@ function test_input($data) {
     
         // Get the shoe record to be edited
         //$requested_shoe_id = $_GET["shoe_id"];
-    
-        $sql = "SELECT * FROM shoes WHERE shoe_id=1";
+        $sid = $_GET['shoe_id'];
+        $sql = "SELECT * FROM shoes WHERE shoe_id=$sid";
         $result = $conn->query($sql);
     
         if ($result->num_rows > 0) {
@@ -175,7 +175,7 @@ function test_input($data) {
 <div class="container">
   <div class="left">
          
-        <div class="imgcenter">
+        <div>
         <br><b>PRODUCT IMAGE</b><br>
         <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="150px" width="150px" >
   </div>
