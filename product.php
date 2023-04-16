@@ -14,7 +14,7 @@
   
 </head>
 
-  <style>
+<style>
     body {
   margin: 0;
   padding: 0;
@@ -22,6 +22,7 @@
 }
 
 .container {
+  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -34,6 +35,7 @@
   padding: 10px;
   position: fixed;
   height: 100%;
+  
 }
 
 .sidebar ul {
@@ -63,24 +65,6 @@
   background-color: #444;
 }
 
-.sidebar .all-link {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  transition: background-color 0.3s ease-in-out;
-  font-size: 18px; /* 设置字体大小 */
-  font-weight: bold; /* 设置字体粗细 */
-  font-family: Arial, sans-serif; /* 设置字体 */
-  /* 这里可以添加其他样式 */
-}
-
-
-.sidebar .all-link:hover {
-  background-color: #444;
-}
-
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -91,14 +75,17 @@
 }
 
 .product-card {
-  width: calc((100% / 3) - 20px);
+  width: calc(33.33% - 20px);
   margin: 20px;
+  display: inline-block;
+  vertical-align: top;
   padding: 20px;
   border: 1px solid #ddd;
   box-shadow: 0 0 5px #ddd;
   text-align: center;
   transition: transform 0.3s ease-in-out;
 }
+
 
 .product-card:hover {
   transform: translateY(-10px);
@@ -165,6 +152,38 @@
   
 }
 
+
+.topnav {
+  margin-bottom: 20px;
+}
+
+.topnav input[type="text"] {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+
+.topnav button[type="submit"] {
+  padding: 12px 20px;
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.topnav button[type="submit"]:hover {
+  background-color: black;
+}
+
+
+
+  
+
 </style>
 <body>
 <div class="container">
@@ -197,41 +216,55 @@ while ($row = mysqli_fetch_assoc($result))
         </ul>
       </nav>
     </div>
+    
+ 
 
-  
   <div class="product-list">
-    <?php
-                  $id =$_GET['user_id'];
-      // include_once 'shoe.php';
+  <div class="topnav">
+  
 
-      // Retrieve the product data
-      $result = mysqli_query($conn, "SELECT * FROM shoes");
+  <form method="get">
+  <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+  <button type="submit">Search</button>
+</form>
 
-      // Loop through the product data and generate HTML code for each product
-      while ($row = mysqli_fetch_assoc($result)) 
-      {
-        $sid = $row['shoe_id'];
-        echo '<div class="product-card">';     ?>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-        <?php
-        echo '<h2>' . $row['category'] . '</h2>';
-        ?>
-        <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-        <?php
-        echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-        echo '</div>';
-      }
 
-      // Close the database connection
-      mysqli_close($conn);
+
+
+<?php
+$id = $_GET['user_id'];
+
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' OR category LIKE '%$search%'";
+} else {
+  $query = "SELECT * FROM shoes";
+}
+
+// Retrieve the product data
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) == 0) {
+  echo "No results found.";
+} else {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $sid = $row['shoe_id'];
+    echo '<div class="product-card">';
     ?>
-  </div>
+    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+    <?php
+    echo '<h2>' . $row['category'] . '</h2>';
+    ?>
+    <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+    <?php
+    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+    echo '</div>';
+  }
+}
+?>
+
+
 </body>
-
-
-
-
-  </body>
 </html>
 
 
