@@ -95,6 +95,11 @@ function test_input($data) {
       margin-right: auto;
       width: 20%;
     }
+
+    .butttonright{
+      float:right;
+    }
+
     .container
     {
       display: flex;
@@ -134,15 +139,15 @@ function test_input($data) {
                 $shoe_brand = $_POST["shoe_brand"];
                 $category = $_POST["category"];
                 $shoe_image = $_POST["shoe_image"];
-                $shoe_size = $_POST["shoe_size"];
+                //$shoe_size = $_POST["shoe_size"];
                 $shoe_price = $_POST["shoe_price"];
-                $stock = $_POST["stock"];
     
-                $sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_size='$shoe_size', shoe_price='$shoe_price', stock='$stock' WHERE shoe_id=$shoe_id";
-    
+//$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_size='$shoe_size', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
+                $sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
+
                 if ($conn->query($sql) === TRUE) {
 
-                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
+                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
                   } else {
                     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
                   }
@@ -200,7 +205,7 @@ function test_input($data) {
     <input type="radio" name="category" value="male" <?php if($row["category"]=="male"){echo "checked";} ?>> Male
     <input type="radio" name="category" value="female" <?php if($row["category"]=="female"){echo "checked";} ?>> Female<br>
     Shoe Image: <input type="text" name="shoe_image" value="<?php echo $row["shoe_image"]; ?>"><br>
-    <label for="shoe_size"  >Shoe Size:</label>
+    <!-- `<label for="shoe_size"  >Shoe Size:</label>
                 <select id="shoe_size" name="shoe_size">
                     <option value="7">7</option>
                     <option value="7.5">7.5 </option>
@@ -214,11 +219,12 @@ function test_input($data) {
                     <option value="11.5">11.5</option>
                     <option value="12">12</option>
                     <option value="12.5">12.5</option>
-                </select><br>  
+                </select><br>  ` -->
     Shoe Price: RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
-    Stock: <input type="number" name="stock" value="<?php echo $row["stock"]; ?>"><br>
     <input type="submit" name="submit" value="Update">
-    <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
+    <div class="butttonright">
+        <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
+    </div>
   </form>
 
   <?php echo "<div>".$msg."</div>"?>
