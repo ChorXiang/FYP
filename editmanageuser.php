@@ -10,62 +10,17 @@
 
 if (isset($_POST["savebtn"])) 	
 {
-	$mname = $_POST["name"];  	
-    $memail = $_POST["email"];  
-    $mmemail = filter_var($memail, FILTER_SANITIZE_EMAIL);
-    $mph = $_POST["contact"];  
-    $mmph = filter_var($mph);
-    $musername = $_POST["username"];  
+ 
     $mstatus = $_POST['status'];
-    $mimage = $_POST['image'];
 
-
-        
-
-	if (!$mname)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
-    }
-    else if(!$memail)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
- 
-    }
-    else if(!filter_var($mmemail, FILTER_VALIDATE_EMAIL) === true)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
-    }
-    else if(!$mph)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
-
-    }
-    else if(strlen($mmph)<10)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
-    }
-    else if(strlen($mmph)>12)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
-    }
-    else if(!$musername)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in User Name !</div>";
- 
-    }
-    else if(!$mstatus)
+    if(!$mstatus)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Status !</div>";
  
     }
-    else if(!$mimage)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Put the Image !</div>";
- 
-    }
     else
     {
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', status='" . $_POST['status'] . "' , image='" . $_POST['image'] . "', username='" . $_POST['username'] . "', contact_no='" . $_POST['contact'] . "' where email_address = '$id'");            
+        mysqli_query($conn,"UPDATE user set status='" . $_POST['status'] . "' where email_address = '$id'");            
         // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
  
@@ -153,13 +108,13 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name<sup>*</sup> :</label><input type="text" name="name" size="0" value="<?php echo $row['full_name']; ?>">
+        <label>Name :</label> <?php echo $row['full_name']; ?> 
 
-        <br><label>Email<sup>*</sup> :</label><input type="email" name="email" value="<?php echo $row['email_address']; ?>">
+        <br><label>Email :</label> <?php echo $row["email_address"]; ?> 
      
-        <br><label>Phone Number<sup>*</sup> :</label><input type="text" name="contact" size="10" value="<?php echo $row['contact_no']; ?>">
+        <br><label>Phone Number :</label> <?php echo $row["contact_no"]; ?>
 
-        <br><label>Username<sup>*</sup> :</label><input type="text" name="username" size="15" value="<?php echo $row['username']; ?>">
+        <br><label>Username :</label> <?php echo $row["username"]; ?> 
 
         <br><label for="status"  >Status<sup>*</sup> : </label>
                 <select id="status" name="status">
@@ -167,9 +122,8 @@ if (isset($_POST["savebtn"]))
                     <option value="inactive">Inactive</option>
                 </select>
 
-        <p>User Image<sup>*</sup> : (insert the file picture)<br><br><input type="file" id="file"  name="image" class="form-control" multiple></P>
-        
-        <br><input type="submit" name="savebtn" value="UPDATE">
+       
+        <br><br><input type="submit" name="savebtn" value="UPDATE">
 
     </form>
     <div style=text-align:center;>

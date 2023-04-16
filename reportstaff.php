@@ -165,18 +165,20 @@
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
             <tr>
                 <th colspan="10"  >
-                    Customer Informations
+                    Staff Informations
                 </th>
             </tr>
 
 
             <tr>
            
-          
+
             <td>Admin ID</td>
           <td>Admin Name</td>
-          <td>status</td>
+          <td>Admin Password</td>
           <td>Authority</td>
+          <td>status</td>
+
                 
              
                 
@@ -187,10 +189,13 @@
      
          ?>
             <tr>
+
           <td><?php echo $row["admin_id"]; ?></td>         
-          <td></td>   
-          <td></td>   
-          <td></td>   
+          <td><?php echo $row["admin_name"]; ?></td>  
+          <td><?php echo $row["admin_password"]; ?></td>  
+          <td><?php echo $row["a_id"]; ?></td>    
+          <td><?php echo $row["status"]; ?></td>   
+
   
             </tr>
             <?php

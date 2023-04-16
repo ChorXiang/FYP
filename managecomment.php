@@ -1,7 +1,7 @@
 <?php
     // include 'adminheader.php';
     include 'conn.php'; 
-
+    include 'adminheader.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,11 +19,10 @@
     }
     .middle
     {
-        max-width: 1680px;
         margin: auto; 
-        padding:50px;
+        padding-left: 160px;
     }
-    *
+    .wrapper
     {
       font-size: 20px;
     }
@@ -35,8 +34,7 @@
     
     th 
     {
-      
-      padding: 30px;
+      padding: 20px;
     }
     a:hover
     {
@@ -90,7 +88,7 @@
           <th><?php echo $row["shipping_rating"];?></th>
           <th><?php echo $row["customer_service_rating"];?></th>
           <th><?php echo $row["product_quality_rating"];?></th>
-          <th><?php echo $row["message"];?></th>
+          <th style="max-width: 300px, text-overflow: ellipsis;"><?php echo $row["message"];?></th>
           <th><?php echo $row["created_at"];?></th>
         </tr>
             <?php
@@ -103,7 +101,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportcomment.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span class="left" ><a href="reportcomment.php" alt="insert"><input type="button" value="View and Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->

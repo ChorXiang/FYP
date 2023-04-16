@@ -1,5 +1,6 @@
 <?php
     include 'conn.php'; 
+    include 'adminheader.php'; 
     $msg='';
 ?>
 <?php
@@ -54,59 +55,20 @@ function test_input($data) {
 
     <style>
 
-
-    .sidenav {
-      height: 100%;
-      flex: 30%;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      padding-top: 20px;
-    }
-
     .main {
       flex: 0 0 70%;
       background-color: white;
-      padding: 20px;
+      padding-left: 160px;
       height: 100%;
       float: right;
       text-align: center;
       position: absolute;
-      top: 0;
-      right: 0;
       font-size: 25px;
     }
 
     form input
     {
         font-size: 15px;
-    }
-
-    .sidenav a {
-      padding: 6px 8px 6px 16px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-    }
-
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
-
-    .sidenav img
-    {
-      height: 50px;
-      width: 90px;
-    }
-
-
-    @media screen and (max-height: 450px) {
-      .sidenav {padding-top: 15px;}
-      .sidenav a {font-size: 18px;}
     }
 
     select
@@ -116,22 +78,22 @@ function test_input($data) {
 
     th
     {
-      padding: 5px;
+      padding: 20px;
     }
 
     fieldset
     {
       background-color: lightgrey;
-    }
-
-    .left{
-      float:left;
-      padding-left:160px ;
+      width: auto;
+      height: auto;
     }
 
     .right{
       float:right;
-      padding-right:60px ;
+      padding-right:160px ;
+      margin-left: auto;
+      margin-right: auto;
+      width: 20%;
     }
     .container
     {
@@ -141,6 +103,7 @@ function test_input($data) {
       margin: 0 auto;
       border: 1px solid #ccc;
       padding: 20px;
+      padding-right:0px ;
     }
 
     .imgcenter {
@@ -148,24 +111,14 @@ function test_input($data) {
       margin-left: auto;
       margin-right: auto;
       width: 40%;
+      padding-left: 20px;
+      text-align:"center";  
     }
-    
+
 </style>
 
 </head>
 <body>
-
-<div class="side">
-<div class="sidenav">
-        <a href="admindashboard.php"><img src="image/foot.png" alt="Shop Logo" width="10px" height="10px"></a><br><br> 
-        <a href="#">Manage Category</a>
-        <a href="admin_product.php">Manage Product</a>
-        <a href="admin_history.php">Manage Order</a>
-        <a href="manageuser.php">Manage Customer</a>
-        <a href="#">Manage Staff </a>
-        <a href="managecomment.php">Manage comment </a>
-</div>
-</div>
 
 <div class="main">
 
@@ -216,16 +169,16 @@ function test_input($data) {
 
 <div class="container">
   <div class="left">
-  <fieldset>
-  <div class="wordcenter">
-  <b>PRODUCT IMAGE</b><br>
-  <h3><?php echo $row["shoe_name"]; ?></h3>
+         
+        <div class="imgcenter">
+        <br><b>PRODUCT IMAGE</b><br>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="150px" width="150px" >
   </div>
-    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-  </fieldset>
 </div>
 
-<div class='right'>
+<div>
+  <fieldset>
+  <b><?php echo $row["shoe_name"]; ?></b>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
     <input type="hidden" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
@@ -265,7 +218,9 @@ function test_input($data) {
     Shoe Price: RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
     Stock: <input type="number" name="stock" value="<?php echo $row["stock"]; ?>"><br>
     <input type="submit" name="submit" value="Update">
+    <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
   </form>
+
   <?php echo "<div>".$msg."</div>"?>
 
 </fieldset>

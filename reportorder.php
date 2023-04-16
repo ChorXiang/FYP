@@ -163,8 +163,8 @@
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
             <tr>
-                <th colspan="10"  >
-                    Customer Informations
+                <th colspan="15"  >
+                Order Informations
                 </th>
             </tr>
 
@@ -180,6 +180,9 @@
           <td>Total Price</td>
           <td>Email</td>
           <td>Date</td>
+          <td>Customer Name</td>
+          <td>Customer Phone Number</td>
+          <td>Customer Address</td>
           <td>Order Status</td>
                 
              
@@ -188,6 +191,12 @@
          <?php
          while($row = mysqli_fetch_array($result))
         {
+            $subtotal=0;
+            $total=0;
+            $p=$row["her_price"];
+            $q=$row["her_quantity"];
+            $subtotal=$p*$q;
+            $total =  $total + $subtotal;
      
          ?>
             <tr>
@@ -196,11 +205,13 @@
           <td><?php echo $row["her_size"];	?></td>
           <td><?php echo $row["her_quantity"];?></td>
           <td><?php echo $row["her_price"];?></td>
-          <td><?php echo $row["her_price"];?></td>
+          <td><?php echo  $total;?></td>
+          <td><?php echo $row["her_email"];?></td>
           <td><?php echo $row["her_date"];?></td>
-          <td><?php echo $row["her_date"];?></td>
+          <td><?php echo $row["his_name"];?></td>
+          <td><?php echo $row["his_pn"];?></td>
+          <td><?php echo $row["his_address"];?><?php echo $row["his_state"];?></td>
           <td><?php echo $row["order_status"];?></td>
-  
             </tr>
             <?php
         }

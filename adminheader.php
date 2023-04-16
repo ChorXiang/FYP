@@ -20,14 +20,13 @@
         {
             margin:0;
         } */
+        i
+        {
+            size: 20px;
+        }
         .center
         {
             color: white;
-        }
-        
-        img
-        {
-            width: 90px;
         }
         /*
         .right
@@ -88,7 +87,7 @@
         {
             display: block;
         } */
-        body {
+body {
   font-family: "Lato", sans-serif;
 }
 
@@ -107,7 +106,7 @@
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
   color: #818181;
   display: block;
 }
@@ -121,6 +120,7 @@
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
     </style>
 </head>
 <body>
@@ -151,13 +151,16 @@
 
         
 <div class="sidenav">
-        <a href="admindashboard.php" class="center" ><img src="image/foot.png" alt="Shop Logo"></a><br><br> 
+        <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
         <a href="#">Manage Category</a>
         <a href="admin_product.php">Manage Product</a>
-        <a href="admin_history.php">Manage Order</a>
+        <a href="manageorder.php">Manage Order</a>
         <a href="manageuser.php">Manage Customer</a>
-        <a href="#">Manage Staff </a>
+        <a href="managestaff.php">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
+        <a href="managecontactus.php">Manage Support </a>
+        <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
+
 </div>
 
 

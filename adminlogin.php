@@ -16,7 +16,7 @@ if(isset($_POST['loginbtn'])){
         $row = mysqli_fetch_assoc($result);
         $_SESSION['admin_id'] = $row['admin_id'];
         $_SESSION['admin_password'] = $row['admin_password'];
-        header('Location: test.php');
+        header('Location: manageuser.php');
     }else{
         $error[] = "Incorrect AdminId or password";
     }
@@ -36,7 +36,7 @@ if(isset($_POST['loginbtn'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Login</title>
 </head>
 <style>
     /* Global styles */
@@ -154,7 +154,7 @@ a:hover {
     <div class="form-container">
 
              
-    <form id="login" class="input-group" action="" method="POST" autocomplete="off">
+    <form id="login" class="input-group" action="manageuser.php" method="POST" autocomplete="off">
     <h3>Login now</h3>
     <?php
       if(isset($error)){
@@ -164,7 +164,7 @@ a:hover {
       };
       ?>
             <br>
-            <input type="number" class="input-field" placeholder="AdminId" name="admin_id">
+            <input type="text" class="input-field" placeholder="AdminId" name="admin_id">
             <input type="password" class="input-field" placeholder="Password" name="admin_password" id="p">
             <div style="display: flex; align-items: center;">
   <input type="checkbox" onclick="loginshowpw()">

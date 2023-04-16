@@ -1,3 +1,8 @@
+<?php
+    include 'conn.php'; 
+    include 'adminheader.php'; 
+?>
+
 <!DOCTYPE HTML>  
 <html>
 <head>
@@ -18,11 +23,6 @@
     </style>
 </head>
 <body>  
-<?php
- 
-    include 'conn.php'; 
-    
-?>
 
 <?php
   $statusErr = "";
@@ -48,7 +48,8 @@ function test_input($data) {
 ?>
 <?php
 // SQL query to retrieve all data from shoes table
-$sql = "SELECT * FROM history where her_id=1";
+$id = $_GET['her_id'];
+$sql = "SELECT * FROM history where her_id='$id'";
 $result = $conn->query($sql);
 
 // Check if there are any rows returned
@@ -76,7 +77,11 @@ if ($result->num_rows > 0) {
     <br>Shoes Price: RM <?php echo $her_price; ?><br>
     <br>Total Price: RM <?php echo $total; ?><br>
     <br>Email: <?php echo $her_email; ?><br>
-    <br>Order Status: <?php echo $status; ?><br>
+    <br>Date : <?php echo $row["her_date"];?><br>
+    <br>Customer name : <?php echo $row["his_name"];?><br>
+    <br>Customer phone number : <?php echo $row["his_pn"];?><br>
+    <br>Customer address : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>
+    <br>Current Order Status: <?php echo $status; ?><br>
 
     <form action="" method="post">
       <input type="hidden" name="her_id" value="<?php echo $row['her_id']; ?>">
@@ -88,7 +93,7 @@ if ($result->num_rows > 0) {
       <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">  
       <input type="radio" name="status" value="Pending">Pending
       <input type="radio" name="status" value="Delivering">Delivering
-      <input type="radio" name="status" value="Deliverd">Deliverd
+      <input type="radio" name="status" value="Delivered">Delivered
       <span class="error"><br><?php echo $statusErr;?></span>
       <br><br>
       <input type="submit" name="order_status" value="Update Status">
@@ -121,11 +126,12 @@ if(isset($_POST["order_status"])){
   // perform database update
   if ($statusErr == "") {
   
-    $sql = "UPDATE history SET order_status='$status' WHERE her_id='1'";
+    $sql = "UPDATE history SET order_status='$status' WHERE her_id='$id'";
 
 
     if (mysqli_query($conn, $sql)) {
       $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Edit Successfully!</div>";
+      header("Location: manageorder.php");
   } else {
     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
   }
