@@ -190,9 +190,7 @@ CREATE TABLE `shoes` (
   `shoe_brand` varchar(50) NOT NULL,
   `category` enum('male','female') NOT NULL,
   `shoe_image` varchar(255) NOT NULL,
-  `shoe_size` varchar(10) NOT NULL,
   `shoe_price` decimal(10,2) NOT NULL,
-  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

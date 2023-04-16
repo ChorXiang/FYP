@@ -56,13 +56,17 @@ if (isset($_POST['signupbtn'])) {
         $errors[] = 'Confirm Password is required';
     }
 
+    if (isset($_POST['status'])) {
+        $status = ($_POST['status']);
+    }
+
     if ($pass !== $cpass) {
         $errors[] = 'Passwords do not match';
     }
 
     if (empty($errors)) {
-        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword, confirm_password) 
-                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass', '$cpass')";
+        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword, confirm_password, status) 
+                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass', '$cpass', '$status')";
         if (mysqli_query($conn, $insert)) {
             header('Location: login.php');
             exit();
@@ -182,12 +186,12 @@ p a:hover {
          }
          ?>
          <input type="text" class="input-field" placeholder="Full Name" name="fullname">
-         <input type="tel" class="input-field" placeholder="Phone Number" name="contactno">
-         
+         <input type="tel" class="input-field" placeholder="Phone Number" name="contactno" maxlength="10">
          <input type="email" class="input-field" placeholder="Email" name="email">
          <input type="text" class="input-field" placeholder="User Name" name="username">
          <input type="password" class="input-field" placeholder="Password" name="userpassword" id="pw">
-<input type="checkbox" onclick="signshowpw()"><span class="showpw">Show Password</span>
+         <input type="hidden" name="status" value="active">
+        <input type="checkbox" onclick="signshowpw()"><span class="showpw">Show Password</span>
 <script>
     function signshowpw() {
         var x = document.getElementById("pw");
