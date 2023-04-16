@@ -22,7 +22,6 @@
 }
 
 .container {
-  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -35,7 +34,6 @@
   padding: 10px;
   position: fixed;
   height: 100%;
-  
 }
 
 .sidebar ul {
@@ -64,7 +62,6 @@
 .sidebar a:hover {
   background-color: #444;
 }
-
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -186,6 +183,29 @@
 
 </style>
 <body>
+
+<?php
+ // 启动会话
+
+// 检查用户是否已经登录，如果已经登录，将 $id 设置为 $_GET['user_id']，否则将 $id 设置为 NULL。
+$id = isset($_SESSION['user_id']) ? $_GET['user_id'] : null;
+?>
+
+<?php if (isset($_SESSION['user_id'])) { ?>
+    <!-- 如果用户已登录，则显示用户信息 -->
+    <li><a href="user.php<?php if ($id) echo "?id=$id"; ?>">My Account</a></li>
+    <li><a href="logout.php">Logout</a></li>
+<?php } else { ?>
+    <!-- 如果用户未登录，则显示登录和注册链接 -->
+    <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
+        <div class="dropdown-content">
+            <a href="register.php">Create An Account</a>
+            <a href="login.php">Login</a>
+        </div>
+    </li>
+<?php } ?>
+
+
 <div class="container">
     <div class="sidebar">
       <nav>
@@ -232,7 +252,7 @@ while ($row = mysqli_fetch_assoc($result))
 
 
 <?php
-$id = $_GET['user_id'];
+
 
 if (isset($_GET['search'])) {
   $search = mysqli_real_escape_string($conn, $_GET['search']);
