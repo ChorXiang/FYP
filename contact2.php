@@ -123,9 +123,44 @@ function test_input($data) {
   border: 1px solid #ccc;
   padding: 20px;
   }
+
+  .success {
+  background-color: #c7f0bd;
+  color: #155724;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
 </style>
 <div class="container">
 <div class="left">
+<?php
+if (isset($_POST['submit'])) {
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
+        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
+
+        if (mysqli_query($conn, $sql)) {
+          echo  "<div class='success'>New record created!</div>";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+    }
+}
+?>
+
+
+
+
+
 <fieldset>
 <h1>Contact Us</h1>
 <br>Please fill in your contact information below and send us your message:<br>
@@ -147,6 +182,7 @@ function test_input($data) {
   <input type="submit" name="submit" value="SEND">  
 </div>
 </form>
+
 </fieldset>
 </div>
 
@@ -186,28 +222,7 @@ function test_input($data) {
 </div>
 </div>
 
-<?php
-if (isset($_POST['submit'])) {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-
-    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
-
-        if (mysqli_query($conn, $sql)) {
-            echo "New record created!";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-
-        mysqli_close($conn);
-    }
-  }
-
-?>
 
 
 </body>
