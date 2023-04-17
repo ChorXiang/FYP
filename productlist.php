@@ -207,63 +207,62 @@ while ($row = mysqli_fetch_assoc($result))
 
 
 
+if (isset($_GET['shoe_type'])) {
+ 
+  $shoe_type = $_GET['shoe_type'];
 
-			// Check if a shoe type has been selected
-			if (isset($_GET['shoe_type'])) {
-				// Retrieve the selected shoe type
-				$shoe_type = $_GET['shoe_type'];
+ 
+  $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type'");
+  $resultbrand = null; 
 
-				// Retrieve the shoes that match the selected type
-				$result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type'");
-        $resultbrand=0;
-
-			} else if(isset($_GET['shoe_brand'])) {
-				// Retrieve the selected shoe type
-
-        $shoe_brand =  $_GET['shoe_brand'];
-				// Retrieve the shoes that match the selected type
-
-        $resultbrand = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand'");
-      }else
-      {
-				// Retrieve all the shoes
-				$result = mysqli_query($conn, "SELECT * FROM shoes");
-			}
+} else if(isset($_GET['shoe_brand'])) {
+  
+  $shoe_brand = $_GET['shoe_brand'];
 
 
+  $resultbrand = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand'");
+  $result = null; 
 
-			// Check if there are any shoes to display
-			if (mysqli_num_rows($result) > 0) {
-				// Loop through the shoes and generate HTML code for each shoe
-				while ($row = mysqli_fetch_assoc($result)) {
-                    $sid = $row['shoe_id'];
-                    echo '<div class="product-card">';     ?>
-                    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-                    <?php
-                    echo '<h2>' . $row['category'] . '</h2>';
-                    ?>
-                    <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-                    <?php
-                    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-                    echo '</div>';
-				}
-			} elseif (mysqli_num_rows($resultbrand) > 0) {
-        while ($row = mysqli_fetch_assoc($resultbrand)) {
-          $sid = $row['shoe_id'];
-          echo '<div class="product-card">';     ?>
-          <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-          <?php
-          echo '<h2>' . $row['category'] . '</h2>';
-          ?>
-          <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-          <?php
-          echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-          echo '</div>';
-      }
-    }
-      else {
-				echo '<p>No shoes found.</p>';
-			}
+} else {
+ 
+  $result = mysqli_query($conn, "SELECT * FROM shoes");
+  $resultbrand = null; 
+}
+
+
+if ($result && mysqli_num_rows($result) > 0) { 
+  
+  while ($row = mysqli_fetch_assoc($result)) {
+      $sid = $row['shoe_id'];
+      echo '<div class="product-card">';
+      ?>
+      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+      <?php
+      echo '<h2>' . $row['category'] . '</h2>';
+      ?>
+      <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+      <?php
+      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+      echo '</div>';
+  }
+} elseif ($resultbrand && mysqli_num_rows($resultbrand) > 0) { 
+  while ($row = mysqli_fetch_assoc($resultbrand)) {
+      $sid = $row['shoe_id'];
+      echo '<div class="product-card">';
+      ?>
+      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+      <?php
+      echo '<h2>' . $row['category'] . '</h2>';
+      ?>
+      <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+      <?php
+      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+      echo '</div>';
+  }
+} else {
+  echo '<p>No shoes found.</p>';
+}
+
 
 
 
