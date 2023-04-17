@@ -118,10 +118,10 @@
             </li>
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
-                    <a href="#">Nike</a>
-                    <a href="#">Puma</a>
-                    <a href="#">Adidas</a>
-                    <a href="#">Converse</a>
+                    <a href="productlist.php?shoe_brand=Nike&&user_id=<?php echo $id ?>">Nike</a>
+                    <a href="productlist.php?shoe_brand=Puma&&user_id=<?php echo $id ?>">Puma</a>
+                    <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a>
+                    <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a>
                 </div>
             </li>
 
@@ -166,10 +166,10 @@
             </li>
             <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
                 <div class="dropdown-content">
-                    <a href="#">Nike</a>
-                    <a href="#">Puma</a>
-                    <a href="#">Adidas</a>
-                    <a href="#">Vans</a>
+                    <a href="productlist.php?shoe_brand=Nike">Nike</a>
+                    <a href="productlist.php?shoe_brand=Puma">Puma</a>
+                    <a href="productlist.php?shoe_brand=Adidas">Adidas</a>
+                    <a href="productlist.php?shoe_brand=Converse">Converse</a>
                 </div>
             </li>
 

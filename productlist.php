@@ -180,6 +180,8 @@ $id = isset($_SESSION['user_id']) ? $_GET['user_id'] : null;
 // Retrieve the unique shoe categories
 $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
 
+
+
 // Loop through the unique categories and generate HTML code for each category
 while ($row = mysqli_fetch_assoc($result)) 
 {
@@ -189,6 +191,7 @@ while ($row = mysqli_fetch_assoc($result))
   
  
 }
+
 
 
 
@@ -212,10 +215,21 @@ while ($row = mysqli_fetch_assoc($result))
 
 				// Retrieve the shoes that match the selected type
 				$result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type'");
-			} else {
+
+			} else if(isset($_GET['shoe_brand'])) {
+				// Retrieve the selected shoe type
+
+        $shoe_brand =  $_GET['shoe_brand'];
+				// Retrieve the shoes that match the selected type
+
+        $resultbrand = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand'");
+      }else
+      {
 				// Retrieve all the shoes
 				$result = mysqli_query($conn, "SELECT * FROM shoes");
 			}
+
+
 
 			// Check if there are any shoes to display
 			if (mysqli_num_rows($result) > 0) {
@@ -232,9 +246,27 @@ while ($row = mysqli_fetch_assoc($result))
                     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
                     echo '</div>';
 				}
-			} else {
+			} else if (mysqli_num_rows($resultbrand) > 0) {
+
+				while ($row = mysqli_fetch_assoc($resultbrand)) {
+                    $sid = $row['shoe_id'];
+                    echo '<div class="product-card">';     ?>
+                    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+                    <?php
+                    echo '<h2>' . $row['category'] . '</h2>';
+                    ?>
+                    <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+                    <?php
+                    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+                    echo '</div>';
+				}
+			} 
+      else {
 				echo '<p>No shoes found.</p>';
 			}
+
+
+
 
 			// Close the database connection
 			mysqli_close($conn);
