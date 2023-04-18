@@ -191,7 +191,9 @@
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
 
                $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully ! </div>";
-               sleep(1);
+               
+               echo "<script>alert('Payment successful!');</script>";
+        
                echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
            }
 
