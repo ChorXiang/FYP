@@ -128,12 +128,11 @@
 
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
-  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_stock" value="<?php echo $row['stock']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>">
   <br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
-                    <option value="7">7</option>
                     <option value="7.5">7.5 </option>
                     <option value="8">8</option>
                     <option value="8.5">8.5</option>
@@ -156,7 +155,7 @@
 
 <form action="" method="post">
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
-  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_stock" value="<?php echo $row['stock']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
@@ -184,6 +183,7 @@
 
 </div>
 
+<option value="7">7 </option>
 </div>
 
   <?php
@@ -205,37 +205,53 @@ if (isset($_POST['submit'])) {
   $size = $_POST['size'];
   $id = $_POST['id'];
   $proid = $_POST['shoe_id'];
-  $stockk = $_POST['shoe_stock'];
+
   $image = $_POST['shoe_img'];
   $msg='';
 
   if (empty($size)) {
     $sizeErr = "* Size is required";
-  } else {
+} else {
     $size = test_input($size);
-  }
+    $sql = "SELECT * FROM stock";
+    $result = mysqli_query($conn, $sql);
 
-  if (empty($_POST["quantity"])) {
+    $row = mysqli_fetch_assoc($result);
+
+    if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
+        echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . $size] . '">';
+        $stockk = $row['size_' . $size];
+    }else if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
+      echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
+      $stockk = $row['size_' . ($size-0.5) . '_5'];
+  } 
+    else {
+        echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
+        $stockk = $row['size_' . ($size-0.5) . '_5'];
+    }
+
+}
+
+if (empty($_POST["quantity"])) {
     $quantityErr = "* Quantity is required";
-  } else {
+} else {
     $quantity = test_input($quantity);
-  }
+}
 
-  // perform database insertion
-  $id =$_GET['user_id'];
-  if ($sizeErr == "" && $quantityErr == "") {
-    // $sql = "INSERT INTO orders (shoesname, price, quantity, shoessize , user_id,pro_id,stock,shoe_image) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id','$proid '$stockk',' $image' ) ";
+
+$id = $_GET['user_id'];
+if ($sizeErr == "" && $quantityErr == "") {
     mysqli_query($conn,"INSERT INTO `orders`(shoesname, price, quantity, shoessize , user_id,stock,shoe_image, pro_id ) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id', '$stockk',' $image' ,'$proid')");  
-      //   
-    if (mysqli_query($conn, $sql)) {
 
-      $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
+    if (mysqli_query($conn, $sql)) {
+        $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
     } else {
-      $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
+        $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
     }
-  
+
     mysqli_close($conn);
-    }
+}
+
 }  
 
   ?>
