@@ -36,7 +36,7 @@
     td, th 
     {
       text-align: left;
-      padding: 20px ;
+      padding: 15px ;
     }
     a:hover
     {
@@ -79,7 +79,7 @@
           <td>Email</td>
           <td>Date</td>
           <td>Order Status</td>
-          <td>Manage & Order Detail</td>
+          <td>Edit Status</td>
         </tr>
         <?php
 
