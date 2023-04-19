@@ -10,7 +10,7 @@
 
   if(isset($_POST['saveas']))
   {
-
+    $id = $_GET["user_id"];
     $found_unavailable_item="false";
     $sql = "SELECT * FROM orders where user_id = '$id' ";
     $result = mysqli_query($conn,$sql);
