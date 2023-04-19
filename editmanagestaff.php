@@ -2,7 +2,7 @@
     include 'adminheader.php';
     include 'conn.php'; 
     $msg = '';
-    $id = $_REQUEST["aa"];
+    $id = $_REQUEST["admin_id"];
 ?>
 
 <?php
@@ -94,7 +94,7 @@ if (isset($_POST["savebtn"]))
 
 
 
-        $result = mysqli_query($conn, "select * from admin where a_id = '$id'"); 
+        $result = mysqli_query($conn, "select * from admin where admin_id = '$id'"); 
         $row = mysqli_fetch_assoc($result);
 
     //     $id = $_GET['name'];
@@ -108,7 +108,7 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label> Admin ID :</label> <input type="text" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
+        <label> Admin ID :</label> <input type="hidden" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
 
         <br><label>Name :</label> <input type="text" name="name" size="0" value="<?php echo $row["admin_name"]; ?>  "> 
      
