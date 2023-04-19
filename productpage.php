@@ -133,6 +133,7 @@
   <br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
+                    <option value="7">7</option>
                     <option value="7.5">7.5 </option>
                     <option value="8">8</option>
                     <option value="8.5">8.5</option>
@@ -221,7 +222,7 @@ if (isset($_POST['submit'])) {
     if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
       echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
       $stockk = $row['size_' . ($size-0.5) . '_5'];}
-    else if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
+    else if ($size % 2 == 0 || $size == 9 || $size == 11 || $size == 7) {
         echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . $size] . '">';
         $stockk = $row['size_' . $size];
     } 
@@ -274,7 +275,7 @@ if (isset($_POST['wishlist'])) {
       if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
         echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
         $stockk = $row['size_' . ($size-0.5) . '_5'];}
-      else if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
+      else if ($size % 2 == 0 || $size == 9 || $size == 11 || $size == 7) {
           echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . $size] . '">';
           $stockk = $row['size_' . $size];
       } 
