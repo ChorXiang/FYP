@@ -218,19 +218,19 @@ if (isset($_POST['submit'])) {
 
     $row = mysqli_fetch_assoc($result);
 
-    if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
+    if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
+      echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
+      $stockk = $row['size_' . ($size-0.5) . '_5'];}
+    else if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
         echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . $size] . '">';
         $stockk = $row['size_' . $size];
-    }else if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
-      echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
-      $stockk = $row['size_' . ($size-0.5) . '_5'];
-  } 
-    else {
+    } 
+     else {
         echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
         $stockk = $row['size_' . ($size-0.5) . '_5'];
     }
-
 }
+
 
 if (empty($_POST["quantity"])) {
     $quantityErr = "* Quantity is required";
@@ -266,13 +266,28 @@ if (isset($_POST['wishlist'])) {
     $sizeErr = '* Size is required';
   } else {
       $size = test_input($_POST['size']);
-      // process wishlist form data
+      $sql = "SELECT * FROM stock";
+      $result = mysqli_query($conn, $sql);
+  
+      $row = mysqli_fetch_assoc($result);
+  
+      if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) {
+        echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
+        $stockk = $row['size_' . ($size-0.5) . '_5'];}
+      else if ($size % 2 == 0 || $size == 9 || $size == 11 ) {
+          echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . $size] . '">';
+          $stockk = $row['size_' . $size];
+      } 
+       else {
+          echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
+          $stockk = $row['size_' . ($size-0.5) . '_5'];
+      }
   }
 
   // perform database insertion
   if ($sizeErr == "" ) {
   // $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
-  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "' , user_id='" . $_POST['id'] . "' , pro_id='" . $_POST['shoe_id'] . "' , stock='" . $_POST['shoe_stock'] . "' , shoe_image='" . $_POST['shoe_img'] . "' ");
+  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "' , user_id='" . $_POST['id'] . "' , pro_id='" . $_POST['shoe_id'] . "' , stock='" . $stockk . "' , shoe_image='" . $_POST['shoe_img'] . "' ");
 
   if (mysqli_query($conn, $sql)) {
 
