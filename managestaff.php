@@ -71,6 +71,7 @@
         <tr>
           <td>Admin Photo</td>
           <td>Admin ID</td>
+          <td>Admin Email</td>
           <td>Admin Name</td>
           <td>Status</td>
           <td>Manage</td>
@@ -84,7 +85,8 @@
       
         <tr>
           <td><img class='img' src="<?php echo "image/".$row['image'];?>" ></td>
-          <td><?php echo $row["admin_id"]; ?></td>         
+          <td><?php echo $row["admin_id"]; ?></td>   
+          <td><?php echo $row["admin_email"]; ?></td>               
           <td><?php echo $row["admin_name"]; ?></td>       
           <td><?php echo $row["status"]; ?></td>       
           <td>       
