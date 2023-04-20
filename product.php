@@ -184,26 +184,7 @@
 </style>
 <body>
 
-<?php
- // 启动会话
 
-// 检查用户是否已经登录，如果已经登录，将 $id 设置为 $_GET['user_id']，否则将 $id 设置为 NULL。
-$id = isset($_SESSION['user_id']) ? $_GET['user_id'] : null;
-?>
-
-<?php if (isset($_SESSION['user_id'])) { ?>
-    <!-- 如果用户已登录，则显示用户信息 -->
-    <li><a href="user.php<?php if ($id) echo "?id=$id"; ?>">My Account</a></li>
-    <li><a href="logout.php">Logout</a></li>
-<?php } else { ?>
-    <!-- 如果用户未登录，则显示登录和注册链接 -->
-    <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Login</a>
-        <div class="dropdown-content">
-            <a href="register.php">Create An Account</a>
-            <a href="login.php">Login</a>
-        </div>
-    </li>
-<?php } ?>
 
 
 <div class="container">
@@ -214,7 +195,16 @@ $id = isset($_SESSION['user_id']) ? $_GET['user_id'] : null;
 
         
   <?php
+
+  
 // Retrieve the unique shoe categories
+$result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes");
+
+  // Loop through the unique categories and generate HTML code for each category
+  while ($row = mysqli_fetch_assoc($result)) 
+  {
+    echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '</h2></a>';
+  }
 $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
 
 // Loop through the unique categories and generate HTML code for each category
@@ -226,6 +216,8 @@ while ($row = mysqli_fetch_assoc($result))
   
  
 }
+
+
 
 
 
