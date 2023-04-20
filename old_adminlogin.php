@@ -2,47 +2,25 @@
 
 include_once 'conn.php';
 
-session_start(); 
+session_start();
 
 if(isset($_POST['loginbtn'])){
 
-    $email_address = $_POST['email_address'];
-    $pass = $_POST['password'];
-    $status = '';
-    $select = "SELECT * FROM user WHERE email_address = '$email_address' && userpassword = '$pass'";
+    $name = $_POST['admin_id'];
+    $pass = $_POST['admin_password'];
+ 
+    $select = "SELECT * FROM admin WHERE admin_id = '$name' && admin_password = '$pass'";
     $result = mysqli_query($conn, $select);
 
-
-
-      if(mysqli_num_rows($result) == 1)
-      {
-        
-      $row = mysqli_fetch_assoc($result);
-      $status = $row['status'];
-        if($status=="active")
-        {
-
-          $_SESSION['email_address'] = $row['email_address'];
-          $_SESSION['userpassword'] = $row['userpassword'];
-
-          $user_id = $row['user_id'];
-          $_SESSION['user_id'] = $user_id; 
-          header('Location: homepage.php?user_id='.$row['user_id']);
-        }
-        else
-        {
-          $error[] = "Incorrect user status, Please <a href='contact2.php'>contact us</a> ";
-        }
-
-
-
-      }else{
-          $error[] = "Incorrect email or password";
-      }
-
-
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['admin_id'] = $row['admin_id'];
+        $_SESSION['admin_password'] = $row['admin_password'];
+        header('Location: manageuser.php');
+    }else{
+        $error[] = "Incorrect AdminId or password";
+    }
 }
-
     
 
 
@@ -58,7 +36,7 @@ if(isset($_POST['loginbtn'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User login </title>
+    <title>Admin Login</title>
 </head>
 <style>
     /* Global styles */
@@ -173,11 +151,10 @@ a:hover {
 </style>
 
 <body>
-  
     <div class="form-container">
 
              
-    <form id="login" class="input-group" action="" method="POST" autocomplete="off">
+    <form id="login" class="input-group" action="manageuser.php" method="POST" autocomplete="off">
     <h3>Login now</h3>
     <?php
       if(isset($error)){
@@ -187,8 +164,8 @@ a:hover {
       };
       ?>
             <br>
-            <input type="email" class="input-field" placeholder="Email" name="email_address">
-            <input type="password" class="input-field" placeholder="Password" name="password" id="p">
+            <input type="text" class="input-field" placeholder="AdminId" name="admin_id">
+            <input type="password" class="input-field" placeholder="Password" name="admin_password" id="p">
             <div style="display: flex; align-items: center;">
   <input type="checkbox" onclick="loginshowpw()">
   <span class="showpw">Show Password</span>
@@ -210,14 +187,7 @@ a:hover {
             <div class="btnsubmit" style="padding-top:20px;">
             <button type="submit" class="submitbtn" name="loginbtn">Log In</button>
             
-            </div>
-            <div class="alignfgpw">
-                <br>
-            <a href="reset.php"><span class="fgpw">Forgot password?</span></a>
-            </div>
-        
-
-           <p>Don't have an account? <a href="register.php">Register now</a></p>
+          
         </form>
      
      </div>

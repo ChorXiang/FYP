@@ -71,9 +71,8 @@
         <tr>
           <td>Admin Photo</td>
           <td>Admin ID</td>
+          <td>Admin Email</td>
           <td>Admin Name</td>
-          <td>Admin Password</td>
-          <td>Authority</td>
           <td>Status</td>
           <td>Manage</td>
 
@@ -86,14 +85,12 @@
       
         <tr>
           <td><img class='img' src="<?php echo "image/".$row['image'];?>" ></td>
-          <td><?php echo $row["admin_id"]; ?></td>         
+          <td><?php echo $row["admin_id"]; ?></td>   
+          <td><?php echo $row["admin_email"]; ?></td>               
           <td><?php echo $row["admin_name"]; ?></td>       
-          <td><?php echo $row["admin_password"]; ?></td>  
-          <td><?php echo $row["a_id"]; ?></td>  
           <td><?php echo $row["status"]; ?></td>       
           <td>       
-            <a href="editmanagestaff.php?aa=<?php echo $row['a_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-                                                                       <!--  &&name=<?php echo $name?> -->
+            <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
             </td>
             
         </tr>
@@ -107,7 +104,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportstaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
+      <span class="left" ><a href="reportstaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
       <span class="left" ><a href="addmanagestaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="Add New Admin"></span></p>
       

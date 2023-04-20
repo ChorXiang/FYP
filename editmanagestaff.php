@@ -2,7 +2,7 @@
     include 'adminheader.php';
     include 'conn.php'; 
     $msg = '';
-    $id = $_REQUEST["aa"];
+    $id = $_REQUEST["admin_id"];
 ?>
 
 <?php
@@ -38,7 +38,7 @@ if (isset($_POST["savebtn"]))
     }
     else
     {
-        mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "', image='" . $_POST['image'] . "' , admin_password='" . $_POST['pass'] . "' where a_id = '$id'");            
+        mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "', image='" . $_POST['image'] . "' , admin_password='" . $_POST['pass'] . "' where admin_id = '$id'");            
         // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
  
@@ -80,6 +80,9 @@ if (isset($_POST["savebtn"]))
     {
       color: red;
     }
+    .butttonright{
+      float:right;
+    }
 </style>
 
 </head>
@@ -94,7 +97,7 @@ if (isset($_POST["savebtn"]))
 
 
 
-        $result = mysqli_query($conn, "select * from admin where a_id = '$id'"); 
+        $result = mysqli_query($conn, "select * from admin where admin_id = '$id'"); 
         $row = mysqli_fetch_assoc($result);
 
     //     $id = $_GET['name'];
@@ -108,7 +111,7 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label> Admin ID :</label> <input type="text" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
+        <label> Admin ID :</label> <input type="hidden" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
 
         <br><label>Name :</label> <input type="text" name="name" size="0" value="<?php echo $row["admin_name"]; ?>  "> 
      
@@ -125,7 +128,9 @@ if (isset($_POST["savebtn"]))
         <br>
        
         <br><br><input type="submit" name="savebtn" value="UPDATE">
-
+        <div class="butttonright">
+        <a href="managestaff.php">Back to Previous Page </a>
+        </div>
     </form>
     <div style=text-align:center;>
     <?php echo "<div>".$msg."</div>"?></dev>

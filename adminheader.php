@@ -159,6 +159,7 @@ body {
         <a href="managestaff.php">Manage Staff </a>
         <a href="managecomment.php">Manage comment </a>
         <a href="managecontactus.php">Manage Support </a>
+        <br><br><br>
         <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
 
 </div>

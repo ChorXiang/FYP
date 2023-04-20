@@ -20,6 +20,10 @@
           color: #FF0000;
         }
 
+        .butttonright{
+          float:right;
+        }
+
     </style>
 </head>
 <body>  
@@ -97,8 +101,11 @@ if ($result->num_rows > 0) {
       <span class="error"><br><?php echo $statusErr;?></span>
       <br><br>
       <input type="submit" name="order_status" value="Update Status">
+      <div class="butttonright">
+        <a href="manageorder.php">Back to Previous Page </a>
+      </div>
     </form>
-    </fieldset>
+    
 
     
     <?php
@@ -141,5 +148,6 @@ if(isset($_POST["order_status"])){
 }
 ?>
 <?php echo "<div>".$msg."</div>"?>
+</fieldset>
 </body>
 </html>

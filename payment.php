@@ -175,23 +175,37 @@
             $result = mysqli_query($conn,$sql);
            while($row = mysqli_fetch_array($result))
            {
-               $shoesname = $row["shoesname"];
-               $price = $row['price'];
-               $size = $row['shoessize'];
-               $qty = $row['quantity'];
-               $idd=$row['order_ID'];
-               $datetime = date('Y-m-d H:i:s');
-               $proo_id = $row['pro_id'];
-               $image = $row['shoe_image'];
-
-               mysqli_query($conn, "UPDATE shoes SET stock = stock - '$qty' WHERE shoe_id = '$proo_id'");
+            $shoesname = $row["shoesname"];
+            $price = $row['price'];
+            $size = $row['shoessize'];
+            $qty = $row['quantity'];
+            $idd=$row['order_ID'];
+            $datetime = date('Y-m-d H:i:s');
+            $proo_id = $row['pro_id'];
+            $image = $row['shoe_image'];
+            
+            if ($size == 8.5 || $size == 10.5 || $size == 12.5 ) 
+            {
+                mysqli_query($conn, "UPDATE stock SET (size_" . ($size-0.5) . "_5) = (size_" . ($size-0.5) . "_5) - $qty WHERE shoe_id = '$proo_id'");
+            }
+            else if($size % 2 == 0 || $size == 9 || $size == 11 || $size == 7) 
+            {
+                mysqli_query($conn, "UPDATE stock SET size_" . $size . " = (size_" . $size . ") - $qty WHERE shoe_id = '$proo_id'");
+            }
+            else
+            {
+                mysqli_query($conn, "UPDATE stock SET (size_" . ($size-0.5) . "_5) = (size_" . ($size-0.5) . "_5) - $qty WHERE shoe_id = '$proo_id'");
+            }
+            
                mysqli_query($conn, "UPDATE wishlist SET stock = stock - '$qty' WHERE pro_id = '$proo_id' ");
             //    mysqli_query($conn,"INSERT INTO history () VALUES ()");
                mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date,shoe_image,his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ', '$datetime','$image','$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode'  )");
                mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
 
                $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully ! </div>";
-               sleep(1);
+               
+               echo "<script>alert('Payment successful!');</script>";
+        
                echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
            }
 

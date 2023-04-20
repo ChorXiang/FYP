@@ -32,14 +32,20 @@
 
   fieldset
   {
-    padding-left: 160px;
+    margin-left: 160px;
+    padding-left: 10%;
+  }
+
+  th
+  {
+    padding: 20px;
   }
 
   .imgcenter {
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 20%;
+      width: 200px;
       padding-left: 20px;
       text-align:"center";  
     }
@@ -88,7 +94,7 @@
       <tr>
         <th><?php echo $row['shoe_id']; ?></th>
         <th><?php echo $row['shoe_name']; ?></th>
-        <td><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></td>
+        <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
         <th><?php echo $row['shoe_price']; ?></th>
         <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
