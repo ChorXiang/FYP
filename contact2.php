@@ -64,73 +64,97 @@ function test_input($data) {
 ?>
 
 <style>
-  fieldset{
-    background-color:  lightblue;
-    color: black;
-  }
-  
-  h1{
-    text-align: center;
-  }
+body {
+  background-color: white;
+  color: black;
+}
 
-  h3{
-    text-align: center;
-  }
+.txt_field {
+  width: 80%;
+  margin: 0 auto;
+}
 
-  table{
-    margin-left:50px;
-    margin-right:50px;
-  }
+fieldset {
+  border: 2px solid black;
+  padding: 20px;
+}
 
-  th{
-    padding:5px;
-  }
+h1, h3 {
+  text-align: center;
+}
 
-  .left{
-    float:left;
-    padding-left:80px ;
-  }
+table {
+  margin: 0 auto;
+}
 
-  .right{
-    float:right;
-    padding-right:80px ;
-  }
+th {
+  padding: 5px;
+}
 
-  input[type="submit"]{
-    width: 100%;
-    height: 50px;
-    border: 1px solid;
-    background: #2691d9;
-    border-radius: 25px;
-    font-size: 18px;
-    color: #e9f4fb;
-    font-weight: 700;
-    cursor: pointer;
-    outline: none;
-  }
+.left {
+  float: left;
+  padding-left: 80px;
+}
 
-  input[type="submit"]:hover{
-    border-color: #2691d9;
-    transition: .5s;
-  }
-  .container
-  {
+.right {
+  float: right;
+  padding-right: 80px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  border: 1px solid black;
+  padding: 10px;
+  width: 100%;
+  color: black;
+  background-color: white;
+}
+
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid black;
+  background: white;
+  border-radius: 25px;
+  font-size: 18px;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="submit"]:hover {
+  background-color: black;
+  color: white;
+  transition: .5s;
+}
+
+.container {
   background-color: ;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   padding: 20px;
-  }
+}
 
-  .success {
-  background-color: #c7f0bd;
-  color: #155724;
+.success {
+  background-color: black;
+  color: white;
   padding: 10px;
   margin-bottom: 20px;
   border-radius: 5px;
 }
+
+p {
+  color: black;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 
 </style>
 <div class="container">
@@ -176,51 +200,23 @@ if (isset($_POST['submit'])) {
   <span class="error"><?php echo $subjectErr;?></span>
   <br><br>
   Message：<br>
-  <textarea name="message" rows="5" cols="40"></textarea>
+  <textarea name="message" rows="5" cols="80"></textarea>
   <span class="error"><?php echo $messageErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="SEND">  
+  <p>Company Information</p>
+  <p>ROOT MALAYSIA SDN. BHD.</p>
+  <p>Email: shop@root-mlk.com</p>
+  <p>Contact Number: 03-21817618</p>
+<p>Address: Lot 155, First Floor, Suria KLCC, 50088, Kuala Lumpur, Malaysia.</p>
+  <p>Operating Hours: 10:00 AM — 06:00 PM (Monday – Friday)</p>
 </div>
 </form>
 
+
 </fieldset>
 </div>
 
-<div class='right'>
-<fieldset>
-<table border="1px">
-<h1>-OR-</h1>
-<h3>You can contact the creators during working hours.</h3>
-<div class="center">
-<tr>
-  <th>PHOTO</th>
-  <th>NAME</th>
-  <th>CONTACT NO.</th>
-  <th>EMAIL</th>
-</tr>
-<tr>
-<th><img src="image/test.jpeg" alt=""></th>
-  <th>TAN CHOR XIANG</th>
-  <th>016-7782792</th>
-  <th>1211201763@student.mmu.edu.my</th>
-</tr>
-<tr>
-<th><img src="image/test.jpeg" alt=""></th>
-  <th>ELWIN WONG</th>
-  <th>016-4452493</th>
-  <th>1211201078@student.mmu.edu.my</th>
-</tr>
-<tr>
-<th><img src="image/test.jpeg" alt=""></th>
-  <th>MURPHY SIM LE YANG</th>
-  <th>014-6190390</th>
-  <th>1211201894@student.mmu.edu.my</th>
-</tr>
-</table>
-</div>
-</fieldset>
-</div>
-</div>
 
 
 
@@ -228,7 +224,7 @@ if (isset($_POST['submit'])) {
 </body>
 </html>
 
-<?php
-    include 'footer.php';
-   
-?>
+
+
+
+
