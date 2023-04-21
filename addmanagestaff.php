@@ -1,5 +1,5 @@
 <?php
-
+    include 'adminheader.php'; 
     include 'conn.php'; 
     $msg = '';
 
@@ -12,30 +12,26 @@
 
     // $id= $_POST['id'];
     $mname= $_POST["name"];  	
-    $mid = $_POST["id"]; 
+    $memail = $_POST["email"]; 
     $mpass = $_POST["pass"];  	
     $mstatus = $_POST["status"]; 
-    $mimage = $_FILES['image']['name'];
+    $mimage = $_POST['image'];
 
         if (!$mname)
         {
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
+        }
+        else if(!$memail)
+        {
+            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+     
         }
         else if(!$mpass)
         {
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Password !</div>";
      
         }
-        else if(!$mid)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in ID !</div>";
-     
-        }
         else if(!$mstatus)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Status !</div>";
-        }
-        else if(!$mimage)
         {
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Status !</div>";
         }
@@ -43,12 +39,9 @@
         {
             // mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "' , admin_password='" . $_POST['pass'] . "' where a_id = '$id'");            
             // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,"INSERT INTO `admin`(admin_id,admin_name,status,admin_password,image) VALUES ('$mid','$mname','$mstatus','$mpass','$mimage')");  
-            $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";
-     
+            mysqli_query($conn,"INSERT INTO `admin`(admin_name,admin_email,status,admin_password,image) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
 
-        // $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add to Cart Successfully !</div>";
-     
+            $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
         }
     
             
@@ -146,6 +139,7 @@
         background: linear-gradient(to left,#ffaa00,#ffea00);
         color: black;
     }
+    
 </style>
 </head>
 <body>
@@ -153,18 +147,21 @@
 
 <div class="container">
     <h1>Add New Staff / Admin</h1>
-    <?php echo "<div>".$msg."</div>"?>
     <fieldset>
     <form action="" method="POST" >
-        <input type="hidden" name="id">
+    <?php echo "<div>".$msg."</div>"?>
+
         <label for=""><i class="fa fa-cube"></i> Admin Name:</label>
         <input name="name" type="text">
+        <br>
+        <label for=""><i class="fa fa-cube"></i> Admin Email:</label>
+        <input type="email" name="email" >
         <br>
         <label for=""><i class="fa fa-usd"></i> Password:</label>
         <input type="pass" name="pass" >
         <br>
-        <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
-        <input name="id" type="text">
+        <!-- <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
+        <input name="id" type="text"> -->
         <br>
         <label for="status"  >Status : </label>
                 <select id="status" name="status">
@@ -172,11 +169,15 @@
                     <option value="inactive">Inactive</option>
                 </select>
                 <br><br><br>
-                <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
-        <input type="file" id="file" name="image" class="form-control" multiple>
-        <br>
+                <input type="hidden" name="image" value="profile.jpg">
+
+                <!-- <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
+        <input type="file" id="file" name="image" class="form-control" multiple> -->
+        
         <input type="submit" name="savebtn" value="Add New Admin">
-        <br>
+        <div>
+        <a href="managestaff.php">Back to Previous Page </a>
+    </div>
 
     </form>
     </fieldset>
