@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Admin | Manage Comment </title>
 
     <style>
@@ -101,7 +102,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportcomment.php" alt="insert"><input type="button" value="View and Print Report"></span></p>
+      <span class="left" ><a href="reportcomment.php" alt="insert"><i class='fas fa-print' style='font-size:24px'></i><input type="button" value="View and Print Report"></span></p>
                                                      <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
