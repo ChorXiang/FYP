@@ -26,15 +26,42 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `admin`
 --
-
 CREATE TABLE `admin` (
-  `a_id` int(100) NOT NULL,
-  `admin_id` int(100) NOT NULL,
+  `admin_id` int(11) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
-  `status` varchar(50) NOT NULL,
-  `admin_name` varchar(50) NOT NULL,
-  `image` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `status` varchar(20) NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `status`, `admin_name`, `image`) VALUES
+(1, 'sim@gmail.com', '123', 'active', 'SIm', 'management.png');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
 
 --
 -- Dumping data for table `admin`
@@ -260,12 +287,6 @@ INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_i
 --
 
 --
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`a_id`);
-
---
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
@@ -316,12 +337,6 @@ ALTER TABLE `wishlist`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `a_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `comment`
