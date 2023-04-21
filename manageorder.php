@@ -13,11 +13,11 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Admin | Manage Order </title>
 
-    
     <style>
     fieldset
     {
         background-color: #f2f2f2;
+        font-weight: bold;
     }
     .middle
     {

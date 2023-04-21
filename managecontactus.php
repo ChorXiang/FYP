@@ -16,6 +16,7 @@
     fieldset
     {
         background-color: #f2f2f2;
+        font-weight: bold;
     }
     .middle
     {
