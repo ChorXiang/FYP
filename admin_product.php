@@ -61,19 +61,18 @@ function test_input($data) {
       padding-left: 160px;
       height: 100%;
       float: right;
-      text-align: center;
       position: absolute;
       font-size: 25px;
     }
 
     form input
     {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     select
     {
-        font-size: 15px;
+        font-size: 16px;
     }
 
     th
@@ -118,6 +117,11 @@ function test_input($data) {
       width: 40%;
       padding-left: 20px;
       text-align:"center";  
+    }
+
+    .wordcenter
+    {
+      text-align: center;
     }
 
 </style>
@@ -183,25 +187,27 @@ function test_input($data) {
 
 <div>
   <fieldset>
+  <div class="wordcenter">
   <b><?php echo $row["shoe_name"]; ?></b>
+  </div>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
     <input type="hidden" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
-    <label for="shoe_type"  >Shoe Type:</label>
+    <label for="shoe_type"  >Shoe Type&nbsp;&nbsp; :</label>
                 <select id="shoe_type" name="shoe_type">
                     <option value="Running Shoes">Running Shoes</option>
                     <option value="Casual Shoes">Casual Shoes</option>
                     <option value="Sneakers">Sneakers</option>
                     <option value="Lifestyle">Lifestyle</option>
                 </select><br>
-    <label for="shoe_brand"  >Shoe Brand:</label>
+    <label for="shoe_brand"  >Shoe Brand :</label>
                 <select id="shoe_brand" name="shoe_brand">
                     <option value="Nike">Nike</option>
                     <option value="Puma">Puma </option>
                     <option value="Adidas">Adidas</option>
                     <option value="Converse">Converse</option>
                 </select><br>    
-    Category:
+    Category &nbsp;&nbsp;&nbsp;&nbsp;:
     <input type="radio" name="category" value="male" <?php if($row["category"]=="male"){echo "checked";} ?>> Male
     <input type="radio" name="category" value="female" <?php if($row["category"]=="female"){echo "checked";} ?>> Female<br>
     Shoe Image: <input type="text" name="shoe_image" value="<?php echo $row["shoe_image"]; ?>"><br>
@@ -220,7 +226,7 @@ function test_input($data) {
                     <option value="12">12</option>
                     <option value="12.5">12.5</option>
                 </select><br>  ` -->
-    Shoe Price: RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
+    Shoe Price&nbsp;  : RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
     <input type="submit" name="submit" value="Update">
     <div class="butttonright">
         <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
