@@ -147,7 +147,7 @@ if (isset($_POST["update_cart"])) {
       <td>
   <form action="" method="post">
     <input type="hidden" name="order_ID" value="<?php echo $row["order_ID"]; ?>">
-    <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>">
+    <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>" required>
     <button type="submit" name="update_cart">Update cart</button>
   </form>
 </td>
