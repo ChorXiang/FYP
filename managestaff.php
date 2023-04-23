@@ -18,6 +18,7 @@
     fieldset
     {
         background-color: #f2f2f2;
+        font-weight: bold;
     }
     .middle
     {
@@ -26,7 +27,7 @@
     }
     *
     {
-      font-size: 30px;
+      font-size: 16px;
     }
     .left
     {

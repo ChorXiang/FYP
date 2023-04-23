@@ -13,11 +13,11 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <title>Admin | Manage Order </title>
 
-    
     <style>
     fieldset
     {
         background-color: #f2f2f2;
+        font-weight: bold;
     }
     .middle
     {
@@ -121,9 +121,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportorder.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View n Print Report"></span></p>
-                                                     <!-- ?name=<?php echo $name?> -->
-
+      <span class="left" ><a href="reportorder.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
     </fieldset>
