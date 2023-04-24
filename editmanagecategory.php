@@ -79,6 +79,13 @@ if (isset($_POST["savebtn"]))
     <?php
         $result = mysqli_query($conn, "select * from shoes where shoe_brand = '$shoe_brand'"); 
         $row = mysqli_fetch_assoc($result);
+        if (!$row) {
+            // Handle the case where no shoe record was found
+            // For example, display an error message and exit the script
+            echo "No shoe record found for $shoe_brand";
+            exit;
+          }
+          
 
     ?>
     
