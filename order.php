@@ -4,6 +4,8 @@
     $msg='';
 ?>
 
+
+
 <?php
 
 
@@ -53,7 +55,21 @@
 
 
   }
+  
 
+?>
+<?php
+if (isset($_POST["update_cart"])) {
+  $order_ID = $_POST["order_ID"];
+  $quantity = $_POST["quantity"];
+
+  $sql = "UPDATE orders SET quantity='$quantity' WHERE order_ID='$order_ID'";
+  if (mysqli_query($conn, $sql)) {
+    $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully</div>";
+} else {
+    echo "Error updating order: " . mysqli_error($conn);
+}
+}
 ?>
 
 <!DOCTYPE html>
@@ -112,6 +128,7 @@
       <td><strong>Shoes Name </strong></td>
       <td><strong>Shoes Size (UK) </strong></td>
       <td><strong>Shoes Quantity</strong></td>
+      <td></td>
       <td><strong>Shoes Price</strong></td>
       <td><strong>Total Price</strong></td>
     </tr>
@@ -127,6 +144,14 @@
       <td><?php echo $row["shoesname"]; ?></td>
       <td><?php echo $row["shoessize"]; ?></td>
       <td><?php echo $row["quantity"];	?></td>
+      <td>
+  <form action="" method="post">
+    <input type="hidden" name="order_ID" value="<?php echo $row["order_ID"]; ?>">
+    <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>" required>
+    <button type="submit" name="update_cart">Update cart</button>
+  </form>
+</td>
+
       <td>RM<?php echo $row["price"];?></td>
       <?php
 
@@ -140,6 +165,7 @@
                                                                   <!-- &&email=<?php echo $id?> -->
       </td>
     </tr>
+
         <?php
     
     }

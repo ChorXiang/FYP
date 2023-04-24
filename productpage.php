@@ -201,16 +201,16 @@ $image = "";
 if (isset($_POST['submit'])) {
 
   $shoe_name = $_POST['shoe_name'];
-  $shoe_price = $_POST['shoe_price'];
-  $quantity = $_POST['quantity'];
-  $size = $_POST['size'];
-  $id = $_POST['id'];
-  $proid = $_POST['shoe_id'];
+$shoe_price = $_POST['shoe_price'];
+$quantity = $_POST['quantity'];
+$size = $_POST['size'];
+$id = $_POST['id'];
+$proid = $_POST['shoe_id'];
 
-  $image = $_POST['shoe_img'];
-  $msg='';
+$image = $_POST['shoe_img'];
+$msg='';
 
-  if (empty($size)) {
+if (empty($size)) {
     $sizeErr = "* Size is required";
 } else {
     $size = test_input($size);
@@ -230,7 +230,11 @@ if (isset($_POST['submit'])) {
         echo '<input type="hidden" name="shoe_stock" value="' . $row['size_' . ($size-0.5) . '_5'] . '">';
         $stockk = $row['size_' . ($size-0.5) . '_5'];
     }
+
+    
 }
+
+
 
 
 if (empty($_POST["quantity"])) {
@@ -239,10 +243,23 @@ if (empty($_POST["quantity"])) {
     $quantity = test_input($quantity);
 }
 
+$sql = "SELECT * FROM orders WHERE shoesname='$shoe_name' AND shoessize='$size' AND user_id='$id'";
+$result = mysqli_query($conn, $sql);
 
-$id = $_GET['user_id'];
+if (mysqli_num_rows($result) > 0) {
+ 
+  $row = mysqli_fetch_assoc($result);
+  $new_quantity = $row['quantity'] + $quantity;
+  $sql = "UPDATE orders SET quantity='$new_quantity' WHERE user_id='" . $row['user_id'] . "' AND shoesname='" . $row['shoesname'] . "' AND shoessize='" . $row['shoessize'] . "'";
+} else {
+  
+  $sql = "INSERT INTO `orders`(shoesname, price, quantity, shoessize , user_id,stock,shoe_image, pro_id ) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id', '$stockk',' $image' ,'$proid')";
+}
+
+
+
 if ($sizeErr == "" && $quantityErr == "") {
-    mysqli_query($conn,"INSERT INTO `orders`(shoesname, price, quantity, shoessize , user_id,stock,shoe_image, pro_id ) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id', '$stockk',' $image' ,'$proid')");  
+    
 
     if (mysqli_query($conn, $sql)) {
         $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add Successfully!</div>";
@@ -250,7 +267,7 @@ if ($sizeErr == "" && $quantityErr == "") {
         $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
     }
 
-    mysqli_close($conn);
+    
 }
 
 }  
