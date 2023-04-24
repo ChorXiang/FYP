@@ -2,84 +2,101 @@
 // include database connection file
 include_once 'conn.php';
 
-$errors = array();
+$emailErr = $fullnameErr = $contactErr = $existsErr = "";
+$usernameErr = $passErr = $CompassErr  = "";
+$email = $fullname = $contact =   "";
+$postcode = $username = $pass = $cpass =  "";
 
 if (isset($_POST['signupbtn'])) {
     // check if user already exists
-    if (isset($_POST['email'])) {
-        $email = ($_POST['email']);
+    if (isset($_POST['email_address'])) {
+        $email = test_input($_POST["email_address"]);
         $select = "SELECT * FROM user WHERE email_address = '$email'";
         $result = mysqli_query($conn, $select);
         if (mysqli_num_rows($result) > 0) {
-            $errors[] = 'User already exists';
+            $existsErr = 'User already exists';
         }
-    } else {
-        $errors[] = 'Email is required';
+        
+    } else  {
+        $emailErr = 'Email is required';
+       
     }
 
     // insert user data into database
-    if (isset($_POST['fullname'])) {
-        $fullname = ( $_POST['fullname']);
+    if (empty($_POST["full_name"])) {
+        $fullnameErr = 'Full Name is required';
+        
+    } 
+    else {
+        $fullname = test_input($_POST["full_name"]);
+    }
+
+    if (empty($_POST["contact_no"])) {
+        $contactErr = 'Contact Number is required';
+        
     } else {
-        $errors[] = 'Full Name is required';
+        $contact = test_input($_POST['contact_no']);
     }
 
-    if (isset($_POST['contactno'])) {
-        $contact =($_POST['contactno']);
+    if (empty($_POST['email_address'])) {
+        $emailErr= 'Email is required';
+        
+    }
+    else{
+        $email = test_input($_POST['email_address']);
+}
+
+
+
+
+    if (empty($_POST['username'])) {
+        $usernameErr = 'Username is required';
+       
     } else {
-        $errors[] = 'Contact Number is required';
+        $name = test_input($_POST['username']);
     }
 
-    if (isset($_POST['address'])) {
-        $address = ($_POST['address']);
-    }
-
-    if (isset($_POST['postcode'])) {
-        $postcode = ($_POST['postcode']);
-    }
-
-    if (isset($_POST['username'])) {
-        $name = ($_POST['username']);
+    if (empty($_POST['userpassword'])) {
+        $passErr = 'Password is required';
+    } else if (strlen($_POST['userpassword']) < 8) {
+        $passErr = 'Password must be at least 8 characters long';
     } else {
-        $errors[] = 'Username is required';
+        $pass = test_input($_POST['userpassword']);
     }
-
-    if (isset($_POST['userpassword'])) {
-        $pass = ($_POST['userpassword']);
-    } else {
-        $errors[] = 'Password is required';
-    }
-
-    if (isset($_POST['confirm_password'])) {
-        $cpass = ($_POST['confirm_password']);
-    } else {
-        $errors[] = 'Confirm Password is required';
-    }
-
-    if (isset($_POST['status'])) {
-        $status = ($_POST['status']);
-    }
-
-    if ($pass !== $cpass) {
-        $errors[] = 'Passwords do not match';
-    }
-
-    if (empty($errors)) {
-        $insert = "INSERT INTO user(full_name, contact_no, email_address, username, userpassword, confirm_password, status) 
-                   VALUES('$fullname', '$contact',  '$email', '$name', '$pass', '$cpass', '$status')";
-        if (mysqli_query($conn, $insert)) {
-            header('Location: login.php');
-            exit();
+    
+        
+        if (empty($_POST['confirm_password'])) {
+            $CompassErr = 'Confirm Password is required';
+            
         } else {
-            $errors[] = 'Database error: '.mysqli_error($conn);
+            $cpass = test_input($_POST['confirm_password']);
         }
-    }
+        
+
+        if ($pass !== $cpass) {
+            echo 'Passwords do not match';
+        }
+        
+
+    
 
     
   
 }
 
+
+
+ 
+
+// define the test_input function
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -90,7 +107,11 @@ if (isset($_POST['signupbtn'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 </head>
-
+<style>
+.error {
+  color: #FF0000;
+  }
+</style>
 <style>
    
    body {
@@ -173,6 +194,34 @@ p a:hover {
   text-decoration: underline;
 }
 
+<?php
+
+
+
+
+
+if (isset($_POST['signupbtn'])) {
+
+    $email = $_POST['email_address'];
+    $fullname = $_POST['full_name'];
+    $contact = $_POST['contact_no'];
+    $username = $_POST['username'];
+    $pass = $_POST['userpassword'];
+    $cpass = $_POST['confirm_password'];                                     
+
+    if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $usernameErr == "" && $passErr == "" && $cpassErr == "") {
+        $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password)VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass')";
+
+        if (mysqli_query($conn, $sql)) {
+            header('Location: login.php');
+            exit();
+        } else {
+            $errors[] = 'Database error: '.mysqli_error($conn);
+        }
+    }
+}
+?>
+
 </style>
 <body>
    <div class="form-container">
@@ -185,11 +234,22 @@ p a:hover {
             }
          }
          ?>
-         <input type="text" class="input-field" placeholder="Full Name" name="fullname">
-         <input type="tel" class="input-field" placeholder="Phone Number" name="contactno" maxlength="10">
-         <input type="email" class="input-field" placeholder="Email" name="email">
+         <input type="text" class="input-field" placeholder="Full Name" name="full_name">
+         <span class="error"><?php echo $fullnameErr;?></span>
+         <br><br>
+         <input type="tel" class="input-field" placeholder="Phone Number" name="contact_no" maxlength="10">
+         <span class="error"><?php echo $contactErr;?></span>
+         <br><br>
+         <input type="email" class="input-field" placeholder="Email" name="email_address">
+         <span class="error"><?php echo $emailErr;?></span>
+         <br><br>
          <input type="text" class="input-field" placeholder="User Name" name="username">
+         <span class="error"><?php echo $usernameErr;?></span>
+         <br><br>
          <input type="password" class="input-field" placeholder="Password" name="userpassword" id="pw">
+         <span class="error"><?php echo $passErr;?></span>
+         <br><br>
+
          <input type="hidden" name="status" value="active">
         <input type="checkbox" onclick="signshowpw()"><span class="showpw">Show Password</span>
 <script>
@@ -204,6 +264,8 @@ p a:hover {
 </script>
 
 <input type="password" class="input-field" placeholder="Confirm Password" name="confirm_password" id="conpw">
+<span class="error"><?php echo $CompassErr;?></span>
+         <br><br>
 <input type="checkbox" onclick="signshowconpw()"><span class="showpw">Show Password</span>
 <script>
     function signshowconpw() {
