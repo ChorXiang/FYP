@@ -133,11 +133,6 @@
         <th><a href="editmanagecategory.php?shoe_brand=Converse" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
     </tbody>
-            <?php
-
-        
-
-		?>
 			
       </table>
 </fieldset>
