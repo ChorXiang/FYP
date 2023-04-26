@@ -31,6 +31,7 @@
 
   fieldset
   {
+    background-color: #f2f2f2;
     margin-left: 160px;
     padding-left: 10%;
   }

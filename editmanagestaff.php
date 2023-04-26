@@ -111,13 +111,13 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label> Admin ID :</label> <input type="hidden" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
+        <input type="hidden" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
 
-        <br><label>Name :</label> <input type="text" name="name" size="0" value="<?php echo $row["admin_name"]; ?>  "> 
+        <br><label>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input type="text" name="name" size="0" value="<?php echo $row["admin_name"]; ?>  "> 
      
-        <br><label>Admin Password :</label> <input type="text" name="pass" size="0" value="<?php echo $row["admin_password"]; ?>"> 
-
-        <br><label for="status"  >Status : </label>
+        <br><label>Password :</label> <input type="text" name="pass" size="0" value="<?php echo $row["admin_password"]; ?>"> 
+&nbsp;
+        <br><label for="status"  >Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                 <select id="status" name="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>

@@ -32,6 +32,7 @@
 
   fieldset
   {
+    background-color: #f2f2f2;
     margin-left: 160px;
     padding-left: 10%;
   }
@@ -39,6 +40,11 @@
   th
   {
     padding: 20px;
+  }
+
+  h1
+  {
+    float: left;
   }
 
   .imgcenter {
