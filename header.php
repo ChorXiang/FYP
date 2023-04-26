@@ -180,7 +180,7 @@
             
             <li class="dropdown"><a href="#" class="dropbtn">Support</a>
                 <div class="dropdown-content">
-                    <a href="contact2.php">Contact Us</a>
+                    <a href="contact.php">Contact Us</a>
                 </div>
             </li>
         </ul>
