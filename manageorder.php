@@ -11,6 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Admin | Manage Order </title>
 
     <style>
@@ -30,13 +32,17 @@
     }
     .left
     {
-      float: right;
       margin-bottom: 50px;
     }
-    th, th 
+    .right
+    {
+      float: right;
+    }
+    td, th 
     {
       padding: 15px ;
     }
+    
     a:hover
     {
       color: red;
@@ -65,7 +71,7 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:15px"><b style="font-size: 50px;"> View Customer Order </b></i></h1>
+        <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> View Customer Order </b></i></h1>
       <table border="0px">
         <tr>
           <th>Customer ID</th>
@@ -118,7 +124,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportorder.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span class="right" ><a href="reportorder.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
     </fieldset>

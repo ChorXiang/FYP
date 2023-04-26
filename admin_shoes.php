@@ -42,11 +42,6 @@
     padding: 20px;
   }
 
-  h1
-  {
-    float: left;
-  }
-
   .imgcenter {
       display: block;
       margin-left: auto;
@@ -81,6 +76,8 @@
         $sql = "select * from shoes";
         $result = mysqli_query($conn,$sql);
         ?>
+      <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
+
       <table border="0px">
       <thead>
         <tr>

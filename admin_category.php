@@ -76,6 +76,7 @@
         $result = mysqli_query($conn,$sql);
 
         ?>
+        <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes Category</b></i></h1>
       <table border="0px">
       <thead>
         <tr>
