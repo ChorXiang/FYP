@@ -33,9 +33,8 @@
       float: right;
       margin-bottom: 50px;
     }
-    td, th 
+    th, th 
     {
-      text-align: left;
       padding: 15px ;
     }
     a:hover
@@ -66,20 +65,19 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> View Customer Order </b></h1>
+      <h1><i class="fa fa-address-book-o" style="font-size:15px"><b style="font-size: 50px;"> View Customer Order </b></i></h1>
       <table border="0px">
         <tr>
-          <td>Order ID</td>
-          <td>Customer ID</td>
-          <td>Shoes Name </td>
-          <td>Shoes Size</td>
-          <td>Quantity</td>
-          <td>Price</td>
-          <td>Total Price</td>
-          <td>Email</td>
-          <td>Date</td>
-          <td>Order Status</td>
-          <td>Edit Status</td>
+          <th>Customer ID</th>
+          <th>Shoes Name </th>
+          <th>Shoes Size</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total Price</th>
+          <th>Email</th>
+          <th>Date</th>
+          <th>Order Status</th>
+          <th>Edit Status</th>
         </tr>
         <?php
 
@@ -95,20 +93,19 @@
             ?>
       
         <tr>
-          <td><?php echo $row["her_id"]; ?></td>         
-          <td><?php echo $row["user_id"]; ?></td>         
-          <td><?php echo $row["her_shoesname"];	?></td>
-          <td>UK <?php echo $row["her_size"];	?></td>
-          <td><?php echo $row["her_quantity"];?></td>
-          <td>RM<?php echo $p;?></td>
-          <td>RM<?php echo $total;?></td>
-          <td><?php echo $row["her_email"];?></td>
-          <td><?php echo $row["her_date"];?></td>
-          <td><?php echo $row["order_status"];?></td>
+          <th><?php echo $row["user_id"]; ?></th>         
+          <th><?php echo $row["her_shoesname"];	?></th>
+          <th>UK <?php echo $row["her_size"];	?></th>
+          <th><?php echo $row["her_quantity"];?></th>
+          <th>RM<?php echo $p;?></th>
+          <th>RM<?php echo $total;?></th>
+          <th><?php echo $row["her_email"];?></th>
+          <th><?php echo $row["her_date"];?></th>
+          <th><?php echo $row["order_status"];?></th>
 
-          <td>       
+          <th>       
             <a href="admin_history.php?her_id=<?php echo $row["her_id"];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-          </td>
+          </th>
         </tr>
             <?php
 
