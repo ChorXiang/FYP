@@ -138,7 +138,16 @@ if(isset($_POST["order_status"])){
 
     if (mysqli_query($conn, $sql)) {
       $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Edit Successfully!</div>";
-
+      echo '<script>alert("Update Successfully !");</script>';
+     
+        echo '<script>
+            function confirmRedirect() {
+                if (confirm("Do you want to go to manageorder.php?")) {
+                    window.location.href = "manageorder.php";
+                }
+            }
+            confirmRedirect();
+         </script>';
   } else {
     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
   }
