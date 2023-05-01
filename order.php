@@ -46,7 +46,7 @@
       }
       else if ($found_unavailable_item==2) 
       {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size left $stock only. Please Remove this item to proceed checkout</div>";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size left $stock only. Please change the Quantity to proceed checkout</div>";
       }
       else if( $found_unavailable_item == 3)
       {
@@ -122,6 +122,14 @@ if (isset($_POST["update_cart"])) {
     // $host = "SELECT * FROM `user` where Email = '$id'";
     // $query = mysqli_query($conn,$host);
     // $host_image = mysqli_fetch_assoc($query);
+
+    if (mysqli_num_rows($result) == 0) {
+
+      echo '<img src="image/emptycart.png" style="width: 600px; height: auto;" alt="No product selected">';     
+  } 
+  else 
+  {
+
     ?>
   <table >
     <tr>
@@ -169,7 +177,7 @@ if (isset($_POST["update_cart"])) {
         <?php
     
     }
-
+  
     ?>
         </div>
   </table>
@@ -185,6 +193,11 @@ if (isset($_POST["update_cart"])) {
    
                             
 </div>
+<?php
+    
+  }
+
+  ?>
 
 </fieldset>
 

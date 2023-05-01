@@ -207,10 +207,12 @@ if (isset($_POST['signupbtn'])) {
     $contact = $_POST['contact_no'];
     $username = $_POST['username'];
     $pass = $_POST['userpassword'];
-    $cpass = $_POST['confirm_password'];                                     
+    $cpass = $_POST['confirm_password'];     
+    $img = $_POST['img']; 
+    $status = $_POST['status'];                                 
 
     if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $usernameErr == "" && $passErr == "" && $cpassErr == "") {
-        $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password)VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass')";
+        $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password,image,status)VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
 
         if (mysqli_query($conn, $sql)) {
             header('Location: login.php');
@@ -247,6 +249,8 @@ if (isset($_POST['signupbtn'])) {
          <span class="error"><?php echo $usernameErr;?></span>
          <br><br>
          <input type="password" class="input-field" placeholder="Password" name="userpassword" id="pw">
+         <input type="hidden" name="img" value="profile.jpg">  
+         <input type="hidden" name="status" value="active">  
          <span class="error"><?php echo $passErr;?></span>
          <br><br>
 

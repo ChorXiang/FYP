@@ -121,7 +121,7 @@
                     <a href="productlist.php?shoe_brand=Nike&&user_id=<?php echo $id ?>">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma&&user_id=<?php echo $id ?>">Puma</a>
                     <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a>
-                    <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a>
+                    <!-- <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a> -->
                 </div>
             </li>
 
@@ -132,7 +132,7 @@
 
             <li class="dropdown"><a href="#" class="dropbtn">Support</a>
                 <div class="dropdown-content">
-                    <a href="contact2.php?user_id=<?php echo $id ?>">Contact Us</a>
+                    <a href="contact.php?user_id=<?php echo $id ?>">Contact Us</a>
                     <a href="commentpage.php?user_id=<?php echo $id ?>">Comment</a>
                 </div>
             </li>
@@ -169,7 +169,7 @@
                     <a href="productlist.php?shoe_brand=Nike">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma">Puma</a>
                     <a href="productlist.php?shoe_brand=Adidas">Adidas</a>
-                    <a href="productlist.php?shoe_brand=Converse">Converse</a>
+                    <!-- <a href="productlist.php?shoe_brand=Converse">Converse</a> -->
                 </div>
             </li>
 

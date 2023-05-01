@@ -14,6 +14,7 @@
             margin-right: auto;
             width: 50%;
             background-color: #f2f2f2;
+            text-align: left;
         }
 
         .error {
@@ -75,17 +76,17 @@ if ($result->num_rows > 0) {
 
     <fieldset>
     <br>Order ID: <?php echo $her_id; ?><br>
+    <br>Purchase Date &nbsp;&nbsp;  : <?php echo $row["her_date"];?><br>
+    <br>Customer Name : <?php echo $row["his_name"];?><br>
+    <br>Customer Email &nbsp;: <?php echo $her_email; ?><br>
+    <br>Customer Contact &nbsp;: <?php echo $row["his_pn"];?><br>
+    <br>Customer Address : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>  
     <br>Shoes Name: <?php echo $her_shoesname; ?><br>
-    <br>Shoes Size: <?php echo $her_size; ?><br>
-    <br>Quantity: <?php echo $her_quantity; ?><br>
-    <br>Shoes Price: RM <?php echo $her_price; ?><br>
+    <br>Shoes Size&nbsp;&nbsp;: <?php echo $her_size; ?><br>
+    <br>Quantity&nbsp;&nbsp;&nbsp;: <?php echo $her_quantity; ?><br>
+    <!-- <br>Shoes Price: RM <?php echo $her_price; ?><br> -->
     <br>Total Price: RM <?php echo $total; ?><br>
-    <br>Email: <?php echo $her_email; ?><br>
-    <br>Date : <?php echo $row["her_date"];?><br>
-    <br>Customer name : <?php echo $row["his_name"];?><br>
-    <br>Customer phone number : <?php echo $row["his_pn"];?><br>
-    <br>Customer address : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>
-    <br>Current Order Status: <?php echo $status; ?><br>
+    <br><b>Current Order Status: <?php echo $status; ?><b><br>
 
     <form action="" method="post">
       <input type="hidden" name="her_id" value="<?php echo $row['her_id']; ?>">
@@ -138,7 +139,16 @@ if(isset($_POST["order_status"])){
 
     if (mysqli_query($conn, $sql)) {
       $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Edit Successfully!</div>";
-
+      echo '<script>alert("Update Successfully !");</script>';
+     
+        echo '<script>
+            function confirmRedirect() {
+                if (confirm("Do you want to go to manageorder.php?")) {
+                    window.location.href = "manageorder.php";
+                }
+            }
+            confirmRedirect();
+         </script>';
   } else {
     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
   }

@@ -105,6 +105,19 @@
     // $host = "SELECT * FROM `user` where Email = '$id'";
     // $query = mysqli_query($conn,$host);
     // $host_image = mysqli_fetch_assoc($query);
+
+    if (mysqli_num_rows($result) == 0) {
+
+      echo '<img src="image/empty.png" alt="No product selected">';     ?>
+      <br><br>
+      <?php
+      echo 'Your Wishlist Is Empty';
+  } 
+  else 
+  {
+
+
+
     ?>
   <table >
     <tr>
@@ -115,6 +128,7 @@
 
     <?php
         $total=0;
+    
     while($row = mysqli_fetch_array($result))
     {
 
@@ -138,7 +152,7 @@
         <?php
     
     }
-
+  }
 
 
     ?>
