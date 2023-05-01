@@ -41,7 +41,17 @@ if (isset($_POST["savebtn"]))
         mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "', image='" . $_POST['image'] . "' , admin_password='" . $_POST['pass'] . "' where admin_id = '$id'");            
         // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
- 
+        echo '<script>alert("Update Successfully !");</script>';
+     
+        echo '<script>
+            function confirmRedirect() {
+                if (confirm("Do you want to go to managestaff.php?")) {
+                    window.location.href = "managestaff.php";
+                }
+            }
+            confirmRedirect();
+         </script>';
+        
     }
 
 	
