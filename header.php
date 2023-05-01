@@ -121,7 +121,7 @@
                     <a href="productlist.php?shoe_brand=Nike&&user_id=<?php echo $id ?>">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma&&user_id=<?php echo $id ?>">Puma</a>
                     <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a>
-                    <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a>
+                    <!-- <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a> -->
                 </div>
             </li>
 
@@ -169,7 +169,7 @@
                     <a href="productlist.php?shoe_brand=Nike">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma">Puma</a>
                     <a href="productlist.php?shoe_brand=Adidas">Adidas</a>
-                    <a href="productlist.php?shoe_brand=Converse">Converse</a>
+                    <!-- <a href="productlist.php?shoe_brand=Converse">Converse</a> -->
                 </div>
             </li>
 
