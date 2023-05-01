@@ -122,6 +122,14 @@ if (isset($_POST["update_cart"])) {
     // $host = "SELECT * FROM `user` where Email = '$id'";
     // $query = mysqli_query($conn,$host);
     // $host_image = mysqli_fetch_assoc($query);
+
+    if (mysqli_num_rows($result) == 0) {
+
+      echo '<img src="image/emptycart.png" style="width: 600px; height: auto;" alt="No product selected">';     
+  } 
+  else 
+  {
+
     ?>
   <table >
     <tr>
@@ -169,7 +177,7 @@ if (isset($_POST["update_cart"])) {
         <?php
     
     }
-
+  
     ?>
         </div>
   </table>
@@ -185,6 +193,11 @@ if (isset($_POST["update_cart"])) {
    
                             
 </div>
+<?php
+    
+  }
+
+  ?>
 
 </fieldset>
 
