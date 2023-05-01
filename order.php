@@ -128,7 +128,7 @@ if (isset($_POST["update_cart"])) {
       <td><strong>Shoes Name </strong></td>
       <td><strong>Shoes Size (UK) </strong></td>
       <td><strong>Shoes Quantity</strong></td>
-      <td></td>
+      <td><strong>Change QTY</strong></td>
       <td><strong>Shoes Price</strong></td>
       <td><strong>Total Price</strong></td>
     </tr>
@@ -148,7 +148,7 @@ if (isset($_POST["update_cart"])) {
   <form action="" method="post">
     <input type="hidden" name="order_ID" value="<?php echo $row["order_ID"]; ?>">
     <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>" required>
-    <button type="submit" name="update_cart">Update cart</button>
+    <button type="submit" name="update_cart">Update QTY</button>
   </form>
 </td>
 

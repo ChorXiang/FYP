@@ -12,13 +12,17 @@
   <?php
     include 'conn.php'; 
     include 'header.php'; 
-  
+    $msg="";
 ?>
 
 <?php
 
 $nameErr = $emailErr = $subjectErr = $messageErr = "";
-$name = $email = $subject = $message = "";
+$name = "";
+$email = "";
+$subject = "";
+$message = "";
+
 
 if (isset($_POST['submit'])) {
 
@@ -26,42 +30,56 @@ if (isset($_POST['submit'])) {
   if (empty($_POST["name"])) {
       $nameErr = "* Name is required";
   } else {
-      $name = test_input($_POST["name"]);
-
-      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
-          $nameErr = "*Only letters and spaces are allowed"; 
-      }
+    $nameErr ="";
   }
 
   if (empty($_POST["email"])) {
       $emailErr = " * Email is required";
   } else {
-      $email = test_input($_POST["email"]);
-
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $emailErr = "*Invalid Email Format!"; 
-      }
+    $emailErr ="";
   }
 
   if (empty($_POST["subject"])) {
       $subjectErr = "*Subject is required";
   } else {
-      $subject = test_input($_POST["subject"]);
+      $subjectErr="";
   }
 
   if (empty($_POST["message"])) {
       $messageErr = "*Your valuable message is required";
   } else {
-      $message = test_input($_POST["message"]);
+      $messageErr = "";
   }
 }
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
+// function test_input($data) {
+//   $data = trim($data);
+//   $data = stripslashes($data);
+//   $data = htmlspecialchars($data);
+//   return $data;
+// }
+?>
+
+
+<?php
+if (isset($_POST['submit'])) {
+
+//  $id =$_GET['user_id']; 
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
+        // $sql = "INSERT INTO messages (name, email, subject, message,user_id)VALUES ('$name', '$email', '$subject', '$message','$id')";
+
+        mysqli_query($conn,"INSERT INTO `messages`(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')");  
+       
+        $msg =  "<div style='text-align:center;background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Message Send Successfully !</div>";
+
+    }
 }
 ?>
+
 
 <style>
 body {
@@ -159,38 +177,19 @@ p {
 </style>
 <div class="container">
 <div class="left">
-<?php
-if (isset($_POST['submit'])) {
 
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
-
-    if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-        $sql = "INSERT INTO messages (name, email, subject, message)VALUES ('$name', '$email', '$subject', '$message')";
-
-        if (mysqli_query($conn, $sql)) {
-          echo  "<div class='success'>New record created!</div>";
-        } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        }
-
-        mysqli_close($conn);
-    }
-}
-?>
 
 
 
 
 
 <fieldset>
+<?php echo "<div>".$msg."</div>"?>
 <h1>Contact Us</h1>
 <br>Please fill in your contact information below and send us your message:<br>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
+<form method="post" action="">  
  <div class="txt_field">
-  Name：<input type="text" name="name">
+  Name：<input type="text" name="name" >
   <span class="error"><?php echo $nameErr;?></span>
   <br><br>
   Email：<input type="email" name="email">
@@ -206,12 +205,13 @@ if (isset($_POST['submit'])) {
   <input type="submit" name="submit" value="SEND">  
   <p>Company Information</p>
   <p>ROOT MALAYSIA SDN. BHD.</p>
-  <p>Email: shop@root-mlk.com</p>
+  <p>Email: shop@foot-mlk.com</p>
   <p>Contact Number: 03-21817618</p>
 <p>Address: Lot 155, First Floor, Suria KLCC, 50088, Kuala Lumpur, Malaysia.</p>
   <p>Operating Hours: 10:00 AM — 06:00 PM (Monday – Friday)</p>
 </div>
 </form>
+
 
 
 </fieldset>
@@ -222,6 +222,8 @@ if (isset($_POST['submit'])) {
 
 
 </body>
+
+
 </html>
 
 
