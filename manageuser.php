@@ -74,7 +74,7 @@
           <td>Name</td>
           <td>Contact No</td>
           <td>Email</td>
-          <td>Username</td>
+          <td>Nickname</td>
           <td>Status</td>
           <td>Manage</td>
         </tr>

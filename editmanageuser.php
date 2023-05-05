@@ -121,15 +121,15 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name &nbsp;:</label> <?php echo $row['full_name']; ?> 
+        <label>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row['full_name']; ?> 
 
-        <br><label>Email :</label> <?php echo $row["email_address"]; ?> 
+        <br><label>Email &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <?php echo $row["email_address"]; ?> 
      
-        <br><label>Phone Number :</label> <?php echo $row["contact_no"]; ?>
+        <br><label>Contact&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["contact_no"]; ?>
 
-        <br><label>Username :</label> <?php echo $row["username"]; ?> 
+        <br><label>Nickname :</label> <?php echo $row["username"]; ?> 
 
-        <br><label for="status"  >Status<sup>*</sup> : </label>
+        <br><label for="status"  >Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </label>
                 <select id="status" name="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
