@@ -121,7 +121,7 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name :</label> <?php echo $row['full_name']; ?> 
+        <label>Name &nbsp;:</label> <?php echo $row['full_name']; ?> 
 
         <br><label>Email :</label> <?php echo $row["email_address"]; ?> 
      
