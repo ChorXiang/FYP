@@ -251,6 +251,7 @@ if (isset($_GET['search'])) {
   $query = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' OR category LIKE '%$search%'";
 } else {
   $query = "SELECT * FROM shoes";
+  //$query = "SELECT * FROM shoes where status=active";
 }
 
 // Retrieve the product data
