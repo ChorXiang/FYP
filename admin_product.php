@@ -218,8 +218,8 @@ function test_input($data) {
                     <option value="Converse">Converse</option>
                 </select><br>    
     Category &nbsp;&nbsp;&nbsp;&nbsp;:
-    <input type="radio" name="category" value="male" <?php if($row["category"]=="male"){echo "checked";} ?>> Male
-    <input type="radio" name="category" value="female" <?php if($row["category"]=="female"){echo "checked";} ?>> Female<br>
+    <input type="radio" name="category" value="man" <?php if($row["category"]=="man"){echo "checked";} ?>> Man
+    <input type="radio" name="category" value="woman" <?php if($row["category"]=="woman"){echo "checked";} ?>> Woman<br>
     Shoe Image: <input type="text" name="shoe_image" value="<?php echo $row["shoe_image"]; ?>"><br>
     <!-- `<label for="shoe_size"  >Shoe Size:</label>
                 <select id="shoe_size" name="shoe_size">
