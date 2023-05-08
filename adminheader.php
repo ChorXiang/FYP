@@ -124,32 +124,31 @@ body {
     </style>
 </head>
 <body>
-    
-<!-- <div class="upper">
-    <div class="center" style="float:left;">
-        <a href="admindashboard.php"  ><img src="image/foot.png" alt="Shop Logo"></a>
-    </div>
-    
-    <ul >
-        <li  style="float: right;"><a href="#"  class="center" > Login</a></li>
-        <li class="dropdown" style="float: right;"><a href="#" class="dropbtn">Menu</a>
-            <div class="dropdown-content">
-                <a href="#">Manage Category</a>
-                <a href="#">Manage Product</a>
-                <a href="#">Manage Order</a>
-                <a href="manageuser.php">Manage Customer</a>
-                <a href="#">Manage Staff </a>
-                <a href="#">Manage comment </a>
-            </div>
-            </li>
-    </ul>
+<!-- <?php
+/*$id = $_GET['admin_id'];
+
+if(!isset($id)) {
+    echo '<script>alert("Update Successfully !");</script>';
+    header("location:adminlogin.php");
+}*/
+?>
+
+<div class="sidenav">
+        <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
+        <a href="admin_category.php?admin_id=<?php echo $id; ?>">Manage Category</a>
+    <a href="admin_shoes.php?admin_id=<?php echo $id; ?>">Manage Product</a>
+    <a href="manageorder.php?admin_id=<?php echo $id; ?>">Manage Order</a>
+    <a href="manageuser.php?admin_id=<?php echo $id; ?>">Manage Customer</a>
+    <a href="managestaff.php?admin_id=<?php echo $id; ?>">Manage Staff </a>
+    <a href="managecomment.php?admin_id=<?php echo $id; ?>">Manage comment </a>
+    <a href="managecontactus.php?admin_id=<?php echo $id; ?>">Manage Support </a>
+
+        <br><br><br>
+        <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
+
+</div> -->
 
 
-
-
-        </div> -->
-
-        
 <div class="sidenav">
         <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
         <a href="admin_category.php">Manage Category</a>

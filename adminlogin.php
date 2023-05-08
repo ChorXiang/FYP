@@ -19,14 +19,21 @@ if (isset($_POST['submit'])) {
       {
         
       $row = mysqli_fetch_assoc($result);
-      
+      $status = $row['status'];
+
+        if($status=="active")
+        {
           $_SESSION['admin_email'] = $row['admin_email'];
           $_SESSION['admin_password'] = $row['admin_password'];
 
           $admin_id = $row['admin_id'];
           $_SESSION['user_id'] = $user_id; 
           header('Location: manageuser.php?admin_id='.$row['admin_id']);
-        
+        }
+        else
+        {
+          echo '<script>alert("This admin account is Inactive !");</script>';
+        }
   } else {
     // Display an error message if the email or password is incorrect
     //$error_msg = "Invalid email address or password. Please try again.";

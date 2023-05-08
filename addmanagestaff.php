@@ -42,6 +42,16 @@
             mysqli_query($conn,"INSERT INTO `admin`(admin_name,admin_email,status,admin_password,image) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
 
             $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
+            echo '<script>alert("Add New staff Successfully !");</script>';
+     
+                    echo '<script>
+                        function confirmRedirect() {
+                            if (confirm("Do you want to go to managestaff.php?")) {
+                                window.location.href = "managestaff.php";
+                            }
+                        }
+                        confirmRedirect();
+                    </script>';
         }
     
             

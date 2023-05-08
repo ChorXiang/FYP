@@ -528,7 +528,7 @@
                          <!-- <form action="" method="POST">  -->
                             <div id="inputDiv" style="display:block;">
                                     <label for="userInput">CARD NUMBER : <sup>*</sup></label>
-                                    <input type="text" id="userInput" name="cardnum" placeholder="1111222233334444">
+                                    <input type="text" id="userInput" name="cardnum" placeholder="1111222233334444" maxlength="16">
 
                                     <label for="userInput">NAME ON CARD : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="cardname">
