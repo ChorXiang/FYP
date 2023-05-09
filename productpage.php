@@ -97,6 +97,7 @@
 
 ?>
 
+<?php  if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];   ?> 
 <?php
     $id =$_GET['user_id']; 
     $sid = $_GET['shoe_id'];
@@ -104,7 +105,7 @@
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 ?>
-
+ 
 <div class="container">
 <div class="left">
 <fieldset>
@@ -183,6 +184,91 @@
 </fieldset>
 
 </div>
+<?php   } else {  $sid = $_GET['shoe_id'];
+    $sql = "SELECT * FROM shoes WHERE shoe_id = $sid ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);?>
+
+  <div class="container">
+<div class="left">
+<fieldset>
+<div class="wordcenter">
+<h2><b>PRODUCT IMAGE</b></h2><br>
+</div>
+<img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+
+</fieldset>
+</div>
+
+<div class='right'>
+<fieldset>
+<div class="wordcenter">
+<h1><?php echo $row["shoe_name"]; ?></h1>
+</div>
+<p>Type: <?php echo $row["shoe_type"]; ?></p>
+<p>Brand: <?php echo $row["shoe_brand"]; ?></p>
+<p>Category: <?php echo $row["category"]; ?></p>
+<p>Price: RM<?php echo $row["shoe_price"]; ?></p>
+
+<form action="" method="post">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="hidden" name="id" value="<?php echo $id; ?>">
+  <br>
+  <label for="size"  >Shoe Size:</label>
+                <select id="size" name="size">
+                    <option value="7">7</option>
+                    <option value="7.5">7.5 </option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                </select>
+  <br>
+  <label for="quantity"><b>Quantity (Max 5):</b></label>
+  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
+  <span class="error"><?php echo $quantityErr;?></span>
+  <br><br>
+  <input type="submit" name="cartbeforelogin" value="Add to Cart">
+</form>
+
+<form action="" method="post">
+  <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
+  <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
+  <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
+  <label for="size"  >Shoe Size:</label>
+                <select id="size" name="size">
+                    <option value="7">7</option>
+                    <option value="7.5">7.5 </option>
+                    <option value="8">8</option>
+                    <option value="8.5">8.5</option>
+                    <option value="9">9</option>
+                    <option value="9.5">9.5</option>
+                    <option value="10">10</option>
+                    <option value="10.5">10.5</option>
+                    <option value="11">11</option>
+                    <option value="11.5">11.5</option>
+                    <option value="12">12</option>
+                    <option value="12.5">12.5</option>
+                </select>
+  <br><br>
+  <input type="submit" name="wishbeforelogin" value="Add to Wishlist">
+</form>
+
+
+
+
+</fieldset>
+
+</div>
+
+  <?php } ?>
 
 <option value="7">7 </option>
 </div>
@@ -318,6 +404,21 @@ if (isset($_POST['wishlist'])) {
   }  
 }
 ?>
+<?php
+
+if (isset($_POST['cartbeforelogin'])) {
+
+    $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Login to Proceed shopping cart</div>";
+}
+?>
+<?php
+
+if (isset($_POST['wishbeforelogin'])) {
+
+    $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Login to Proceed wishlist </div>";
+}
+?>
+
 <?php echo "<div>".$msg."</div>"?>
 </body>
 </html>
