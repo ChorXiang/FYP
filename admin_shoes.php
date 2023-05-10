@@ -68,62 +68,65 @@
 </head>
 <body>  
 
-<?php
-    $sql = "SELECT * FROM shoes ";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-?>
-
 <div class="container">
 
 <div>
 
-<fieldset>
-    <?php
-        $sql = "select * from shoes";
-        $result = mysqli_query($conn,$sql);
-        ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
-      <div class="right">
-        <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i><input type="button" value="Add New Shoes"></a></span><br><br>
-      </div>
-      <table border="0px">
-      <thead>
+  <fieldset>
+  <form method="get">
+          <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+        <button type="submit">Search</button>
+
+        <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
+        
+        <div class="right">
+          <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i><input type="button" value="Add New Shoes"></a></span><br><br>
+        </div>
+        <table border="0px">
+        <thead>
+          <tr>
+          <th>Shoe ID</th>
+          <th>Shoe Name</th>
+          <th>Category</th>
+          <th>Shoe Image</th>
+          <th>Shoe Price(RM)</th>
+          <th>Edit</th>
+          </tr>
+      </thead>
+          <?php
+          if (isset($_GET['search'])) {
+            $search = mysqli_real_escape_string($conn, $_GET['search']);
+            $sql = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%'";
+            $result = mysqli_query($conn,$sql);
+          } else {
+            $sql = "SELECT * FROM shoes";
+            $result = mysqli_query($conn,$sql);
+            //$query = "SELECT * FROM shoes where status='active' ";
+          }
+          while($row = mysqli_fetch_array($result))
+          {
+              ?>
+        <tbody>
         <tr>
-        <th>Shoe ID</th>
-        <th>Shoe Name</th>
-        <th>Category</th>
-        <th>Shoe Image</th>
-        <th>Shoe Price</th>
-        <th>Edit</th>
+          <th><?php echo $row['shoe_id']; ?></th>
+          <th><?php echo $row['shoe_name']; ?></th>
+          <th><?php echo $row['category']; ?></th>
+          <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
+          <th><?php echo $row['shoe_price']; ?></th>
+          <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
         </tr>
-    </thead>
-        <?php
+      </tbody>
+              <?php
 
-        while($row = mysqli_fetch_array($result))
-        {
-            ?>
-      <tbody>
-      <tr>
-        <th><?php echo $row['shoe_id']; ?></th>
-        <th><?php echo $row['shoe_name']; ?></th>
-        <th><?php echo $row['category']; ?></th>
-        <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
-        <th><?php echo $row['shoe_price']; ?></th>
-        <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr>
-    </tbody>
-            <?php
+          }
 
-        }
+      ?>
+        
+        </table>
+  </fieldset>
 
-		?>
-			
-      </table>
-</fieldset>
+  </div>
+  </div>
 
-</div>
-</div>
-
-</body>
-</html>
+  </body>
+  </html>

@@ -107,10 +107,11 @@ function test_input($data) {
     {
       display: flex;
       justify-content: center;
-      align-items: flex-start;      
+      align-items: flex-start;   
+      gap: 20px;   
       width: 100%;
       border: 1px solid #ccc;
-      padding: 20px;
+      padding: 10px;
       padding-right:10px ;
     }
 
@@ -125,6 +126,11 @@ function test_input($data) {
     .wordcenter
     {
       text-align: center;
+    }
+
+    .nopadding
+    {
+      padding: 10px;
     }
 
 </style>
@@ -194,32 +200,34 @@ function test_input($data) {
          
         <div class="imgcenter">
         <br><b><?php echo $row["shoe_name"]; ?></b><br>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="150px" width="150px" >
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="190px" width="200px" >
   </div>
 </div>
 
 <div>
-  <fieldset>
+  <fieldset class="nopadding">
   <div class="wordcenter">
   <b><?php echo $row["shoe_name"]; ?></b>
   </div>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <input type="hidden" name="shoe_id" value="<?php echo $row["shoe_id"]; ?>">
     <input type="hidden" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>"><br>
-    <label for="shoe_type"  >Shoe Type&nbsp;&nbsp; :</label>
-                <select id="shoe_type" name="shoe_type">
-                    <option value="Running Shoes">Running Shoes</option>
-                    <option value="Casual Shoes">Casual Shoes</option>
-                    <option value="Sneakers">Sneakers</option>
-                    <option value="Lifestyle">Lifestyle</option>
-                </select><br>
-    <label for="shoe_brand"  >Shoe Brand :</label>
-                <select id="shoe_brand" name="shoe_brand">
-                    <option value="Nike">Nike</option>
-                    <option value="Puma">Puma </option>
-                    <option value="Adidas">Adidas</option>
-                    <option value="Converse">Converse</option>
-                </select><br>    
+    <label for="shoe_type">Shoe Type&nbsp;&nbsp;:</label>
+<select id="shoe_type" name="shoe_type">
+    <option value="Running Shoes" <?php if ($row["shoe_type"] == "Running Shoes") echo "selected"; ?>>Running Shoes</option>
+    <option value="Casual Shoes" <?php if ($row["shoe_type"] == "Casual Shoes") echo "selected"; ?>>Casual Shoes</option>
+    <option value="Sneakers" <?php if ($row["shoe_type"] == "Sneakers") echo "selected"; ?>>Sneakers</option>
+    <option value="Lifestyle" <?php if ($row["shoe_type"] == "Lifestyle") echo "selected"; ?>>Lifestyle</option>
+</select>
+<br>
+<label for="shoe_brand">Shoe Brand:</label>
+<select id="shoe_brand" name="shoe_brand">
+    <option value="Nike" <?php if ($row["shoe_brand"] == "Nike") echo "selected"; ?>>Nike</option>
+    <option value="Puma" <?php if ($row["shoe_brand"] == "Puma") echo "selected"; ?>>Puma</option>
+    <option value="Adidas" <?php if ($row["shoe_brand"] == "Adidas") echo "selected"; ?>>Adidas</option>
+    <option value="Converse" <?php if ($row["shoe_brand"] == "Converse") echo "selected"; ?>>Converse</option>
+</select>
+<br>    
     Category &nbsp;&nbsp;&nbsp;&nbsp;:
     <input type="radio" name="category" value="man" <?php if($row["category"]=="man"){echo "checked";} ?>> Man
     <input type="radio" name="category" value="woman" <?php if($row["category"]=="woman"){echo "checked";} ?>> Woman<br>
