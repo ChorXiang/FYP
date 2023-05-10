@@ -3,9 +3,15 @@
     include 'conn.php'; 
     $msg=''; 
 ?>
-<!DOCTYPE HTML>  
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
   .error {
   color: #FF0000;
@@ -78,7 +84,9 @@
         $result = mysqli_query($conn,$sql);
         ?>
       <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
-
+      <div class="right">
+        <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i><input type="button" value="Add New Shoes"></a></span><br><br>
+      </div>
       <table border="0px">
       <thead>
         <tr>
