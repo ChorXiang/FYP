@@ -9,14 +9,13 @@
 <?php
     if(isset($_POST['savebtn']))
     {
-
-    // $id= $_POST['id'];
-    $mname= $_POST["name"];  	
-    $memail = $_POST["email"]; 
-    $mpass = $_POST["pass"];  	
-    $mstatus = $_POST["status"]; 
-    $mimage = $_POST['image'];
-
+        // Retrieve form data
+        $mname = $_POST["name"];  	
+        $memail = $_POST["email"]; 
+        $mpass = $_POST["pass"];  	
+        $mstatus = $_POST["status"]; 
+        $mimage = $_POST['image'];
+        
         if (!$mname)
         {
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
@@ -31,33 +30,32 @@
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Password !</div>";
      
         }
-        else if(!$mstatus)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Status !</div>";
-        }
         else
         {
-            // mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "' , admin_password='" . $_POST['pass'] . "' where a_id = '$id'");            
-            // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,"INSERT INTO `admin`(admin_name,admin_email,status,admin_password,image) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
-
+        // Check if email already exists
+        $result = mysqli_query($conn, "SELECT * FROM `admin` WHERE `admin_email`='$memail'");
+        if(mysqli_num_rows($result) > 0) {
+            // Display error message and stop further processing
+            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Email address is already registered. Please choose a different email address.</div>";
+        } else {
+            // Insert new admin record
+            mysqli_query($conn,"INSERT INTO `admin`(`admin_name`, `admin_email`, `status`, `admin_password`, `image`) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
+            
+            // Display success message and redirect to managestaff.php
             $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
             echo '<script>alert("Add New staff Successfully !");</script>';
-     
-                    echo '<script>
-                        function confirmRedirect() {
-                            if (confirm("Do you want to go to managestaff.php?")) {
-                                window.location.href = "managestaff.php";
-                            }
-                        }
-                        confirmRedirect();
-                    </script>';
-        }
-    
             
+            echo '<script>
+                function confirmRedirect() {
+                    if (confirm("Do you want to go to managestaff.php?")) {
+                        window.location.href = "managestaff.php";
+                    }
+                }
+                confirmRedirect();
+            </script>';
+        }
     }
-    
-
+}
 
     ?>
 

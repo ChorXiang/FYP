@@ -180,7 +180,7 @@
                 <!-- <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
         <input type="file" id="file" name="image" class="form-control" multiple> -->
         
-        <input type="submit" name="savebtn" value="Add">
+        <input type="submit" name="savebtn" value="Add New Shoes">
         <div>
         <a href="admin_shoes.php">Back to Previous Page </a>
     </div>
