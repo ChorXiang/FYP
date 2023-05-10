@@ -205,7 +205,7 @@ $result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes");
   {
     echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '</h2></a>';
   }
-$result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
+$result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes ");
 
 // Loop through the unique categories and generate HTML code for each category
 while ($row = mysqli_fetch_assoc($result)) 
@@ -216,13 +216,6 @@ while ($row = mysqli_fetch_assoc($result))
   
  
 }
-
-
-
-
-
-
-
  
 ?>
         </ul>
@@ -248,18 +241,17 @@ while ($row = mysqli_fetch_assoc($result))
 
 if (isset($_GET['search'])) {
   $search = mysqli_real_escape_string($conn, $_GET['search']);
-  $query = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' OR category LIKE '%$search%'";
+  $query = "SELECT * FROM shoes WHERE  status='active' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
 } else {
-  $query = "SELECT * FROM shoes";
-  //$query = "SELECT * FROM shoes where status=active";
+  $query = "SELECT * FROM shoes where status='active'";
+  //$query = "SELECT * FROM shoes where status='active' ";
 }
 
 // Retrieve the product data
 $result = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($result) == 0) {
-  echo "No results found.";
-} else {
+if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id']; 
+
   while ($row = mysqli_fetch_assoc($result)) {
     $sid = $row['shoe_id'];
     echo '<div class="product-card">';
@@ -273,10 +265,26 @@ if (mysqli_num_rows($result) == 0) {
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
+} else { 
+  while ($row = mysqli_fetch_assoc($result)) {
+    $sid = $row['shoe_id'];
+    echo '<div class="product-card">';
+    ?>
+    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+    <?php
+    echo '<h2>' . $row['category'] . '</h2>';
+    ?>
+    <p><a href="productpage.php?shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+    <?php
+    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+    echo '</div>';
+  }
+
 }
 ?>
 
-
+</div>
+</div>
 </body>
 </html>
 

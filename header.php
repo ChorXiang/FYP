@@ -116,11 +116,11 @@
         <ul >
         <li class="dropdown"><a href="aboutus.php?user_id=<?php echo $id ?>">About Us</a>
             </li>
-            <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Category</a>
                 <div class="dropdown-content">
-                    <a href="productlist.php?shoe_brand=Nike&&user_id=<?php echo $id ?>">Nike</a>
-                    <a href="productlist.php?shoe_brand=Puma&&user_id=<?php echo $id ?>">Puma</a>
-                    <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a>
+                    <a href="productlist.php?category=man&&user_id=<?php echo $id ?>">Man</a>
+                    <a href="productlist.php?category=women&&user_id=<?php echo $id ?>">Women</a>
+                    <!-- <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a> -->
                     <!-- <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a> -->
                 </div>
             </li>
@@ -164,11 +164,13 @@
         <ul >
         <li class="dropdown"><a href="aboutus.php">About Us</a>
             </li>
-            <li class="dropdown"><a href="#" class="dropbtn">Brands</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Category</a>
                 <div class="dropdown-content">
-                    <a href="productlist.php?shoe_brand=Nike">Nike</a>
+                    <a href="productlist.php?category=man">Man</a>
+                    <a href="productlist.php?category=women">Women</a>
+                    <!-- <a href="productlist.php?shoe_brand=Nike">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma">Puma</a>
-                    <a href="productlist.php?shoe_brand=Adidas">Adidas</a>
+                    <a href="productlist.php?shoe_brand=Adidas">Adidas</a> -->
                     <!-- <a href="productlist.php?shoe_brand=Converse">Converse</a> -->
                 </div>
             </li>
