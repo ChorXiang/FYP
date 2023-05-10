@@ -2,15 +2,15 @@
     include("conn.php");
     include 'adminheader.php';
 
-    if (isset($_GET['shoe_id'])) {
-        $id = $_GET['shoe_id'];
+    if (isset($_GET['her_id'])) {
+        $id = $_GET['her_id'];
         
         if (isset($_POST['confirm'])) {
-            mysqli_query($conn, "DELETE FROM shoes WHERE shoe_id='$id'");
-            header("Location: admin_shoes.php");
+            mysqli_query($conn, "DELETE FROM history WHERE her_id='$id'");
+            header("Location: manageorder.php");
             exit();
         } else if (isset($_POST['cancel'])) {
-            header("Location: admin_shoes.php");
+            header("Location: manageorder.php");
             exit();
         }
     } 
@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Delete Shoe</title>
+    <title>Delete Order</title>
     
      
 <style>
@@ -45,8 +45,8 @@
 </head>
 <body>
 <fieldset>
-    <h1>Delete Shoe</h1>
-    <p>Are you sure you want to delete this shoe?</p>
+    <h1>Delete Order</h1>
+    <p>Are you sure you want to delete this order?</p>
     <form method="post">
         <input type="submit" name="confirm" value="Yes">
         <input type="submit" name="cancel" value="No">
