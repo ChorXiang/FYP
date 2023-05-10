@@ -91,6 +91,7 @@
           <th>Shoe Image</th>
           <th>Shoe Price(RM)</th>
           <th>Edit</th>
+          <th>Delete</th>
           </tr>
       </thead>
           <?php
@@ -114,6 +115,7 @@
           <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
           <th><?php echo $row['shoe_price']; ?></th>
           <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+          <th><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>        
         </tr>
       </tbody>
               <?php
