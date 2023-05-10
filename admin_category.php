@@ -33,12 +33,13 @@
   {
     background-color: #f2f2f2;
     margin-left: 160px;
-    padding-left: 10%;
+    text-align: left;
   }
 
-  th
+  th,td
   {
     padding: 20px;
+    text-align: center;
   }
 
   .imgcenter {

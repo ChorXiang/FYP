@@ -34,12 +34,13 @@
   {
     background-color: #f2f2f2;
     margin-left: 160px;
-    padding-left: 10%;
+    text-align: left;
   }
 
-  th
+  th,td
   {
     padding: 20px;
+    text-align: center;
   }
 
   .imgcenter {
@@ -83,6 +84,7 @@
         <tr>
         <th>Shoe ID</th>
         <th>Shoe Name</th>
+        <th>Category</th>
         <th>Shoe Image</th>
         <th>Shoe Price</th>
         <th>Edit</th>
@@ -97,6 +99,7 @@
       <tr>
         <th><?php echo $row['shoe_id']; ?></th>
         <th><?php echo $row['shoe_name']; ?></th>
+        <th><?php echo $row['category']; ?></th>
         <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
         <th><?php echo $row['shoe_price']; ?></th>
         <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
