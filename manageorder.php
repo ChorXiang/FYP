@@ -84,7 +84,7 @@
           <th>Date</th>
           <th>Order Status</th>
           <th>Edit Status</th>
-          <th>Delete</th>
+          <!-- <th>Delete</th> -->
         </tr>
         <?php
 
@@ -110,7 +110,7 @@
           <th><?php echo $row["her_date"];?></th>
           <th><?php echo $row["order_status"];?></th>
           <th><a href="admin_history.php?her_id=<?php echo $row["her_id"];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-          <th><a href="admindeleteorder.php?her_id=<?php echo $row['her_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>        
+          <!-- <th><a href="admindeleteorder.php?her_id=<?php //echo $row['her_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>         -->
 
         </tr>
             <?php
