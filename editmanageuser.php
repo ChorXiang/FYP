@@ -49,6 +49,7 @@ if (isset($_POST["savebtn"]))
     //     echo "Please Key the Correct Role and Status follow the two selection !";
     // }
 
+    mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
 
 
 	

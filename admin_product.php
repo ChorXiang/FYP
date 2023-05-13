@@ -2,47 +2,47 @@
     include 'conn.php'; 
     include 'adminheader.php'; 
     $msg='';
+
 ?>
+
 <?php
-
-//   if(isset($_POST["submit"])){
     
-//       if (empty($_POST["shoe_name"])) {
-//         $shoe_name = "* Shoe Name is required";
-//       } else {
-//         $shoe_name = test_input($_POST["shoe_name"]);
-//     }
+            // Add validation rules for the other input fields
+    
+            if(isset($_POST["submit"])){
+              $sid = $_POST["shoe_id"]; 
+              $shoe_name = $_POST["shoe_name"];
+              $shoe_type = $_POST["shoe_type"];
+              $shoe_brand = $_POST["shoe_brand"];
+              $category = $_POST["category"];
+              $shoe_image = $_POST["shoe_image"];
+              $shoe_price = $_POST["shoe_price"];
+          
+              if(!$shoe_price) {
+                  $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
+              } else if(!$shoe_image) {
+                $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
+              } else {
+                  mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
 
-//         if (empty($_POST["quantity"])) {
-//           $quantityErr = "* Quantity is required";
-//         } else {
-//           $quantity = test_input($_POST["quantity"]);
-//       }
+                //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
 
-//       if (empty($_POST["quantity"])) {
-//           $quantityErr = "* Quantity is required";
-//         } else {
-//           $quantity = test_input($_POST["quantity"]);
-//       }
+ 
+                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+                    echo '<script>alert("Update Successfully !");</script>';
+     
+                    echo '<script>
+                        function confirmRedirect() {
+                            if (confirm("Do you want to go to admin_shoes.php?")) {
+                                window.location.href = "admin_shoes.php";
+                            }
+                        }
+                        confirmRedirect();
+                    </script>';
+                }
 
-//       if (empty($_POST["quantity"])) {
-//           $quantityErr = "* Quantity is required";
-//         } else {
-//           $quantity = test_input($_POST["quantity"]);
-//       }
-//   }
-
-
-
-
-function test_input($data) {
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-?>
+            }
+        ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -141,62 +141,29 @@ function test_input($data) {
 <div class="main">
 
 <fieldset>
-    <?php
     
-            // Add validation rules for the other input fields
-    
-            if(isset($_POST["submit"])){
-                $shoe_id = $_POST["shoe_id"];
-                $shoe_name = $_POST["shoe_name"];
-                $shoe_type = $_POST["shoe_type"];
-                $shoe_brand = $_POST["shoe_brand"];
-                $category = $_POST["category"];
-                $shoe_image = $_POST["shoe_image"];
-                //$shoe_size = $_POST["shoe_size"];
-                $shoe_price = $_POST["shoe_price"];
-
-                if(isset($_POST['shoe_price'])) {
-                  $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
-
-                } 
-
-                  //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_size='$shoe_size', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
-                $sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
-
-                if ($conn->query($sql) === TRUE) {
-
-                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
-                    echo '<script>alert("Update Successfully !");</script>';
-     
-                    echo '<script>
-                        function confirmRedirect() {
-                            if (confirm("Do you want to go to admin_shoes.php?")) {
-                                window.location.href = "admin_shoes.php";
-                            }
-                        }
-                        confirmRedirect();
-                    </script>';
-                  } else {
-                    $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
-                  }
-                
-                
-            }
         
+        <?php
+
+        // $sql = "SELECT * FROM shoes WHERE shoe_id=$sid";
+        // $result = mysqli_query($conn,$sql);
+        $sid = $_REQUEST["shoe_id"];
+
+        $result = mysqli_query($conn, "select * from shoes where shoe_id = '$sid'"); 
+
+        $row = mysqli_fetch_assoc($result);
+        if (!$row) {
+            echo "No shoe record found !";
+            exit;
+          }
     
-        // Get the shoe record to be edited
-        //$requested_shoe_id = $_GET["shoe_id"];
-        $sid = $_GET["shoe_id"];
-        $sql = "SELECT * FROM shoes WHERE shoe_id=$sid";
-        $result = mysqli_query($conn,$sql);
+        // if ($result->num_rows > 0) {
+        //     $row = $result->fetch_assoc();
+        // } else {
+        //     echo "No record found";
+        // }
     
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-        } else {
-            echo "No record found";
-        }
-    
-        $conn->close();
+        // $conn->close();
   
   ?>
 
@@ -214,6 +181,7 @@ function test_input($data) {
 <div>
   <fieldset class="nopadding">
   <div class="wordcenter">
+  <?php echo "<div>".$msg."</div>"?>
   <b><?php echo $row["shoe_name"]; ?></b>
   </div>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -251,11 +219,8 @@ function test_input($data) {
     </div>
   </form>
 
-  <?php echo "<div>".$msg."</div>"?>
-
 </fieldset>
 </div>
-
 </div>
 </div>
 </body>
