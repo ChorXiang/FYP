@@ -34,26 +34,7 @@ if (isset($_POST["savebtn"]))
             confirmRedirect();
          </script>';
     }
-    
-    //         
-    //         if (mysqli_query($conn, $sql)) {
-    //             echo "Updated successfully !";
-    //           } 
-    //     else
-    //     {
-    //         echo "Please Key the Correct Role and Status follow the two selection !";
-    //     }
-    
-    // else
-    // {
-    //     echo "Please Key the Correct Role and Status follow the two selection !";
-    // }
 
-    mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-
-
-	
-	
 }
 
 ?>
@@ -117,7 +98,8 @@ if (isset($_POST["savebtn"]))
     // $host_image = mysqli_fetch_assoc($query);             // ?name=<?php echo $host_image['username']
 
     ?>
-    
+        <?php echo "<div>".$msg."</div>"?></dev>
+
     <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Customer / User</b></h1>
 
     <form name="addfrm" method="post" action="">
@@ -143,7 +125,6 @@ if (isset($_POST["savebtn"]))
         </div>
     </form>
     <div style=text-align:center;>
-    <?php echo "<div>".$msg."</div>"?></dev>
 </fieldset>
 </div>
 
