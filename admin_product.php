@@ -154,8 +154,13 @@ function test_input($data) {
                 $shoe_image = $_POST["shoe_image"];
                 //$shoe_size = $_POST["shoe_size"];
                 $shoe_price = $_POST["shoe_price"];
-    
-//$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_size='$shoe_size', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
+
+                if(isset($_POST['shoe_price'])) {
+                  $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
+
+                } 
+
+                  //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_size='$shoe_size', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
                 $sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
 
                 if ($conn->query($sql) === TRUE) {
@@ -174,6 +179,8 @@ function test_input($data) {
                   } else {
                     $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Error</div>";
                   }
+                
+                
             }
         
     
@@ -181,7 +188,7 @@ function test_input($data) {
         //$requested_shoe_id = $_GET["shoe_id"];
         $sid = $_GET["shoe_id"];
         $sql = "SELECT * FROM shoes WHERE shoe_id=$sid";
-        $result = $conn->query($sql);
+        $result = mysqli_query($conn,$sql);
     
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
@@ -231,23 +238,13 @@ function test_input($data) {
     Category &nbsp;&nbsp;&nbsp;&nbsp;:
     <input type="radio" name="category" value="man" <?php if($row["category"]=="man"){echo "checked";} ?>> Man
     <input type="radio" name="category" value="woman" <?php if($row["category"]=="woman"){echo "checked";} ?>> Woman<br>
-    Shoe Image: <input type="text" name="shoe_image" value="<?php echo $row["shoe_image"]; ?>"><br>
-    <!-- `<label for="shoe_size"  >Shoe Size:</label>
-                <select id="shoe_size" name="shoe_size">
-                    <option value="7">7</option>
-                    <option value="7.5">7.5 </option>
-                    <option value="8">8</option>
-                    <option value="8.5">8.5</option>
-                    <option value="9">9</option>
-                    <option value="9.5">9.5</option>
-                    <option value="10">10</option>
-                    <option value="10.5">10.5</option>
-                    <option value="11">11</option>
-                    <option value="11.5">11.5</option>
-                    <option value="12">12</option>
-                    <option value="12.5">12.5</option>
-                </select><br>  ` -->
+    <!-- Shoe Image: <input type="text" name="shoe_image" value="<?php //echo $row["shoe_image"]; ?>"><br> -->
     Shoe Price&nbsp;  : RM<input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
+    <br>
+    <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
+    <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
+    <br>
+    <br>
     <input type="submit" name="submit" value="Update">
     <div class="butttonright">
         <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?>">Edit Stock </a>
