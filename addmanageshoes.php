@@ -10,52 +10,40 @@
     if(isset($_POST['savebtn']))
     {
 
-    // $id= $_POST['id'];
-    $mname= $_POST["name"];  	
-    $memail = $_POST["email"]; 
-    $mpass = $_POST["pass"];  	
-    $mstatus = $_POST["status"]; 
-    $mimage = $_POST['image'];
-
-        if (!$mname)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
-        }
-        else if(!$memail)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
-     
-        }
-        else if(!$mpass)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Password !</div>";
-     
-        }
-        else if(!$mstatus)
-        {
-            $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Status !</div>";
-        }
-        else
-        {
-            // mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "' , admin_password='" . $_POST['pass'] . "' where a_id = '$id'");            
-            // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
-            mysqli_query($conn,"INSERT INTO `admin`(admin_name,admin_email,status,admin_password,image) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
-
-            $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
-            echo '<script>alert("Add New staff Successfully !");</script>';
-     
-                    echo '<script>
-                        function confirmRedirect() {
-                            if (confirm("Do you want to go to managestaff.php?")) {
-                                window.location.href = "managestaff.php";
-                            }
-                        }
-                        confirmRedirect();
-                    </script>';
-        }
+        $shoe_name = $_POST["shoe_name"];
+        $shoe_type = $_POST["shoe_type"];
+        $shoe_brand = $_POST["shoe_brand"];
+        $category = $_POST["category"];
+        $shoe_image = $_POST["shoe_image"];
+        $shoe_price = $_POST["shoe_price"];
     
-            
-    }
+        if(!$shoe_name) {
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Name</div>";
+        } else if(!$shoe_price) {
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
+        } else if(!$shoe_image) {
+          $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
+        } else {
+            //mysqli_query($conn,"INSERT INTO shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
+            mysqli_query($conn, "INSERT INTO shoes (shoe_name,shoe_type, shoe_brand, category, shoe_image, shoe_price) VALUES ('" . $_POST['shoe_name'] . "','" . $_POST['shoe_type'] . "', '" . $_POST['shoe_brand'] . "', '" . $_POST['category'] . "', '" . $_POST['shoe_image'] . "', '" . $_POST['shoe_price'] . "')");
+
+          //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
+
+
+              $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+              echo '<script>alert("Update Successfully !");</script>';
+
+              echo '<script>
+                  function confirmRedirect() {
+                      if (confirm("Do you want to go to admin_shoes.php?")) {
+                          window.location.href = "admin_shoes.php";
+                      }
+                  }
+                  confirmRedirect();
+              </script>';
+          }
+
+      }
     
 
 
@@ -67,7 +55,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Add Manage Staff</title>
+    <title> Add New Shoe</title>
 
 
 
@@ -84,6 +72,11 @@
         margin-top: 30px;
         height: auto;
     }
+
+    .toright{
+        float: right;
+    }
+
     h1
     {
         text-align: center;
@@ -156,34 +149,49 @@
     
 
 <div class="container">
-    <h1>Add New Staff / Admin</h1>
+    <h1>Add New Shoe</h1>
     <fieldset>
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for=""><i class="fa fa-cube"></i> Admin Name:</label>
-        <input name="name" type="text">
+        <label for="shoe_name">Shoe Name&nbsp;&nbsp;&nbsp;:</label>
+        <input type="text" name="shoe_name">
         <br>
-        <label for=""><i class="fa fa-cube"></i> Admin Email:</label>
-        <input type="email" name="email" >
+        <label for="shoe_type">Shoe Type&nbsp;&nbsp;&nbsp;:</label>
+        <select id="shoe_type" name="shoe_type">
+            <option value="Running Shoes">Running Shoes</option>
+            <option value="Casual Shoes">Casual Shoes</option>
+            <option value="Sneakers">Sneakers</option>
+            <option value="Lifestyle">Lifestyle</option>
+        </select>
         <br>
-        <label for=""><i class="fa fa-usd"></i> Password:</label>
-        <input type="pass" name="pass" >
+        <br><label for="shoe_brand">Shoe Brand&nbsp;&nbsp;:</label>
+        <select id="shoe_brand" name="shoe_brand">
+            <option value="Nike">Nike</option>
+            <option value="Puma">Puma</option>
+            <option value="Adidas">Adidas</option>
+            <option value="Converse">Converse</option>
+        </select><br>
         <br>
-        <!-- <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
-        <input name="id" type="text"> -->
+        <label for="category">Category &nbsp;&nbsp;&nbsp;:</label>
+        <select id="category" name="category">
+            <option value="man">Man</option>
+            <option value="woman">Woman</option>
+        </select><br>
+        <label for="shoe_price">Shoe Price&nbsp;  : RM</label>
+        <input type="text" name="shoe_price" >
+        <br>
+        <label for="file"  class="Choose" style="color: black;"><i class="fa fa-camera"></i> Shoe Image</label>
+        <br><input type="file" id="file" name="shoe_image" class="form-control" >
         <br>
         <input type="hidden" name="status" value="active">
-                <br><br><br>
-                <input type="hidden" name="image" value="profile.jpg">
-
-                <!-- <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
-        <input type="file" id="file" name="image" class="form-control" multiple> -->
         
+        
+        <div class="toright">
+        <br>
         <input type="submit" name="savebtn" value="Add New Shoes">
-        <div>
         <a href="admin_shoes.php">Back to Previous Page </a>
-    </div>
+        </div>
 
     </form>
     </fieldset>
