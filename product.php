@@ -28,12 +28,16 @@
 }
 
 .sidebar {
-  width: 200px;
-  background-color: #333;
+  width: 150px;
+  background-color: black;
   color: white;
   padding: 10px;
   position: fixed;
   height: 100%;
+  top: 0;
+  left: 0;
+  
+  
 }
 
 .sidebar ul {
