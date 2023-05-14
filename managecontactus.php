@@ -17,14 +17,11 @@
     <style>
     fieldset
     {
+        margin-left: 160px;
         background-color: #f2f2f2;
         font-weight: bold;
     }
-    .middle
-    {
-      padding-left: 160px;
-        margin: 100px;  
-    }
+
     .wrapper
     {
       font-size: 30px;
@@ -51,7 +48,6 @@
 
 <div id="wrapper">
 
-<div class="middle">
     <fieldset>
     <?php
     //   $name = $_GET['name'];
@@ -106,12 +102,8 @@
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
     </fieldset>
-  </div>
-
+      </div>
 	<div>
-
-	</div>
-	
 </div>
 
 </body>

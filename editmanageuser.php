@@ -62,6 +62,7 @@ if (isset($_POST["savebtn"]))
     fieldset
     {
         background-color: #f2f2f2;
+        margin-left: 160px;
     }
     a:hover
     {
