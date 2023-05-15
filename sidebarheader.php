@@ -104,10 +104,10 @@
             </li>
             <li class="dropdown"><a href="#" class="dropbtn">Shoes Type</a>
                 <div class="dropdown-content">
-                <a href="productlist.php?shoe_type=Casual Shoes">Casual Shoes</a>
-                    <a href="productlist.php?shoe_type=Running Shoes">Running Shoes</a>
-                    <a href="productlist.php?shoe_type=Sneakers">Sneakers</a>
-                    <a href="productlist.php?shoe_type=lifestyle">Lifestyle</a>
+                <a href="productlist.php?shoe_type=Casual Shoes&&user_id=<?php echo $id ?>">Casual Shoes</a>
+                    <a href="productlist.php?shoe_type=Running Shoes&&user_id=<?php echo $id ?>">Running Shoes</a>
+                    <a href="productlist.php?shoe_type=Sneakers&&user_id=<?php echo $id ?>">Sneakers</a>
+                    <a href="productlist.php?shoe_type=lifestyle&&user_id=<?php echo $id ?>">Lifestyle</a>
                 </div>
             </li>
 
@@ -120,8 +120,8 @@
 $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
 
 while ($row = mysqli_fetch_assoc($result)) {
-                echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
-            }
+    echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '&user_id=' . $id . '">' . $row['shoe_brand'] . '</a>';
+}
 
             ?>
                 </div>

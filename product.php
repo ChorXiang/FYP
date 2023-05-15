@@ -3,6 +3,12 @@
     include 'header.php';
     include 'conn.php'; 
  include 'sidebarheader.php';
+ if (isset($_SESSION['user_id']))
+ {
+  $id =$_GET['user_id'];  
+ }
+
+ 
 ?>
 
 <!DOCTYPE html>
@@ -231,29 +237,31 @@ while ($row = mysqli_fetch_assoc($result))
   <div class="product-list">
   <div class="topnav">
   
-
-  <form method="get">
+  <form method="post">
   <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+  <input type="hidden" name="user_id" value="<?php echo $id; ?>">
   <button type="submit">Search</button>
+</form>
+
 </form>
 
  
 
 <?php
+if (isset($_POST['search'])) {
+  $search = $_POST['search'];
+  $query = "SELECT * FROM shoes WHERE status='active' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
+  
 
-
-if (isset($_GET['search'])) {
-  $search = mysqli_real_escape_string($conn, $_GET['search']);
-  $query = "SELECT * FROM shoes WHERE  status='active' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
 } else {
-  $query = "SELECT * FROM shoes where status='active'";
-  //$query = "SELECT * FROM shoes where status='active' ";
+  $query = "SELECT * FROM shoes WHERE status='active'";
+
 }
 
-// Retrieve the product data
 $result = mysqli_query($conn, $query);
 
-if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id']; 
+if (isset($_SESSION['user_id'])) {
+ 
 
   while ($row = mysqli_fetch_assoc($result)) {
     $sid = $row['shoe_id'];
@@ -263,12 +271,12 @@ if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];
     <?php
     echo '<h2>' . $row['category'] . '</h2>';
     ?>
-    <p><a href="productpage.php?user_id=<?php echo $id ?>&&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+    <p><a href="productpage.php?user_id=<?php echo $id ?>&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
     <?php
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
-} else { 
+} else {
   while ($row = mysqli_fetch_assoc($result)) {
     $sid = $row['shoe_id'];
     echo '<div class="product-card">';
@@ -282,13 +290,10 @@ if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
-
 }
 ?>
 
 <!-- new  -->
-
-
 
 </div>
 </div>
