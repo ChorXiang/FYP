@@ -50,12 +50,7 @@ if (isset($_POST["savebtn"]))
 
     
 <style>
-    .middle
-    {
-        max-width: 800px;
-        margin: auto; 
-        padding:50px;
-    }
+    
     *
     {
         font-size: 30px;
@@ -105,7 +100,7 @@ if (isset($_POST["savebtn"]))
 
         <label>Name :</label> <?php echo $row['shoe_brand']; ?> 
 
-        <br><label for="status"  >Status<sup>*</sup> : </label>
+        <br><label for="status"  >Status: </label>
                 <select id="status" name="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
