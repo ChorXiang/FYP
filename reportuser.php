@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report USer / Customer Page</title>
+    <title>Report USer / Report Customer </title>
 
     <style>
         table 
@@ -90,12 +90,12 @@
       
       <div >
         
-        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Customer Informations</h1>
+        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"></h1>
       </div>
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
             <tr>
-                <th colspan="9"  >
+            <th colspan="9" style="text-align: center;">
                     Customer Informations
                 </th>
             </tr>
@@ -135,7 +135,7 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="manageuser.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Back to Manage User List</button></a>
+        <a href="manageuser.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page</button></a>
     
         <?php
     if(isset($_POST["backbtn"]))

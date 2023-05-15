@@ -91,12 +91,12 @@
       
       <div >
         
-        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Customer Comment</h1>
+        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"></h1>
       </div>
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
             <tr>
-                <th colspan="9"  >
+            <th colspan="9" style="text-align: center;">
                     Customer Comment
                 </th>
             </tr>

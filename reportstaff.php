@@ -159,15 +159,16 @@
       
       <div >
         
-        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Staff Informations</h1>
+        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"></h1>
       </div>
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
-            <tr>
-                <th colspan="10"  >
-                    Staff Informations
-                </th>
-            </tr>
+        <tr>
+            <th colspan="10" style="text-align: center;">
+                Staff Informations
+            </th>
+        </tr>
+
 
 
             <tr>
@@ -191,7 +192,7 @@
 
           <td><?php echo $row["admin_id"]; ?></td>         
           <td><?php echo $row["admin_name"]; ?></td>  
-          <td><?php echo $row["admin_email  "]; ?></td>  
+          <td><?php echo $row["admin_email"]; ?></td>  
           <td><?php echo $row["status"]; ?></td>   
 
   
@@ -203,7 +204,7 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="managestaff.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Back to Manage Staff </button></a>
+        <a href="managestaff.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous  Page </button></a>
     
         <?php
     if(isset($_POST["backbtn"]))
