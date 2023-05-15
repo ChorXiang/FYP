@@ -105,7 +105,6 @@
         
     
       <span class="left" ><a href="reportcomment.php" alt="insert"><i class='fas fa-print' style='font-size:24px'></i><input type="button" value="View and Print Report"></span></p>
-                                                     <!-- ?name=<?php echo $name?> -->
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
