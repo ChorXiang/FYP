@@ -75,17 +75,17 @@ if ($result->num_rows > 0) {
     ?>
 
     <fieldset>
-    <br>Order ID: <?php echo $her_id; ?><br>
-    <br>Purchase Date &nbsp;&nbsp;  : <?php echo $row["her_date"];?><br>
-    <br>Customer Name : <?php echo $row["his_name"];?><br>
-    <br>Customer Email &nbsp;: <?php echo $her_email; ?><br>
+    <br>Order ID&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp; : <?php echo $her_id; ?><br>
+    <br>Purchase Date&emsp;&emsp;: <?php echo $row["her_date"];?><br>
+    <br>Customer Name&emsp; : <?php echo $row["his_name"];?><br>
+    <br>Customer Email &emsp;&nbsp;: <?php echo $her_email; ?><br>
     <br>Customer Contact &nbsp;: <?php echo $row["his_pn"];?><br>
-    <br>Customer Address : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>  
-    <br>Shoes Name: <?php echo $her_shoesname; ?><br>
-    <br>Shoes Size&nbsp;&nbsp;: <?php echo $her_size; ?><br>
-    <br>Quantity&nbsp;&nbsp;&nbsp;: <?php echo $her_quantity; ?><br>
-    <!-- <br>Shoes Price: RM <?php echo $her_price; ?><br> -->
-    <br>Total Price: RM <?php echo $total; ?><br>
+    <br>Customer Address&nbsp; : <?php echo $row["his_address"];?> <?php echo $row["his_state"];?><br>  
+    <br>Shoes Name&emsp;&emsp;&nbsp;&nbsp;  : <?php echo $her_shoesname; ?><br>
+    <br>Shoes Size&emsp;&emsp;&emsp;&nbsp; : <?php echo $her_size; ?><br>
+    <br>Quantity&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: <?php echo $her_quantity; ?><br>
+    <!-- <br>Shoes Price: RM <?php //echo $her_price; ?><br> -->
+    <br>Total Price&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RM <?php echo $total; ?><br>
     <br><b>Current Order Status: <?php echo $status; ?><b><br>
 
     <form action="" method="post">
