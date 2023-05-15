@@ -2,7 +2,7 @@
 <?php
     include 'header.php';
     include 'conn.php'; 
-
+    include 'sidebarheader.php';
 
 ?>
 
@@ -17,6 +17,7 @@
 
   <style>
     body {
+      
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -153,8 +154,8 @@
 </style>
 <body>
 
-<div class="container">
-    <div class="sidebar">
+<!-- <div class="container">
+    
       <nav>
         <ul>
         
@@ -181,10 +182,10 @@ while ($row = mysqli_fetch_assoc($result))
 }
 
  
-?>
+?> 
         </ul>
-      </nav>
-    </div>
+      </nav>-->
+   
 <div class="product-list">
 			<?php
 

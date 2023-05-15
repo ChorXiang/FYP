@@ -2,7 +2,7 @@
  
     include 'header.php';
     include 'conn.php'; 
-
+ include 'sidebarheader.php';
 ?>
 
 <!DOCTYPE html>
@@ -190,7 +190,7 @@
 
 
 
-
+<!-- 
 <div class="container">
     <div class="sidebar">
       <nav>
@@ -221,7 +221,7 @@ while ($row = mysqli_fetch_assoc($result))
  
 }
  
-?>
+?> -->
         </ul>
       </nav>
     </div>
@@ -237,8 +237,7 @@ while ($row = mysqli_fetch_assoc($result))
   <button type="submit">Search</button>
 </form>
 
-
-
+ 
 
 <?php
 
@@ -286,6 +285,10 @@ if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];
 
 }
 ?>
+
+<!-- new  -->
+
+
 
 </div>
 </div>
