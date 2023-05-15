@@ -2,7 +2,7 @@
 <?php
     include 'header.php';
     include 'conn.php'; 
-
+    include 'sidebarheader.php';
 
 ?>
 
@@ -17,6 +17,7 @@
 
   <style>
     body {
+      
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
@@ -153,8 +154,8 @@
 </style>
 <body>
 
-<div class="container">
-    <div class="sidebar">
+<!-- <div class="container">
+    
       <nav>
         <ul>
         
@@ -166,7 +167,7 @@
   // Loop through the unique categories and generate HTML code for each category
   while ($row = mysqli_fetch_assoc($result)) 
   {
-    echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '</h2></a>';
+    echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '&&user_id=<?php echo $id ?></h2></a>';
   }
 // Retrieve the unique shoe categories
 $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes ");
@@ -176,15 +177,31 @@ $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes ");
 // Loop through the unique categories and generate HTML code for each category
 while ($row = mysqli_fetch_assoc($result)) 
 {
-  echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '"><h2>' . $row['shoe_type'] . '</h2></a>';
+  echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '"><h2>' . $row['shoe_type'] . '&&user_id=<?php echo $id ?></h2></a>';
  
 }
 
- 
-?>
+// <?php
+// $result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes where status='active'");
+
+// // Loop through the unique categories and generate HTML code for each category
+// while ($row = mysqli_fetch_assoc($result)) {
+//   echo '<a href="productlist.php?category=' . $row['category'] . '&user_id=' . $id . '"><h2>' . $row['category'] . '</h2></a>';
+// }
+
+// // Retrieve the unique shoe categories
+// $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
+
+// // Loop through the unique categories and generate HTML code for each category
+// while ($row = mysqli_fetch_assoc($result)) {
+//   echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '&user_id=' . $id . '"><h2>' . $row['shoe_type'] . '</h2></a>';
+// }
+// ?>
+
+?> 
         </ul>
-      </nav>
-    </div>
+      </nav>-->
+   
 <div class="product-list">
 			<?php
 
