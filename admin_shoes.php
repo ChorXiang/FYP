@@ -80,7 +80,7 @@
         <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
         
         <div class="right">
-          <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i><input type="button" value="Add New Shoes"></a></span><br><br>
+          <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-plus' style='font-size:24px'></i><input type="button" value="Add New Shoes" style="margin-left: 10px;"></a></span><br><br>
         </div>
         <table border="0px">
         <thead>
