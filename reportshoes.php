@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Report Comment</title>
+    <title>Admin | Report Shoes</title>
 
     <style>
         table 
@@ -23,7 +23,6 @@
             border: 1px solid black;
             padding: 8px;
             text-align: left;
-            
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -85,36 +84,31 @@
     
 
 <?php
-        $sql = "select * from comment";
+        $sql = "select * from shoes";
         $result = mysqli_query($conn,$sql);
     ?>
       
       <div >
         
-        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"> Customer Comment</h1>
+        <h1 style='margin-left: 70px; '><img class="logo" src="image/foot.png" alt="logo"></h1>
       </div>
       <div class="User_form">
         <table cellpadding="0px" cellspacing="0px"  rules="none" frame="border" style="box-shadow: 3px 3px 5px grey">
             <tr>
-                <th colspan="9"  >
-                    Customer Comment
+            <th colspan="9" style="text-align: center;">
+                    Shoes Informations
                 </th>
             </tr>
 
-
             <tr >
            
-          
-            <td>Comment ID </td>
-            <td>Email </td>
-            <td>User Interface Rating</td>
-            <td>Shipping Rating</td>
-            <td>Customer Service Rating</td>
-            <td>Product Quality Rating</td>
-            <td>Message</td>
-            <td>Date</td>
-                
-             
+            <td>Shoe ID </td>
+            <td>Shoe Name </td>
+            <td>Shoe Type</td>
+            <td>Shoe Brand</td>
+            <td>Category</td>
+            <td>Shoe Price</td>
+            <td>Status</td>     
                 
             </tr>
          <?php
@@ -123,14 +117,13 @@
      
          ?>
             <tr>
-            <td><?php echo $row["comment_id"]; ?></td>         
-            <td><?php echo $row["email"];	?></td>
-            <td><?php echo $row["user_interface_rating"];	?></td>
-            <td><?php echo $row["shipping_rating"];?></td>
-            <td><?php echo $row["customer_service_rating"];?></td>
-            <td><?php echo $row["product_quality_rating"];?></td>
-            <td><?php echo $row["message"];?></td>
-            <td><?php echo $row["created_at"];?></td> 
+            <td><?php echo $row["shoe_id"]; ?></td>         
+            <td><?php echo $row["shoe_name"];	?></td>
+            <td><?php echo $row["shoe_type"];	?></td>
+            <td><?php echo $row["shoe_brand"];?></td>
+            <td><?php echo $row["category"];?></td>
+            <td><?php echo $row["shoe_price"];?></td>
+            <td><?php echo $row["status"];?></td>
   
             </tr>
             <?php
@@ -145,7 +138,7 @@
         <?php
     if(isset($_POST["backbtn"]))
     {
-        header("location: manageuser.php");
+        header("location: admin_shoes.php");
         exit();
     }
 
