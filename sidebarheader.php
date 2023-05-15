@@ -137,7 +137,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
         
-    <hr>
+    <hr >
         <div class="middle">
         <ul >
       
