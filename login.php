@@ -209,6 +209,10 @@ a:hover {
              
             <div class="btnsubmit" style="padding-top:20px;">
             <button type="submit" class="submitbtn" name="loginbtn">Log In</button>
+
+            <br>
+            <br>
+            <a href="homepage.php"><span class="fgpw">Back To Previous Page</span></a>
             
             </div>
             <div class="alignfgpw">
