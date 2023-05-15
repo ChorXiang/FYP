@@ -80,17 +80,18 @@
     h1
     {
         text-align: center;
-        background: linear-gradient(#ff7b00,#ffb700);
-        border-bottom: 2px solid gray;
+        background-color: #f2f2f2;
+        border: 2px solid gray;
+        border-bottom: 0px;
         padding: 20px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
-        margin-bottom: 20px;
         font-size: 3em;
         font-family: 'Courier New', Courier, monospace;
     }
     fieldset
     {
+        background-color: #f2f2f2;
         padding: 10px;
         height: 110%;
     }
@@ -118,7 +119,7 @@
         /* border: 1px solid ; */
         padding: 10px;
         border-radius: 20px;
-        background: linear-gradient(#ff7b00,#ffb700);
+        background: lightgray;
         color: white;
     }
     .Choose:hover
@@ -131,7 +132,7 @@
     {
         padding: 10px;
         border-radius: 20px;
-        background: linear-gradient(#ff7b00,#ffb700);
+        background: lightgray;
         color: black;
         border: none;
     }
@@ -190,6 +191,7 @@
         <div class="toright">
         <br>
         <input type="submit" name="savebtn" value="Add New Shoes">
+        
         <a href="admin_shoes.php">Back to Previous Page </a>
         </div>
 

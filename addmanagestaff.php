@@ -76,6 +76,9 @@
         margin: 0;
         padding: 0;
     }
+    .toright{
+        float: right;
+    }
     .container
     {
         margin: 20%;
@@ -85,17 +88,18 @@
     h1
     {
         text-align: center;
-        background: linear-gradient(#ff7b00,#ffb700);
-        border-bottom: 2px solid gray;
+        background-color: #f2f2f2;
+        border: 2px solid gray;
+        border-bottom: 0px;
         padding: 20px;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
-        margin-bottom: 20px;
         font-size: 3em;
         font-family: 'Courier New', Courier, monospace;
     }
     fieldset
     {
+        background-color: #f2f2f2;
         padding: 10px;
         height: 110%;
     }
@@ -104,15 +108,6 @@
         /* text-align: center; */
         padding-left: 20px;
         font-family: 'Courier New', Courier, monospace;
-    }
-    input
-    {
-        border: none;
-        border-bottom: 1px solid black;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 15px;
-        padding-right: 20px;
     }
     input[type='file']
     {
@@ -123,7 +118,7 @@
         /* border: 1px solid ; */
         padding: 10px;
         border-radius: 20px;
-        background: linear-gradient(#ff7b00,#ffb700);
+        background: lightgray;
         color: white;
     }
     .Choose:hover
@@ -136,7 +131,7 @@
     {
         padding: 10px;
         border-radius: 20px;
-        background: linear-gradient(#ff7b00,#ffb700);
+        background: lightgray;
         color: black;
         border: none;
     }
@@ -146,26 +141,25 @@
         cursor: pointer;
         background: linear-gradient(to left,#ffaa00,#ffea00);
         color: black;
-    }
-    
+    }   
 </style>
 </head>
 <body>
     
 
 <div class="container">
-    <h1>Add New Staff / Admin</h1>
+    <h1>Add New Admin</h1>
     <fieldset>
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for=""><i class="fa fa-cube"></i> Admin Name:</label>
+        <label for=""><i class="fa fa-user"></i> Admin Name:</label>
         <input name="name" type="text">
-        <br>
-        <label for=""><i class="fa fa-cube"></i> Admin Email:</label>
+        <br><br>
+        <label for=""><i class="fa fa-envelope"></i> Admin Email:</label>
         <input type="email" name="email" >
-        <br>
-        <label for=""><i class="fa fa-usd"></i> Password:</label>
+        <br><br>
+        <label for=""><i class="fa fa-key"></i> Password:</label>
         <input type="pass" name="pass" >
         <br>
         <!-- <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
@@ -178,9 +172,10 @@
                 <!-- <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
         <input type="file" id="file" name="image" class="form-control" multiple> -->
         
-        <input type="submit" name="savebtn" value="Add New Admin">
-        <div>
-        <a href="managestaff.php">Back to Previous Page </a>
+        <div class="toright">
+            <input type="submit" name="savebtn" value="Add New Admin">
+            <a href="managestaff.php">Back to Previous Page </a>
+        </div>
     </div>
 
     </form>

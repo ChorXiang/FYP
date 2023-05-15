@@ -22,6 +22,9 @@
         background-color: #f2f2f2;
         font-weight: bold;
     }
+    .floatright{
+      float:right;   
+    }
     .middle
     {
         margin: auto; 
@@ -33,7 +36,7 @@
     }
     .left
     {
-      float: right;
+      float: left;
       margin-bottom: 50px;
     }
     td, th 
@@ -70,6 +73,8 @@
         // $host_image = mysqli_fetch_assoc($query);
         ?>
       <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Staff </b></h1>
+      <span class="floatright" ><a href="addmanagestaff.php" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
+
       <table border="0px">
         <tr>
           <td>Admin Photo</td>
@@ -106,11 +111,9 @@
       </table>
 <p>
         
-    
-      <span class="left" ><a href="reportstaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
-                                                     <!-- ?name=<?php echo $name?> -->
-      <span class="left" ><a href="addmanagestaff.php" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"></i> <input type="button" value="Add New Admin"></span></p>
-      
+    <div class="floatright">
+      <span><a href="reportstaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      </div>
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
     </fieldset>
