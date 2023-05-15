@@ -140,7 +140,7 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="managecomment.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page </button></a>
+        <a href="managecomment.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Back to Comment </button></a>
     
         <?php
     if(isset($_POST["backbtn"]))

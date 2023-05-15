@@ -26,6 +26,11 @@
     float:right;
     padding-right:80px ;
   }
+
+  .floatright{
+    float:right;   
+  }
+
   /* .container
   {
   display: flex;
@@ -125,6 +130,8 @@
       ?>
         
         </table>
+        <span class="floatright" ><a href="reportshoes.php" alt="insert"><i class='fas fa-print' style='font-size:24px'></i><input type="button" value="View and Print Report" style="margin-left: 10px;"></span></p>
+
   </fieldset>
 
   </div>
