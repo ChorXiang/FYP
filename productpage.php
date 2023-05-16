@@ -159,6 +159,7 @@
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
+  <!-- <input type="hidden" name="stockk" value="<?php echo $row["stock"];?>">  -->
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
                     <option value="7">7</option>
@@ -300,7 +301,7 @@ if (empty($size)) {
     $sizeErr = "* Size is required";
 } else {
     $size = test_input($size);
-    $sql = "SELECT * FROM stock";
+    $sql = "SELECT * FROM stock where shoe_id=$proid";
     $result = mysqli_query($conn, $sql);
 
     $row = mysqli_fetch_assoc($result);
