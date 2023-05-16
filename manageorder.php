@@ -74,7 +74,7 @@
         <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> View Customer Order </b></i></h1>
       <table border="0px">
         <tr>
-          <th>Customer ID</th>
+          <th>Order ID</th>
           <th>Shoes Name </th>
           <th>Shoes Size</th>
           <th>Quantity</th>
