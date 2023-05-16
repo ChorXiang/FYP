@@ -52,6 +52,7 @@ echo 'Your Order History Is Empty';
 { ?>
 		<thead>
             <th> Shoes Image</th>
+            <th> Order number</th>
 			<th> Order ID</th>
 			<th> Shoes Name</th>
 			<th> Shoes Size </th>
@@ -75,6 +76,7 @@ echo 'Your Order History Is Empty';
                 while($row = mysqli_fetch_assoc($result)) 
                 {                    
                     $her_id = $row["her_id"];
+                    $order_num = $row["order_num"];
                     $her_shoesname = $row["her_shoesname"];
                     $her_size = $row["her_size"];
                     $her_quantity = $row["her_quantity"];
@@ -88,6 +90,7 @@ echo 'Your Order History Is Empty';
                     ?>
                     <tr>
                         <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" ></th>
+                        <th><?php echo $order_num; ?></th>
                         <th><?php echo $her_id; ?></th>
                         <th><?php echo $her_shoesname; ?></th>
                         <th>UK <?php echo $her_size; ?></th>

@@ -185,9 +185,39 @@
         }
         else
         {
+            $k = 0;
+            $l = 0;
+            
+            // Generate a random number
+            $random = mt_rand(0, 100);
+            
+            $sql = "SELECT * FROM history WHERE user_id = '2'";
+            $result = mysqli_query($conn, $sql);
+            
+            while ($row = mysqli_fetch_array($result)) {
+                $before = $row["order_num"];
+            
+                if ($random == $before) {
+                    $l++;
+                    break;
+                }
+            }
+            
+            if ($l > 0) {
+                // The random number already exists in the database
+                // Generate a new random number and check again
+                $random = mt_rand(0, 100);
+            }
+            
+       
+            
+            
             $sql = "SELECT * FROM orders where user_id = '$id'";
             $msg = '';
             $result = mysqli_query($conn, $sql);
+            
+
+            
             
             while ($row = mysqli_fetch_array($result)) {
               $shoesname = $row["shoesname"];
@@ -206,9 +236,10 @@
               } else {
                 mysqli_query($conn, "UPDATE stock SET size_" . ($size - 0.5) . "_5 = size_" . ($size - 0.5) . "_5 - $qty WHERE shoe_id = '$proo_id'");
               }
+              
             
               mysqli_query($conn, "UPDATE wishlist SET stock = stock - $qty WHERE pro_id = '$proo_id'");
-              mysqli_query($conn, "INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date,shoe_image,his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode) VALUES ('$shoesname','$size','$qty','$price','$memail','$id','$datetime','$image','$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode')");
+              mysqli_query($conn, "INSERT INTO history (order_num,her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date,shoe_image,his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode) VALUES ('$random ','$shoesname','$size','$qty','$price','$memail','$id','$datetime','$image','$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode')");
               mysqli_query($conn, "DELETE FROM orders WHERE order_ID='$idd' && user_id='$id'");
             
               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'> Payment Successfully ! </div>";

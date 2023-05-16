@@ -14,6 +14,5 @@ if (isset($_GET['link']) && isset($_GET['user_id'] )) {
 } else {
     echo 'Invalid link';
 }
-?>
-
+?> 
 
