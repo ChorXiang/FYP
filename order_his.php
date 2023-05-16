@@ -37,6 +37,19 @@
     <br><h1>VIEW ORDER HISTORY</h1><br>
     <div class=".table_center">
     <table class="table" border="1px">
+        <?php
+                    $id =$_GET['user_id'];
+                    $sql = "SELECT * FROM history where user_id = '$id'"; 
+                    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_fetch_assoc($result) == 0) {
+
+echo '<img src="image/empty.png" alt="No product selected">';     ?>
+<br><br>
+<?php
+echo 'Your Order History Is Empty';
+}   else 
+{ ?>
 		<thead>
             <th> Shoes Image</th>
 			<th> Order ID</th>
@@ -45,7 +58,7 @@
 			<th> Quantity</th>
 			<th> Shoes Price</th>
             <th> Total Price</th>
-            <th> Email</th>
+            <th> Receipient Email</th>
             <th> Payment Date</th>
             <th> Order Status</th>
 		</thead>
@@ -56,8 +69,9 @@
             $sql = "SELECT * FROM history where user_id = '$id'"; 
             $result = mysqli_query($conn, $sql);
 
+
             // Display the data in a table
-            if (mysqli_num_rows($result) > 0) {
+           
                 while($row = mysqli_fetch_assoc($result)) 
                 {                    
                     $her_id = $row["her_id"];
@@ -87,15 +101,19 @@
                     </tr>
                 
 
-                </tbody>
+
 
                 <?php
                 }
-            } else {
-                echo "0 results";
-            }
-    // Close the database connection
-    mysqli_close($conn);
+                ?>
+                        </tbody>
+    
+                        <?php
+    
+
+}
+
+
 ?>
 </table>
 </fieldset> 

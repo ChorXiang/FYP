@@ -148,7 +148,7 @@
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Year ) !</div>";
             // $msg= "Please select the payment method";
         }
-        else if($mcardyear>22)
+        else if($mcardyear<22)
         {
             $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Expiry Date ( Year ) must more than 22 !</div>";
             // $msg= "Please select the payment method";
