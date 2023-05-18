@@ -154,13 +154,13 @@
     <?php echo "<div>".$msg."</div>"?>
 
         <label for=""><i class="fa fa-user"></i> Admin Name:</label>
-        <input name="name" type="text">
+        <input name="name" type="text" required>
         <br><br>
         <label for=""><i class="fa fa-envelope"></i> Admin Email:</label>
-        <input type="email" name="email" >
+        <input type="email" name="email" required>
         <br><br>
         <label for=""><i class="fa fa-key"></i> Password:</label>
-        <input type="pass" name="pass" >
+        <input type="pass" name="pass" required>
         <br>
         <!-- <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
         <input name="id" type="text"> -->
