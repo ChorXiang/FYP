@@ -27,7 +27,6 @@ if (isset($_POST['submit'])) {
           $_SESSION['admin_password'] = $row['admin_password'];
 
           $admin_id = $row['admin_id'];
-          $_SESSION['user_id'] = $user_id; 
           header('Location: manageuser.php?admin_id='.$row['admin_id']);
         }
         else
@@ -123,6 +122,8 @@ if (isset($_POST['submit'])) {
     <br><br>
     <label for="admin_password"></label>
     <input type="password" id="admin_password" class="input-field" placeholder="Password" name="admin_password" required>
+    <br>
+    <a href="admin_forgot.php" alt="insert">Forgot Password</a></span>
     <br><br>
     <button type="submit" class="submitbtn" name="submit">Log In</button>
     <!-- <div class="submitbtn">
