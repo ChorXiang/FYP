@@ -1,8 +1,16 @@
-<?php
+<?php 
     include 'adminheader.php';
     include 'conn.php'; 
+// session_start();
 
+// if(!$_session['admin_id'])
+// {
+//     header("Loction:adminlgin.php");
+// }
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
