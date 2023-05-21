@@ -82,7 +82,7 @@ if (isset($_POST["savebtn"]))
 <body>
     
 
-<div class="middle">
+<div>
 
 <fieldset>
     <?php

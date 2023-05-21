@@ -43,7 +43,7 @@
             
             // Display success message and redirect to managestaff.php
             $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
-            echo '<script>alert("Add New staff Successfully !");</script>';
+            echo '<script>alert("Add new staff Successfully !");</script>';
             
             echo '<script>
                 function confirmRedirect() {
