@@ -117,7 +117,7 @@
           <th><?php echo $row['shoe_id']; ?></th>
           <th><?php echo $row['shoe_name']; ?></th>
           <th><?php echo $row['category']; ?></th>
-          <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" ></th>
+          <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" height="190px" width="200px"></th>
           <th><?php echo $row['shoe_price']; ?></th>
           <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
           <th><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>        
