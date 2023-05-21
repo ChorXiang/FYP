@@ -99,7 +99,6 @@ if ($result->num_rows > 0) {
       <input type="radio" name="status" value="Pending">Pending
       <input type="radio" name="status" value="Delivering">Delivering
       <input type="radio" name="status" value="Delivered">Delivered
-      <input type="radio" name="status" value="Cancelled">Cancelled
       <span class="error"><br><?php echo $statusErr;?></span>
       <br><br>
       <input type="submit" name="order_status" value="Update Status">

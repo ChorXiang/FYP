@@ -31,7 +31,7 @@
 
 
               $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
-              echo '<script>alert("Update Successfully !");</script>';
+              echo '<script>alert("Add Successfully !");</script>';
 
               echo '<script>
                   function confirmRedirect() {
