@@ -1,6 +1,7 @@
 <?php
     include 'conn.php'; 
     include 'adminheader.php'; 
+    $id =$_GET['admin_id']; 
 ?>
 
 <!DOCTYPE HTML>  
@@ -53,8 +54,8 @@ function test_input($data) {
 ?>
 <?php
 // SQL query to retrieve all data from shoes table
-$id = $_GET['her_id'];
-$sql = "SELECT * FROM history where her_id='$id'";
+$idd = $_GET['her_id'];
+$sql = "SELECT * FROM history where her_id='$idd'";
 $result = $conn->query($sql);
 
 // Check if there are any rows returned
@@ -144,7 +145,7 @@ if(isset($_POST["order_status"])){
         echo '<script>
             function confirmRedirect() {
                 if (confirm("Do you want to go to manageorder.php?")) {
-                    window.location.href = "manageorder.php";
+                    window.location.href = "manageorder.php?admin_id=' . $id . '";
                 }
             }
             confirmRedirect();

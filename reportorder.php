@@ -1,5 +1,7 @@
 <?php
     include 'conn.php'; 
+    
+    $id =$_GET['admin_id']; 
 
 ?>
 
@@ -225,7 +227,7 @@
         <?php
     if(isset($_POST["backbtn"]))
     {
-        header("location: manageuser.php");
+        header("location: manageuser.php?admin_id=' . $id . '");
         exit();
     }
 
