@@ -76,63 +76,106 @@
 <div class="container">
 
 <div>
+<?php
+// Number of shoes to display per page
+$shoesPerPage = 2;
 
-  <fieldset>
+// Determine the current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Calculate the OFFSET for the SQL query
+$offset = ($currentPage - 1) * $shoesPerPage;
+
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $sql = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' LIMIT $offset, $shoesPerPage";
+  $countSql = "SELECT COUNT(*) AS total FROM shoes WHERE shoe_name LIKE '%$search%'";
+} else {
+  $sql = "SELECT * FROM shoes LIMIT $offset, $shoesPerPage";
+  $countSql = "SELECT COUNT(*) AS total FROM shoes";
+}
+
+$result = mysqli_query($conn, $sql);
+$shoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Get the total number of shoes
+$countResult = mysqli_query($conn, $countSql);
+$totalShoes = mysqli_fetch_assoc($countResult)['total'];
+
+// Calculate the total number of pages
+$totalPages = ceil($totalShoes / $shoesPerPage);
+?>
+
+<fieldset>
   <form method="get">
-          <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
-        <button type="submit">Search</button>
+    <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+    <button type="submit">Search</button>
+  </form>
 
-        <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
-        
-        <div class="right">
-          <span class="left" ><a href="addmanageshoes.php" alt="insert"> <i class='fas fa-plus' style='font-size:24px'></i><input type="button" value="Add New Shoes" style="margin-left: 10px;"></a></span><br><br>
-        </div>
-        <table border="0px">
-        <thead>
-          <tr>
-          <th>Shoe ID</th>
-          <th>Shoe Name</th>
-          <th>Category</th>
-          <th>Shoe Image</th>
-          <th>Shoe Price(RM)</th>
-          <th>Edit</th>
-          <th>Delete</th>
-          </tr>
-      </thead>
-          <?php
-          if (isset($_GET['search'])) {
-            $search = mysqli_real_escape_string($conn, $_GET['search']);
-            $sql = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%'";
-            $result = mysqli_query($conn,$sql);
-          } else {
-            $sql = "SELECT * FROM shoes";
-            $result = mysqli_query($conn,$sql);
-            //$query = "SELECT * FROM shoes where status='active' ";
-          }
-          while($row = mysqli_fetch_array($result))
-          {
-              ?>
-        <tbody>
+  <h1><i class="fa fa-address-book-o" style="font-size: 45px;"><b style="font-size: 50px;"> Manage Shoes </b></i></h1>
+
+  <div class="right">
+    <span class="left">
+      <a href="addmanageshoes.php" alt="insert">
+        <i class="fas fa-plus" style="font-size: 24px;"></i>
+        <input type="button" value="Add New Shoes" style="margin-left: 10px;">
+      </a>
+    </span><br><br>
+  </div>
+
+  <table border="0px">
+    <thead>
+      <tr>
+        <th>Shoe ID</th>
+        <th>Shoe Name</th>
+        <th>Category</th>
+        <th>Shoe Image</th>
+        <th>Shoe Price(RM)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach ($shoes as $row): ?>
         <tr>
-          <th><?php echo $row['shoe_id']; ?></th>
-          <th><?php echo $row['shoe_name']; ?></th>
-          <th><?php echo $row['category']; ?></th>
-          <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter" height="190px" width="200px"></th>
-          <th><?php echo $row['shoe_price']; ?></th>
-          <th><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-          <th><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>        
+          <td><?php echo $row['shoe_id']; ?></td>
+          <td><?php echo $row['shoe_name']; ?></td>
+          <td><?php echo $row['category']; ?></td>
+          <td>
+            <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="200px" width="100%">
+          </td>
+          <td><?php echo $row['shoe_price']; ?></td>
+          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
         </tr>
-      </tbody>
-              <?php
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 
-          }
+  <span class="floatright">
+    <a href="reportshoes.php" alt="insert">
+      <i class="fas fa-print" style="font-size: 24px;"></i>
+      <input type="button" value="View and Print Report" style="margin-left: 10px;">
+    </a>
+  </span>
 
-      ?>
-        
-        </table>
-        <span class="floatright" ><a href="reportshoes.php" alt="insert"><i class='fas fa-print' style='font-size:24px'></i><input type="button" value="View and Print Report" style="margin-left: 10px;"></span></p>
+  <!-- Pagination links -->
+  <?php if ($totalPages > 1): ?>
+    <div class="pagination">
+      <?php if ($currentPage > 1): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
+      <?php endif; ?>
+      
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+      <?php endfor; ?>
 
-  </fieldset>
+      <?php if ($currentPage < $totalPages): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+</fieldset>
 
   </div>
   </div>

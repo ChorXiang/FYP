@@ -174,7 +174,7 @@
          
         <div class="imgcenter">
         <br><b><?php echo $row["shoe_name"]; ?></b><br>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="190px" width="200px" >
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="200px" width="80%" >
   </div>
 </div>
 
