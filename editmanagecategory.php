@@ -3,6 +3,7 @@
     include 'conn.php'; 
     $msg = '';
     $shoe_brand = $_GET["shoe_brand"];
+    $id =$_GET['admin_id']; 
 ?>
 
 
@@ -27,7 +28,9 @@ if (isset($_POST["savebtn"]))
         echo '<script>
             function confirmRedirect() {
                 if (confirm("Do you want to go to admin_category.php?")) {
-                    window.location.href = "admin_category.php";
+                    // window.location.href = "admin_category.php?admin_id=$id";
+                    window.location.href = "admin_category.php?admin_id=' . $id . '";
+      
                 }
             }
             confirmRedirect();

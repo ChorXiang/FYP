@@ -2,6 +2,7 @@
     include 'adminheader.php'; 
     include 'conn.php'; 
     $msg=''; 
+    // $id =$_GET['admin_id']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,8 +146,8 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
             <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="200px" width="100%">
           </td>
           <td><?php echo $row['shoe_price']; ?></td>
-          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
-          <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
+          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>&amp;admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

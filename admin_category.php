@@ -118,22 +118,22 @@
       <tr>
         <th>Nike</th>
         <th><?php echo $nikenum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Nike" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+        <th><a href="editmanagecategory.php?shoe_brand=Nike&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
       <tr>
         <th>Puma</th>
         <th><?php echo $pumanum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Puma" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+        <th><a href="editmanagecategory.php?shoe_brand=Puma&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
       <tr>
         <th>Adidas</th>
         <th><?php echo $adidasnum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Adidas" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+        <th><a href="editmanagecategory.php?shoe_brand=Adidas&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
       <tr>
         <th>Converse</th>
         <th><?php echo $conversenum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Converse" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+        <th><a href="editmanagecategory.php?shoe_brand=Converse&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
     </tbody>
 			

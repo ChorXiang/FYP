@@ -27,8 +27,8 @@ if (isset($_POST['submit'])) {
           $_SESSION['admin_password'] = $row['admin_password'];
 
           $admin_id = $row['admin_id'];
-          header('Location: admin_category.php');
-          //header('Location: admin_category.php?admin_id='.$row['admin_id']);
+          // header('Location: admin_category.php');
+          header('Location: admin_category.php?admin_id='.$row['admin_id']);
         }
         else
         {
