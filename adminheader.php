@@ -1,13 +1,8 @@
+<?php
 
-<!-- <?php 
 
-// session_start();
+include 'conn.php';?>
 
-// if(!$_session['admin_id'])
-// {
-//     header("Loction:adminlgin.php");
-// }
-// ?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -142,17 +137,24 @@ if(!isset($id)) {
 ?>
 
 -->
+<?php
+
+$sql = "select * from admin";
+$result = mysqli_query($conn,$sql);
+$h = mysqli_fetch_assoc($result);
+$id=$h["admin_id"];
+?>
 
 
 <div class="sidenav">
         <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
-        <a href="admin_category.php">Manage Category</a>
-        <a href="admin_shoes.php">Manage Product</a>
-        <a href="manageorder.php">Manage Order</a>
-        <a href="manageuser.php">Manage Customer</a>
-        <a href="managestaff.php">Manage Staff </a>
-        <a href="managecomment.php">Manage comment </a>
-        <a href="managecontactus.php">Manage Support </a>
+        <a href="admin_category.php?admin_id=<?php echo $id ?>">Manage Category</a>
+        <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Manage Product</a>
+        <a href="manageorder.php?admin_id=<?php echo $id ?>">Manage Order</a>
+        <a href="manageuser.php?admin_id=<?php echo $id ?>">Manage Customer</a>
+        <a href="managestaff.php?admin_id=<?php echo $id ?>">Manage Staff </a>
+        <a href="managecomment.php?admin_id=<?php echo $id ?>">Manage comment </a>
+        <a href="managecontactus.php?admin_id=<?php echo $id ?>">Manage Support </a>
         <br><br><br>
         <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
 

@@ -33,56 +33,29 @@
   min-height: 100vh;
 }
 
-.sidebar {
-  width: 150px;
-  background-color: black;
-  color: white;
-  padding: 10px;
-  position: fixed;
-  height: 100%;
-  top: 0;
-  left: 0;
   
   
-}
-
-.sidebar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.sidebar li {
-  display: block;
-  margin-right: 10px;
-}
-
-.sidebar li:last-child {
-  margin-right: 0;
-}
-
-.sidebar a {
-  display: block;
-  color: white;
-  text-decoration: none;
-  padding: 10px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.sidebar a:hover {
-  background-color: #444;
-}
 .product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 200px;
-  padding: 20px;
+
+  
 }
 
-.product-card {
-  width: calc(33.33% - 20px);
+
+  
+.product-list::after {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+    }
+
+    .product-card::after {
+  width: calc(33.33% - 90px);
   margin: 20px;
   display: inline-block;
   vertical-align: top;
@@ -94,9 +67,27 @@
 }
 
 
+.product-card {
+    width: 335px; /* Adjust product width*/
+    margin: 20px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px #ddd;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  
+
+
+
 .product-card:hover {
   transform: translateY(-10px);
 }
+
+
 
 .product-card img {
   width: 100%;
@@ -106,12 +97,14 @@
   margin-bottom: 10px;
 }
 
+
 .product-card h2 {
   font-size: 18px;
   margin-top: 0;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
+
 
 .product-card a {
   color: #333;
@@ -120,14 +113,19 @@
   transition: color 0.3s ease-in-out;
 }
 
+
 .product-card a:hover {
   color: #c00;
 }
+
 
 .product-card p {
   font-size: 14px;
   margin: 10px 0;
 }
+
+
+
 
 .product-card .price {
   font-size: 16px;
@@ -136,28 +134,8 @@
   margin-top: 10px;
 }
 
-@media (max-width: 992px) {
-  .product-card {
-    width: calc((100% / 2) - 20px);
-  }
-}
 
-@media (max-width: 576px) {
-  .sidebar {
-    width: 100%;
-    position: static;
-    height: auto;
-  }
 
-  .product-list {
-    margin-left: 0;
-  }
-
-  .product-card {
-    width: 100%;
-  }
-  
-}
 
 
 .topnav {
@@ -165,12 +143,13 @@
 }
 
 .topnav input[type="text"] {
-  width: 30%;
+  width: 300px;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #ccc;
+  margin-left: 20px;
 }
 
 .topnav button[type="submit"] {
@@ -196,41 +175,7 @@
 
 
 
-<!-- 
-<div class="container">
-    <div class="sidebar">
-      <nav>
-        <ul>
-        
 
-        
-  <?php
-
-  
-// Retrieve the unique shoe categories
-$result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes");
-
-  // Loop through the unique categories and generate HTML code for each category
-  while ($row = mysqli_fetch_assoc($result)) 
-  {
-    echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '</h2></a>';
-  }
-$result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes ");
-
-// Loop through the unique categories and generate HTML code for each category
-while ($row = mysqli_fetch_assoc($result)) 
-{
-  echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '"><h2>' . $row['shoe_type'] . '</h2></a>';
-
-
-  
- 
-}
- 
-?> -->
-        </ul>
-      </nav>
-    </div>
     
  
 
