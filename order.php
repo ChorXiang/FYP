@@ -94,7 +94,7 @@ if (isset($_POST["update_cart"])) {
     }
     td, tr
     {
-      padding: 10px 70px 10px 70px;
+      padding: 10px 70px 10px 16px;
     }
     .container
     {

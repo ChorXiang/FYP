@@ -94,68 +94,46 @@ if(isset($_POST['password_update']))
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
     $token = mysqli_real_escape_string($conn, $_POST['password_token']);
 
-    if(!empty($token))
-    {
-        if(!empty($email) && !empty($new_password) && !empty($confirm_password) )
-      {
-        //checking token is valid or not
+    if (!empty($token)) {
+    if (!empty($email) && !empty($new_password) && !empty($confirm_password)) {
+        // Checking if the token is valid
         $check_token = "SELECT verify_token FROM user WHERE verify_token='$token' LIMIT 1";
         $check_token_run = mysqli_query($conn, $check_token);
 
-        if(mysqli_num_rows($check_token_run)> 0)
-        {
-            if($new_password == $confirm_password)
-            {
+        if (mysqli_num_rows($check_token_run) > 0) {
+            if ($new_password == $confirm_password) {
                 $update_password = "UPDATE user SET userpassword='$new_password' WHERE verify_token='$token' LIMIT 1";
                 $update_password_run = mysqli_query($conn, $update_password);
 
-                if ( $update_password_run)
-                {
-                    $_SESSION["status"] = "New password Successfully Updated.! ";
+                if ($update_password_run) {
+                    $_SESSION["status"] = "New password successfully updated!";
                     header("Location: login.php");
                     exit(0);
-
-                }
-                else
-                {
-                    $_SESSION["status"] = "Did not update password.Something went wrong";
+                } else {
+                    $_SESSION["status"] = "Failed to update password. Something went wrong.";
                     header("Location: password-change.php?token=$token&email=$email");
                     exit(0);
-
                 }
-
-
+            } else {
+                $_SESSION["status"] = "Password and Confirm Password do not match.";
+                header("Location: password-change.php?token=$token&email=$email");
+                exit(0);
             }
-            else
-            {
-        $_SESSION["status"] = "Password and Confirm Password does not match";
-        header("Location: password-change.php?token=$token&email=$email");
-        exit(0);
-            }
-
+        } else {
+            $_SESSION["status"] = "Invalid Token";
+            header("Location: password-change.php?token=$token&email=$email");
+            exit(0);
         }
-        else
-        {
-        $_SESSION["status"] = "Invalid Token";
-        header("Location: password-change.php?token=$token&email=$email");
-        exit(0);
-        }
-      }
-    
-    else
-    {
-        $_SESSION["status"] = "AllFilled are Mandetory";
+    } else {
+        $_SESSION["status"] = "All fields are mandatory.";
         header("Location: password-change.php?token=$token&email=$email");
         exit(0);
     }
-    
-    else
-    {
-        $_SESSION["status"] = "No Token Avaiable";
-        header("Location: password-change.php");
-        exit(0);
+} else {
+    $_SESSION["status"] = "No Token Available";
+    header("Location: password-change.php");
+    exit(0);
+}
 
-    }
-}
-}
+
 ?>
