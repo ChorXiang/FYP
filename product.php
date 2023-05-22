@@ -213,7 +213,7 @@
 <?php
 
 // Number of shoes to display per page
-$shoesPerPage = 10;
+$shoesPerPage = 3;
 
 // Determine the current page
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -243,6 +243,8 @@ $query .= " LIMIT $offset, $shoesPerPage";
 
 
 $result = mysqli_query($conn, $query);
+
+
 
 if (isset($_SESSION['user_id'])) {
  
@@ -275,11 +277,16 @@ if (isset($_SESSION['user_id'])) {
     echo '</div>';
   }
 }
+
+
 ?>
 
- <!-- 分页链接 -->
+
+</div>
+ <!-- Pagination links -->
  <?php if ($totalPages > 1): ?>
     <div class="pagination">
+      
       <?php if ($currentPage > 1): ?>
         <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
       <?php endif; ?>
@@ -291,13 +298,9 @@ if (isset($_SESSION['user_id'])) {
       <?php if ($currentPage < $totalPages): ?>
         <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
       <?php endif; ?>
+      
     </div>
-  <?php endif;?>
-
-
-<!-- new  -->
-
-</div>
+  <?php endif; ?>
 </div>
 </body>
 </html>
