@@ -213,7 +213,7 @@
     <input type="radio" name="category" value="woman" <?php if($row["category"]=="woman"){echo "checked";} ?>> Woman<br>
     <!-- Shoe Image: <input type="text" name="shoe_image" value="<?php //echo $row["shoe_image"]; ?>"><br> -->
     <label for="category">Shoe Price&nbsp;  : RM</label>
-    <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>"><br>
+    <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" required><br>
     <br>
     <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
     <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
