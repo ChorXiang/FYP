@@ -101,9 +101,9 @@ if (isset($_POST["savebtn"]))
 
     <form name="addfrm" method="post" action="">
 
-        <label>Name :</label> <?php echo $row['shoe_brand']; ?> 
-
-        <br><label for="status"  >Status: </label>
+        <label>Category:</label> <?php echo $row['shoe_brand']; ?> 
+        <br>
+        <br><label for="status"  >Status &nbsp;&nbsp; : </label>
                 <select id="status" name="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
