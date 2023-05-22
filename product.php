@@ -11,6 +11,8 @@
  
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -166,6 +168,22 @@
   background-color: black;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  margin: 0 5px;
+  text-decoration: none;
+  color: #333;
+}
+
+.pagination a.active {
+  font-weight: bold;
+}
+
 
 
   
@@ -179,7 +197,7 @@
     
  
 
-  <div class="product-list">
+<div class="product-list">
   <div class="topnav">
   
   <form method="post">
@@ -193,6 +211,17 @@
  
 
 <?php
+
+// Number of shoes to display per page
+$shoesPerPage = 10;
+
+// Determine the current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Calculate the OFFSET for the SQL query
+$offset = ($currentPage - 1) * $shoesPerPage;
+
+
 if (isset($_POST['search'])) {
   $search = $_POST['search'];
   $query = "SELECT * FROM shoes WHERE status='active' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
@@ -202,6 +231,16 @@ if (isset($_POST['search'])) {
   $query = "SELECT * FROM shoes WHERE status='active'";
 
 }
+
+$result = mysqli_query($conn, $query);
+
+$totalCount = mysqli_num_rows($result);
+
+$totalPages = ceil($totalCount / $shoesPerPage);
+
+
+$query .= " LIMIT $offset, $shoesPerPage";
+
 
 $result = mysqli_query($conn, $query);
 
@@ -237,6 +276,24 @@ if (isset($_SESSION['user_id'])) {
   }
 }
 ?>
+
+ <!-- 分页链接 -->
+ <?php if ($totalPages > 1): ?>
+    <div class="pagination">
+      <?php if ($currentPage > 1): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
+      <?php endif; ?>
+      
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+      <?php endfor; ?>
+
+      <?php if ($currentPage < $totalPages): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
+      <?php endif; ?>
+    </div>
+  <?php endif;?>
+
 
 <!-- new  -->
 
