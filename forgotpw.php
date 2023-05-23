@@ -1,25 +1,3 @@
-<?php
-    
-    require_once 'conn.php';
-
-    $err=null;
-    if(isset($_GET["error"]))
-        {
-            if($_GET["error"]=="emptyinput")
-            {
-                $err="Please fill in your email!";
-            }
-            if($_GET["error"]=="emaildoesnotexist")
-            {
-                $err="Email does not exist please enter again!";
-            }
-            if($_GET["error"]=="none")
-            {
-                
-                $err="success!";
-            }
-        }
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -214,7 +192,7 @@
                 <br><br>
                 <div class="btn">
                     <input class="verifybtn" type="submit" name="sendbtn" value="SEND"><br><br>
-                    <span style="color:red; font-size:12px;"> <?php echo $err; ?> </span>
+                    <span style="color:red; font-size:12px;"> Please fill in your email! </span>
                     <br>
                     <p><a href="login.php" class="backbtn">back to login</a></p>
                 </div>
@@ -223,4 +201,3 @@
         </div>
     </body>
 </html>
-
