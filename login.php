@@ -217,7 +217,7 @@ a:hover {
             </div>
             <div class="alignfgpw">
                 <br>
-            <a href="reset.php"><span class="fgpw">Forgot password?</span></a>
+            <a href="forgotpw.php"><span class="fgpw">Forgot password?</span></a>
             </div>
         
 
