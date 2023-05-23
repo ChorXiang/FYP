@@ -262,6 +262,29 @@ if (isset($_SESSION['user_id'])) {
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
+?>
+  </div>
+ <!-- Pagination links -->
+ <?php if ($totalPages > 1): ?>
+    <div class="pagination">
+      
+    <?php if ($currentPage > 1): ?>
+    <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>&user_id=<?php echo $id; ?>">Previous</a>
+<?php endif; ?>
+
+      
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>&user_id=<?php echo $id; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+      <?php endfor; ?>
+
+      <?php if ($currentPage < $totalPages): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>&user_id=<?php echo $id; ?>">Next</a>
+      <?php endif; ?>
+      
+    </div>
+  <?php endif; ?>
+</div>
+<?php
 } else {
   while ($row = mysqli_fetch_assoc($result)) {
     $sid = $row['shoe_id'];
@@ -288,16 +311,16 @@ if (isset($_SESSION['user_id'])) {
     <div class="pagination">
       
     <?php if ($currentPage > 1): ?>
-    <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>&user_id=<?php echo $id; ?>">Previous</a>
+    <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
 <?php endif; ?>
 
       
       <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>&user_id=<?php echo $id; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
       <?php endfor; ?>
 
       <?php if ($currentPage < $totalPages): ?>
-        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>&user_id=<?php echo $id; ?>">Next</a>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
       <?php endif; ?>
       
     </div>
