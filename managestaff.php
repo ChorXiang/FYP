@@ -2,6 +2,8 @@
     // include 'adminheader.php';
     include 'conn.php'; 
     include 'adminheader.php';
+    $id =$_GET['admin_id']; 
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +75,7 @@
         // $host_image = mysqli_fetch_assoc($query);
         ?>
       <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Staff </b></h1>
-      <span class="floatright" ><a href="addmanagestaff.php" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
+      <span class="floatright" ><a href="addmanagestaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
 
       <table border="0px">
         <tr>
@@ -98,7 +100,7 @@
           <td><?php echo $row["admin_name"]; ?></td>       
           <td><?php echo $row["status"]; ?></td>       
           <td>       
-            <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+            <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
             </td>
             
         </tr>
@@ -112,7 +114,7 @@
 <p>
         
     <div class="floatright">
-      <span><a href="reportstaff.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span><a href="reportstaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
       </div>
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 

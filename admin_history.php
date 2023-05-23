@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
       <br><br>
       <input type="submit" name="order_status" value="Update Status">
       <div class="butttonright">
-        <a href="manageorder.php">Back to Previous Page </a>
+        <a href="manageorder.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
       </div>
     </form>
     

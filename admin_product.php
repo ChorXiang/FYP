@@ -1,12 +1,10 @@
 <?php
+    include 'adminheader.php';
     include 'conn.php'; 
-    include 'adminheader.php'; 
-    $msg='';
-    
-    // $id =$_GET['admin_id']; 
+    $msg = '';
 
+    $id =$_GET['admin_id']; 
 ?>
-
 <?php
     
             // Add validation rules for the other input fields
@@ -21,16 +19,10 @@
               $shoe_price = $_POST["shoe_price"];
               
           
-              if(!$shoe_price) {
-                  $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
-              } else if(!$shoe_image) {
+              if(!$shoe_image) {
                 $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
               } else {
                   mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-
-                //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
-
-                // $id =$_GET['admin_id']; 
  
                     $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
                     echo '<script>alert("Update Successfully !");</script>';
@@ -221,7 +213,7 @@
     <br>
     <input type="submit" name="submit" value="Update">
     <div class="butttonright">
-        <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"];?> &amp;admin_id=<?php echo $id ?>">Edit Stock </a>
+        <a href="admin_stock.php?shoe_id=<?php echo $row["shoe_id"]?>&&admin_id=<?php echo $id ?>">Edit Stock </a>
     </div>
   </form>
 

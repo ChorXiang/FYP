@@ -1,12 +1,7 @@
 <?php 
     include 'adminheader.php';
     include 'conn.php'; 
-// session_start();
-
-// if(!$_session['admin_id'])
-// {
-//     header("Loction:adminlgin.php");
-// }
+    $id =$_GET['admin_id']; 
 ?>
 
 
@@ -101,7 +96,7 @@
           <td><?php echo $row["username"];?></td>
           <td><?php echo $row["status"];?></td>
           <td>       
-            <a href="editmanageuser.php?email=<?php echo $row['email_address'];?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
+            <a href="editmanageuser.php?email=<?php echo $row['email_address']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
                                                                        <!--  &&name=<?php echo $name?> -->
             </td>
         </tr>
@@ -115,7 +110,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportuser.php" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span class="left" ><a href="reportuser.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 

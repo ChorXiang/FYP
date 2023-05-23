@@ -2,7 +2,7 @@
     include 'adminheader.php'; 
     include 'conn.php'; 
     $msg=''; 
-    // $id =$_GET['admin_id']; 
+    $id =$_GET['admin_id']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,6 +110,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
 <fieldset>
   <form method="get">
     <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+    <input type="hidden" name="admin_id" value="<?php echo $id; ?>">
     <button type="submit">Search</button>
   </form>
 
@@ -117,7 +118,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
 
   <div class="right">
     <span class="left">
-      <a href="addmanageshoes.php" alt="insert">
+      <a href="addmanageshoes.php?admin_id=<?php echo $id ?>" alt="insert">
         <i class="fas fa-plus" style="font-size: 24px;"></i>
         <input type="button" value="Add New Shoes" style="margin-left: 10px;">
       </a>
@@ -146,7 +147,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
             <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="200px" width="100%">
           </td>
           <td><?php echo $row['shoe_price']; ?></td>
-          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>&amp;admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']?>&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
           <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
         </tr>
       <?php endforeach; ?>
@@ -154,7 +155,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
   </table>
 
   <span class="floatright">
-    <a href="reportshoes.php" alt="insert">
+    <a href="reportshoes.php?admin_id=<?php echo $id ?>" alt="insert">
       <i class="fas fa-print" style="font-size: 24px;"></i>
       <input type="button" value="View and Print Report" style="margin-left: 10px;">
     </a>
@@ -164,15 +165,15 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
   <?php if ($totalPages > 1): ?>
     <div class="pagination">
       <?php if ($currentPage > 1): ?>
-        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>&amp;admin_id=<?php echo $id; ?>">Previous</a>
       <?php endif; ?>
       
       <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&amp;admin_id=<?php echo $id; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
       <?php endfor; ?>
 
       <?php if ($currentPage < $totalPages): ?>
-        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>&amp;admin_id=<?php echo $id; ?>">Next</a>
       <?php endif; ?>
     </div>
   <?php endif; ?>

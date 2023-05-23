@@ -2,7 +2,8 @@
     include 'adminheader.php';
     include 'conn.php'; 
     $msg = '';
-    $id = $_REQUEST["email"];
+    $email = $_REQUEST["email"];
+    $id =$_GET['admin_id']; 
 ?>
 
 
@@ -20,15 +21,15 @@ if (isset($_POST["savebtn"]))
     }
     else
     {
-        mysqli_query($conn,"UPDATE user set status='" . $_POST['status'] . "' where email_address = '$id'");            
-        // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
+        mysqli_query($conn,"UPDATE user set status='" . $_POST['status'] . "' where email_address = '$email'");            
+        // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$email'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
         echo '<script>alert("Update Successfully !");</script>';
      
         echo '<script>
             function confirmRedirect() {
                 if (confirm("Do you want to go to manageuser.php?")) {
-                    window.location.href = "manageuser.php";
+                    window.location.href = "manageuser.php?admin_id=' . $id . '";
                 }
             }
             confirmRedirect();
@@ -90,13 +91,8 @@ if (isset($_POST["savebtn"]))
 
 
 
-        $result = mysqli_query($conn, "select * from user where email_address = '$id'"); 
+        $result = mysqli_query($conn, "select * from user where email_address = '$email'"); 
         $row = mysqli_fetch_assoc($result);
-
-    //     $id = $_GET['name'];
-    // $host = "SELECT * FROM `admin` where username = '$id'";
-    // $query = mysqli_query($conn,$host);
-    // $host_image = mysqli_fetch_assoc($query);             // ?name=<?php echo $host_image['username']
 
     ?>
         <?php echo "<div>".$msg."</div>"?></dev>
@@ -122,7 +118,7 @@ if (isset($_POST["savebtn"]))
        
         <br><br><input type="submit" name="savebtn" value="UPDATE">
         <div class="right">
-        <a href="manageuser.php">Back</a>
+        <a href="manageuser.php?admin_id=<?php echo $id ?>">Back</a>
         </div>
     </form>
     <div style=text-align:center;>

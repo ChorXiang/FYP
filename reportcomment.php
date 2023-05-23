@@ -1,6 +1,6 @@
 <?php
     include 'conn.php'; 
-
+    $id =$_GET['admin_id']; 
 ?>
 
 <!DOCTYPE html>
@@ -140,16 +140,8 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="managecomment.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page </button></a>
-    
-        <?php
-    if(isset($_POST["backbtn"]))
-    {
-        header("location: manageuser.php");
-        exit();
-    }
+        <a href="managecomment.php?admin_id=<?php echo $id ?>"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page </button></a>
 
-    ?>
 </div>
 
 

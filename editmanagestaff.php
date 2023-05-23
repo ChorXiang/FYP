@@ -2,7 +2,7 @@
     include 'adminheader.php';
     include 'conn.php'; 
     $msg = '';
-    $id = $_REQUEST["admin_id"];
+    $id =$_GET['admin_id']; 
 ?>
 
 <?php
@@ -46,7 +46,7 @@ if (isset($_POST["savebtn"]))
         echo '<script>
             function confirmRedirect() {
                 if (confirm("Do you want to go to managestaff.php?")) {
-                    window.location.href = "managestaff.php";
+                    window.location.href = "managestaff.php?admin_id=' . $id . '";
                 }
             }
             confirmRedirect();
@@ -104,17 +104,10 @@ if (isset($_POST["savebtn"]))
 
 <fieldset>
     <?php
-        // $name=$_GET['name'];
-
-
 
         $result = mysqli_query($conn, "select * from admin where admin_id = '$id'"); 
         $row = mysqli_fetch_assoc($result);
 
-    //     $id = $_GET['name'];
-    // $host = "SELECT * FROM `admin` where username = '$id'";
-    // $query = mysqli_query($conn,$host);
-    // $host_image = mysqli_fetch_assoc($query);             // ?name=<?php echo $host_image['username']
 
     ?>
     
@@ -140,7 +133,7 @@ if (isset($_POST["savebtn"]))
        
         <br><br><input type="submit" name="savebtn" value="UPDATE">
         <div class="butttonright">
-        <a href="managestaff.php">Back to Previous Page </a>
+        <a href="managestaff.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
         </div>
     </form>
     <div style=text-align:center;>

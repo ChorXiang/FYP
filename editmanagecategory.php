@@ -28,7 +28,7 @@ if (isset($_POST["savebtn"]))
         echo '<script>
             function confirmRedirect() {
                 if (confirm("Do you want to go to admin_category.php?")) {
-                    // window.location.href = "admin_category.php?admin_id=$id";
+                    
                     window.location.href = "admin_category.php?admin_id=' . $id . '";
       
                 }
@@ -112,7 +112,7 @@ if (isset($_POST["savebtn"]))
        
         <br><br><input type="submit" name="savebtn" value="UPDATE">
         <div class="right">
-        <a href="admin_category.php">Back</a>
+        <a href="admin_category.php?admin_id=<?php echo $id ?>">Back</a>
         </div>
     </form>
     <div style=text-align:center;>

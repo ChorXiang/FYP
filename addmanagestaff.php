@@ -2,7 +2,7 @@
     include 'adminheader.php'; 
     include 'conn.php'; 
     $msg = '';
-
+    $id =$_GET['admin_id']; 
 ?>
 
 
@@ -48,7 +48,7 @@
             echo '<script>
                 function confirmRedirect() {
                     if (confirm("Do you want to go to managestaff.php?")) {
-                        window.location.href = "managestaff.php";
+                        window.location.href = "managestaff.php?admin_id=' . $id . '";
                     }
                 }
                 confirmRedirect();
@@ -174,7 +174,7 @@
         
         <div class="toright">
             <input type="submit" name="savebtn" value="Add New Admin">
-            <a href="managestaff.php">Back to Previous Page </a>
+            <a href="managestaff.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
         </div>
     </div>
 

@@ -222,7 +222,7 @@
         </table>
         <br><br>
         <button id="print" onclick="window.print();" style='margin-left: 40px'>Print Report</button>
-        <a href="manageorder.php"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page </button></a>
+        <a href="manageorder.php?admin_id=<?php echo $id ?>"><button id="backbtn" name="backbtn" style='margin-left: 1180px'>Previous Page </button></a>
     
         <?php
     if(isset($_POST["backbtn"]))

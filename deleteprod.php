@@ -2,15 +2,17 @@
     include("conn.php");
     include 'adminheader.php';
 
+    $id =$_GET['admin_id']; 
+
     if (isset($_GET['shoe_id'])) {
-        $id = $_GET['shoe_id'];
+        $shoe = $_GET['shoe_id'];
         
         if (isset($_POST['confirm'])) {
-            mysqli_query($conn, "DELETE FROM shoes WHERE shoe_id='$id'");
-            header("Location: admin_shoes.php");
+            mysqli_query($conn, "DELETE FROM shoes WHERE shoe_id='$shoe'");
+            header("Location: admin_shoes.php?admin_id=$id");
             exit();
         } else if (isset($_POST['cancel'])) {
-            header("Location: admin_shoes.php");
+            header("Location: admin_shoes.php?admin_id=$id");
             exit();
         }
     } 

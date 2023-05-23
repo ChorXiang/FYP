@@ -1,6 +1,7 @@
 <?php
     include 'adminheader.php'; 
     include 'conn.php'; 
+    $id =$_GET['admin_id']; 
 ?>
 <!DOCTYPE HTML>  
 <html>
