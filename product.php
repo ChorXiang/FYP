@@ -285,8 +285,10 @@ if (isset($_SESSION['user_id'])) {
   <?php endif; ?>
 </div>
 <?php
-} else {
-  while ($row = mysqli_fetch_assoc($result)) {
+} else 
+{
+  while ($row = mysqli_fetch_assoc($result)) 
+  {
     $sid = $row['shoe_id'];
     echo '<div class="product-card">';
     ?>
@@ -300,9 +302,8 @@ if (isset($_SESSION['user_id'])) {
     echo '</div>';
   }
 }
-
-
 ?>
+  </div>
 
 
 </div>
