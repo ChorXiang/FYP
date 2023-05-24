@@ -4,6 +4,7 @@ include_once 'conn.php';
 
 $emailErr = $fullnameErr = $contactErr = $existsErr = "";
 $usernameErr = $passErr = $CompassErr  = "";
+$NotmatchErr = "";
 $img = $status= "";
 $email = $fullname = $contact = "";
 $postcode = $username = $pass = $cpass = "";
@@ -257,7 +258,8 @@ if (isset($_POST['signupbtn'])) {
                     <div class="input-group">
                         <label>Confirm Password :</label>
                         <input type="password" name="confirm_password" placeholder="Enter your confirm password" class="input-field">
-                        <span class="error-msg"><?php echo $CompassErr; ?></span>
+                        <span class="error-msg"><?php echo $CompassErr; ?></span> <br>
+                        <span class="error-msg"><?php echo $NotmatchErr ; ?></span>
                       
                         
                       

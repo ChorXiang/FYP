@@ -40,56 +40,8 @@ include 'conn.php';?>
         {
             text-decoration:none;
         }
-        .middle
-        {
-            text-align: center;
-        }
-        ul
-        {
-            list-style-type: none;
-            margin: 0;
-            overflow: hidden;
-        }
-        li a 
-        {
-            display: inline-block;
-            color: white;
-            text-align: center;
-            text-decoration: none;
-        }
-        .dropdown
-        {
-            margin: 0 50px;
-        }
-        li.dropdown 
-        {
-            display: inline-block;
-        }
-        .dropdown-content 
-        {
-            display: none;
-            position: absolute;
-            background-color: white;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a 
-        {
-            color: black;
-            padding: 16px 30px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-        .dropdown-content a:hover 
-        {
-            color: red;
-        }
-        .dropdown:hover .dropdown-content 
-        {
-            display: block;
-        } */
+        
+    */
 body {
   font-family: "Lato", sans-serif;
 }
