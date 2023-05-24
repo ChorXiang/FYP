@@ -2,7 +2,8 @@
     include 'adminheader.php'; 
     include 'conn.php'; 
     $msg=''; 
-    $id =$_GET['admin_id']; 
+    // $id =$_GET['admin_id']; 
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,13 +79,13 @@
 
 <div>
 <?php
-// Number of shoes to display per page
+
 $shoesPerPage = 2;
 
-// Determine the current page
+
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 
-// Calculate the OFFSET for the SQL query
+
 $offset = ($currentPage - 1) * $shoesPerPage;
 
 if (isset($_GET['search'])) {
@@ -99,11 +100,11 @@ if (isset($_GET['search'])) {
 $result = mysqli_query($conn, $sql);
 $shoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-// Get the total number of shoes
+
 $countResult = mysqli_query($conn, $countSql);
 $totalShoes = mysqli_fetch_assoc($countResult)['total'];
 
-// Calculate the total number of pages
+
 $totalPages = ceil($totalShoes / $shoesPerPage);
 ?>
 
@@ -147,9 +148,12 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
             <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="200px" width="100%">
           </td>
           <td><?php echo $row['shoe_price']; ?></td>
-          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']?>&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
-          <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
-        </tr>
+
+          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
+
+
+          </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
@@ -161,7 +165,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
     </a>
   </span>
 
-  <!-- Pagination links -->
+
   <?php if ($totalPages > 1): ?>
     <div class="pagination">
       <?php if ($currentPage > 1): ?>

@@ -2,12 +2,16 @@
     include 'adminheader.php';
     include 'conn.php'; 
     $msg = '';
+    // $id=0;
+    // session_start();  
+    // $id =$_POST['admin_id'];
+    // echo $id 
 
     // $id =$_GET['admin_id']; 
+
 ?>
+
 <?php
-    
-            // Add validation rules for the other input fields
     
             if(isset($_POST["submit"])){
               $sid = $_POST["shoe_id"]; 
