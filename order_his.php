@@ -51,27 +51,27 @@ echo 'Your Order History Is Empty';
 }   else 
 { ?>
 		<thead>
-            <th> Shoes Image</th>
+            <!-- <th> Shoes Image</th> -->
             <th> Order number</th>
-			<th> Order ID</th>
-			<th> Shoes Name</th>
+			<!-- <th> Shoes Name</th>
 			<th> Shoes Size </th>
-			<th> Quantity</th>
-			<th> Shoes Price</th>
-            <th> Total Price</th>
+			<th> Quantity</th> -->
+			<!-- <th> Shoes Price</th> -->
             <th> Receipient Email</th>
+            <th> Total Price</th>
+
             <th> Payment Date</th>
             <th> Order Status</th>
+            <th> More Detail</th>
 		</thead>
         <tbody>                       
             <?php
-            // Select data from the history table
+            
+            $prev_order_num = null;
             $id =$_GET['user_id'];
             $sql = "SELECT * FROM history where user_id = '$id'"; 
             $result = mysqli_query($conn, $sql);
 
-
-            // Display the data in a table
            
                 while($row = mysqli_fetch_assoc($result)) 
                 {                    
@@ -82,31 +82,36 @@ echo 'Your Order History Is Empty';
                     $her_quantity = $row["her_quantity"];
                     $her_price = $row["her_price"];
                     $her_email = $row["her_email"];    
-                    $total =0;
-                    $subtotal=$her_price*$her_quantity;
-                    $total =  $total + $subtotal;
+                    $total = $row["total"];  
                     $status = $row["order_status"];    
-                    $her_date = $row["her_date"];             
+                    $her_date = $row["her_date"];      
+                    if ($order_num != $prev_order_num) 
+                    {       
                     ?>
+
                     <tr>
-                        <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" ></th>
+                        <!-- <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" ></th> -->
                         <th><?php echo $order_num; ?></th>
-                        <th><?php echo $her_id; ?></th>
-                        <th><?php echo $her_shoesname; ?></th>
-                        <th>UK <?php echo $her_size; ?></th>
-                        <th><?php echo $her_quantity; ?></th>
-                        <th>RM <?php echo $her_price; ?></th>
-                        <th>RM <?php echo $total; ?></th>
+                        <!-- <th><?php echo $her_id; ?></th> -->
+                        <!-- <th><?php echo $her_shoesname; ?></th> -->
+                        <!-- <th>UK <?php echo $her_size; ?></th> -->
+                        <!-- <th><?php echo $her_quantity; ?></th> -->
+                        <!-- <th>RM <?php echo $her_price; ?></th> -->
+
                         <th><?php echo $her_email; ?></th>
+                        <th>RM <?php echo $total; ?></th>
+
                         <th><?php echo $her_date; ?></th>  
                         <th><?php echo $status; ?></th>
+                        <th><a href="order_his_view.php?order_num=<?php echo $order_num ?>&&user_id=<?php echo $id ?>" alt="update">View</i></a></th>
 
                     </tr>
                 
-
-
-
                 <?php
+                }
+          
+                $prev_order_num = $order_num;
+
                 }
                 ?>
                         </tbody>

@@ -285,8 +285,10 @@ if (isset($_SESSION['user_id'])) {
   <?php endif; ?>
 </div>
 <?php
-} else {
-  while ($row = mysqli_fetch_assoc($result)) {
+} else 
+{
+  while ($row = mysqli_fetch_assoc($result)) 
+  {
     $sid = $row['shoe_id'];
     echo '<div class="product-card">';
     ?>
@@ -299,14 +301,9 @@ if (isset($_SESSION['user_id'])) {
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
-}
-
-
 ?>
+  </div>
 
-
-</div>
- <!-- Pagination links -->
  <?php if ($totalPages > 1): ?>
     <div class="pagination">
       
@@ -326,6 +323,12 @@ if (isset($_SESSION['user_id'])) {
     </div>
   <?php endif; ?>
 </div>
+<?php
+}
+
+
+?>
+
 </body>
 </html>
 
