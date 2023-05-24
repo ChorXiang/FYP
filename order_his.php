@@ -52,7 +52,7 @@ echo 'Your Order History Is Empty';
 { ?>
 		<thead>
             <!-- <th> Shoes Image</th> -->
-            <th> Order number</th>
+            <th> Order Number</th>
 			<!-- <th> Shoes Name</th>
 			<th> Shoes Size </th>
 			<th> Quantity</th> -->

@@ -74,7 +74,7 @@
         <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> View Customer Order </b></i></h1>
       <table border="0px">
         <tr>
-          <th>Order ID</th>
+          <th>Order Number</th>
           <th>Shoes Name </th>
           <th>Shoes Size</th>
           <th>Quantity</th>
@@ -83,6 +83,7 @@
           <th>Email</th>
           <th>Date</th>
           <th>Order Status</th>
+          <th>More Detail</th>
           <th>Edit Status</th>
           <!-- <th>Delete</th> -->
         </tr>
@@ -100,7 +101,7 @@
             ?>
       
         <tr>
-          <th><?php echo $row["her_id"]; ?></th>         
+          <th><?php echo $row["order_num"]; ?></th>         
           <th><?php echo $row["her_shoesname"];	?></th>
           <th>UK <?php echo $row["her_size"];	?></th>
           <th><?php echo $row["her_quantity"];?></th>
@@ -109,7 +110,8 @@
           <th><?php echo $row["her_email"];?></th>
           <th><?php echo $row["her_date"];?></th>
           <th><?php echo $row["order_status"];?></th>
-          <th><a href="admin_history.php?her_id=<?php echo $row["her_id"];?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+          <th><a href="admin_morehistory.php?order_num=<?php echo $row["order_num"]; ?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+          <th><a href="admin_history.php&&admin_id=<?php echo $row["order_num"]; ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
           <!-- <th><a href="admindeleteorder.php?her_id=<?php //echo $row['her_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>         -->
 
         </tr>
