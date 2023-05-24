@@ -38,6 +38,52 @@
   margin-right: auto;
   width: 50%;
   }
+
+  input[type="submit"][name="wishlist"] {
+  /* Define your styles here */
+  /* For example: */
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+
+}
+
+input[type="submit"][name="wishlist"] {
+  /* Define your styles here */
+  /* For example: */
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+input[type="submit"][name="submit"]{
+  background-color: black;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+
 </style>
 </head>
 <body>  
