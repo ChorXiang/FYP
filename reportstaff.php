@@ -173,15 +173,10 @@
 
             <tr>
            
-
           <td>Admin ID</td>
           <td>Admin Name</td>
           <td>Admin Email</td>
-          <td>Status</td>
-
-                
-             
-                
+        
             </tr>
          <?php
          while($row = mysqli_fetch_array($result))
@@ -193,9 +188,7 @@
           <td><?php echo $row["admin_id"]; ?></td>         
           <td><?php echo $row["admin_name"]; ?></td>  
           <td><?php echo $row["admin_email"]; ?></td>  
-          <td><?php echo $row["status"]; ?></td>   
 
-  
             </tr>
             <?php
         }
