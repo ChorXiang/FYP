@@ -51,8 +51,9 @@ if (isset($_POST['signupbtn'])) {
     }
 
     if ($pass !== $cpass) {
-        "<div class='error-msg'>Password does not match with confirm password!</div>";
+        $NotmatchErr = 'Password does not match with confirm password!'; 
     }
+    
     if (empty($_POST["email_address"])) {
         $emailErr = 'Email is required';
     } else {
@@ -204,7 +205,7 @@ if (isset($_POST['signupbtn'])) {
     $img = $_POST['img']; 
     $status = $_POST['status'];                                 
 
-    if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $usernameErr == "" && $passErr == "" && $CompassErr == "") {
+    if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $usernameErr == "" && $passErr == "" && $CompassErr == "" && $NotmatchErr == "") {
         $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
     }
     
@@ -220,6 +221,7 @@ if (isset($_POST['signupbtn'])) {
 
                 } ?>
                 <form method="post" action="">
+                
                     <div class="input-group">
                         <label>Full Name :</label>
                         <input type="text" name="full_name" placeholder="Enter your name" class="input-field">
@@ -256,11 +258,16 @@ if (isset($_POST['signupbtn'])) {
                         <label>Confirm Password :</label>
                         <input type="password" name="confirm_password" placeholder="Enter your confirm password" class="input-field">
                         <span class="error-msg"><?php echo $CompassErr; ?></span>
+                      
+                        
+                      
                     </div>
                     
                     <input type="submit" name="signupbtn" class="submit-btn" value="Sign up">
                     <br/><br/>
-                    <p><a href="login.php">Already have an account? Log in</a></p>
+                    <a href="login.php"><span class="fgpw">Already have an account? Log in</span></a>
+                    <br><br>
+                    <a href="homepage.php"><span class="fgpw">Back To Previous Page</span></a>
                 </form>
             </div>
         </div>
