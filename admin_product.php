@@ -3,7 +3,7 @@
     include 'conn.php'; 
     $msg = '';
 
-    $id =$_GET['admin_id']; 
+    // $id =$_GET['admin_id']; 
 ?>
 <?php
     
