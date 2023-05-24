@@ -301,6 +301,7 @@ if (isset($_SESSION['user_id'])) {
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
+}
 ?>
   </div>
 
