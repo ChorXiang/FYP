@@ -17,7 +17,6 @@
               $category = $_POST["category"];
               $shoe_image = $_POST["shoe_image"];
               $shoe_price = $_POST["shoe_price"];
-              
           
               if(!$shoe_image) {
                 $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
@@ -39,6 +38,7 @@
 
             }
         ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

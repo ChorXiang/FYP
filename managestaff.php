@@ -83,7 +83,6 @@
           <td>Admin ID</td>
           <td>Admin Email</td>
           <td>Admin Name</td>
-          <td>Status</td>
           <td>Manage</td>
 
         </tr>
@@ -98,7 +97,6 @@
           <td><?php echo $row["admin_id"]; ?></td>   
           <td><?php echo $row["admin_email"]; ?></td>               
           <td><?php echo $row["admin_name"]; ?></td>       
-          <td><?php echo $row["status"]; ?></td>       
           <td>       
             <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
             </td>

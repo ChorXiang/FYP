@@ -110,7 +110,6 @@
                 <td><b>Contact Number</b></td>
                 <td><b>Email Address</b></td>
                 <td><b>Username</b></td>
-                <td><b>User Status</b></td>
                 
              
                 
@@ -126,7 +125,6 @@
                 <td><?php echo $row["contact_no"];?></td>
                 <td><?php echo $row["email_address"];?></td>
                 <td><?php echo $row["username"];?></td>
-                <td><?php echo $row["status"];?></td>    
   
             </tr>
             <?php

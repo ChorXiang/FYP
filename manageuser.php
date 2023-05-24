@@ -77,9 +77,7 @@
           <td>Name</td>
           <td>Contact No</td>
           <td>Email</td>
-          <td>Nickname</td>
-          <td>Status</td>
-          <td>Manage</td>
+          <td>Username</td>
         </tr>
         <?php
 
@@ -94,11 +92,7 @@
           <td><?php echo $row["contact_no"];?></td>
           <td><?php echo $row["email_address"];?></td>
           <td><?php echo $row["username"];?></td>
-          <td><?php echo $row["status"];?></td>
-          <td>       
-            <a href="editmanageuser.php?email=<?php echo $row['email_address']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-                                                                       <!--  &&name=<?php echo $name?> -->
-            </td>
+          
         </tr>
             <?php
 

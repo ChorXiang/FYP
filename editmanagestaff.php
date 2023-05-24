@@ -121,11 +121,7 @@ if (isset($_POST["savebtn"]))
      
         <br><label>Password :</label> <input type="text" name="pass" size="0" value="<?php echo $row["admin_password"]; ?>"> 
 &nbsp;
-        <br><label for="status"  >Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
-                <select id="status" name="status">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
+        
 <br><br>
         <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>
         <input type="file" id="file" name="image" class="form-control" multiple>

@@ -1,7 +1,8 @@
 <?php
 
-
-include 'conn.php';?>
+include 'conn.php';
+//$id =$_GET['admin_id']; 
+?>
 
 
 <!DOCTYPE html>
