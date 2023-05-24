@@ -1,6 +1,6 @@
 <?php
     include 'conn.php'; 
-    include 'header.php'; 
+    include 'adminheader.php'; 
 ?>
 
 
@@ -90,17 +90,16 @@
 <body>
 
 <div class="middle">
-    <div>
-    <br><h1>VIEW ORDER DETAIL</h1><br>
+    <div>   
     <div class="box">
     <div>
     <table border="1px">
         <?php
-                    $id =$_GET['user_id'];
+                    $id =$_GET['admin_id'];
                     $order_num=$_GET['order_num'];
-                    // $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
+                    // $sql = "SELECT * FROM history where admin_id = '$id' && order_num= $order_num"; 
                     // $result = mysqli_query($conn, $sql);
-                    $result = mysqli_query($conn, "select * from history where user_id = '$id' && order_num= $order_num"); 
+                    $result = mysqli_query($conn, "select * from history where admin_id = '$id' && order_num= $order_num"); 
                     $row = mysqli_fetch_assoc($result);
 
 ?>
@@ -120,8 +119,8 @@
         <tbody>                       
             <?php
             // Select data from the history table
-            $id =$_GET['user_id'];
-            $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
+            $id =$_GET['admin_id'];
+            $sql = "SELECT * FROM history where admin_id = '$id' && order_num= $order_num"; 
             $result = mysqli_query($conn, $sql);
 
 
@@ -168,6 +167,3 @@
 
 </body>
 </html>
-<?php
-    include 'footer.php';
-?>
