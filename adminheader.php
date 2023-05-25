@@ -1,7 +1,11 @@
 <?php
 
 include 'conn.php';
-//$id =$_GET['admin_id']; 
+session_start();
+
+$id =$_GET['admin_id']; 
+// if (isset($_SESSION['admin_id'])) { $id =$_GET['admin_id']; }
+
 ?>
 
 
@@ -92,10 +96,10 @@ if(!isset($id)) {
 -->
 <?php
 
-$sql = "select * from admin";
-$result = mysqli_query($conn,$sql);
-$h = mysqli_fetch_assoc($result);
-$id=$h["admin_id"];
+// $sql = "select * from admin";
+// $result = mysqli_query($conn,$sql);
+// $h = mysqli_fetch_assoc($result);
+// $id=$h["admin_id"];
 ?>
 
 

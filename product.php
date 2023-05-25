@@ -264,7 +264,6 @@ if (isset($_SESSION['user_id'])) {
   }
 ?>
   </div>
- <!-- Pagination links -->
  <?php if ($totalPages > 1): ?>
     <div class="pagination">
       
@@ -301,6 +300,27 @@ if (isset($_SESSION['user_id'])) {
     echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
     echo '</div>';
   }
+  ?>
+   <?php if ($totalPages > 1): ?>
+    <div class="pagination">
+      
+    <?php if ($currentPage > 1): ?>
+    <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage - 1; ?>">Previous</a>
+<?php endif; ?>
+
+      
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $i; ?>" <?php if ($i == $currentPage) echo 'class="active"'; ?>><?php echo $i; ?></a>
+      <?php endfor; ?>
+
+      <?php if ($currentPage < $totalPages): ?>
+        <a href="?search=<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>&page=<?php echo $currentPage + 1; ?>">Next</a>
+      <?php endif; ?>
+      
+    </div>
+  <?php endif; ?>
+</div>
+<?php
 }
 ?>
   </div>

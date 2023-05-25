@@ -142,14 +142,15 @@ if (isset($_POST["savebtn"]))
                         <label>New Password<sup>*</sup> : </label><br><br>
 
                         <label>Confirm New Password<sup>*</sup> : </label>
+                        <label for="admin_password"></label>
                     </div>
 
                     <div class="box3">
-                        <input type="text" name="pass" size="50" ><br><br>
+                        <input type="password" name="pass" size="50" ><br><br>
 
-                        <input type="text" name="newpass" size="50" ><br><br>
+                        <input type="password" name="newpass" size="50" ><br><br>
                         
-                        <input type="text" name="comnewpass" size="50" >
+                        <input type="password" name="comnewpass" size="50" >
                     </div>
                     <input type="hidden" name="userpassword" value="<?php echo $row["userpassword"]?>"> 
 
