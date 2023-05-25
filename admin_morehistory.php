@@ -1,23 +1,19 @@
 <?php
     include 'conn.php'; 
     include 'adminheader.php'; 
+    $msg = '';
+    $admin = $_GET["admin_id"]; 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>VIEW ORDER HISTORY</title>
     <style>
-        body
+        
+        h3
         {
-            font-size: 25px;
-        }
-
-        fieldset
-        {
-            color: black;      
-            text-align: center;    
+            text-align: center;
         }
 
         .table
@@ -36,36 +32,19 @@
         body
         {
         background: #DDDDDD;
-
         }
         .box
         {
         background-color: #f2f2f2;
         padding: 5px 20px 15px 20px;
+        margin-left: 200px;
         border: 1px solid lightgrey;
         border-radius: 15px;
         width:50%;
-        margin: 20px 460px;
         text-align: left;
-        }
-        .box3 
-        {
-        width: 35%;
-        height: 100px;
-        margin:5px;
-        text-align:left;
-        }
-        .box5
-        {
-        width: 20%;
-        height: 100px;
-        text-align:left;
-        }
-        .box4
-        {
-        width: 15%;
-        height: 100px;
-        text-align:left;
+        font-weight: bold;
+        font-size: 16px;
+        font-family: "Lato", sans-serif;
         }
         .label
         {
@@ -78,10 +57,8 @@
         font-weight: bold;
         margin-bottom: 5px;
         }
-
-        .value {
-        display: inline-block;
-        margin-bottom: 5px;
+        .butttonright{
+          float:right;
         }
 
 
@@ -92,25 +69,26 @@
 <div class="middle">
     <div>   
     <div class="box">
-    <div>
-    <table border="1px">
+    <div >
+        <h3>Order Details</h3>
+    
         <?php
-                    $id =$_GET['admin_id'];
+                    $id =$_GET['user_id'];
                     $order_num=$_GET['order_num'];
-                    // $sql = "SELECT * FROM history where admin_id = '$id' && order_num= $order_num"; 
+                    // $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
                     // $result = mysqli_query($conn, $sql);
-                    $result = mysqli_query($conn, "select * from history where admin_id = '$id' && order_num= $order_num"); 
+                    $result = mysqli_query($conn, "select * from history where user_id = '$id' && order_num= $order_num"); 
                     $row = mysqli_fetch_assoc($result);
 
 ?>
 
-<br><label>Customer Name&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["his_name"];?>
+<br><label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["his_name"];?>
 
 <br><label>Customer Contact :</label> <?php echo $row["his_pn"];?>
 
-<br><label>Customer Address :</label> <?php echo $row["his_address"];?> <?php echo $row["his_state"];?>
+<br><label>Customer Address:</label> <?php echo $row["his_address"];?> <?php echo $row["his_state"];?>
 
-<br><label>Customer Email&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_email"];?>
+<br><label>Customer Email&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_email"];?>
 
 <br><label>Purchase Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_date"];?>
 
@@ -119,8 +97,9 @@
         <tbody>                       
             <?php
             // Select data from the history table
-            $id =$_GET['admin_id'];
-            $sql = "SELECT * FROM history where admin_id = '$id' && order_num= $order_num"; 
+            $id =$_GET['user_id'];
+            $order_num =$_GET['order_num'];
+            $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
             $result = mysqli_query($conn, $sql);
 
 
@@ -134,36 +113,79 @@
                     $her_quantity = $row["her_quantity"];
                     $her_price = $row["her_price"];
                     $her_email = $row["her_email"];    
-                    $total =0;
-                    $subtotal=$her_price*$her_quantity;
-                    $total =  $total + $subtotal;
+                    $total = $row["total"];
                     $status = $row["order_status"];    
                     $her_date = $row["her_date"];             
                     ?>
                     <br><br>
-                     <img class='img' src="<?php echo "image/shoesimg/".$row['shoe_image'];?>" >
+                     <img src="<?php echo "image/shoesimg/".$row['shoe_image'];?> " style="width:90px" >
 
                     <br><label>Shoes Name&emsp;&emsp; :</label> <?php echo $row["her_shoesname"];	?>
 
                     <br><label>Shoes Size&emsp;&emsp;&emsp;: UK</label> <?php echo $row["her_size"];	?>
 
-                    <br><label>Shoes Quantity&emsp; :</label> <?php echo $row["her_quantity"];?>
+                    <br><label>Shoes Quantity&emsp;:</label> <?php echo $row["her_quantity"];?>
 
-                    <br><label>Price&emsp;&emsp;&emsp;&emsp;&emsp; : RM </label> <?php echo $row["her_price"];?>
+                    <br><label>Price&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: RM </label> <?php echo $row["her_price"];?>
 
-                    <br><label>Total Price&emsp;&emsp;&emsp;: RM </label> <?php echo $total;?>
+                    
 
-                        </tbody>
-    
+                    
                         <?php
     
 
 }
-
-
 ?>
-</table>
+<br>
+<br><label>Total Price&emsp;&emsp;&emsp;&nbsp;: RM </label> <?php echo $total;?>
+<br>
+<br><b>Current Order Status: <?php echo $status; ?><b><br>
+
+<form action="" method="post">
+                        <br>
+                        <input type="radio" name="status" value="Pending" <?php if ($status == "Pending") echo "checked"; ?>>Pending
+                        <input type="radio" name="status" value="Delivering" <?php if ($status == "Delivering") echo "checked"; ?>>Delivering
+                        <input type="radio" name="status" value="Delivered" <?php if ($status == "Delivered") echo "checked"; ?>>Delivered
+
+                        <br><br>
+                        <input type="submit" name="savebtn" value="Update Status">
+                        <div class="butttonright">
+                            <a href="manageorder.php?admin_id=<?php echo $admin ?>">Back to Previous Page </a>
+                        </div>
+                    </form>
+                    <div style=text-align:center;>
+                        <?php echo "<div>".$msg."</div>"?>
+                    </div>
+                </div>
 </div></div>
+
+<?php
+                if (isset($_POST["savebtn"])) 	
+                {
+                    $mstatus = $_POST['status'];
+
+                    if (!$mstatus)
+                    {
+                        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Order Status !</div>";
+                    }
+                    else
+                    {
+                        mysqli_query($conn,"UPDATE history set order_status='" . $_POST['status'] . "' where order_num = '$order_num'");            
+                    
+                        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
+                        echo '<script>alert("Update Successfully !");</script>';
+     
+                        echo '<script>
+                            function confirmRedirect() {
+                                if (confirm("Do you want to go to manageorder.php?")) {
+                                    window.location.href = "manageorder.php?admin_id=' . $admin . '";
+                                }
+                            }
+                            confirmRedirect();
+                        </script>';
+                    }
+                }
+                ?>
 
 </body>
 </html>
