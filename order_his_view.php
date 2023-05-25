@@ -136,6 +136,7 @@
                     $her_price = $row["her_price"];
                     $her_email = $row["her_email"];    
                     $total =0;
+                    $totalp = $row["total"];   
                     $subtotal=$her_price*$her_quantity;
                     $total =  $total + $subtotal;
                     $status = $row["order_status"];    
@@ -150,9 +151,9 @@
 
                     <br><label>Shoes Quantity&emsp; :</label> <?php echo $row["her_quantity"];?>
 
-                    <br><label>Price&emsp;&emsp;&emsp;&emsp;&emsp; : RM </label> <?php echo $row["her_price"];?>
+                    <br><label>Price&emsp;&emsp;&emsp;&emsp;&emsp; : RM </label> <?php echo $row["her_price"];?> per item
 
-                    <br><label>Total Price&emsp;&emsp;&emsp;: RM </label> <?php echo $total;?>
+                    <br><label>Total Price&emsp;&emsp;&emsp;: RM </label> <?php echo $total;?> 
 
                         </tbody>
     
@@ -163,6 +164,7 @@
 
 
 ?>
+ <br> <br>             <br><label>Total Price For This Order &emsp;&emsp;&emsp;: RM </label> <?php echo $totalp;?>
 </table>
 </div></div>
 
