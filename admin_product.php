@@ -5,10 +5,11 @@
     // $id=0;
     // session_start();  
     // $id =$_POST['admin_id'];
-    // echo $id 
+
 
     // $id =$_GET['admin_id']; 
-
+    echo "No shoe record faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaound !       ";
+    echo $id;
 ?>
 
 <?php
