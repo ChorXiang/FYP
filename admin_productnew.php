@@ -3,13 +3,17 @@
     include 'conn.php'; 
     $msg=''; 
     $id =$_GET['admin_id']; 
-    // echo "No shoe record faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaound !       ";
-    // echo $id;
+
+?>
+<?php
+
     if(isset($_POST['saveas']))
     {	
         $sid = $_REQUEST["shoe_id"];
         $sql = "SELECT * FROM shoes where shoe_id = '$sid'";
-        $msg = '';$total= 0; $subtotal=0;
+        $msg = '';
+        $total= 0; 
+        $subtotal=0;
         $result = mysqli_query($conn, $sql);
 
         $st = $_POST['type'];
@@ -69,15 +73,10 @@
 
     <style>
 
-    .main {
-      flex: 0 0 70%;
-      background-color: white;
-      padding-left: 160px;
-      height: 100%;
-      float: right;
-      position: absolute;
-      font-size: 25px;
-    }
+     .imgcenter
+     {
+      text-align: center;
+     }
 
     b
     {
@@ -102,58 +101,16 @@
     fieldset
     {
       background-color: lightgrey;
-      width: 100%;
-      float:right;
+      margin-left: 180px;
+      margin-right: 50%;
     }
 
-    .right{
-      float:right;
-      padding-right:160px ;
-      margin-left: auto;
-      margin-right: auto;
-      width: 20%;
-    }
-
-    .butttonright{
-      float:right;
-    }
-
-    .container
-    {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;   
-      gap: 20px;   
-      width: 100%;
-      border: 1px solid #ccc;
-      padding: 10px;
-      padding-right:10px ;
-    }
-
-    .imgcenter {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: 20px;
-      text-align:"center";  
-    }
-
-    .wordcenter
-    {
-      text-align: center;
-    }
-
-    .nopadding
-    {
-      padding: 10px;
-    }
 
 </style>
 
 
 </head>
 <body>
-<?php echo "<div>".$msg."</div>"?>
 <?php
                                 // $id = $_GET['admin_id'];
                                 $sid = $_REQUEST["shoe_id"];
@@ -164,39 +121,43 @@
                                 $row = mysqli_fetch_assoc($result);
                                 ?>
 <fieldset>
-<br><b><?php echo $row["shoe_name"]; ?></b><br>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" height="200px" width="80%" >
- 
+<?php echo "<div>".$msg."</div>"?>
+
+        <div class="imgcenter">
+        <br><b><?php echo $row["shoe_name"]; ?></b><br>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"];  ?>" height="200px" width="200px" ><br><br>
+        </div>
+
         <form name="from1"  method="post" action=""  >
-                            <label for="state"  ><i class="fa fa-address-book"></i>Shoes Type : <sup>*</sup></label>
+                            <label for="state"  >Shoes Type  :</label>
                                         <select id="state" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
                                             <option value="Sneakers">Sneakers</option>
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
-
-                            <label for="state"  ><i class="fa fa-address-book"></i>Shoe Brand : <sup>*</sup></label>
+                            <br>
+                            <label for="state">Shoe Brand : </label>
                                         <select id="state" name="brand">
                                             <option value="Nike">Nike</option>
                                             <option value="Puma">Puma</option>
                                             <option value="Adidas">Adidas</option>
                                             <option value="Converse">Converse</option>
                                         </select>
-
-                            <label for="state"  ><i class="fa fa-address-book"></i>Category : <sup>*</sup></label>
+                            <br>
+                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                                         <select id="state" name="state">
                                             <option value="man">Man</option>
                                             <option value="women">Women</option>
                                         </select>
-
-                                        <br><label for="status"  >Status &nbsp;&nbsp; : </label>
-                <select id="status" name="status">
-                    <option value="active">Active</option>
-                    <option value="inactive">Inactive</option>
-                </select>
-
-                            <label for="category">Shoe Price&nbsp;  : RM</label>
+                            <br>
+                            <label for="status"  >Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
+                                        <select id="status" name="status">
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                            <br>
+                            <label for="category">Shoe Price&nbsp;&nbsp;: RM</label>
                             <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" required><br>
                             <br>
                             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
