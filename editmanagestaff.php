@@ -133,7 +133,8 @@ if (isset($_POST["savebtn"]))
         </div>
     </form>
     <div style=text-align:center;>
-    <?php echo "<div>".$msg."</div>"?></dev>
+    <?php echo "<div>".$msg."</div>"?>
+</div>
 </fieldset>
 </div>
 

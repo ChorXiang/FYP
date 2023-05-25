@@ -1,7 +1,40 @@
 <?php
     include 'adminheader.php';
     include 'conn.php'; 
+    $id =$_GET['admin_id']; 
+?>
+<?php
+    
+    // Add validation rules for the other input fields
 
+    if(isset($_POST["submit"])){
+      $sid = $_POST["shoe_id"]; 
+      $shoe_name = $_POST["shoe_name"];
+      $shoe_type = $_POST["shoe_type"];
+      $shoe_brand = $_POST["shoe_brand"];
+      $category = $_POST["category"];
+      $shoe_image = $_POST["shoe_image"];
+      $shoe_price = $_POST["shoe_price"];
+  
+      if(!$shoe_image) {
+        $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
+      } else {
+          mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
+
+            $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+            echo '<script>alert("Update Successfully !");</script>';
+
+            echo '<script>
+                function confirmRedirect() {
+                    if (confirm("Do you want to go to admin_shoes.php?")) {
+                        window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+                    }
+                }
+                confirmRedirect();
+            </script>';
+        }
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -75,16 +108,15 @@
       <table border="0px">
         <tr>
           <th>Order Number</th>
-          <th>Shoes Name </th>
+          <!-- <th>Shoes Name </th>
           <th>Shoes Size</th>
           <th>Quantity</th>
-          <th>Price</th>
-          <th>Total Price</th>
-          <th>Email</th>
+          <th>Price</th> -->
+          <th>Total Price(RM)</th>
+          <th>Customer Email</th>
           <th>Date</th>
           <th>Order Status</th>
           <th>More Detail</th>
-          <th>Edit Status</th>
           <!-- <th>Delete</th> -->
         </tr>
         <?php
@@ -92,26 +124,16 @@
         while($row = mysqli_fetch_array($result))
         {
 
-          $subtotal=0;
-          $total=0;
-          $p=$row["her_price"];
-          $q=$row["her_quantity"];
-          $subtotal=$p*$q;
-          $total =  $total + $subtotal;
             ?>
       
         <tr>
           <th><?php echo $row["order_num"]; ?></th>         
-          <th><?php echo $row["her_shoesname"];	?></th>
-          <th>UK <?php echo $row["her_size"];	?></th>
-          <th><?php echo $row["her_quantity"];?></th>
-          <th>RM<?php echo $p;?></th>
-          <th>RM<?php echo $total;?></th>
+          <th><?php echo $row["total"];?></th>
           <th><?php echo $row["her_email"];?></th>
           <th><?php echo $row["her_date"];?></th>
           <th><?php echo $row["order_status"];?></th>
-          <th><a href="admin_morehistory.php?order_num=<?php echo $row["order_num"]; ?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-          <th><a href="admin_history.php&&admin_id=<?php echo $row["order_num"]; ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+          <th><a href="admin_morehistory.php?order_num=<?php echo $row["order_num"]; ?>&&user_id=<?php echo $row["user_id"]; ?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
+          <!-- <th><a href="admin_history.php?her_id=<?php //echo $row["her_id"]; ?>&&admin_id='$id'" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th> -->
           <!-- <th><a href="admindeleteorder.php?her_id=<?php //echo $row['her_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>         -->
 
         </tr>

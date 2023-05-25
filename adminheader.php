@@ -66,7 +66,7 @@ body {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 22px;
   color: #818181;
   display: block;
 }
@@ -109,7 +109,7 @@ if(!isset($id)) {
         <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Manage Product</a>
         <a href="manageorder.php?admin_id=<?php echo $id ?>">Manage Order</a>
         <a href="manageuser.php?admin_id=<?php echo $id ?>">Manage Customer</a>
-        <a href="managestaff.php?admin_id=<?php echo $id ?>">Manage Staff </a>
+        <a href="managestaff.php?admin_id=<?php echo $id ?>">Manage Admin </a>
         <a href="managecomment.php?admin_id=<?php echo $id ?>">Manage comment </a>
         <a href="managecontactus.php?admin_id=<?php echo $id ?>">Manage Support </a>
         <br><br><br>
