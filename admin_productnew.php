@@ -21,7 +21,7 @@
         $cat = $_POST['state'];
         $img = $_POST['shoe_image'];
         $price = $_POST['shoe_price'];
-        $mstatus = $_POST['status'];
+        //$mstatus = $_POST['status'];
         
         while($row = mysqli_fetch_array($result))
         {   
@@ -35,7 +35,7 @@
 
               else
               {
-                mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "' ,status='" . $_POST['status'] . "' where shoe_id = '$sid'");            
+                mysqli_query($conn,"UPDATE shoes set shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
     
  
  
@@ -150,12 +150,7 @@
                                             <option value="man">Man</option>
                                             <option value="women">Women</option>
                                         </select>
-                            <br>
-                            <label for="status"  >Status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
-                                        <select id="status" name="status">
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </select>
+
                             <br>
                             <label for="category">Shoe Price&nbsp;&nbsp;: RM</label>
                             <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" required><br>
