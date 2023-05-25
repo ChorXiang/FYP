@@ -135,7 +135,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
         <th>Shoe Image</th>
         <th>Shoe Price(RM)</th>
         <th>Edit</th>
-        <th>Delete</th>
+        <th>Inactive</th>
       </tr>
     </thead>
     <tbody>

@@ -7,9 +7,7 @@
 
 
 <?php
-    if(isset($_POST['savebtn']))
-    {
-
+    if (isset($_POST['savebtn'])) {
         $shoe_name = $_POST["shoe_name"];
         $shoe_type = $_POST["shoe_type"];
         $shoe_brand = $_POST["shoe_brand"];
@@ -17,33 +15,40 @@
         $shoe_image = $_POST["shoe_image"];
         $shoe_price = $_POST["shoe_price"];
     
-        if(!$shoe_name) {
-            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Name</div>";
-        } else if(!$shoe_price) {
-            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
-        } else if(!$shoe_image) {
-          $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
+        if (!$shoe_name) {
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Name</div>";
+        } else if (!$shoe_price) {
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
+        } else if (!$shoe_image) {
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
         } else {
-            //mysqli_query($conn,"INSERT INTO shoes set shoe_type='" . $_POST['shoe_type'] . "', shoe_brand='" . $_POST['shoe_brand'] . "', category='" . $_POST['category'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-            mysqli_query($conn, "INSERT INTO shoes (shoe_name,shoe_type, shoe_brand, category, shoe_image, shoe_price) VALUES ('" . $_POST['shoe_name'] . "','" . $_POST['shoe_type'] . "', '" . $_POST['shoe_brand'] . "', '" . $_POST['category'] . "', '" . $_POST['shoe_image'] . "', '" . $_POST['shoe_price'] . "')");
-
-          //$sql = "UPDATE shoes SET shoe_name='$shoe_name', shoe_type='$shoe_type', shoe_brand='$shoe_brand', category='$category', shoe_image='$shoe_image', shoe_price='$shoe_price' WHERE shoe_id=$shoe_id";
-
-
-              $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
-              echo '<script>alert("Add Successfully !");</script>';
-
-              echo '<script>
-                  function confirmRedirect() {
-                      if (confirm("Do you want to go to admin_shoes.php?")) {
-                          window.location.href = "admin_shoes.php?admin_id=' . $id . '";
-                      }
-                  }
-                  confirmRedirect();
-              </script>';
-          }
-
-      }
+            mysqli_query($conn, "INSERT INTO shoes (shoe_name, shoe_type, shoe_brand, category, shoe_image, shoe_price) VALUES ('$shoe_name', '$shoe_type', '$shoe_brand', '$category', '$shoe_image', '$shoe_price')");
+    
+            // Get the newly inserted shoe_id
+            $newShoeId = mysqli_insert_id($conn);
+    
+            // Insert the new shoe_id with all shoe sizes set to 0 into the stock table
+            $sizeColumns = ['size_7', 'size_7_5', 'size_8', 'size_8_5', 'size_9', 'size_9_5', 'size_10', 'size_10_5', 'size_11', 'size_11_5', 'size_12', 'size_12_5'];
+            $sizeColumnsString = implode(', ', $sizeColumns);
+            $sizeValuesString = '0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0';
+    
+            mysqli_query($conn, "INSERT INTO stock (shoe_id, $sizeColumnsString) VALUES ($newShoeId, $sizeValuesString)");
+    
+            $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+            echo '<script>alert("Add Successfully !");</script>';
+    
+            echo '<script>
+                function confirmRedirect() {
+                    if (confirm("Do you want to go to admin_shoes.php?")) {
+                        window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+                    }
+                }
+                confirmRedirect();
+            </script>';
+        }
+    }
+    
+    
     
 
 
