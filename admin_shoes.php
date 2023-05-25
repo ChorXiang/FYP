@@ -149,7 +149,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
           </td>
           <td><?php echo $row['shoe_price']; ?></td>
 
-          <td><a href="admin_product.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="admin_productnew.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
           <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
 
 
