@@ -31,17 +31,16 @@ CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
-  `status` varchar(20) NOT NULL,
   `admin_name` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `secure` int(6) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `status`, `admin_name`, `image`) VALUES
-(1, '1@gmail.com', '123', 'active', 'qqw      ', 'management.png');
+INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `secure') VALUES
+(1, '1@gmail.com', '123', '123123');
 
 -- --------------------------------------------------------
 

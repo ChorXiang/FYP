@@ -1,5 +1,4 @@
 <?php
-    // include 'adminheader.php';
     include 'conn.php'; 
     include 'adminheader.php';
     $id =$_GET['admin_id']; 
@@ -79,11 +78,9 @@
 
       <table border="0px">
         <tr>
-          <td>Admin Photo</td>
           <td>Admin ID</td>
           <td>Admin Email</td>
           <td>Admin Name</td>
-          <td>Manage</td>
 
         </tr>
         <?php
@@ -93,13 +90,13 @@
             ?>
       
         <tr>
-          <td><img class='img' src="<?php echo "image/".$row['image'];?>" ></td>
+          <!-- <td><img class='img' src="<?php echo "image/".$row['image'];?>" ></td> -->
           <td><?php echo $row["admin_id"]; ?></td>   
           <td><?php echo $row["admin_email"]; ?></td>               
           <td><?php echo $row["admin_name"]; ?></td>       
-          <td>       
+          <!-- <td>       
             <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
-            </td>
+            </td> -->
             
         </tr>
             <?php

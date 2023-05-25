@@ -12,7 +12,7 @@ if (isset($_POST["savebtn"]))
 
     $mname= $_POST["name"];  	
     $mid = $_POST["id"]; 
-    $mpass = $_POST["pass"];  	
+    //$mpass = $_POST["pass"];  	
     // $mstatus = $_POST["status"]; 
     $mimage = $_POST['image'];
 
@@ -27,18 +27,13 @@ if (isset($_POST["savebtn"]))
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in ID !</div>";
  
     }
-    else if(!$mpass)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Password !</div>";
- 
-    }
     else if(!$mimage)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Image !</div>";
     }
     else
     {
-        mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', status='" . $_POST['status'] . "', image='" . $_POST['image'] . "' , admin_password='" . $_POST['pass'] . "' where admin_id = '$mid'");            
+        mysqli_query($conn,"UPDATE admin set admin_id='" . $_POST['id'] . "', admin_name='" . $_POST['name'] . "', image='" . $_POST['image'] . "' where admin_id = '$mid'");            
         // $sql = "update user set Image='" . $_POST['image'] . "' where Email='$id'";
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
         echo '<script>alert("Update Successfully !");</script>';
@@ -118,9 +113,7 @@ if (isset($_POST["savebtn"]))
         <input type="hidden" name="id" size="0" value="<?php echo $row['admin_id']; ?> "> 
 
         <br><label>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input type="text" name="name" size="0" value="<?php echo $row["admin_name"]; ?>  "> 
-     
-        <br><label>Password :</label> <input type="text" name="pass" size="0" value="<?php echo $row["admin_password"]; ?>"> 
-&nbsp;
+
         
 <br><br>
         <label for="file"  class="Choose"><i class="fa fa-camera"></i> Choose a Photo</label>

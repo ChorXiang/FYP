@@ -13,8 +13,7 @@
         $mname = $_POST["name"];  	
         $memail = $_POST["email"]; 
         $mpass = $_POST["pass"];  	
-        $mstatus = $_POST["status"]; 
-        $mimage = $_POST['image'];
+        $msecure = $_POST["secure"]; 
         
         if (!$mname)
         {
@@ -39,7 +38,7 @@
             $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Email address is already registered. Please choose a different email address.</div>";
         } else {
             // Insert new admin record
-            mysqli_query($conn,"INSERT INTO `admin`(`admin_name`, `admin_email`, `status`, `admin_password`, `image`) VALUES ('$mname','$memail','$mstatus','$mpass','$mimage')");  
+            mysqli_query($conn,"INSERT INTO `admin`(`admin_name`, `admin_email`, `admin_password`, `secure`) VALUES ('$mname','$memail','$mpass','$msecure')");  
             
             // Display success message and redirect to managestaff.php
             $msg = "<div style='background-color: green; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add New staff Successfully !</div>";     
@@ -153,15 +152,19 @@
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for=""><i class="fa fa-user"></i> Admin Name:</label>
+        <label for=""><i class="fa fa-user"></i> Admin Name&nbsp; :</label>
         <input name="name" type="text" required>
         <br><br>
         <label for=""><i class="fa fa-envelope"></i> Admin Email:</label>
         <input type="email" name="email" required>
         <br><br>
-        <label for=""><i class="fa fa-key"></i> Password:</label>
+        <label for=""><i class="fa fa-key"></i> Password&nbsp;&nbsp;&nbsp;:</label>
         <input type="pass" name="pass" required>
-        <br>
+        <br><br>
+        <label for=""><i class="fa fa-lock"></i> Secure Code (6 digits):</label>
+        <input type="text" name="secure" pattern="[0-9]{6}" title="Please enter a 6-digit number" minlength="6" maxlength="6" required>
+        
+
         <!-- <label for=""><i class="fa fa-cube"></i> Admin ID:</label>
         <input name="id" type="text"> -->
         <br>
