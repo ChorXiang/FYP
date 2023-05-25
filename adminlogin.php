@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
           $admin_id = $row['admin_id'];
           // header('Location: admin_category.php');
           header('Location: admin_category.php?admin_id='.$row['admin_id']);
-          
+
         
   } else {
     // Display an error message if the email or password is incorrect
@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
     <label for="admin_password"></label>
     <input type="password" id="admin_password" class="input-field" placeholder="Password" name="admin_password" required>
     <br>
-    <a href="admin_forgot.php" alt="insert">Forgot Password</a></span>
+    <a href="admin_confirmemail.php" alt="insert">Forgot Password</a></span>
     <br><br>
     <button type="submit" class="submitbtn" name="submit">Log In</button>
     <!-- <div class="submitbtn">
