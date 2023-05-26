@@ -116,7 +116,7 @@
           <th>Customer Email</th>
           <th>Date</th>
           <th>Order Status</th>
-          <th>More Detail</th>
+          <th>Edit Status</th>
           <!-- <th>Delete</th> -->
         </tr>
         <?php

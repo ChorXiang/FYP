@@ -174,7 +174,7 @@
             <tr >
            
           
-          <td>Order ID</td>
+          <td>Order Number</td>
           <td>Shoes Name </td>
           <td>Shoes Size</td>
           <td>Quantity</td>
@@ -193,21 +193,15 @@
          <?php
          while($row = mysqli_fetch_array($result))
         {
-            $subtotal=0;
-            $total=0;
-            $p=$row["her_price"];
-            $q=$row["her_quantity"];
-            $subtotal=$p*$q;
-            $total =  $total + $subtotal;
      
          ?>
             <tr>
-          <td><?php echo $row["her_id"]; ?></td>         
+          <td><?php echo $row["order_num"]; ?></td>         
           <td><?php echo $row["her_shoesname"];	?></td>
           <td><?php echo $row["her_size"];	?></td>
           <td><?php echo $row["her_quantity"];?></td>
           <td><?php echo $row["her_price"];?></td>
-          <td><?php echo  $total;?></td>
+          <td><?php echo $row["total"];?></td>
           <td><?php echo $row["her_email"];?></td>
           <td><?php echo $row["her_date"];?></td>
           <td><?php echo $row["his_name"];?></td>
