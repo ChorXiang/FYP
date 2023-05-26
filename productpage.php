@@ -177,6 +177,7 @@ input[type="submit"][name="submit"]{
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>">   <input type="hidden" name="status" value="<?php echo $row['status']; ?>"> 
+  <input type="hidden" name="shoe_brand" value="<?php echo $row['shoe_brand']; ?>"> 
   <br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
@@ -205,6 +206,7 @@ input[type="submit"][name="submit"]{
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="status" value="<?php echo $row['status']; ?>"> 
+  <input type="hidden" name="shoe_brand" value="<?php echo $row['shoe_brand']; ?>"> 
   <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
   <!-- <input type="hidden" name="stockk" value="<?php echo $row["stock"];?>">  -->
   <label for="size"  >Shoe Size:</label>
@@ -262,6 +264,7 @@ input[type="submit"][name="submit"]{
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>">  <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="id" value="<?php echo $id; ?>">  <input type="hidden" name="status" value="<?php echo $row['status']; ?>"> 
+  <input type="hidden" name="shoe_brand" value="<?php echo $row['shoe_brand']; ?>"> 
   <br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
@@ -290,6 +293,7 @@ input[type="submit"][name="submit"]{
   <input type="hidden" name="shoe_name" value="<?php echo $row['shoe_name']; ?>"><input type="hidden" name="shoe_img" value="<?php echo $row['shoe_image']; ?>">
   <input type="hidden" name="shoe_price" value="<?php echo $row['shoe_price']; ?>"> <input type="hidden" name="shoe_id" value="<?php echo $row['shoe_id']; ?>">
   <input type="hidden" name="status" value="<?php echo $row['status']; ?>"> 
+  <input type="hidden" name="shoe_brand" value="<?php echo $row['shoe_brand']; ?>"> 
   <input type="hidden" name="id" value="<?php echo $id; ?>"><br>
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
@@ -333,6 +337,7 @@ $proid= "";
 $stockk= "";
 $image = "";
 $status = "";
+$sb = "";
 
 if (isset($_POST['submit'])) {
 
@@ -344,6 +349,7 @@ $id = $_POST['id'];
 $proid = $_POST['shoe_id'];
 $status = $_POST['status'];
 $image = $_POST['shoe_img'];
+$sb = $_POST['shoe_brand'];
 $msg='';
 
 if (empty($size)) {
@@ -386,10 +392,10 @@ if (mysqli_num_rows($result) > 0) {
  
   $row = mysqli_fetch_assoc($result);
   $new_quantity = $row['quantity'] + $quantity;
-  $sql = "UPDATE orders SET quantity='$new_quantity' WHERE user_id='" . $row['user_id'] . "' AND shoesname='" . $row['shoesname'] . "' AND shoessize='" . $row['shoessize'] . "' AND status='" . $row['status'] . "'";
+  $sql = "UPDATE orders SET quantity='$new_quantity' WHERE user_id='" . $row['user_id'] . "' AND shoesname='" . $row['shoesname'] . "' AND shoessize='" . $row['shoessize'] . "' AND status='" . $row['status'] . "' AND shoe_brand='" . $row['shoe_brand'] . "'";
 } else {
   
-  $sql = "INSERT INTO `orders`(shoesname, price, quantity, shoessize , user_id,stock,shoe_image, pro_id,status ) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id', '$stockk','$image' ,'$proid','$status')";
+  $sql = "INSERT INTO `orders`(shoesname, price, quantity, shoessize , user_id,stock,shoe_image, pro_id,status,shoe_brand ) VALUES ('$shoe_name', '$shoe_price', '$quantity', '$size', '$id', '$stockk','$image' ,'$proid','$status','$sb')";
 }
 
 
@@ -441,7 +447,7 @@ if (isset($_POST['wishlist'])) {
   // perform database insertion
   if ($sizeErr == "" ) {
   // $sql = "INSERT INTO wishlist (shoesname, price, size) VALUES ('$shoe_name', '$shoe_price', '$size')";
-  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "' , user_id='" . $_POST['id'] . "' , pro_id='" . $_POST['shoe_id'] . "' , stock='" . $stockk . "' , shoe_image='" . $_POST['shoe_img'] . "'  , status='".  $_POST['status'] . "'");
+  mysqli_query($conn," INSERT INTO wishlist set shoesname='" . $_POST['shoe_name'] . "', price='" . $_POST['shoe_price'] . "' , size='" . $_POST['size'] . "' , user_id='" . $_POST['id'] . "' , pro_id='" . $_POST['shoe_id'] . "' , stock='" . $stockk . "' , shoe_image='" . $_POST['shoe_img'] . "'  , status='".  $_POST['status'] . "' , shoe_brand='".  $_POST['shoe_brand'] . "'");
 
   if (mysqli_query($conn, $sql)) {
 
