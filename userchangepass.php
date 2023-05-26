@@ -32,6 +32,26 @@ if (isset($_POST["savebtn"]))
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Enter the New Comfirm Password !</div>";
         // echo "Please Key in Phone Number !";
     }
+    else if (strlen($newpass) < 6) 
+    {
+        // $passErr = '';
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must be at least 6 characters long !</div>";
+    } 
+    else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/",$newpass)) 
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must contain at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol !</div>";
+        // $passErr = '';
+    }
+    else if (strlen($comnewpass) < 6) 
+    {
+        // $passErr = '';
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must be at least 6 characters long !</div>";
+    } 
+    else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/",$comnewpass)) 
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must contain at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol !</div>";
+        // $passErr = '';
+    }
     else if($comnewpass == $newpass)
     {
         if($cpass==$pass)

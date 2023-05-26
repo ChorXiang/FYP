@@ -11,7 +11,7 @@
 if (isset($_POST["savebtn"])) 	
 {
 	$mname = $_POST["name"];  	
-    $memail = $_POST["email"];  
+    // $memail = $_POST["email"];  
 	$mpn = $_POST["pn"];  
     $mimage = $_POST['image'];		
 	
@@ -19,20 +19,32 @@ if (isset($_POST["savebtn"]))
     mysqli_query($conn,"update user set Image='" . $_POST['image'] . "' where user_id = '$id'  ");
                                                                    
 
+
+
     if (!$mname)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
         // echo "";
     }
-    else if(!$memail)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
-        // echo "Please Key in Email !";
-    }
+    // else if(!$memail)
+    // {
+    //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
+    //     // echo "Please Key in Email !";
+    // }
+    // else if(!filter_var($memail, FILTER_VALIDATE_EMAIL))
+    // {
+    //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in correct format email !</div>";
+    //     // echo "Please Key in Email !";
+    // }
     else if(!$mpn)
     {
         $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
         // echo "Please Key in Phone Number !";
+    }
+    else if(!is_numeric($mpn)) 
+    {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in correct format phone number !</div>";
+      
     }
     else if(!$mimage)
     {
@@ -42,7 +54,7 @@ if (isset($_POST["savebtn"]))
     else
     {
     //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', email_address='" . $_POST['email'] . "', contact_no='" . $_POST['pn'] . "' , username='" . $_POST['user'] . "' where user_id = '$id' ");
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', contact_no='" . $_POST['pn'] . "' , username='" . $_POST['user'] . "' where user_id = '$id' ");
                                                                                                                                                       
 
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
@@ -196,7 +208,7 @@ if (isset($_POST["savebtn"]))
                 <div class="box4">
                     <label>Full Name <sup>*</sup>  <br><br></label>
 
-                    <label>Email <sup>*</sup> <br><br></label>
+                    <!-- <label>Email <sup>*</sup> <br><br></label> -->
 
                     <label>PhoneNumber <sup>*</sup> <br><br></label>
 
@@ -206,7 +218,7 @@ if (isset($_POST["savebtn"]))
                 <div class="box3">
                     <input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>"><br><br>
 
-                    <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>"><br><br>
+                    <!-- <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>"><br><br> -->
 
                     <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>"><br><br>
 
