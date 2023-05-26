@@ -10,6 +10,10 @@
         $status = $_POST["status"];
 
             mysqli_query($conn, "UPDATE shoes set status='" . $_POST['status'] . "' where shoe_id = '$shoe_id'");    
+            
+            mysqli_query($conn, "UPDATE wishlist SET status='" . $_POST['status'] . "' where pro_id = '$shoe_id' ");
+
+            mysqli_query($conn, "UPDATE orders SET status='" . $_POST['status'] . "' where pro_id = '$shoe_id' ");
     
             $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Update Successfully!</div>";
             echo '<script>alert("Update Successfully !");</script>';
