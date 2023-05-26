@@ -43,7 +43,12 @@ if (isset($_POST['submit'])) {
                 size_12 = $size_12,
                 size_12_5 = $size_12_5
             WHERE shoe_id = $sid";
+            
     if (mysqli_query($conn, $sql)) {
+        
+        // mysqli_query($conn,"UPDATE orders set   stock='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+    
+        // mysqli_query($conn,"UPDATE wishlist set  shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
 
         $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
         echo '<script>alert("Update Successfully !");</script>';
