@@ -2,67 +2,60 @@
 
 include_once 'conn.php';
 
-session_start(); 
+session_start();
+$EmailErr = $PassErr = "";
 
-if(isset($_POST['loginbtn'])){
+if (isset($_POST['loginbtn'])) {
+  $email_address = $_POST['email_address'];
+  $pass = $_POST['password'];
 
-    $email_address = $_POST['email_address'];
-    $pass = $_POST['password'];
+  $error = array();
+
+  if (empty($email_address)) {
+    $EmailErr = "Email is required!";
+  }
+
+  if (empty($pass)) {
+    $PassErr = "Password is required!";
+  }
+
+  if (empty($error) && !empty($email_address) && !empty($pass)) {
     $status = '';
     $select = "SELECT * FROM user WHERE email_address = '$email_address' && userpassword = '$pass'";
     $result = mysqli_query($conn, $select);
 
-
-
-      if(mysqli_num_rows($result) == 1)
-      {
-        
+    if (mysqli_num_rows($result) == 1) {
       $row = mysqli_fetch_assoc($result);
       $status = $row['status'];
-        if($status=="active")
-        {
 
-          $_SESSION['email_address'] = $row['email_address'];
-          $_SESSION['userpassword'] = $row['userpassword'];
+      if ($status == "active") {
+        $_SESSION['email_address'] = $row['email_address'];
+        $_SESSION['userpassword'] = $row['userpassword'];
 
-          $user_id = $row['user_id'];
-          $_SESSION['user_id'] = $user_id; 
-          header('Location: homepage.php?user_id='.$row['user_id']);
-        }
-        else
-        {
-          $error[] = "Incorrect user status, Please <a href='contact2.php'>contact us</a> ";
-        }
-
-
-
-      }else{
-          $error[] = "Incorrect email or password";
+        $user_id = $row['user_id'];
+        $_SESSION['user_id'] = $user_id;
+        header('Location: homepage.php?user_id=' . $row['user_id']);
+        exit();
+      } else {
+        $error[] = "Incorrect user status. Please <a href='contact2.php'>contact us</a>.";
       }
-
-
+    } else {
+      $error[] = "Incorrect email or password!";
+    }
+  }
 }
 
-    
+?>
 
-
-   
-
- 
-
-
-?> 
 <html lang="en">
 <head>
-<!DOCTYPE
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User login </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User login</title>
 </head>
 <style>
-    /* Global styles */
-* {
+  * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -171,60 +164,50 @@ a:hover {
   text-decoration: underline;
 }
 </style>
-
 <body>
-  
-    <div class="form-container">
-
-             
+  <div class="form-container">
     <form id="login" class="input-group" action="" method="POST" autocomplete="off">
-    <h3>Login now</h3>
-    <?php
-      if(isset($error)){
-         foreach($error as $error){
-            echo '<span class="error-msg">'.$error.'</span>';
-         };
+      <h3>Login now</h3>
+      <?php
+      if (isset($error)) {
+        foreach ($error as $error) {
+          echo '<span class="error-msg">'.$error.'</span>';
+        };
       };
       ?>
-            <br>
-            <input type="email" class="input-field" placeholder="Email" name="email_address">
-            <input type="password" class="input-field" placeholder="Password" name="password" id="p">
-            <div style="display: flex; align-items: center;">
-  <input type="checkbox" onclick="loginshowpw()">
-  <span class="showpw">Show Password</span>
-</div>
-<br>
-            
-            <script>
-                function loginshowpw() {
-                var x = document.getElementById("p");
-                if (x.type === "password") {
-                x.type = "text";
-                } else {
-                x.type = "password";
-                }
-                }
-            </script>
-            <br><br>
-             
-            <div class="btnsubmit" style="padding-top:20px;">
-            <button type="submit" class="submitbtn" name="loginbtn">Log In</button>
-
-            <br>
-            <br>
-            <a href="homepage.php"><span class="fgpw">Back To Previous Page</span></a>
-            
-            </div>
-            <div class="alignfgpw">
-                <br>
-            <a href="forgotpw.php"><span class="fgpw">Forgot password?</span></a>
-            </div>
-        
-
-           <p>Don't have an account? <a href="register.php">Register now</a></p>
-        </form>
-     
-     </div>
-    
+      <br>
+      <input type="email" class="input-field" placeholder="Email" name="email_address">
+      <span class="error-msg"><?php echo $EmailErr; ?></span>
+      <input type="password" class="input-field" placeholder="Password" name="password" id="p">
+      <span class="error-msg"><?php echo $PassErr; ?></span>
+      <div style="display: flex; align-items: center;">
+        <input type="checkbox" onclick="loginshowpw()">
+        <span class="showpw">Show Password</span>
+      </div>
+      <br>
+      <script>
+        function loginshowpw() {
+          var x = document.getElementById("p");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+      </script>
+      <br><br>
+      <div class="btnsubmit" style="padding-top:20px;">
+        <button type="submit" class="submitbtn" name="loginbtn">Log In</button>
+        <br>
+        <br>
+        <a href="homepage.php"><span class="fgpw">Back To Previous Page</span></a>
+      </div>
+      <div class="alignfgpw">
+        <br>
+        <a href="forgotpw.php"><span class="fgpw">Forgot password?</span></a>
+      </div>
+      <p>Don't have an account? <a href="register.php">Register now</a></p>
+    </form>
+  </div>
 </body>
 </html>
