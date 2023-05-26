@@ -38,8 +38,10 @@ if (isset($_POST['signupbtn'])) {
 
     if (empty($_POST['userpassword'])) {
         $passErr = 'Password is required';
-    } else if (strlen($_POST['userpassword']) < 8) {
-        $passErr = 'Password must be at least 8 characters long';
+    } else if (strlen($_POST['userpassword']) < 6) {
+        $passErr = 'Password must be at least 6 characters long';
+    } else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/", $_POST['userpassword'])) {
+        $passErr = 'Password must contain at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol';
     } else {
         $pass = test_input($_POST['userpassword']);
     }
