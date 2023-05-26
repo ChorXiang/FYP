@@ -8,7 +8,7 @@
 
 
     // $id =$_GET['admin_id']; 
-    echo "No shoe record faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaound !       ";
+    echo "No shoe record !       ";
     echo $id;
 ?>
 
