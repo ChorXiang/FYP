@@ -34,7 +34,7 @@
     
             mysqli_query($conn, "INSERT INTO stock (shoe_id, $sizeColumnsString) VALUES ($newShoeId, $sizeValuesString)");
     
-            $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+            $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Add New Shoes Successfully!</div>";
             echo '<script>alert("Add Successfully !");</script>';
     
             echo '<script>
