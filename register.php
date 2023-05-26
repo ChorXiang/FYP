@@ -3,14 +3,13 @@
 include_once 'conn.php';
 
 $emailErr = $fullnameErr = $contactErr = $existsErr = "";
-$usernameErr = $passErr = $CompassErr  = "";
+$usernameErr = $passErr = $CompassErr = "";
 $NotmatchErr = "";
-$img = $status= "";
+$img = $status = "";
 $email = $fullname = $contact = "";
 $postcode = $username = $pass = $cpass = "";
 
 if (isset($_POST['signupbtn'])) {
-
 
     // insert user data into database
     if (empty($_POST["full_name"])) {
@@ -52,9 +51,11 @@ if (isset($_POST['signupbtn'])) {
     }
 
     if ($pass !== $cpass) {
-        $NotmatchErr = 'Password does not match with confirm password!'; 
+        $NotmatchErr = 'Password does not match with confirm password!';
+    } else {
+        $cpass = test_input($_POST['confirm_password']);
     }
-    
+
     if (empty($_POST["email_address"])) {
         $emailErr = 'Email is required';
     } else {
@@ -65,36 +66,41 @@ if (isset($_POST['signupbtn'])) {
             // Display error message and stop further processing
             $msg = "<div class='error-msg'>Email address is already registered. Please choose a different email address.</div>";
         } else {
-            // Insert new user record
-            $fullname = test_input($_POST["full_name"]);
-            $contact = test_input($_POST['contact_no']);
-            $username = test_input($_POST['username']);
-            $pass = test_input($_POST['userpassword']);
-            $cpass = test_input($_POST['confirm_password']);
-            $img = test_input($_POST['img']);
-            $status = test_input($_POST['status']); 
-
-            $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
-
-            if (mysqli_query($conn, $sql)) {
-                // Display success message and redirect to login.php
-                $msg = "<div class='success-msg'>Successfully registered!</div>";
-
-                echo '<script>alert("Registered Successfully!");</script>';
-
-                echo '<script>
-                    function confirmRedirect() {
-                        window.location.href = "login.php";
-                    }
-                    confirmRedirect();
-                </script>';
+            if ($pass !== $cpass) {
+                $NotmatchErr = 'Password does not match with confirm password!';
             } else {
-                // Display error message if the query fails
-                $msg = "<div class='error-msg'>Error: " . mysqli_error($conn) . "</div>";
+                // Insert new user record
+                $fullname = test_input($_POST["full_name"]);
+                $contact = test_input($_POST['contact_no']);
+                $username = test_input($_POST['username']);
+                $pass = test_input($_POST['userpassword']);
+                $cpass = test_input($_POST['confirm_password']);
+                $img = test_input($_POST['img']);
+                $status = test_input($_POST['status']);
+
+                $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
+
+                if (mysqli_query($conn, $sql)) {
+                    // Display success message and redirect to login.php
+                    $msg = "<div class='success-msg'>Successfully registered!</div>";
+
+                    echo '<script>alert("Registered Successfully!");</script>';
+
+                    echo '<script>
+                        function confirmRedirect() {
+                            window.location.href = "login.php";
+                        }
+                        confirmRedirect();
+                    </script>';
+                } else {
+                    // Display error message if the query fails
+                    $msg = "<div class='error-msg'>Error: " . mysqli_error($conn) . "</div>";
+                }
             }
         }
     }
 }
+
 
 // define the test_input function
 function test_input($data)
@@ -259,7 +265,9 @@ if (isset($_POST['signupbtn'])) {
                         <label>Confirm Password :</label>
                         <input type="password" name="confirm_password" placeholder="Enter your confirm password" class="input-field">
                         <span class="error-msg"><?php echo $CompassErr; ?></span> <br>
-                        <span class="error-msg"><?php echo $NotmatchErr ; ?></span>
+                        <?php if (!empty($NotmatchErr)) { ?>
+    <div class="error-msg"><?php echo $NotmatchErr; ?></div>
+<?php } ?>
                       
                         
                       
