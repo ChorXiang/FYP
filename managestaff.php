@@ -73,14 +73,14 @@
         // $query = mysqli_query($conn,$host);
         // $host_image = mysqli_fetch_assoc($query);
         ?>
-      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Staff </b></h1>
+      <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Admin </b></h1>
       <span class="floatright" ><a href="addmanagestaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
 
       <table border="0px">
         <tr>
           <td>Admin ID</td>
-          <td>Admin Email</td>
           <td>Admin Name</td>
+          <td>Admin Email</td>
 
         </tr>
         <?php
@@ -91,9 +91,9 @@
       
         <tr>
           <!-- <td><img class='img' src="<?php echo "image/".$row['image'];?>" ></td> -->
-          <td><?php echo $row["admin_id"]; ?></td>   
-          <td><?php echo $row["admin_email"]; ?></td>               
+          <td><?php echo $row["admin_id"]; ?></td>             
           <td><?php echo $row["admin_name"]; ?></td>       
+          <td><?php echo $row["admin_email"]; ?></td>               
           <!-- <td>       
             <a href="editmanagestaff.php?admin_id=<?php echo $row['admin_id']?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a>
             </td> -->
