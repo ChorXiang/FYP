@@ -4,28 +4,24 @@
 ?>
 
 <?php
-// Check if the form is submitted
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
+    
     $email = $_POST["email"];
     $secureCode = $_POST["secure"];
 
-    // Perform validation against the database records
     $sql = "SELECT * FROM `admin` WHERE `admin_email` = '$email' AND `secure` = '$secureCode'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $email = $row['admin_email'];
-        // The email and secure code match the database records
-        // Proceed with further actions or redirect to a success page
+        
         $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Validation Successful!</div>";
         header('Location: admin_confirmpass.php?admin_email=' . $email);
-        exit(); // Make sure to include the exit() statement after the header() function
+        exit(); 
     } else {
-        // The email and secure code do not match the database records
-        // Handle the validation failure, display an error message, or redirect back to the form with an error indicator
-        $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Validation Failed!</div>";
+        $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Wrong Email or Secure Code   !</div>";
     }
 }
 
@@ -111,6 +107,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" class="input-field" placeholder="Secure Code" name="secure" pattern="[0-9]{6}" title="Please enter a 6-digit number" minlength="6" maxlength="6" required><br><br>
         
         <input type="submit" class="submitbtn" name="submit" value="Confirm">
+        <br>
+        <a href="adminlogin.php" style="float: right;">Back</a>
+
     </form>
     
 </body>

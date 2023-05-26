@@ -5,18 +5,12 @@
 ?>
 
 <?php
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
     $pass = $_POST["admin_password"];
 
-    // Perform validation against the database records
     $sql = "UPDATE admin set admin_password='" . $_POST['admin_password'] . "' where admin_email = '$email'";            
     mysqli_query($conn, $sql);
 
-    
-        // The email and secure code match the database records
-        // Proceed with further actions or redirect to a success page
         echo '<script>alert("Change New Password Successfully !");</script>';
         header('Location: adminlogin.php');
     
@@ -26,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Forgot Password</title>
+    <title>Enter New Password</title>
     <style>
         
     body
@@ -95,12 +89,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form action="" method="POST">
     <?php echo "<div>".$msg."</div>"?>
 
-    <h2>Confirm New Password</h2>
+    <h2>Enter New Password</h2>
         <br><br>
         <label for=""></label>
         <input type="password" id="admin_password" class="input-field" placeholder="Password" name="admin_password" required>
         <br><br>        
         <input type="submit" class="submitbtn" name="submit" value="Confirm">
+        <br>
+        <a href="adminlogin.php" style="float: right;">Cancel</a>
+
     </form>
     
 </body>

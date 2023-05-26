@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
 <body>
 <form method="post">
     <?php if (isset($error_msg)) { ?>
-      <p><?php echo $error_msg; ?></p>dasda
+      <p><?php echo $error_msg; ?></p>
     <?php } ?>
     <h1>Admin Login</h1>
   
