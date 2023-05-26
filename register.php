@@ -257,23 +257,44 @@ if (isset($_POST['signupbtn'])) {
 
                     <div class="input-group">
                         <label>Password :</label>
-                        <input type="password" name="userpassword" placeholder="Enter your password" class="input-field">
+                        <input type="password" name="userpassword" placeholder="Enter your password" class="input-field" id="pw">
                         <input type="hidden" name="img" value="profile.jpg">  
                         <input type="hidden" name="status" value="active"> 
-                        <span class="error-msg"><?php echo $passErr; ?></span>
-                    </div>
+                        
+                        <span class="error-msg"><?php echo $passErr; ?></span><br>
+                        <input type="checkbox" onclick="signshowpw()"><span class="showpw">Show Password</span>
+<script>
+    function signshowpw() {
+        var x = document.getElementById("pw");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+<br><br>
+
 
                     <div class="input-group">
                         <label>Confirm Password :</label>
-                        <input type="password" name="confirm_password" placeholder="Enter your confirm password" class="input-field">
+                        <input type="password" name="confirm_password" placeholder="Enter your confirm password" class="input-field"  id="conpw">
                         <span class="error-msg"><?php echo $CompassErr; ?></span> <br>
                         <?php if (!empty($NotmatchErr)) { ?>
     <div class="error-msg"><?php echo $NotmatchErr; ?></div>
 <?php } ?>
-                      
-                        
-                      
-                    </div>
+<input type="checkbox" onclick="signshowconpw()"><span class="showpw">Show Password</span>
+<script>
+    function signshowconpw() {
+        var x = document.getElementById("conpw");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
+<br><br>
                     
                     <input type="submit" name="signupbtn" class="submit-btn" value="Sign up">
                     <br/><br/>
