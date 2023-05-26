@@ -21,7 +21,11 @@ if (isset($_POST["savebtn"]))
     }
     else
     {
-        mysqli_query($conn,"UPDATE shoes set status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand'");            
+        mysqli_query($conn,"UPDATE shoes set status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand'");    
+
+        mysqli_query($conn, "UPDATE wishlist SET status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand'");
+
+        mysqli_query($conn, "UPDATE orders SET status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand' ");        
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
         echo '<script>alert("Update Successfully !");</script>';
      
