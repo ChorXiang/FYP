@@ -244,27 +244,27 @@ $query .= " LIMIT $offset, $shoesPerPage";
 
 $result = mysqli_query($conn, $query);
 
-
-
 if (isset($_SESSION['user_id'])) {
- 
-
-  while ($row = mysqli_fetch_assoc($result)) {
-    $sid = $row['shoe_id'];
-    echo '<div class="product-card">';
-    ?>
-    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-    <?php
-    echo '<h2>' . $row['category'] . '</h2>';
-    ?>
-    <p><a href="productpage.php?user_id=<?php echo $id ?>&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-    <?php
-    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-    echo '</div>';
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $sid = $row['shoe_id'];
+      echo '<div class="product-card">';
+      ?>
+      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+      <?php
+      echo '<h2>' . $row['category'] . '</h2>';
+      ?>
+      <p><a href="productpage.php?user_id=<?php echo $id ?>&shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+      <?php
+      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+      echo '</div>';
+    }
+  } else {
+    echo 'No shoes found.';
   }
+
+  if ($totalPages > 1):
 ?>
-  </div>
- <?php if ($totalPages > 1): ?>
     <div class="pagination">
       
     <?php if ($currentPage > 1): ?>
@@ -281,27 +281,29 @@ if (isset($_SESSION['user_id'])) {
       <?php endif; ?>
       
     </div>
-  <?php endif; ?>
-</div>
 <?php
-} else 
-{
-  while ($row = mysqli_fetch_assoc($result)) 
-  {
-    $sid = $row['shoe_id'];
-    echo '<div class="product-card">';
-    ?>
-    <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-    <?php
-    echo '<h2>' . $row['category'] . '</h2>';
-    ?>
-    <p><a href="productpage.php?shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-    <?php
-    echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-    echo '</div>';
+  endif;
+} else {
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $sid = $row['shoe_id'];
+      echo '<div class="product-card">';
+      ?>
+      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+      <?php
+      echo '<h2>' . $row['category'] . '</h2>';
+      ?>
+      <p><a href="productpage.php?shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+      <?php
+      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+      echo '</div>';
+    }
+  } else {
+    echo 'No shoes found.';
   }
-  ?>
-   <?php if ($totalPages > 1): ?>
+
+  if ($totalPages > 1):
+?>
     <div class="pagination">
       
     <?php if ($currentPage > 1): ?>
@@ -318,12 +320,12 @@ if (isset($_SESSION['user_id'])) {
       <?php endif; ?>
       
     </div>
-  <?php endif; ?>
-</div>
 <?php
+  endif;
 }
 ?>
-  </div>
+</div>
+
 
 
 </div>
