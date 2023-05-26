@@ -91,6 +91,7 @@
     select
     {
         font-size: 16px;
+        width: 230px;
     }
 
     th
@@ -129,7 +130,7 @@
         </div>
 
         <form name="from1"  method="post" action=""  >
-                            <label for="state"  >Shoes Type  :</label>
+                            <label for="state"  >Shoe Type&nbsp;&nbsp; :</label>
                                         <select id="state" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
