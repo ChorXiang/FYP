@@ -197,6 +197,8 @@ function test_input($data)
         p a:hover {
             text-decoration: underline;
         }
+
+        
     </style>
 </head>
 
@@ -262,7 +264,9 @@ if (isset($_POST['signupbtn'])) {
                         <input type="hidden" name="status" value="active"> 
                         
                         <span class="error-msg"><?php echo $passErr; ?></span><br>
+                        
                         <input type="checkbox" onclick="signshowpw()"><span class="showpw">Show Password</span>
+                       
 <script>
     function signshowpw() {
         var x = document.getElementById("pw");
