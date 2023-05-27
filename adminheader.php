@@ -2,7 +2,10 @@
 
 include 'conn.php';
 session_start();
-
+if(!$_SESSION['admin_id'])
+{
+    header("Location:adminLogin.php");
+}
 $id =$_GET['admin_id']; 
 // if (isset($_SESSION['admin_id'])) { $id =$_GET['admin_id']; }
 
