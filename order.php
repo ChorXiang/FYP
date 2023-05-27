@@ -16,6 +16,8 @@
     $found_unavailable_item="false";
     $sql = "SELECT * FROM orders where user_id = '$id' ";
     $result = mysqli_query($conn,$sql);
+    $status="";
+    
     while($row = mysqli_fetch_array($result))
     {
       $qty = $row['quantity'];
@@ -23,6 +25,8 @@
       $shoesname = $row['shoesname'];
       $size = $row['shoessize'];
       $status = $row['status'];
+      
+      // echo $status;
 
       if($stock===0)
       {
