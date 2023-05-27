@@ -207,7 +207,7 @@
   <br>    
   <label for="category">Category &nbsp;&nbsp;&nbsp;&nbsp;:</label>
     <input type="radio" name="category" value="man" <?php if($row["category"]=="man"){echo "checked";} ?>> Man
-    <input type="radio" name="category" value="woman" <?php if($row["category"]=="woman"){echo "checked";} ?>> Woman<br>
+    <input type="radio" name="category" value="women" <?php if($row["category"]=="women"){echo "checked";} ?>> Woman<br>
     <!-- Shoe Image: <input type="text" name="shoe_image" value="<?php //echo $row["shoe_image"]; ?>"><br> -->
     <label for="category">Shoe Price&nbsp;  : RM</label>
     <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" required><br>
