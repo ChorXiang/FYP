@@ -31,15 +31,20 @@ require_once 'conn.php';
                             $mail->isSMTP();
                             $mail->Host='smtp.gmail.com';
                             $mail->SMTPAuth=true;
-                            $mail->Username='cometbus0@gmail.com';
-                            $mail->Password='tpguonvllpfddooj';
+                            $mail->Username='footmalaysia@gmail.com';
+                            $mail->Password='qkklqhlyerottbqt';
                             $mail->SMTPSecure='ssl';
                             $mail->Port=465;
-                            $mail->setFrom('cometbus0@gmail.com');
+                            $mail->setFrom('footmalaysia@gmail.com');
                             $mail->addAddress($_SESSION["input_email"]);
                             $mail->isHTML(true);
-                            $mail->Subject="Email Verification Code";
-                            $mail->Body=$_SESSION["code"];
+                            $mail->Subject = "Email Verification Code";
+                            // Add the verification code to the email body
+                            $mail->Body = "<span style='font-size: 16px;'><strong>Hi!</strong><br><br>
+                            You are resetting your FOOT account password. Your verification code is: <strong><span style='color: #1CC8F3;'>" . $_SESSION["code"] . "</strong><br><br>
+                            FOOT <br><br>
+                            <span style='color: grey;'>This is an automated email. Please do not reply to this email.";
+                            
                             $mail->send();
                             header("location: verifycode.php?code=send");
                             
