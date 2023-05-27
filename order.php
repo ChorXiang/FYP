@@ -60,7 +60,7 @@
       }
       else if( $found_unavailable_item == 4)
       {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size are been remove by admin. Please cancle this item to proceed checkout</div>";
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size has been remove by admin. Please cancle this item to proceed checkout</div>";
      }
 
 
