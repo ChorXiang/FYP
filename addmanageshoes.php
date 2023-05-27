@@ -182,7 +182,7 @@
         <label for="category">Category &nbsp;&nbsp;&nbsp;:</label>
         <select id="category" name="category">
             <option value="man">Man</option>
-            <option value="woman">Woman</option>
+            <option value="women">Woman</option>
         </select><br>
         <label for="shoe_price">Shoe Price&nbsp;  : RM</label>
         <input type="text" name="shoe_price" required>

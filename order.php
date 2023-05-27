@@ -22,6 +22,7 @@
       $stock = $row['stock'];
       $shoesname = $row['shoesname'];
       $size = $row['shoessize'];
+      $status = $row['status'];
 
       if($stock===0)
       {
@@ -31,6 +32,11 @@
       else if($stock<$qty)
       {
         $found_unavailable_item = 2;
+        break;
+      }
+      else if($status=="inactive")
+      {
+        $found_unavailable_item = 4;
         break;
       }
       else 
@@ -52,6 +58,10 @@
       {
         echo '<script>window.location.href = "payment.php?user_id=' . $id . '";</script>';
       }
+      else if( $found_unavailable_item == 4)
+      {
+        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This item $shoesname UK $size has been removed by admin. Please remove this item to proceed checkout</div>";
+     }
 
 
   }
@@ -155,6 +165,7 @@ if (isset($_POST["update_cart"])) {
       <td>
   <form action="" method="post">
     <input type="hidden" name="order_ID" value="<?php echo $row["order_ID"]; ?>">
+    <input type="hidden" name="status" value="<?php echo $row["status"]; ?>">
     <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>" required>
     <button type="submit" name="update_cart">Update QTY</button>
   </form>
