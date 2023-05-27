@@ -121,7 +121,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
     <span class="left">
       <a href="addmanageshoes.php?admin_id=<?php echo $id ?>" alt="insert">
         <i class="fas fa-plus" style="font-size: 24px;"></i>
-        <input type="button" value="Add New Shoes" style="margin-left: 10px;">
+        <input type="button" value="Add New Shoe" style="margin-left: 10px;">
       </a>
     </span><br><br>
   </div>
