@@ -241,9 +241,10 @@ if (isset($_POST['signupbtn'])) {
 
                     <div class="input-group">
     <label>Contact Number:</label>
-    <input type="text" name="contact_no" placeholder="Enter your contact number" class="input-field" pattern="[0-9]+" title="Please enter numbers only">
+    <input type="text" name="contact_no" placeholder="Enter your contact number" class="input-field" pattern="[0-9]+" title="Please enter numbers only" maxlength="11">
     <span class="error-msg"><?php echo $contactErr; ?></span>
 </div>
+
 
 
                     <div class="input-group">
