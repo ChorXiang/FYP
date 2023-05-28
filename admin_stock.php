@@ -171,7 +171,7 @@ mysqli_query($conn, "UPDATE orders SET stock='" . $_POST['stockk'] . "' WHERE pr
     <input type="submit" name="submit" value="Update Stock">
 
     <div class="butttonright">
-        <a href="admin_product.php?shoe_id=<?php echo $row["shoe_id"]?>&&admin_id=<?php echo $id ?>">Back to Previous Page </a>
+        <a href="admin_productnew.php?shoe_id=<?php echo $row["shoe_id"]?>&&admin_id=<?php echo $id ?>">Back to Previous Page </a>
     </div>
 </form>
 
