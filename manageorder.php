@@ -120,26 +120,25 @@
           <!-- <th>Delete</th> -->
         </tr>
         <?php
-
-        while($row = mysqli_fetch_array($result))
-        {
-
-            ?>
-      
-        <tr>
-          <th><?php echo $row["order_num"]; ?></th>         
-          <th><?php echo $row["total"];?></th>
-          <th><?php echo $row["her_email"];?></th>
-          <th><?php echo $row["her_date"];?></th>
-          <th><?php echo $row["order_status"];?></th>
-          <th><a href="admin_morehistory.php?order_num=<?php echo $row["order_num"]; ?>&&user_id=<?php echo $row["user_id"]; ?>&&admin_id=<?php echo $id ?>" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-          <!-- <th><a href="admin_history.php?her_id=<?php //echo $row["her_id"]; ?>&&admin_id='$id'" alt="update"><i class="fa fa-cog" style="font-size:36px"></i></a></th> -->
-          <!-- <th><a href="admindeleteorder.php?her_id=<?php //echo $row['her_id'];?>" alt="edit" style="color:red;"><i class="fa fa-close" style="font-size:36px"></i></a></th>         -->
-
-        </tr>
-            <?php
-
+        
+        
+        $prev_order_num = null; // Variable to store the previous order number
+    while ($row = mysqli_fetch_array($result)) {
+        $order_num = $row["order_num"];
+        if ($order_num != $prev_order_num) {
+            echo "<tr>";
+            echo "<th>$order_num</th>";
+            // Display the remaining columns
+            echo "<th>{$row['total']}</th>";
+            echo "<th>{$row['her_email']}</th>";
+            echo "<th>{$row['her_date']}</th>";
+            echo "<th>{$row['order_status']}</th>";
+            echo "<th><a href=\"admin_morehistory.php?order_num={$row['order_num']}&user_id={$row['user_id']}&admin_id={$id}\" alt=\"update\"><i class=\"fa fa-cog\" style=\"font-size:36px\"></i></a></th>";
+            echo "</tr>";
         }
+
+        $prev_order_num = $order_num;
+    }
 
 		?>
 
