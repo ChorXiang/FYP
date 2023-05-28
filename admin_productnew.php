@@ -152,7 +152,7 @@
                             <br>
                             <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                                         <select id="state" name="state">
-                                            <option value="man">Man</option>
+                                            <option value="men">Men</option>
                                             <option value="women">Women</option>
                                         </select>
 
