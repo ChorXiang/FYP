@@ -222,7 +222,7 @@ input[type="submit"]:hover {
 }
 
 .container {
-  background-color: ;
+  background-color: #f2f2f2;
   display: flex;
   justify-content: space-between;
   width: 80%;

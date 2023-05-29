@@ -142,9 +142,9 @@
             <li class="dropdown"><a href="product.php?user_id=<?php echo $id ?>">All Product</a>
             </li>
 
-            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
+            <li class="dropdown"><a href="#" class="dropbtn">Contact Us</a>
                 <div class="dropdown-content">
-                    <a href="contact.php?user_id=<?php echo $id ?>">Contact Us</a>
+                    <a href="contact.php?user_id=<?php echo $id ?>">Support</a>
                     <a href="commentpage.php?user_id=<?php echo $id ?>">Comment</a>
                 </div>
             </li>
@@ -192,10 +192,10 @@
             </li>
 
             
-            <li class="dropdown"><a href="#" class="dropbtn">Support</a>
-                <div class="dropdown-content">
+            <li class="dropdown"><a href="commentpage.php" class="dropbtn">Contact Us</a>
+                <!-- <div class="dropdown-content">
                     <a href="contact.php">Contact Us</a>
-                </div>
+                </div> -->
             </li>
         </ul>
 
