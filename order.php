@@ -14,6 +14,8 @@
   {
     $id = $_GET["user_id"];
     $found_unavailable_item="false";
+
+
     $sql = "SELECT * FROM orders where user_id = '$id' ";
     $result = mysqli_query($conn,$sql);
     $status="";
@@ -73,7 +75,8 @@
 
 ?>
 <?php
-if (isset($_POST["update_cart"])) {
+if (isset($_POST["update_cart"])) 
+{
   $order_ID = $_POST["order_ID"];
   $quantity = $_POST["quantity"];
 
@@ -166,11 +169,12 @@ if (isset($_POST["update_cart"])) {
       <td><?php echo $row["shoesname"]; ?></td>
       <td><?php echo $row["shoessize"]; ?></td>
       <td><?php echo $row["quantity"];	?></td>
+      <!-- <td><?php echo $row[""];	?></td> -->
       <td>
   <form action="" method="post">
     <input type="hidden" name="order_ID" value="<?php echo $row["order_ID"]; ?>">
     <input type="hidden" name="status" value="<?php echo $row["status"]; ?>">
-    <input id="quantity" name="quantity" type="number" min="1" max="5" value="<?php echo $q; ?>" required>
+    <input id="quantity" name="quantity" type="number" min="1" max="5"  required>
     <button type="submit" name="update_cart">Update QTY</button>
   </form>
 </td>
