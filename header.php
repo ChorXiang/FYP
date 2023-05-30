@@ -130,7 +130,7 @@
             </li>
             <li class="dropdown"><a href="#" class="dropbtn">Category</a>
                 <div class="dropdown-content">
-                    <a href="productlist.php?category=man&&user_id=<?php echo $id ?>">Man</a>
+                    <a href="productlist.php?category=men&&user_id=<?php echo $id ?>">Men</a>
                     <a href="productlist.php?category=women&&user_id=<?php echo $id ?>">Women</a>
                     <!-- <a href="productlist.php?shoe_brand=Adidas&&user_id=<?php echo $id ?>">Adidas</a> -->
                     <!-- <a href="productlist.php?shoe_brand=Converse&&user_id=<?php echo $id ?>">Converse</a> -->
@@ -178,7 +178,7 @@
             </li>
             <li class="dropdown"><a href="#" class="dropbtn">Category</a>
                 <div class="dropdown-content">
-                    <a href="productlist.php?category=man">Man</a>
+                    <a href="productlist.php?category=men">Men</a>
                     <a href="productlist.php?category=women">Women</a>
                     <!-- <a href="productlist.php?shoe_brand=Nike">Nike</a>
                     <a href="productlist.php?shoe_brand=Puma">Puma</a>

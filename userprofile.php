@@ -129,7 +129,7 @@
 
                             <label for="fname"><i class="fa fa-phone"></i> Phone number<br><br></label>
 
-                            <label for="fname"><i class="fa fa-user"></i> User Name</label>
+                            <!-- <label for="fname"><i class="fa fa-user"></i> User Name</label> -->
                         </div>
 
                         <div class="box3">
@@ -140,7 +140,7 @@
 
                             : <?php echo $row["contact_no"]; ?><br><br>
 
-                            : <?php echo $row["username"]; ?>
+                            <!-- : <?php echo $row["username"]; ?> -->
 
                         </div>
 

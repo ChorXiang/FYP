@@ -85,11 +85,11 @@
 
 
 <div class="container">
-<div class="box"><p> <i class='fas fa-shoe-prints' style='font-size:80px;'></i></p>
+<div class="box"><p> <i class="fa fa-road" style="font-size:80px"></i></p>
 <p> BUY ONLINE 24/7 </p>
 <p> Shop from the comfort of your home.  </p></div>
 
-<div class="box"><p> <i class='fas fa-reply-all' style='font-size:80px'></i></i></p>
+<div class="box"><p> <i class="fa fa-reply" style="font-size:80px"></i></i></p>
 <p> 15 DAYS RETURN </p>
 <p> Simply return it within 15 days for a refund.  </p></div>
 

@@ -54,7 +54,7 @@ if (isset($_POST["savebtn"]))
     else
     {
     //     mysqli_query($conn,"updateuser set name='$mname', emaile='$memail', summary='$msummary', pn='$mpn', date='$mdate' where no=$id");
-        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', contact_no='" . $_POST['pn'] . "' , username='" . $_POST['user'] . "' where user_id = '$id' ");
+        mysqli_query($conn,"UPDATE user set full_name='" . $_POST['name'] . "', contact_no='" . $_POST['pn'] . "'  where user_id = '$id' ");
                                                                                                                                                       
 
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
@@ -212,7 +212,7 @@ if (isset($_POST["savebtn"]))
 
                     <label>PhoneNumber <sup>*</sup> <br><br></label>
 
-                    <label>User Name <sup>*</sup> <br><br> </label>
+                    <!-- <label>User Name <sup>*</sup> <br><br> </label> -->
                 </div>
 
                 <div class="box3">
@@ -222,7 +222,7 @@ if (isset($_POST["savebtn"]))
 
                     <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>"><br><br>
 
-                    <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>">
+                    <!-- <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>"> -->
                 </div>
 
              </div>
