@@ -40,8 +40,7 @@
   }
 
   input[type="submit"][name="wishlist"] {
-  /* Define your styles here */
-  /* For example: */
+  
   background-color: black;
   color: white;
   padding: 10px 10px;
@@ -55,20 +54,7 @@
 
 }
 
-input[type="submit"][name="wishlist"] {
-  /* Define your styles here */
-  /* For example: */
-  background-color: black;
-  color: white;
-  padding: 10px 10px;
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
+
 
 input[type="submit"][name="submit"]{
   background-color: black;
@@ -82,6 +68,15 @@ input[type="submit"][name="submit"]{
   cursor: pointer;
   border-radius: 4px;
 }
+
+
+    .shoe {
+        position: relative;
+        
+        left: 30px; /* Adjust the left value to move the element right */
+    }
+
+
 
 
 </style>
@@ -168,6 +163,7 @@ input[type="submit"][name="submit"]{
 <div class="wordcenter">
 <h1><?php echo $row["shoe_name"]; ?></h1>
 </div>
+
 <p>Type: <?php echo $row["shoe_type"]; ?></p>
 <p>Brand: <?php echo $row["shoe_brand"]; ?></p>
 <p>Category: <?php echo $row["category"]; ?></p>
@@ -179,6 +175,7 @@ input[type="submit"][name="submit"]{
   <input type="hidden" name="id" value="<?php echo $id; ?>">   <input type="hidden" name="status" value="<?php echo $row['status']; ?>"> 
   <input type="hidden" name="shoe_brand" value="<?php echo $row['shoe_brand']; ?>"> 
   <br>
+  <div class="shoe">
   <label for="size"  >Shoe Size:</label>
                 <select id="size" name="size">
                     <option value="7">7</option>
@@ -227,6 +224,7 @@ input[type="submit"][name="submit"]{
   <br><br>
   <input type="submit" name="wishlist" value="Add to Wishlist">
 </form>
+</div>
 
 
 

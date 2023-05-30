@@ -4,285 +4,224 @@
 <style>
 .error {
   color: #FF0000;
-}
+  }
 </style>
 </head>
 <body>  
   
   <?php
-    include 'conn.php'; 
-    include 'header.php'; 
-    $msg = "";
-?>
-
+      include 'conn.php'; 
+      include 'header.php'; 
+      $msg='';
+  ?>
 
 <?php
 
-$nameErr = $emailErr = $subjectErr = $messageErr = "";
-$name = "";
+$emailErr = $shipping_ratingErr = $customer_service_ratingErr = $product_quality_ratingErr = $user_interface_ratingErr = $messageErr = "";
 $email = "";
-$subject = "";
+$shipping_rating = "";
+$customer_service_rating = "";
+$product_quality_rating = "";
+$user_interface_rating = "";
 $message = "";
 
-
-if (isset($_POST['submit'])) {
-
-  if (empty($_POST["name"])) {
-    $nameErr = "* Name is required";
-  } else {
-    $nameErr ="";
-  }
+if (isset($_POST['submit_rating'])) {
+  
 
   if (empty($_POST["email"])) {
-    $emailErr = " * Email is required";
+      $emailErr = " * Email is required";
   } else {
     $emailErr ="";
+
   }
 
-  if (empty($_POST["subject"])) {
-    $subjectErr = "*Subject is required";
+  if (empty($_POST["shipping_rating"])) {
+    $shipping_ratingErr = "*Shipping_rating is required";
   } else {
-    $subjectErr="";
+    $shipping_ratingErr="";
+  }
+
+  if (empty($_POST["customer_service_rating"])) {
+    $customer_service_ratingErr = "*Customer_service_rating is required";
+  } else {
+    $customer_service_ratingErr="";
+  }
+
+  if (empty($_POST["product_quality_rating"])) {
+    $product_quality_ratingErr = "*Product_quality_rating is required";
+  } else {
+    $product_quality_ratingErr="";
+  }
+
+  if (empty($_POST["user_interface_rating"])) {
+      $user_interface_ratingErr = "*User_interface_rating is required";
+  } else {
+    $user_interface_ratingErr="";
   }
 
   if (empty($_POST["message"])) {
-    $messageErr = "*Your valuable message is required";
+      $messageErr = "*Your valuable message is required";
   } else {
     $messageErr = "";
   }
-}
-?>
-
-
-<?php
-if (isset($_POST['submit'])) {
-
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
-
-  if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-    mysqli_query($conn,"INSERT INTO `messages`(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')");  
-    $msg = "<div style='text-align:center;background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Message Send Successfully !</div>";
-  }
-}
-?>
-
-
-<style>
-body {
-  background-color: white;
-  color: black;
-}
-
-.txt_field {
-  width: 80%;
-  margin: 0 auto;
-}
-
-fieldset {
-  border: 2px solid black;
-  padding: 20px;
-}
-
-h1, h3 {
-  text-align: center;
-}
-
-table {
-  margin: 0 auto;
-}
-
-th {
-  padding: 5px;
-}
-
-.left {
-  float: left;
-  padding-left: 80px;
-}
-
-.right {
-  float: right;
-  padding-right: 80px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-  border: 1px solid black;
-  padding: 10px;
-  width: 100%;
-  color: black;
-  background-color: white;
-}
-
-input[type="submit"] {
-  width: 100%;
-  height: 50px;
-  border: 1px solid black;
-  background: white;
-  border-radius: 25px
-  <!DOCTYPE HTML>  
-<html>
-<head>
-<style>
-.error {
-  color: #FF0000;
-}
-}
-</style>
-</head>
-<body>  
   
-
-
-<?php
-if (isset($_POST['submit'])) {
-
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
-
-  if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-    mysqli_query($conn,"INSERT INTO `messages`(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')");  
-    $msg = "<div style='text-align:center;background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Message Send Successfully !</div>";
-  }
 }
+
+
 ?>
 
-
 <style>
-body {
-  background-color: white;
-  color: black;
-}
+  fieldset
+  {
+    background-color: lightgrey;
+    color: black;
+  }
 
-.txt_field {
-  width: 80%;
-  margin: 0 auto;
-}
+  input[type="submit"]
+  {
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    background: #2691d9;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+  }
 
-fieldset {
-  border: 2px solid black;
-  padding: 20px;
-}
+  input[type="submit"]:hover
+  {
+    border-color: #2691d9;
+    transition: .5s;
+  }
 
-h1, h3 {
-  text-align: center;
-}
-
-table {
-  margin: 0 auto;
-}
-
-th {
-  padding: 5px;
-}
-
-.left {
-  float: left;
-  padding-left: 80px;
-}
-
-.right {
-  float: right;
-  padding-right: 80px;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-  border: 1px solid black;
-  padding: 10px;
+  .black
+  {
+    text-align: center;
+    color: black;
+  }
+  sup
+  {
+    color:red;
+  }
+  table 
+  {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
   width: 100%;
-  color: black;
-  background-color: white;
 }
 
-input[type="submit"] {
-  width: 100%;
-  height: 50px;
-  border: 1px solid black;
-  background: white;
-  border-radius: 25px
-  font-size: 18px;
-  color: black;
-  font-weight: 700;
-  cursor: pointer;
-  outline: none;
+td, th 
+{
+  border: 1px solid lightgrey;
+  text-align: left;
+  padding: 8px;
+  font-size: 25px;
+
+}
+td.let
+{
+  width: 26%;
 }
 
-input[type="submit"]:hover {
-  background-color: black;
-  color: white;
-  transition: .5s;
-}
 
-.container {
-  background-color: ;
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-  border: 1px solid black;
-  padding: 20px;
-}
-
-.success {
-  background-color: black;
-  color: white;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-p {
-  color: black;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
+  
 </style>
 
-<div class="container">
-  <div class="left">
-    <fieldset>
-      <?php echo "<div>".$msg."</div>"?>
-      <h1>Contact Us</h1>
-      <br>Please fill in your contact information below and send us your message:<br>
-      <form method="post" action="">  
-        <div class="txt_field">
-          Name：<input type="text" name="name" >
-          <span class="error"><?php echo $nameErr;?></span>
-          <br><br>
-          Email：<input type="email" name="email">
-          <span class="error"><?php echo $emailErr;?></span>
-          <br><br>
-          Subject：<input type="text" name="subject">
-          <span class="error"><?php echo $subjectErr;?></span>
-          <br><br>
-          Message：<br>
-          <textarea name="message" rows="5" cols="80"></textarea>
-          <span class="error"><?php echo $messageErr;?></span>
-          <br><br>
-          <input type="submit" name="submit" value="SEND">  
-          <p>Company Information</p>
-          <p>ROOT MALAYSIA SDN. BHD.</p>
-          <p>Email: shop@foot-mlk.com</p>
-          <p>Contact Number: 03-21817618</p>
-          <p>Address: Lot 155, First Floor, Suria KLCC, 50088, Kuala Lumpur, Malaysia.</p>
-          <p>Operating Hours: 10:00 AM — 06:00 PM (Monday – Friday)</p>
-        </div>
-      </form>
-    </fieldset>
-  </div>
+<fieldset> 
+  <div class="black">
+    
+  <?php
+
+if (isset($_POST['submit_rating'])) 
+{
+
+  // $id =$_GET['user_id']; 
+  
+    $email = $_POST['email'];
+    $shipping_rating = $_POST['shipping_rating'];
+    $customer_service_rating = $_POST['customer_service_rating'];
+    $product_quality_rating = $_POST['product_quality_rating'];
+    $user_interface_rating = $_POST['user_interface_rating'];
+    $message = $_POST['message'];
+
+    if ($emailErr == "" && $shipping_ratingErr == "" && $customer_service_ratingErr == "" && $product_quality_ratingErr == "" && $user_interface_ratingErr == "" && $messageErr == "") 
+    {
+      // $sql = "INSERT INTO comment (email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message)VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )";
+      mysqli_query($conn,"INSERT INTO `comment`(email, shipping_rating, customer_service_rating, product_quality_rating, user_interface_rating, message) VALUES ('$email', '$shipping_rating', '$customer_service_rating', '$product_quality_rating', '$user_interface_rating', '$message' )");  
+       
+      $msg = "<div style='text-align:center;background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Rating Send Successfully !</div>";
+
+
+    }
+  }
+
+?>
+
+<?php echo "<div>".$msg."</div>"?>
+
+<h1>Online Shoe Selling Store Service Rating</h1>
+
+
+<form method="post" action="">
+    <table>
+      <tr>
+        <td class="let"> </td>
+        <td>Email<sup>* </sup> </td>
+        <td>: <input type="email" name="email" value="<?php echo $email;?>"> </td>
+        <td class="let"><span class="error"><?php echo $emailErr;?></span> </td>
+      </tr>
+      <tr>
+        <td class="let"> </td>
+        <td><label for="Shipping Service">Shipping Service Rating (1-5) <sup>* </sup></label></td>
+        <td>: <input type="number" name="shipping_rating" id="shipping_rating" min="1" max="5" ></span></td>
+        <td class="let"> <span class="error"><?php echo $shipping_ratingErr;?></td>
+      </tr>
+      <tr>
+        <td class="let"> </td>
+        <td><label for="Customer Service">Customer Service Rating (1-5) <sup>* </sup></label></td>
+        <td>: <input type="number" name="customer_service_rating" id="customer_service_rating" min="1" max="5" ></span></td>
+        <td class="let"><span class="error"><?php echo $customer_service_ratingErr;?> </td>
+      </tr>
+      <tr>
+        <td class="let"> </td>
+        <td><label for="Product Quality">Product Quality Rating (1-5) <sup>* </sup></label></td>
+        <td>: <input type="number" name="product_quality_rating" id="product_quality_rating" min="1" max="5" ></span></td>
+        <td class="let"> <span class="error"><?php echo $product_quality_ratingErr;?></td>
+      </tr>
+      <tr>
+        <td class="let"> </td>
+        <td><label for="User Interface">User Interface Rating (1-5) <sup>* </sup></label></td>
+        <td>: <input type="number" name="user_interface_rating" id="user_interface_rating" min="1" max="5" ></span></td>
+        <td class="let"><span class="error"><?php echo $user_interface_ratingErr;?> </td>
+      </tr>
+      <tr>
+        <td class="let"> </td>
+        <td>Message: <sup>* </sup></td>
+        <td> <textarea name="message" rows="5" cols="40"></textarea></td>
+        <td class="let"><span class="error"><?php echo $messageErr;?></span> </td>
+      </tr>
+    </table>
+
+		<input type="submit" name="submit_rating" value="Submit Rating">
+    
+
+	</form>
+
+
 </div>
 
-<?php include 'footer.php'; ?>
+</fieldset>
+
+
+
 
 </body>
 </html>
+
+<?php
+    include 'footer.php';
+   
+?>
