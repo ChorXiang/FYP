@@ -213,7 +213,7 @@
 <?php
 
 // Number of shoes to display per page
-$shoesPerPage = 3;
+$shoesPerPage = 4;
 
 // Determine the current page
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
