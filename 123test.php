@@ -5,14 +5,29 @@ $msg='';
 ?>
 
 <?php
-if (isset($_GET['link']) && isset($_GET['user_id'] )) {
-    $encodedLink = $_GET['link'];
-    $decodedLink = base64_decode($encodedLink);
-    $userId = $_GET['user_id'];
-    echo '<p>User ID: ' . $userId . '</p>';
-    echo '<a href="http://localhost/FYP/FYP/123testing.php' . $decodedLink . '">Go to the original link</a>';
+
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Retrieve the user input and store it in a session variable
+    $_SESSION['userInput'] = $_POST['inputField'];
+    // ... other processing of form data
 } else {
-    echo 'Invalid link';
+    // Check if the session variable exists and populate the input field with its value
+    if (isset($_SESSION['userInput'])) {
+        $userInput = $_SESSION['userInput'];
+    } else {
+        $userInput = ''; // Set a default value if the session variable doesn't exist
+    }
 }
+
 ?> 
+
+<body>
+<form method="POST" action="">
+    <input type="text" name="inputField" value="<?php echo $userInput; ?>">
+    <button type="submit">Submit</button>
+</form>
+
+</body>
 

@@ -6,6 +6,15 @@
 
 
 <?php
+    $nameErr="";
+    $emailErr="";
+    $pnErr="";
+    $addErr="";
+    $codeErr="";
+    $cardnumErr="";
+    $cardnameErr="";
+    $secodeErr="";
+    $clickErr="";
 
   if(isset($_POST['saveas']))
   {	 
@@ -23,10 +32,8 @@
     $mcardnum = $_POST['cardnum'];
     $mmcardnum = filter_var($mcardnum);
     $mcardname = $_POST['cardname'];
-    $mcardmonth = $_POST['cardmonth'];
-    $mmcardmonth = filter_var($mcardmonth);
-    $mcardyear = $_POST['cardyear'];
-    $mmcardyear = filter_var($mcardyear);
+    $mmonth = $_POST['month'];
+    $myear = $_POST['cardyear'];
     $msecurecode = $_POST['securecode'];
     $mmsecurecode = filter_var($msecurecode);
     $value = $_POST['option'];
@@ -35,199 +42,188 @@
     $price = $_POST['price'];
     $size = $_POST['size'];
     $qty = $_POST['quantity'];
-    
-    if (!$mname)
+
+    // $emailErr="Email is required and must use Correct Email Format ";
+    // $pnErr="Phone Number is required and must use Correct Phone Number Format";
+    // $addErr="Address is required";
+    // $codeErr="Postcode is required and must use Correct Post Code Format";
+    // $cardnumErr="Card Number is required and must uses Correct Card Number Format";
+    // $cardnameErr="Card Name is required";
+    // $secodeErr="Secure Code is required and must uses Correct Secure Code Format";
+    // $clickErr="Must agree the Terms and Conditions";
+
+    if (empty($mname)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name !</div>";
-        // $msg= "Please Key in Name !";
-        
+        $nameErr = "Name is required";
     }
-    else if(!$memail)
+    else 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email !</div>";
-        // $msg= "Please Key in Email !";
+        $nameErr ="";
+    }
+
+    if (empty($memail)) 
+    {
+        $emailErr="Email is required and must use Correct Email Format ";
     }
     else if(!filter_var($mmemail, FILTER_VALIDATE_EMAIL) === true)
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
+        $emailErr="Email is required and must use Correct Email Format ";
     }
-    else if(!$mph)
+    else 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Phone Number !</div>";
-        // $msg= "Please Key in Phone Number !";
+        $emailErr ="";
     }
-    else if(strlen($mmph)<10)
+
+    if (empty($mph)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
+        $pnErr="Phone Number is required and must use Correct Phone Number Format";
     }
-    else if(strlen($mmph)>12)
+    else 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Phone Number Format !</div>";
+        $pnErr="";
     }
-    else if(!$maddress)
+
+    if (empty($maddress)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Address !</div>";
-        // $msg= "Please select the payment method";
+        $addErr="Address is required";
     }
-    else if(!$mstate)
+    else 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in State !</div>";
-        // $msg= "Please select the payment method";
+        $addErr ="";
     }
-    else if(!$mpostcode)
+
+    if (empty($mpostcode)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Post Code !</div>";
-        // $msg= "Please select the payment method";
+        $codeErr="Postcode is required and must use Correct Post Code Format";
     }
+    else if (!is_numeric($mmpostcode)) 
+    {
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please enter a valid numeric Post Code!</div>";
+        $codeErr="Postcode is required and must use Correct Post Code Format";
+    } 
     else if(strlen($mmpostcode)<5)
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+        $codeErr="Postcode is required and must use Correct Post Code Format";
     }
     else if(strlen($mmpostcode)>5)
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Post Code Format !</div>";
+        $codeErr="Postcode is required and must use Correct Post Code Format";
     }
-    else if(!isset($_POST['tick']))
+    else 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
-        // $msg= "Must agree the Terms and Conditions";
+        $codeErr ="";
     }
-    else if($value==0)
+
+    if (empty($mcardnum)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the Payment Method</div>";
+        $cardnumErr="Card Number is required and must uses Correct Card Number Format";
     }
-    else if($value==1)
+    else if(strlen($mmcardnum )<16)
     {
-        if(!$mcardnum)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Card Number !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(strlen($mmcardnum )<16)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
-        }
-        else if(strlen($mmcardnum )>16)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
-        }
-        else if(!$mcardname)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Name of Card !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(!$mcardmonth)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Month ) !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if($mcardmonth>12)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Expiry Date ( Month ) Must less than 12 !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if($mcardmonth<0)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Expiry Date ( Month ) Must more than 1 !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(strlen($mmcardmonth)<2)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Month Format !</div>";
-        }
-        else if(strlen($mmcardmonth)>2)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Month Format !</div>";
-        }
-        // else if($mmcardmonth<13)
-        // {
-        //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Make Sure the Month Cannot Over 13 !</div>";
-        // }
-        else if(!$mcardyear)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Expiry Date ( Year ) !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if($mcardyear<22)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Expiry Date ( Year ) must more than 22 !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(strlen($mmcardyear)<2)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Year Format !</div>";
-        }
-        else if(strlen($mmcardyear)>2)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Year Format !</div>";
-        }
-        // else if($mmcardyear>22)
-        // {
-        //     $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Make Sure the Yaer is Above 22 Year !</div>";
-        // }
-        else if(!$msecurecode )
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Security Code !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(strlen($mmsecurecode)<3)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
-        }
-        else if(strlen($mmsecurecode)>3)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
-        }
-        else if(!isset($_POST['tick']))
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
-            // $msg= "Must agree the Terms and Conditions";
-        }
-        else
-        {
-            $k = 0;
-            $l = 0;
-            
-            // Generate a random number
-            $random = mt_rand(0, 100);
-            
-            $sql = "SELECT * FROM history WHERE user_id = '2'";
-            $result = mysqli_query($conn, $sql);
-            
-            while ($row = mysqli_fetch_array($result)) {
-                $before = $row["order_num"];
-            
-                if ($random == $before) {
-                    $l++;
-                    break;
-                }
-            }
-            
-            if ($l > 0) {
-                // The random number already exists in the database
-                // Generate a new random number and check again
-                $random = mt_rand(0, 100);
-            }
-            
-       
+      // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
+        $cardnumErr="Card Number is required and must uses Correct Card Number Format";
+    }
+    else if(strlen($mmcardnum )>16)
+    {
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Card Number Format !</div>";
+        $cardnumErr="Card Number is required and must uses Correct Card Number Format";
+    }
+    else 
+    {
+        $cardnumErr ="";
+    }
+
+    if (empty($mcardname)) 
+    {   
+        $cardnameErr="Card Name is required";
+    }
+    else 
+    {
+        $cardnameErr ="";
+    }
+
+    if (empty($msecurecode)) 
+    {
+        $secodeErr="Secure Code is required and must uses Correct Secure Code Format";
+    }
+    else if(strlen($mmsecurecode)<3)
+    {
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
+        $secodeErr="Secure Code is required and must uses Correct Secure Code Format";
+    }
+    else if(strlen($mmsecurecode)>3)
+    {
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Security Code Format !</div>";
+        $secodeErr="Secure Code is required and must uses Correct Secure Code Format";
+    }
+    else if (!is_numeric($mmsecurecode)) 
+    {
+     // $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please enter a valid numeric Post Code!</div>";
+        $secodeErr="Secure Code is required and must uses Correct Secure Code Format";
+    } 
+    else 
+    {
+        $secodeErr="";
+    }
+
+    if (!isset($_POST['tick'])) 
+    {
+        $clickErr="Must agree the Terms and Conditions";
+    }
+    else 
+    {
+        $clickErr ="";
+    }
+
+    // 
+
+    if($clickErr  == "" &&  $secodeErr=="" &&  $cardnameErr =="" && $codeErr =="" && $addErr =="" && $nameErr =="" &&  $pnErr=="" && $emailErr =="" && $cardnumErr =="")
+    {
+        
+        $k = 0;
+        $l = 0;
             
             
-            $sql = "SELECT * FROM orders where user_id = '$id'";
-            $msg = '';$total= 0; $subtotal=0;
-            $result = mysqli_query($conn, $sql);
+        $random = mt_rand(0, 100);
             
-            while($row = mysqli_fetch_array($result))
+        $sql = "SELECT * FROM history WHERE user_id = '2'";
+        $result = mysqli_query($conn, $sql);
+            
+        while ($row = mysqli_fetch_array($result)) 
+        {
+            $before = $row["order_num"];
+            
+            if ($random == $before) 
             {
-                $price = $row['price'];
-                $qty = $row['quantity'];
-                $subtotal=$price*$qty;
-                $total =  $total + $subtotal;     
+                $l++;
+                break;
             }
+        }
+            
+        if ($l > 0) 
+        {
+            $random = mt_rand(0, 100);
+        }
+            
+        $sql = "SELECT * FROM orders where user_id = '$id'";
+        $msg = '';$total= 0; $subtotal=0;
+        $result = mysqli_query($conn, $sql);
+            
+        while($row = mysqli_fetch_array($result))
+        {
+            $price = $row['price'];
+            $qty = $row['quantity'];
+            $subtotal=$price*$qty;
+            $total =  $total + $subtotal;     
+        }
             
             $sql = "SELECT * FROM orders where user_id = '$id'";
             $result = mysqli_query($conn, $sql);
 
-            while ($row = mysqli_fetch_array($result)) {
+            while ($row = mysqli_fetch_array($result)) 
+            {
               $shoesname = $row["shoesname"];
               $price = $row['price'];
               $size = $row['shoessize'];
@@ -259,90 +255,7 @@
               echo '<script>window.location.href = "order_his.php?user_id=' . $id . '";</script>';
             }
             
-
-
- 
-
-
-
-           
-            // if (mysqli_query($conn, $sql)) {
-                
-            //     // $msg = "<p>payment successfully !<br><a href='Homepage.php?email=$email'>Return Home page</p></a>";
-            //   } else {
-            //     $msg= "Error: " . $sql . "" . mysqli_error($conn);
-            //   }
-            //   mysqli_close($conn);
-        }
-        
     }
-
-    else if($value==2)
-    {
-        if(!$mewallet)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the E-Wallet !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if($select=='none')
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Select the E-Wallet !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(!$meemail)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Email for E-Wallet !</div>";
-            // $msg= "Please select the payment method";
-        }
-        else if(!filter_var($mmeemail, FILTER_VALIDATE_EMAIL) === true)
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Correct Email Format !</div>";
-        }
-        else if(!isset($_POST['tick']))
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Must agree the Terms and Conditions</div>";
-            // $msg= "Must agree the Terms and Conditions";
-        }
-        else
-        {
-        //     mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )");
-        //     $sql = "SELECT * FROM orders";
-        //     $result = mysqli_query($conn,$sql);
-        //    while($row = mysqli_fetch_array($result))
-        //    {
-        //        $shoesname = $row["shoesname"];
-        //        $price = $row['price'];
-        //        $size = $row['shoessize'];
-        //        $qty = $row['quantity'];
-        //        $id=$row['order_ID'];
-
-        //        mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email) VALUES ('$shoesname','$size','$qty','$price','$memail')");
-        //        mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$id'");
-
-        //    }
-        //     // $sql = "INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ' )";
-        //     $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";
-        
-            mysqli_query($conn,"INSERT INTO payment (his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,his_ewallet,his_eemail,user_id) VALUES ('$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$mewallet','$meemail ','$id '  )");
-            $sql = "SELECT * FROM orders where user_id = '$id'";
-            $result = mysqli_query($conn,$sql);
-           while($row = mysqli_fetch_array($result))
-           {
-               $shoesname = $row["shoesname"];
-               $price = $row['price'];
-               $size = $row['shoessize'];
-               $qty = $row['quantity'];
-               $idd=$row['order_ID'];
-
-               mysqli_query($conn,"INSERT INTO history (her_shoesname,her_size,her_quantity,her_price,her_email,user_id) VALUES ('$shoesname','$size','$qty','$price','$memail','$id ')");
-               mysqli_query($conn,"DELETE FROM orders WHERE order_ID='$idd'&&user_id= '$id' ");
-               
-               $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>payment successfully !</div>";           
-           }
-        }
-    }
-
-
 
 
     
@@ -357,7 +270,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Payment</title>
     <style>
-
+        .error 
+        {
+        color: #FF0000;
+        }
         .middlee
         {
             max-width: 1500px;
@@ -483,13 +399,16 @@
                         <form name="from1"  method="post" action=""  >
                             <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
                             <input type="text" name="Fullname" placeholder="Ali Lee">
+                            <div class="error"><?php echo $nameErr;?></div><br>
 
                             <p id="full" style="font-size:0.8em; color:red"></p>
                             <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
                             <input type="text" name="Email" placeholder="AliLee@example.com">
+                            <div class="error"><?php echo $emailErr;?></div><br>
 
                             <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
-                            <input type="text" name="Phonenumber" placeholder="012-3456789">
+                            <input type="text" name="Phonenumber" placeholder="0123456789">
+                            <div class="error"><?php echo $pnErr;?></div><br>
                         <!-- </form> -->
                             
                     </fieldset>
@@ -549,6 +468,7 @@
                                 <!-- <form action="" method="POST">  -->
                                     <label for="address" ><i class="fa fa-address-book"></i>UNIT NO & STREET ADDRESS : <sup>*</sup></label>
                                     <input type="text" name="address" placeholder="12, Jalan Semabok 1/1, Taman Semabok sek 1, 75450 Semabok">
+                                    <div class="error"><?php echo $addErr;?></div><br>
 
                                     <label for="state"  ><i class="fa fa-address-book"></i>STATE : <sup>*</sup></label>
                                         <select id="state" name="state">
@@ -568,6 +488,7 @@
                                     
                                     <label for="postcode" ><i class="fa fa-address-book"></i>POSTAL CODE : <sup>*</sup></label>
                                     <input type="text" name="postcode" placeholder="75450">
+                                    <div class="error"><?php echo $codeErr;?></div>
                                 <!-- </form> -->
                             </fieldset>
                         </div>
@@ -580,16 +501,49 @@
                             <div id="inputDiv" style="display:block;">
                                     <label for="userInput">CARD NUMBER : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="cardnum" placeholder="1111222233334444" maxlength="16">
+                                    <div class="error"><?php echo $cardnumErr;?></div><br>
 
                                     <label for="userInput">NAME ON CARD : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="cardname">
+                                    <div class="error"><?php echo $cardnameErr;?></div><br>
 
-                                    <label for="userInput">EXPIRY DATE : <sup>*</sup></label>
-                                    <input type="text" id="cuserInput" name="cardmonth" placeholder="Month">
-                                    <input type="text" id="userInput" name="cardyear" placeholder="Year">
+
+                                    <label for="userInput">EXPIRY DATE (Month) : <sup>*</sup></label>
+                                        <select id="month" name="month">
+                                            <option value="01">01</option>
+                                            <option value="01">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
+
+                                        <label for="userInput">EXPIRY DATE (Year) : <sup>*</sup></label>
+                                        <select id="cardyear" name="cardyear">
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                            <option value="32">32</option>
+                                            <option value="33">33</option>
+                                            <option value="34">34</option>
+                                        </select>
+
 
                                     <label for="userInput">SECURITY CODE : <sup>*</sup></label>
                                     <input type="text" id="userInput" name="securecode" placeholder="123">
+                                    <div class="error"><?php echo $secodeErr;?></div><br>
                             </div>
                        <!-- </form> -->
 
@@ -647,6 +601,7 @@
 
                         <label><br>
                             <input type="checkbox" name="tick" > By clicking on, you agree to F O O T's <a href="#" class="paymentlink"><u> Terms and Conditions. </u></a><br> <br>
+                            <div class="error"><?php echo $clickErr;?></div><br>
                             <input type="checkbox" checked="checked"> Notify me the latest promotion through email.<br>
                         </label>
         
