@@ -397,16 +397,16 @@
                 <div class="box">
                     <fieldset>
                         <form name="from1"  method="post" action=""  >
-                            <label for="fname" ><i class="fa fa-user"></i>Full Name : <sup>*</sup></label>
+                            <label for="fname" ><i class="fa fa-user"></i>(Recipient) Full Name : <sup>*</sup></label>
                             <input type="text" name="Fullname" placeholder="Ali Lee">
                             <div class="error"><?php echo $nameErr;?></div><br>
 
                             <p id="full" style="font-size:0.8em; color:red"></p>
-                            <label for="email"><i class="fa fa-envelope"></i>Email : <sup>*</sup></label>
+                            <label for="email"><i class="fa fa-envelope"></i>(Recipient) Email : <sup>*</sup></label>
                             <input type="text" name="Email" placeholder="AliLee@example.com">
                             <div class="error"><?php echo $emailErr;?></div><br>
 
-                            <label for="fname"><i class="fa fa-phone"></i>Phone number : <sup>*</sup></label>
+                            <label for="fname"><i class="fa fa-phone"></i>(Recipient) Phone number : <sup>*</sup></label>
                             <input type="text" name="Phonenumber" placeholder="0123456789">
                             <div class="error"><?php echo $pnErr;?></div><br>
                         <!-- </form> -->
