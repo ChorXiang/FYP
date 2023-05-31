@@ -13,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <style>
   .error {
   color: #FF0000;
@@ -120,7 +119,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
   <div class="right">
     <span class="left">
       <a href="addmanageshoes.php?admin_id=<?php echo $id ?>" alt="insert">
-        <i class="fas fa-plus" style="font-size: 24px;"></i>
+        <i class="fa fa-plus" style="font-size: 24px;"></i>
         <input type="button" value="Add New Shoe" style="margin-left: 10px;">
       </a>
     </span><br><br>
@@ -161,7 +160,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
 
   <span class="floatright">
     <a href="reportshoes.php?admin_id=<?php echo $id ?>" alt="insert">
-      <i class="fas fa-print" style="font-size: 24px;"></i>
+      <i class="fa fa-print" style="font-size: 24px;"></i>
       <input type="button" value="View and Print Report" style="margin-left: 10px;">
     </a>
   </span>
