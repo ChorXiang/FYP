@@ -77,7 +77,7 @@
 }
 
 .product-card {
-  width: calc((100% / 3) - 20px);
+  width: 335px;
   margin: 20px;
   padding: 20px;
   border: 1px solid #ddd;
