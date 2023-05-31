@@ -7,7 +7,14 @@
 
 
 <?php
-
+    $cp="";
+    $np="";
+    $cnp="";
+    $ccp="";
+    $nnp="";
+    $ccnp="";
+    $cccnp="";
+    $ccccnp="";
 
 if (isset($_POST["savebtn"])) 	
 {
@@ -15,62 +22,83 @@ if (isset($_POST["savebtn"]))
     $newpass = $_POST["newpass"];  
 	$comnewpass = $_POST["comnewpass"];  	
     $cpass =  $_POST["userpassword"];  	  
-                                                             
+                    
+    if (empty($pass)) 
+    {
+        $cp = "password is required";
+        $ccp="*";
+    }
+    else 
+    {
+        $cp ="";
+    }
 
-    if (!$pass)
+    if (empty($newpass)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Enter the Correct Current Password !</div>";
-        // echo "";
-    }
-    else if(!$newpass)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Enter the New Password !</div>";
-        // echo "Please Key in Email !";
-    }
-    else if(!$comnewpass)
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Enter the New Comfirm Password !</div>";
-        // echo "Please Key in Phone Number !";
+        $np = "new password is required";
+        $nnp="*";
     }
     else if (strlen($newpass) < 6) 
     {
-        // $passErr = '';
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must be at least 6 characters long !</div>";
+        $np = "new password is required and at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol";
+        $nnp="*"; 
+        $cccnp=".";
     } 
     else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/",$newpass)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must contain at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol !</div>";
-        // $passErr = '';
+        $np = "new password is required and at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol";
+        $nnp="*"; 
+        $cccnp=".";
+    }
+    else 
+    {
+        $np ="";
+    }
+
+    if (empty($comnewpass)) 
+    {
+        $ccnp="*";
+        $cnp = "comfirm password is required";
     }
     else if (strlen($comnewpass) < 6) 
     {
-        // $passErr = '';
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must be at least 6 characters long !</div>";
+        $cnp = "comfirm password is required and at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol";
+        $ccnp="*";
+        $ccccnp="."; 
     } 
     else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,}$/",$comnewpass)) 
     {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Password must contain at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol !</div>";
-        // $passErr = '';
+        $cnp = "comfirm password is required and at least 6 characters, 1 uppercase letter, 1 number, and 1 symbol";
+        $ccnp="*";
+        $ccccnp="."; 
     }
-    else if($comnewpass == $newpass)
+    else if ($comnewpass !== $newpass) 
     {
-        if($cpass==$pass)
-        {
-            mysqli_query($conn,"UPDATE user set userpassword='" . $_POST['newpass'] . "', confirm_password='" . $_POST['comnewpass'] . "' where user_id = '$id' ");
-                                                                                                                                                      
-            $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
+        $cnp = "Confirm password must match the new password";
+        $ccnp = "*";
+    }
+    else 
+    {
+        $cnp ="";
+    }
+
+    if($cnp =="" && $np =="" && $cp =="")
+    {
+
+            if($cpass==$pass)
+            {
+                mysqli_query($conn,"UPDATE user set userpassword='" . $_POST['newpass'] . "', confirm_password='" . $_POST['comnewpass'] . "' where user_id = '$id' ");
+                                                                                                                                                          
+                $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Updated successfully !</div>";
+        
+            }
+            else 
+            {
+                $cp = "current password not correct";
+                $ccp="*";
+            }
     
-        }
-        else
-        {
-            $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Current Password not Correct !</div>";
-        
-        }
-    } 
-    else
-    {
-        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>New Password and Comfirm Passwprd not Match !</div>";
-        
+
     }
 
 }
@@ -107,7 +135,7 @@ if (isset($_POST["savebtn"]))
     }
     .box3 
     {
-     width: 20%;
+     width: 50%;
      height: 120px;
      margin:6px;
      text-align:left;
@@ -129,6 +157,10 @@ if (isset($_POST["savebtn"]))
      display: flex;
      flex-wrap: wrap;
      }
+     .error 
+        {
+        color: #FF0000;
+        }
     </style>
 
 </head>
@@ -157,25 +189,33 @@ if (isset($_POST["savebtn"]))
                     </div>
 
                     <div class="box4">
-                        <label>Current Password<sup>*</sup> : </label><br><br>
+                        <div class="error"><?php echo $ccp;?></div>
+                        <label>Current Password<sup></sup> : </label><br><br>
 
-                        <label>New Password<sup>*</sup> : </label><br><br>
+                        <div class="error"><?php echo $cccnp;?></div>
+                        <div class="error"><?php echo $nnp;?></div>
+                        <label>New Password<sup></sup> : </label><br><br>
 
-                        <label>Confirm New Password<sup>*</sup> : </label>
+                        <div class="error"><?php echo $cccnp;?></div>
+                        <div class="error"><?php echo $ccnp;?></div>
+                        <label>Confirm New Password<sup></sup> : </label>
                         <label for="admin_password"></label>
                     </div>
 
                     <div class="box3">
+                        <div class="error" ><?php echo $cp;?></div>
                         <input type="password" name="pass" size="50" ><br><br>
 
+                        <div  class="error"><?php echo $np;?></div>
                         <input type="password" name="newpass" size="50" ><br><br>
                         
+                        <div  class="error"><?php echo $cnp;?></div>
                         <input type="password" name="comnewpass" size="50" >
                     </div>
                     <input type="hidden" name="userpassword" value="<?php echo $row["userpassword"]?>"> 
 
              </div>
-                   <p><input type="submit" name="savebtn" value="SAVE">   
+                  <br><br><br><br><p><input type="submit" name="savebtn" value="SAVE">   
 		</form>
 
     </div>
