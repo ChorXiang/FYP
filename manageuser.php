@@ -104,7 +104,7 @@
 <p>
         
     
-      <span class="left" ><a href="reportuser.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span class="left" ><a href="reportuser.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fa fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
 
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 

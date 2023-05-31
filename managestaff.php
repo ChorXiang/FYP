@@ -74,7 +74,7 @@
         // $host_image = mysqli_fetch_assoc($query);
         ?>
       <h1><i class="fa fa-address-book-o" style="font-size:50px"></i><b style="font-size: 50px;"> Manage Admin </b></h1>
-      <span class="floatright" ><a href="addmanagestaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
+      <span class="floatright" ><a href="addmanagestaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fa fa-plus' style="margin-left: 10px; 'font-size:24px'"> </i><input type="button" value="Add New Admin"></a></span></p>
 
       <table border="0px">
         <tr>
@@ -109,7 +109,7 @@
 <p>
         
     <div class="floatright">
-      <span><a href="reportstaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fas fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
+      <span><a href="reportstaff.php?admin_id=<?php echo $id ?>" alt="insert"> <i class='fa fa-print' style='font-size:24px'></i> <input type="button" value="View and Print Report"></span></p>
       </div>
       <!-- <span class="left"><br><button onclick="window.print()" header="">Generate User List</button></span> -->
 
