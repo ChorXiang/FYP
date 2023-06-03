@@ -152,147 +152,82 @@
 }
 
 </style>
+
+
 <body>
-
-<!-- <div class="container">
-    
-      <nav>
-        <ul>
-        
-
-       
-  <?php
-  $result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes where status='active'");
-
-  // Loop through the unique categories and generate HTML code for each category
-  while ($row = mysqli_fetch_assoc($result)) 
-  {
-    echo '<a href="productlist.php?category=' . $row['category'] . '"><h2>' . $row['category'] . '&&user_id=<?php echo $id ?></h2></a>';
-  }
-// Retrieve the unique shoe categories
-$result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes ");
-
-
-
-// Loop through the unique categories and generate HTML code for each category
-while ($row = mysqli_fetch_assoc($result)) 
-{
-  echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '"><h2>' . $row['shoe_type'] . '&&user_id=<?php echo $id ?></h2></a>';
- 
-}
-
-// <?php
-// $result = mysqli_query($conn, "SELECT DISTINCT category FROM shoes where status='active'");
-
-// // Loop through the unique categories and generate HTML code for each category
-// while ($row = mysqli_fetch_assoc($result)) {
-//   echo '<a href="productlist.php?category=' . $row['category'] . '&user_id=' . $id . '"><h2>' . $row['category'] . '</h2></a>';
-// }
-
-// // Retrieve the unique shoe categories
-// $result = mysqli_query($conn, "SELECT DISTINCT shoe_type FROM shoes");
-
-// // Loop through the unique categories and generate HTML code for each category
-// while ($row = mysqli_fetch_assoc($result)) {
-//   echo '<a href="productlist.php?shoe_type=' . $row['shoe_type'] . '&user_id=' . $id . '"><h2>' . $row['shoe_type'] . '</h2></a>';
-// }
-// ?>
-
-?> 
-        </ul>
-      </nav>-->
-   
 <div class="product-list">
-			<?php
-
-if (isset($_GET['category'])) {
-  $category = $_GET['category'];
-
-
-  $result = mysqli_query($conn, "SELECT * FROM shoes WHERE category='$category'&&status='active'");
-  $resultbrand = null; 
-
-  
-
-} else if (isset($_GET['shoe_brand'])) {
-  $shoe_brand = $_GET['shoe_brand'];
-
-
-  $result = null; 
-  $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand'&&status='active'");
-
-} else if (isset($_GET['shoe_type'])) {
-  $shoe_type = $_GET['shoe_type'];
-
-
-  $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type'&&status='active'");
-  $resultbrand = null; 
-
-} else {
-  $result = mysqli_query($conn, "SELECT * FROM shoes where status='active'");
-  $resultbrand = null; 
-}
-
-
-
-if (isset($_SESSION['user_id'])) {  $id =$_GET['user_id'];   
-
-
-if ($result && mysqli_num_rows($result) > 0) { 
-  
-  while ($row = mysqli_fetch_assoc($result)) {
-      $sid = $row['shoe_id'];
-      echo '<div class="product-card">';
-      ?>
-      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-      <?php
-      echo '<h2>' . $row['category'] . '</h2>';
-      ?>
-      <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-      <?php
-      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-      echo '</div>';
-  }
-} elseif ($resultbrand && mysqli_num_rows($resultbrand) > 0) { 
-  while ($row = mysqli_fetch_assoc($resultbrand)) {
-      $sid = $row['shoe_id'];
-      echo '<div class="product-card">';
-      ?>
-      <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
-      <?php
-      echo '<h2>' . $row['category'] . '</h2>';
-      ?>
-      <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-      <?php
-      echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-      echo '</div>';
-  }
-} else {
-  echo '<p>No shoes found.</p>';
-}
-
- } else { while ($row = mysqli_fetch_assoc($result)) {
-  $sid = $row['shoe_id'];
-  echo '<div class="product-card">';
-  ?>
-  <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
   <?php
-  echo '<h2>' . $row['category'] . '</h2>';
-  ?>
-  <p><a href="productpage.php?shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
-  <?php
-  echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
-  echo '</div>';
-} }
+    if (isset($_GET['category'])) {
+      $category = $_GET['category'];
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE category='$category' && status='active'");
+      $resultbrand = null;
+    } else if (isset($_GET['shoe_brand'])) {
+      $shoe_brand = $_GET['shoe_brand'];
+      $result = null;
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand' && status='active'");
+    } else if (isset($_GET['shoe_type'])) {
+      $shoe_type = $_GET['shoe_type'];
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type' && status='active'");
+      $resultbrand = null;
+    } else {
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE status='active'");
+      $resultbrand = null;
+    }
 
-
+    if (isset($_SESSION['user_id'])) {
+      $id = $_GET['user_id'];
+      
+      if ($result && mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+          $sid = $row['shoe_id'];
+          echo '<div class="product-card">';
+          ?>
+          <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+          <?php
+          echo '<h2>' . $row['category'] . '</h2>';
+          ?>
+          <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+          <?php
+          echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+          echo '</div>';
+        }
+      } elseif ($resultbrand && mysqli_num_rows($resultbrand) > 0) {
+        while ($row = mysqli_fetch_assoc($resultbrand)) {
+          $sid = $row['shoe_id'];
+          echo '<div class="product-card">';
+          ?>
+          <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+          <?php
+          echo '<h2>' . $row['category'] . '</h2>';
+          ?>
+          <p><a href="productpage.php?user_id=<?php echo $id ?>&amp;shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+          <?php
+          echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+          echo '</div>';
+        }
+      } else {
+        echo '<p>No shoes found.</p>';
+      }
+    } else {
+      while ($row = mysqli_fetch_assoc($result)) {
+        $sid = $row['shoe_id'];
+        echo '<div class="product-card">';
+        ?>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"]; ?>" class="imgcenter">
+        <?php
+        echo '<h2>' . $row['category'] . '</h2>';
+        ?>
+        <p><a href="productpage.php?shoe_id=<?php echo $sid ?>"><?php echo $row["shoe_name"]; ?></a></p>
+        <?php
+        echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
+        echo '</div>';
+      }
+    }
   ?>
-		</div>
-	</div>
+</div>
 </body>
 </html>
 
 <?php
-    include 'footer.php';
-   
+  include 'footer.php';
 ?>
