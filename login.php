@@ -66,7 +66,7 @@ body {
   background-color: #f2f2f2;
 }
 
-/* Form container */
+
 .form-container {
   background-color: #fff;
   border-radius: 5px;
@@ -76,7 +76,7 @@ body {
   padding: 30px;
 }
 
-/* Form elements */
+
 .input-group {
   display: flex;
   flex-direction: column;
