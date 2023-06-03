@@ -1,5 +1,5 @@
 <?php
-// include database connection file
+
 include_once 'conn.php';
 
 $emailErr = $fullnameErr = $contactErr = $existsErr = "";
@@ -11,7 +11,7 @@ $postcode = $username = $pass = $cpass = "";
 
 if (isset($_POST['signupbtn'])) {
 
-    // insert user data into database
+    
     if (empty($_POST["full_name"])) {
         $fullnameErr = 'Full Name is required';
     } else {
@@ -65,13 +65,13 @@ if (isset($_POST['signupbtn'])) {
 
         $result = mysqli_query($conn, "SELECT * FROM `user` WHERE `email_address`='$email'");
         if (mysqli_num_rows($result) > 0) {
-            // Display error message and stop further processing
+            
             $msg = "<div class='error-msg'>Email address is already registered. Please choose a different email address.</div>";
         } else {
             if ($pass !== $cpass) {
                 $NotmatchErr = 'Password does not match with confirm password!';
             } else {
-                // Insert new user record
+          
                 $fullname = test_input($_POST["full_name"]);
                 $contact = test_input($_POST['contact_no']);
                 $username = test_input($_POST['username']);
@@ -83,7 +83,7 @@ if (isset($_POST['signupbtn'])) {
                 $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
 
                 if (mysqli_query($conn, $sql)) {
-                    // Display success message and redirect to login.php
+                   
                     $msg = "<div class='success-msg'>Successfully registered!</div>";
 
                     echo '<script>alert("Registered Successfully!");</script>';
@@ -95,7 +95,7 @@ if (isset($_POST['signupbtn'])) {
                         confirmRedirect();
                     </script>';
                 } else {
-                    // Display error message if the query fails
+                    
                     $msg = "<div class='error-msg'>Error: " . mysqli_error($conn) . "</div>";
                 }
             }
@@ -126,7 +126,6 @@ function test_input($data)
             background-color: #f7f7f7;
         }
 
-        /* Form container */
         .form-container {
             max-width: 500px;
             margin: 0 auto;
@@ -135,7 +134,7 @@ function test_input($data)
             border-radius: 5px;
         }
 
-        /* Form header */
+   
         .form-container h2 {
             margin-top: 0;
             margin-bottom: 20px;
@@ -144,21 +143,21 @@ function test_input($data)
             text-align: center;
         }
 
-        /* Error message */
+  
         .error-msg {
             color: #FF0000;
             margin-top: 5px;
             font-size: 14px;
         }
 
-        /* Success message */
+   
         .success-msg {
             color: #008000;
             margin-top: 5px;
             font-size: 14px;
         }
 
-        /* Input fields */
+
         .input-group {
             margin-bottom: 20px;
         }
@@ -172,7 +171,7 @@ function test_input($data)
             box-sizing: border-box;
         }
 
-        /* Submit button */
+  
         .submit-btn {
             width: 100%;
             padding: 10px;
@@ -188,7 +187,7 @@ function test_input($data)
             background-color: #3e8e41;
         }
 
-        /* Login link */
+
         p a {
             color: #4CAF50;
             text-decoration: none;
