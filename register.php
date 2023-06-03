@@ -253,11 +253,7 @@ if (isset($_POST['signupbtn'])) {
                         <span class="error-msg"><?php echo $emailErr; ?></span>
                     </div>
 
-                    <div class="input-group">
-                        <label>Username :</label>
-                        <input type="text" name="username" placeholder="Enter your username" class="input-field">
-                        <span class="error-msg"><?php echo $usernameErr; ?></span>
-                    </div>
+                  
 
                     <div class="input-group">
                         <label>Password :</label>
