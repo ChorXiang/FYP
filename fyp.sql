@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2023 at 09:45 AM
+-- Generation Time: Jun 05, 2023 at 08:55 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -32,15 +32,15 @@ CREATE TABLE `admin` (
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) NOT NULL,
   `admin_name` varchar(255) NOT NULL,
-  `secure` int(6) NOT NULL,
+  `secure` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `secure') VALUES
-(1, '1@gmail.com', '123', '123123');
+INSERT INTO `admin` (`admin_id`, `admin_email`, `admin_password`, `admin_name`, `secure`) VALUES
+(1, '1@gmail.com', '123', 'admin1', 123456);
 
 -- --------------------------------------------------------
 
@@ -64,10 +64,7 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`comment_id`, `email`, `user_interface_rating`, `shipping_rating`, `customer_service_rating`, `product_quality_rating`, `message`, `created_at`) VALUES
-(24, 'muphysly@gmail.com', 5, 5, 5, 5, 'test', '2023-03-27 14:51:06'),
-(40, 'dasd@gmail.com', 2, 1, 2, 2, 'Hi ', '2023-05-18 08:12:49'),
-(41, 'dasd@gmail.com', 1, 1, 1, 1, 'dsa', '2023-05-18 08:16:31'),
-(42, 'dasd@gmail.com', 1, 1, 1, 1, 'dsa', '2023-05-18 08:16:43');
+(44, '456@gmail.com', 5, 5, 5, 5, 'nice website', '2023-06-05 06:45:58');
 
 -- --------------------------------------------------------
 
@@ -81,7 +78,7 @@ CREATE TABLE `history` (
   `her_shoesname` varchar(50) NOT NULL,
   `her_size` varchar(10) NOT NULL,
   `her_quantity` int(11) NOT NULL,
-  `her_price` int(11) NOT NULL,
+  `her_price` decimal(10,2) NOT NULL,
   `her_email` varchar(30) NOT NULL,
   `user_id` int(11) NOT NULL,
   `order_status` varchar(20) NOT NULL DEFAULT 'Pending',
@@ -106,9 +103,9 @@ CREATE TABLE `history` (
 --
 
 INSERT INTO `history` (`her_id`, `order_num`, `her_shoesname`, `her_size`, `her_quantity`, `her_price`, `her_email`, `user_id`, `order_status`, `her_date`, `shoe_image`, `his_name`, `his_email`, `his_pn`, `his_address`, `his_state`, `his_code`, `his_cardnum`, `his_cardname`, `his_cardmonth`, `his_cardyear`, `his_securecode`, `total`) VALUES
-(23, 77, 'Nike Air Max 90', '8', 3, 130, 'dasd@gmail.com', 2, 'Delivering', '2023-05-18', 'nike_air_max_90.png', 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111111111111111', 'test', '12', '54', '541', 0),
-(31, 16, 'Air Jordan', '8.5', 1, 420, 'dasd@gmail.com', 2, 'Pending', '2023-05-24', 'jordan.png', 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111111111111111', 'test', '11', '43', '123', 840),
-(32, 16, 'Air Jordan', '9', 1, 420, 'dasd@gmail.com', 2, 'Pending', '2023-05-24', 'jordan.png', 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111111111111111', 'test', '11', '43', '123', 840);
+(23, 77, 'Nike Air Max 90', '8', 3, '130.00', 'dasd@gmail.com', 2, 'Delivering', '2023-05-18', 'nike_air_max_90.png', 'a', 'dasd@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '11111', '1111111111111111', 'test', '12', '54', '541', 390),
+(33, 92, 'Adidas Ultraboost', '7', 1, '150.00', 'chorxiang@gmail.com', 29, 'Pending', '2023-05-30', 'adidas.png', 'a', 'chorxiang@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '12345', '1111222244445555', 'Ali', '01', '23', '123', 210),
+(34, 92, 'Taylor All Star', '7', 1, '60.00', 'chorxiang@gmail.com', 29, 'Pending', '2023-05-30', 'convers.png', 'a', 'chorxiang@gmail.com', '0123456789', '12, Jalan haha, Taman haha ,Semabok', 'melaka', '12345', '1111222244445555', 'Ali', '01', '23', '123', 210);
 
 -- --------------------------------------------------------
 
@@ -129,10 +126,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `subject`, `message`) VALUES
-(1, 'testing', 'test@gmail.com', 'no', 'no'),
-(2, 'key', 'test@gmail.com', 'key', 'key'),
-(4, 'a', 'dasd@gmail.com', 'after', 'after'),
-(9, 'a', 'dasd@gmail.com', 'Tan', 'Tan');
+(14, 'Edman lim', '456@gmail.com', 'Got extra stock for size UK 8 for nike air force ', 'Got extra stock for size UK 8 for nike air force ');
 
 -- --------------------------------------------------------
 
@@ -143,22 +137,16 @@ INSERT INTO `messages` (`id`, `name`, `email`, `subject`, `message`) VALUES
 CREATE TABLE `orders` (
   `order_ID` int(30) NOT NULL,
   `shoesname` varchar(30) NOT NULL,
-  `price` int(30) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `quantity` int(30) NOT NULL,
   `shoessize` varchar(10) NOT NULL,
   `user_id` int(11) NOT NULL,
   `pro_id` varchar(11) NOT NULL,
   `stock` int(50) NOT NULL,
-  `shoe_image` varchar(255) NOT NULL
+  `shoe_image` varchar(255) NOT NULL,
+  `shoe_brand` varchar(30) NOT NULL,
+  `status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`order_ID`, `shoesname`, `price`, `quantity`, `shoessize`, `user_id`, `pro_id`, `stock`, `shoe_image`) VALUES
-(278, 'Adidas Ultraboost', 150, 1, '7', 2, '2', 0, 'adidas.png'),
-(279, 'Taylor All Star', 60, 1, '7', 2, '3', 1, 'convers.png');
 
 -- --------------------------------------------------------
 
@@ -201,7 +189,7 @@ CREATE TABLE `shoes` (
   `shoe_name` varchar(255) NOT NULL,
   `shoe_type` varchar(50) NOT NULL,
   `shoe_brand` varchar(50) NOT NULL,
-  `category` enum('man','women') NOT NULL,
+  `category` enum('men','women') NOT NULL,
   `shoe_image` varchar(255) NOT NULL,
   `shoe_price` decimal(10,2) NOT NULL,
   `status` enum('active','inactive') NOT NULL DEFAULT 'active'
@@ -212,12 +200,14 @@ CREATE TABLE `shoes` (
 --
 
 INSERT INTO `shoes` (`shoe_id`, `shoe_name`, `shoe_type`, `shoe_brand`, `category`, `shoe_image`, `shoe_price`, `status`) VALUES
-(1, 'Nike Air Max 90', 'Casual Shoes', 'Nike', 'man', 'nike_air_max_90.png', '129.99', 'active'),
+(1, 'Nike Air Max 90', 'Casual Shoes', 'Nike', 'men', 'nike_air_max_90.png', '129.99', 'active'),
 (2, 'Adidas Ultraboost', 'Running Shoes', 'Adidas', 'women', 'adidas.png', '149.99', 'active'),
-(3, 'Taylor All Star', 'Running Shoes', 'Converse', 'man', 'convers.png', '59.99', 'active'),
-(4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'man', 'puma.png', '79.99', 'active'),
+(3, 'Taylor All Star', 'Running Shoes', 'Converse', 'men', 'convers.png', '59.99', 'active'),
+(4, 'Puma Suede Classic', 'Sneakers', 'Puma', 'men', 'puma.png', '79.99', 'active'),
 (6, 'Air Jordan', 'lifestyle', 'Nike', 'women', 'jordan.png', '420.00', 'active'),
-(7, 'test', 'Running Shoes', 'Nike', 'man', 'test.jpeg', '111.00', 'active');
+(8, 'Nike Invincible 3', 'Running Shoes', 'Nike', 'men', 'invincible3.png', '799.00', 'active'),
+(9, 'Nike Air Force', 'Lifestyle', 'Nike', 'men', 'airforce.png', '489.00', 'active'),
+(10, 'Adidas Ultra 4D', 'Running Shoes', 'Adidas', 'men', 'ultra.png', '274.75', 'active');
 
 -- --------------------------------------------------------
 
@@ -246,12 +236,14 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`shoe_id`, `size_7`, `size_7_5`, `size_8`, `size_8_5`, `size_9`, `size_9_5`, `size_10`, `size_10_5`, `size_11`, `size_11_5`, `size_12`, `size_12_5`) VALUES
-(1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1),
+(1, 50, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1),
 (2, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1),
-(3, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0),
+(3, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0),
 (4, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1),
-(5, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 5),
-(6, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0);
+(6, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 2),
+(8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(9, 5, 5, 5, 5, 6, 3, 8, 5, 10, 3, 8, 9),
+(10, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -277,8 +269,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `username`, `userpassword`, `confirm_password`, `image`, `status`) VALUES
 (1, 'abccccc', '0123456789', '123@gmail.com', 'elwin', '123', ' 123', 'love.png', 'inactive'),
-(2, 'abccccc', '0123456789', '456@gmail.com', '123', '234', '234', 'profile.jpg', 'active'),
-(21, 'a', '0123456789', 'bba712412@gmail.com', 'test', 'Aqwerty1@', 'Aqwerty1@', 'profile.jpg', 'active');
+(2, 'abcccccccccc', '0123456789', '456@gmail.com', '123', '234', '234', 'profile.jpg', 'active'),
+(29, 'Ali', '01123654987', 'ali@gmail.com', 'Ali2', 'Qwe12#', 'Qwe12#', 'profile.jpg', 'active');
 
 -- --------------------------------------------------------
 
@@ -289,13 +281,24 @@ INSERT INTO `user` (`user_id`, `full_name`, `contact_no`, `email_address`, `user
 CREATE TABLE `wishlist` (
   `wish_id` int(11) NOT NULL,
   `shoesname` varchar(30) NOT NULL,
-  `price` int(30) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `size` varchar(30) NOT NULL,
   `stock` int(11) NOT NULL,
   `pro_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `shoe_image` varchar(255) NOT NULL
+  `shoe_image` varchar(255) NOT NULL,
+  `status` varchar(30) NOT NULL,
+  `shoe_brand` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`wish_id`, `shoesname`, `price`, `size`, `stock`, `pro_id`, `user_id`, `shoe_image`, `status`, `shoe_brand`) VALUES
+(69, 'Nike Air Max 90', '5.00', '7', 1, 1, 2, 'nike_air_max_90.png', 'active', 'Nike'),
+(70, 'Nike Air Max 90', '5.00', '7', 1, 1, 27, 'nike_air_max_90.png', 'active', 'Nike'),
+(71, 'Adidas Ultraboost', '150.00', '7', 3, 2, 27, 'adidas.png', 'active', 'Adidas');
 
 --
 -- Indexes for dumped tables
@@ -375,25 +378,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `her_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
+  MODIFY `order_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=316;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -405,19 +408,19 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `shoes`
 --
 ALTER TABLE `shoes`
-  MODIFY `shoe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `shoe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `user_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `wish_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
