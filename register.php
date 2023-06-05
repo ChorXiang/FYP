@@ -30,11 +30,11 @@ if (isset($_POST['signupbtn'])) {
         $email = test_input($_POST['email_address']);
     }
 
-    if (empty($_POST['username'])) {
-        $usernameErr = 'Username is required';
-    } else {
-        $username = test_input($_POST['username']);
-    }
+    // if (empty($_POST['username'])) {
+    //     $usernameErr = 'Username is required';
+    // } else {
+    //     $username = test_input($_POST['username']);
+    // }
 
     if (empty($_POST['userpassword'])) {
         $passErr = 'Password is required';
@@ -74,13 +74,13 @@ if (isset($_POST['signupbtn'])) {
           
                 $fullname = test_input($_POST["full_name"]);
                 $contact = test_input($_POST['contact_no']);
-                $username = test_input($_POST['username']);
+                // $username = test_input($_POST['username']);
                 $pass = test_input($_POST['userpassword']);
                 $cpass = test_input($_POST['confirm_password']);
                 $img = test_input($_POST['img']);
                 $status = test_input($_POST['status']);
 
-                $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
+                $sql = "INSERT INTO user (full_name, email_address, contact_no, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$pass', '$cpass', '$img', '$status')";
 
                 if (mysqli_query($conn, $sql)) {
                    
@@ -209,14 +209,14 @@ if (isset($_POST['signupbtn'])) {
     $email = $_POST['email_address'];
     $fullname = $_POST['full_name'];
     $contact = $_POST['contact_no'];
-    $username = $_POST['username'];
+    // $username = $_POST['username'];
     $pass = $_POST['userpassword'];
     $cpass = $_POST['confirm_password'];     
     $img = $_POST['img']; 
     $status = $_POST['status'];                                 
 
-    if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $usernameErr == "" && $passErr == "" && $CompassErr == "" && $NotmatchErr == "") {
-        $sql = "INSERT INTO user (full_name, email_address, contact_no, username, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$username', '$pass', '$cpass', '$img', '$status')";
+    if ($emailErr == "" && $fullnameErr == "" && $contactErr == "" && $passErr == "" && $CompassErr == "" && $NotmatchErr == "") {
+        $sql = "INSERT INTO user (full_name, email_address, contact_no, userpassword, confirm_password, image, status) VALUES ('$fullname', '$email', '$contact', '$pass', '$cpass', '$img', '$status')";
     }
     
 }

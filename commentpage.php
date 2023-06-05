@@ -138,21 +138,6 @@ input[type="submit"] {
   
 
 
-<?php
-if (isset($_POST['submit'])) {
-
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $subject = $_POST['subject'];
-  $message = $_POST['message'];
-
-  if ($nameErr == "" && $emailErr == "" && $subjectErr == "" && $messageErr == "") {
-    mysqli_query($conn,"INSERT INTO `messages`(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')");  
-    $msg = "<div style='text-align:center;background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Message Send Successfully !</div>";
-  }
-}
-?>
-
 
 <style>
 body {

@@ -120,52 +120,52 @@ mysqli_query($conn, "UPDATE orders SET stock='" . $_POST['stockk'] . "' WHERE pr
 <h1>Shoe ID:<?php echo $row["shoe_id"]; ?></h1>
 <form method="POST">
     <label>Size 7&nbsp;&nbsp;&nbsp;&nbsp; :</label>
-    <input type="number" name="size_7" value="<?php echo $row['size_7']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_7']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_7" value="<?php echo $row['size_7']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_7']; ?>" min="0" max="100" ><br>
 
     <label>Size 7.5&nbsp;&nbsp;:</label>
-    <input type="number" name="size_7_5" value="<?php echo $row['size_7_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_7_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_7_5" value="<?php echo $row['size_7_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_7_5']; ?>" min="0" max="100" ><br>
 
     <label>Size 8&nbsp;&nbsp;&nbsp;&nbsp;    :</label>
-    <input type="number" name="size_8" value="<?php echo $row['size_8']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_8']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_8" value="<?php echo $row['size_8']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_8']; ?>" min="0" max="100" ><br>
 
     <label>Size 8.5&nbsp;&nbsp;:</label>
-    <input type="number" name="size_8_5" value="<?php echo $row['size_8_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_8_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_8_5" value="<?php echo $row['size_8_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_8_5']; ?>" min="0" max="100" ><br>
 
     <label>Size 9&nbsp;&nbsp;&nbsp;&nbsp; :</label>
-    <input type="number" name="size_9" value="<?php echo $row['size_9']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_9']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_9" value="<?php echo $row['size_9']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_9']; ?>" min="0" max="100" ><br>
 
     <label>Size 9.5&nbsp;&nbsp;:</label>
-    <input type="number" name="size_9_5" value="<?php echo $row['size_9_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_9_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_9_5" value="<?php echo $row['size_9_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_9_5']; ?>" min="0" max="100" ><br>
 
     <label>Size 10&nbsp;&nbsp; :</label> 
-    <input type="number" name="size_10" value="<?php echo $row['size_10']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_10']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_10" value="<?php echo $row['size_10']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_10']; ?>" min="0" max="100" ><br>
 
     <label>Size 10.5:</label>
-    <input type="number" name="size_10_5" value="<?php echo $row['size_10_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_10_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_10_5" value="<?php echo $row['size_10_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_10_5']; ?>" min="0" max="100" ><br>
 
     <label>Size 11&nbsp;&nbsp;&nbsp;:</label>
-    <input type="number" name="size_11" value="<?php echo $row['size_11']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_11']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_11" value="<?php echo $row['size_11']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_11']; ?>" min="0" max="100" ><br>
 
     <label>Size 11.5:</label>
-    <input type="number" name="size_11_5" value="<?php echo $row['size_11_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_11_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_11_5" value="<?php echo $row['size_11_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_11_5']; ?>" min="0" max="100" ><br>
 
     <label>Size 12&nbsp;&nbsp; :</label>
-    <input type="number" name="size_12" value="<?php echo $row['size_12']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_12']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_12" value="<?php echo $row['size_12']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_12']; ?>" min="0" max="100" ><br>
 
     <label>Size 12.5:</label>
-    <input type="number" name="size_12_5" value="<?php echo $row['size_12_5']; ?>" min="0" max="10" required><br>
-    <input type="hidden" name="stockk" value="<?php echo $row['size_12_5']; ?>" min="0" max="10" ><br>
+    <input type="number" name="size_12_5" value="<?php echo $row['size_12_5']; ?>" min="0" max="100" required><br>
+    <input type="hidden" name="stockk" value="<?php echo $row['size_12_5']; ?>" min="0" max="100" ><br>
 
     <br>
     <input type="submit" name="submit" value="Update Stock">

@@ -222,6 +222,12 @@
         echo '<p class="price">RM' . $row['shoe_price'] . '</p>';
         echo '</div>';
       }
+      if ($result && mysqli_num_rows($result) > 0)
+      {
+
+      }else {
+        echo '<p>No shoes found.</p>';
+      }
     }
   ?>
 </div>
