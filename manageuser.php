@@ -77,7 +77,6 @@
           <td>Name</td>
           <td>Contact No</td>
           <td>Email</td>
-          <td>Username</td>
         </tr>
         <?php
 
@@ -91,7 +90,6 @@
           <td><?php echo $row["full_name"];	?></td>
           <td><?php echo $row["contact_no"];?></td>
           <td><?php echo $row["email_address"];?></td>
-          <td><?php echo $row["username"];?></td>
           
         </tr>
             <?php
