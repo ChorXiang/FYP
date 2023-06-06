@@ -101,13 +101,13 @@ if (isset($_POST["savebtn"]))
 
     ?>
     
-    <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Status</b></h1>
+    <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Shoes Brand Status</b></h1>
 
     <form name="addfrm" method="post" action="">
 
-        <label>Category:</label> <?php echo $row['shoe_brand']; ?> 
+        <label>Brand&nbsp;&nbsp; :</label> <?php echo $row['shoe_brand']; ?> 
         <br>
-        <br><label for="status"  >Status &nbsp;&nbsp; : </label>
+        <br><label for="status"  >Status &nbsp;: </label>
                 <select id="status" name="status">
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
