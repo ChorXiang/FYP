@@ -108,13 +108,9 @@
       <table border="0px">
         <tr>
           <th>Order Number</th>
-          <!-- <th>Shoes Name </th>
-          <th>Shoes Size</th>
-          <th>Quantity</th>
-          <th>Price</th> -->
+          <th> Receipient Name</th>
           <th>Total Price(RM)</th>
-          <th>Customer Email</th>
-          <th>Date</th>
+          <th>Payment Date</th>
           <th>Order Status</th>
           <th>Edit Status</th>
           <!-- <th>Delete</th> -->
@@ -122,15 +118,14 @@
         <?php
         
         
-        $prev_order_num = null; // Variable to store the previous order number
+        $prev_order_num = null; 
     while ($row = mysqli_fetch_array($result)) {
         $order_num = $row["order_num"];
         if ($order_num != $prev_order_num) {
             echo "<tr>";
             echo "<th>$order_num</th>";
-            // Display the remaining columns
+            echo "<th>{$row['his_name']}</th>";
             echo "<th>{$row['total']}</th>";
-            echo "<th>{$row['her_email']}</th>";
             echo "<th>{$row['her_date']}</th>";
             echo "<th>{$row['order_status']}</th>";
             echo "<th><a href=\"admin_morehistory.php?order_num={$row['order_num']}&user_id={$row['user_id']}&admin_id={$id}\" alt=\"update\"><i class=\"fa fa-cog\" style=\"font-size:36px\"></i></a></th>";
