@@ -18,7 +18,7 @@
         if (!$shoe_name) {
             $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Name</div>";
         } else if (!$shoe_price) {
-            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Price</div>";
+            $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Price Again(Minimum Is 1)</div>";
         } else if (!$shoe_image) {
             $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
         } else {
@@ -185,7 +185,7 @@
             <option value="women">Women</option>
         </select><br>
         <label for="shoe_price">Shoe Price&nbsp;  : RM</label>
-        <input type="text" name="shoe_price" required>
+        <input type="text" name="shoe_price" min="1" required>
         <br>
         <label for="file"  class="Choose" style="color: black;"><i class="fa fa-camera"></i> Shoe Image</label>
         <br><input type="file" id="file" name="shoe_image" class="form-control" >
