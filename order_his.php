@@ -57,7 +57,7 @@ echo 'Your Order History Is Empty';
 			<th> Shoes Size </th>
 			<th> Quantity</th> -->
 			<!-- <th> Shoes Price</th> -->
-            <th> Receipient Email</th>
+            <th> Receipient Name</th>
             <th> Total Price</th>
 
             <th> Payment Date</th>
@@ -77,6 +77,7 @@ echo 'Your Order History Is Empty';
                 {                    
                     $her_id = $row["her_id"];
                     $order_num = $row["order_num"];
+                    $his_name = $row["his_name"];
                     $her_shoesname = $row["her_shoesname"];
                     $her_size = $row["her_size"];
                     $her_quantity = $row["her_quantity"];
@@ -92,13 +93,13 @@ echo 'Your Order History Is Empty';
                     <tr>
                         <!-- <th><img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" ></th> -->
                         <th><?php echo $order_num; ?></th>
-                        <!-- <th><?php echo $her_id; ?></th> -->
+                        <!-- <th><?php echo $his_name; ?></th> -->
                         <!-- <th><?php echo $her_shoesname; ?></th> -->
                         <!-- <th>UK <?php echo $her_size; ?></th> -->
                         <!-- <th><?php echo $her_quantity; ?></th> -->
                         <!-- <th>RM <?php echo $her_price; ?></th> -->
 
-                        <th><?php echo $her_email; ?></th>
+                        <th><?php echo $his_name; ?></th>
                         <th>RM <?php echo $total; ?></th>
 
                         <th><?php echo $her_date; ?></th>  

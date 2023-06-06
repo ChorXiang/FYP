@@ -105,13 +105,13 @@
 
 ?>
 
-<br><label>Customer Name&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["his_name"];?>
+<br><label>Ricipient Name&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["his_name"];?>
 
-<br><label>Customer Contact :</label> <?php echo $row["his_pn"];?>
+<br><label>Ricipient Contact :</label> <?php echo $row["his_pn"];?>
 
-<br><label>Customer Address :</label> <?php echo $row["his_address"];?> <?php echo $row["his_state"];?>
+<br><label>Ricipient Address :</label> <?php echo $row["his_address"];?> <?php echo $row["his_state"];?>
 
-<br><label>Customer Email&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_email"];?>
+<br><label>Ricipient Email&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_email"];?>
 
 <br><label>Purchase Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["her_date"];?>
 
