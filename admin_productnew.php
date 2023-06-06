@@ -129,13 +129,17 @@
 <?php echo "<div>".$msg."</div>"?>
 
         <div class="imgcenter">
-        <br><b><?php echo $row["shoe_name"]; ?></b><br>
+        <br><b><?php //echo $row["shoe_name"]; ?></b><br>
         <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"];  ?>" height="200px" width="200px" ><br><br>
         </div>
 
         <form name="from1"  method="post" action=""  >
+                            <label for="shoe_name">Shoe Name : </label>
+                            <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" required>
+                            <br>
+
                             <label for="state"  >Shoe Type&nbsp;&nbsp; :</label>
-                                        <select id="state" name="type">
+                                        <select id="" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
                                             <option value="Sneakers">Sneakers</option>
@@ -158,8 +162,9 @@
 
                             <br>
                             <label for="category">Shoe Price&nbsp;&nbsp;: RM</label>
-                            <input type="text" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" required><br>
+                            <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
                             <br>
+
                             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
                             <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
                             <br>
