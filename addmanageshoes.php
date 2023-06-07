@@ -185,14 +185,7 @@
     }
     ?>
 </select>
-
-<?php
-$result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
-
-while ($row = mysqli_fetch_assoc($result)) {
-    echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
-}
-?><br>
+<br>
         <br>
         <label for="category">Category &nbsp;&nbsp;&nbsp;:</label>
         <select id="category" name="category">
