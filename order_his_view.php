@@ -84,6 +84,12 @@
         margin-bottom: 5px;
         }
 
+        .pbina
+{
+    float:right;
+}
+
+
 
     </style>
 </head>
@@ -165,6 +171,9 @@
 
 ?>
  <br> <br>             <br><label>Total Price For This Order &emsp;&emsp;&emsp;: RM </label> <?php echo $totalp;?>
+ <div class="pbina">
+    <p><a href="order_his.php?user_id=<?php echo $id ?>">Back to previous page</a></p>
+                     </div>
 </table>
 </div></div>
 

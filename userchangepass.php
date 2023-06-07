@@ -161,6 +161,11 @@ if (isset($_POST["savebtn"]))
         {
         color: #FF0000;
         }
+.pbina
+{
+    float:left;
+}
+
     </style>
 
 </head>
@@ -215,7 +220,11 @@ if (isset($_POST["savebtn"]))
                     <input type="hidden" name="userpassword" value="<?php echo $row["userpassword"]?>"> 
 
              </div>
-                  <br><br><br><br><p><input type="submit" name="savebtn" value="SAVE">   
+             <div class="pbina">
+    <p><a href="userprofile.php?user_id=<?php echo $id ?>">Back to previous page</a></p>
+                     </div>
+                 <p><input type="submit" name="savebtn" value="SAVE">   
+
 		</form>
 
     </div>

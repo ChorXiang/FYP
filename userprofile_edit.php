@@ -182,12 +182,17 @@ if (isset($_POST["savebtn"]))
      display: flex;
      flex-wrap: wrap;
      }
+     .pbina
+     {
+        float: left;
+     }
     </style>
 </head>
 <body>
 <div class="middle">
     <br>
 <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i> Edit Profile</b></h1>
+
     <div class="box">
 
 		<?php
@@ -208,9 +213,9 @@ if (isset($_POST["savebtn"]))
                 <div class="box4">
                     <label>Full Name <sup>*</sup>  <br><br></label>
 
-                    <!-- <label>Email <sup>*</sup> <br><br></label> -->
-
                     <label>PhoneNumber <sup>*</sup> <br><br></label>
+
+                    <label>Email <sup>*</sup> <br><br></label> 
 
                     <!-- <label>User Name <sup>*</sup> <br><br> </label> -->
                 </div>
@@ -218,9 +223,9 @@ if (isset($_POST["savebtn"]))
                 <div class="box3">
                     <input type="text" name="name" size="50" value="<?php echo $row['full_name']; ?>"><br><br>
 
-                    <!-- <input type="text" name="email" size="50" value="<?php echo $row['email_address']; ?>"><br><br> -->
-
                     <input type="text" name="pn" size="50" value="<?php echo $row['contact_no']; ?>"><br><br>
+
+                    <label> <?php echo $row['email_address']; ?></label> <br><br>
 
                     <!-- <input type="text" name="user" size="50" value="<?php echo $row['username']; ?>"> -->
                 </div>
@@ -230,8 +235,16 @@ if (isset($_POST["savebtn"]))
              <br><br> <p>User Image<sup>*</sup> : (insert image files)<br></P>
 
             <p><input type="file" id="file"  name="image" class="form-control" multiple ></P>
+            
+
+            <div class="pbina">
+    <p><a href="userprofile.php?user_id=<?php echo $id ?>">Back to previous page</a></p>
+    </div>
+
 
             <p><input type="submit" name="savebtn" value="UPDATE"></P>
+
+
 
 		</form>
 
