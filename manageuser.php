@@ -42,6 +42,7 @@
     {
       text-align: left;
       padding: 20px;
+      padding-right: 70px;
     }
     a:hover
     {

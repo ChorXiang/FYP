@@ -40,6 +40,7 @@
   th,td
   {
     padding: 20px;
+    padding-right: 70px;
     text-align: center;
   }
 
