@@ -146,13 +146,28 @@
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
                             <br>
-                            <label for="state">Shoe Brand : </label>
-                                        <select id="state" name="brand">
-                                            <option value="Nike">Nike</option>
-                                            <option value="Puma">Puma</option>
-                                            <option value="Adidas">Adidas</option>
-                                            <option value="Converse">Converse</option>
-                                        </select>
+                            <label for="state">Shoe Brand: </label>
+<select id="state" name="brand">
+    <?php
+     $sql = "SELECT * FROM shoes ";
+     $result = mysqli_query($conn, $sql);
+     $row = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<option value="' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</option>';
+    }
+    ?>
+</select>
+
+<?php
+$result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
+}
+?>
+
                             <br>
                             <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                                         <select id="state" name="state">

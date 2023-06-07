@@ -14,6 +14,7 @@
         $category = $_POST["category"];
         $shoe_image = $_POST["shoe_image"];
         $shoe_price = $_POST["shoe_price"];
+        $yn = $_POST["yn"];
     
         if (!$shoe_name) {
             $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Key In Shoe Name</div>";
@@ -22,7 +23,7 @@
         } else if (!$shoe_image) {
             $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
         } else {
-            mysqli_query($conn, "INSERT INTO shoes (shoe_name, shoe_type, shoe_brand, category, shoe_image, shoe_price) VALUES ('$shoe_name', '$shoe_type', '$shoe_brand', '$category', '$shoe_image', '$shoe_price')");
+            mysqli_query($conn, "INSERT INTO shoes (shoe_name, shoe_type, shoe_brand, category, shoe_image, shoe_price,yn) VALUES ('$shoe_name', '$shoe_type', '$shoe_brand', '$category', '$shoe_image', '$shoe_price','$yn')");
     
             // Get the newly inserted shoe_id
             $newShoeId = mysqli_insert_id($conn);
@@ -171,13 +172,27 @@
             <option value="Lifestyle">Lifestyle</option>
         </select>
         <br>
-        <br><label for="shoe_brand">Shoe Brand&nbsp;&nbsp;:</label>
-        <select id="shoe_brand" name="shoe_brand">
-            <option value="Nike">Nike</option>
-            <option value="Puma">Puma</option>
-            <option value="Adidas">Adidas</option>
-            <option value="Converse">Converse</option>
-        </select><br>
+        <br><label for="state">Shoe Brand : </label>
+<select id="state" name="brand">
+    <?php
+     $sql = "SELECT * FROM shoes ";
+     $result = mysqli_query($conn, $sql);
+     $row = mysqli_fetch_assoc($result);
+    $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<option value="' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</option>';
+    }
+    ?>
+</select>
+
+<?php
+$result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
+}
+?><br>
         <br>
         <label for="category">Category &nbsp;&nbsp;&nbsp;:</label>
         <select id="category" name="category">
@@ -191,6 +206,7 @@
         <br><input type="file" id="file" name="shoe_image" class="form-control" >
         <br>
         <input type="hidden" name="status" value="active">
+        <input type="hidden" name="yn" value="y">
         
         
         <div class="toright">

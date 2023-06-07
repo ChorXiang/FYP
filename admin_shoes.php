@@ -139,8 +139,10 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
       </tr>
     </thead>
     <tbody>
-      <?php foreach ($shoes as $row): ?>
-        <tr>
+  
+        <?php foreach ($shoes as $row): ?>
+    <?php if ($row['yn'] == 'y'): ?>
+      <tr>
           <td><?php echo $row['shoe_id']; ?></td>
           <td><?php echo $row['shoe_name']; ?></td>
           <td><?php echo $row['category']; ?></td>
@@ -154,7 +156,10 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
         
 
           </tr>
-      <?php endforeach; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
+       
+
     </tbody>
   </table>
 

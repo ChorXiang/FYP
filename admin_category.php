@@ -137,9 +137,24 @@
         <th><?php echo $conversenum ?></th>
         <th><a href="editmanagecategory.php?shoe_brand=Converse&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr>
+      <?php
+
+$result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+
+while ($row = mysqli_fetch_assoc($result)) {
+                echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
+            }
+
+            ?>
+
+            
     </tbody>
 			
       </table>
+      <a href="addmanagecategory.php?admin_id=<?php echo $id ?>" alt="insert">
+        <i class="fa fa-plus" style="font-size: 24px;"></i>
+        <input type="button" value="Add New brand" style="margin-left: 10px;">
+      </a>
 </fieldset>
 
 </div>
