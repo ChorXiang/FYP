@@ -101,7 +101,7 @@
         <th>Edit</th>
         </tr>
     </thead>
-        <?php/*
+        <?php /*
 
         $nikenum = 0; 
         $pumanum = 0;
