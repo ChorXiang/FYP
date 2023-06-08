@@ -87,7 +87,7 @@
         <div class="buttonright">
           <a href="addmanagecategory.php?admin_id=<?php echo $id ?>" alt="insert">
           <i class="fa fa-plus" style="font-size: 24px;"></i>
-          <input type="button" value="Add New brand" style="margin-left: 10px;">
+          <input type="button" value="Add New Brand" style="margin-left: 10px;">
         </div>
       </a>
       <h4>
