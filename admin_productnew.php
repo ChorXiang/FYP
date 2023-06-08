@@ -170,7 +170,7 @@
                                         </select>
 
                             <br>
-                            <label for="category">Shoe Price&nbsp;&nbsp;: RM</label>
+                            <label for="state">Shoe Price&nbsp;&nbsp;: RM</label>
                             <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
                             <br>
 
