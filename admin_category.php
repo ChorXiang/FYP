@@ -16,6 +16,10 @@
     padding-left:80px ;
   }
 
+  .buttonright{
+    float: right;
+  }
+
   .right{
     float:right;
     padding-right:80px ;
@@ -80,7 +84,16 @@
 
         ?>
         <h1><i class="fa fa-address-book-o" style="font-size:45px"><b style="font-size: 50px;"> Manage Shoes Brand</b></i></h1>
-      <table border="0px">
+        <div class="buttonright">
+          <a href="addmanagecategory.php?admin_id=<?php echo $id ?>" alt="insert">
+          <i class="fa fa-plus" style="font-size: 24px;"></i>
+          <input type="button" value="Add New brand" style="margin-left: 10px;">
+        </div>
+      </a>
+      <h4>
+        Select the shoes brand that you want to edit.
+      </h4>
+      <!--<table border="0px">
       <thead>
         <tr>
         <th>Brand Name</th>
@@ -88,7 +101,7 @@
         <th>Edit</th>
         </tr>
     </thead>
-        <?php
+        <?php/*
 
         $nikenum = 0; 
         $pumanum = 0;
@@ -96,12 +109,11 @@
         $conversenum = 0;
 
         while($row = mysqli_fetch_array($result)) {
-            // access the shoe_brand column value using $row['shoe_brand']
+            
             $shoe_brand = $row['shoe_brand'];
 
-            // check if the shoe_brand column value is equal to 'Nike'
+            
             if (($shoe_brand) == 'Nike'){
-            // increment the 'num' variable by 1 for each Nike shoe
                 $nikenum++;
             }
             else if (($shoe_brand) == 'Puma'){
@@ -115,7 +127,7 @@
             }
         }
             
-            ?>
+            */?>
       <tbody>
       <tr>
         <th>Nike</th>
@@ -136,14 +148,15 @@
         <th>Converse</th>
         <th><?php echo $conversenum ?></th>
         <th><a href="editmanagecategory.php?shoe_brand=Converse&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr>
+      </tr> -->
       <?php
 
-$result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+      $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
 
-while ($row = mysqli_fetch_assoc($result)) {
-                echo '<a href="productlist.php?shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
-            }
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo '<a href="editmanagecategory.php?admin_id=' . $id . ' &&shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
+        echo '<br><br>';
+      }
 
             ?>
 
@@ -151,10 +164,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     </tbody>
 			
       </table>
-      <a href="addmanagecategory.php?admin_id=<?php echo $id ?>" alt="insert">
-        <i class="fa fa-plus" style="font-size: 24px;"></i>
-        <input type="button" value="Add New brand" style="margin-left: 10px;">
-      </a>
+      
 </fieldset>
 
 </div>

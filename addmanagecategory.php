@@ -39,7 +39,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Add brand</title>
+    <title> Add shoes brand</title>
 
 
 
@@ -134,12 +134,12 @@
     
 
 <div class="container">
-    <h1>Add New brand</h1>
+    <h1>Add New Brand</h1>
     <fieldset>
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for="shoe_name">Brnad Name&nbsp;&nbsp;&nbsp;:</label>
+        <label for="shoe_name">Brand Name&nbsp;&nbsp;&nbsp;:</label>
         <input type="text" name="shoe_brand" required>
         <br>
         
