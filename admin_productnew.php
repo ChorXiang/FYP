@@ -135,7 +135,7 @@
 
         <form name="from1"  method="post" action=""  >
                             <label for="shoe_name">Shoe Name : </label>
-                            <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" required>
+                            <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" style="width: 225px;" required>
                             <br>
 
                             <label for="state"  >Shoe Type&nbsp;&nbsp; :</label>
@@ -146,19 +146,19 @@
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
                             <br>
-                            <label for="state">Shoe Brand: </label>
-<select id="state" name="brand">
-    <?php
-     $sql = "SELECT * FROM shoes ";
-     $result = mysqli_query($conn, $sql);
-     $row = mysqli_fetch_assoc($result);
-    $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
+                            <label for="state">Shoe Brand : </label>
+                            <select id="state" name="brand">
+                                <?php
+                                $sql = "SELECT * FROM shoes ";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<option value="' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</option>';
-    }
-    ?>
-</select>
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option value="' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</option>';
+                                }
+                                ?>
+                            </select>
 
 
 
