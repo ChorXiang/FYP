@@ -159,7 +159,12 @@ input[type="submit"][name="submit"]{
 </div>
 
 <div class='right'>
+ 
+
 <fieldset>
+<a href="product.php">Back to previous page</a>
+ <input type="hidden" name="user_id" value="<?php echo $id; ?>">
+
 <div class="wordcenter">
 <h1><?php echo $row["shoe_name"]; ?></h1>
 </div>
