@@ -159,18 +159,18 @@
   <?php
     if (isset($_GET['category'])) {
       $category = $_GET['category'];
-      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE category='$category' && status='active'");
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE category='$category' && status='active' && yn='y' ");
       $resultbrand = null;
     } else if (isset($_GET['shoe_brand'])) {
       $shoe_brand = $_GET['shoe_brand'];
       $result = null;
-      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand' && status='active'");
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_brand='$shoe_brand' && status='active' && yn='y' ");
     } else if (isset($_GET['shoe_type'])) {
       $shoe_type = $_GET['shoe_type'];
-      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type' && status='active'");
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE shoe_type='$shoe_type' && status='active' && yn='y' ");
       $resultbrand = null;
     } else {
-      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE status='active'");
+      $result = mysqli_query($conn, "SELECT * FROM shoes WHERE status='active' && yn='y' ");
       $resultbrand = null;
     }
 

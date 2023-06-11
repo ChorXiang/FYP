@@ -223,11 +223,11 @@ $offset = ($currentPage - 1) * $shoesPerPage;
 
 if (isset($_POST['search'])) {
   $search = $_POST['search'];
-  $query = "SELECT * FROM shoes WHERE status='active' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
+  $query = "SELECT * FROM shoes WHERE status='active'  AND yn='y' AND (shoe_name LIKE '%$search%' OR category LIKE '%$search%')";
   
 
 } else {
-  $query = "SELECT * FROM shoes WHERE status='active'";
+  $query = "SELECT * FROM shoes WHERE status='active' && yn='y' ";
 
 }
 

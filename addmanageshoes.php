@@ -10,7 +10,7 @@
     if (isset($_POST['savebtn'])) {
         $shoe_name = $_POST["shoe_name"];
         $shoe_type = $_POST["shoe_type"];
-        $shoe_brand = $_POST["shoe_brand"];
+        $shoe_brand = $_POST["brand"];
         $category = $_POST["category"];
         $shoe_image = $_POST["shoe_image"];
         $shoe_price = $_POST["shoe_price"];
@@ -173,7 +173,7 @@
         </select>
         <br>
         <br><label for="state">Shoe Brand : </label>
-<select id="state" name="brand">
+<select id="brand" name="brand">
     <?php
      $sql = "SELECT * FROM shoes ";
      $result = mysqli_query($conn, $sql);

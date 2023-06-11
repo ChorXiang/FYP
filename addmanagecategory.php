@@ -152,7 +152,7 @@
         <br>
         <input type="submit" name="savebtn" value="Add New Brand">
         
-        <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
+        <a href="admin_category.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
         </div>
 
     </form>
