@@ -11,6 +11,14 @@
         $shoe_brand = $_POST["shoe_brand"];
         $status = $_POST["status"];
         $yn = $_POST["yn"];
+
+            $result = mysqli_query($conn, "SELECT * FROM `shoes` WHERE `shoe_brand`='$shoe_brand'");
+            if(mysqli_num_rows($result) > 0) {
+                // Display error message and stop further processing
+                $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This shoe brand is already existed.</div>";
+            } else {
+
+
             mysqli_query($conn, "INSERT INTO shoes (shoe_brand, status,yn) VALUES ( '$shoe_brand', '$status','$yn')");
     
             $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Add New Brand Successfully!</div>";
@@ -25,7 +33,7 @@
                 confirmRedirect();
             </script>';
         }
-    
+    }
     
     
     
