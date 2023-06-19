@@ -150,12 +150,15 @@
         <th><a href="editmanagecategory.php?shoe_brand=Converse&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
       </tr> -->
       <?php
-
+      $count = 1;
       $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
 
       while ($row = mysqli_fetch_assoc($result)) {
+        echo $count;
+        echo '&nbsp;&nbsp;';
         echo '<a href="editmanagecategory.php?admin_id=' . $id . ' &&shoe_brand=' . $row['shoe_brand'] . '">' . $row['shoe_brand'] . '</a>';
         echo '<br><br>';
+        $count++;
       }
 
             ?>

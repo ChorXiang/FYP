@@ -19,7 +19,7 @@
             echo '<script>
                 function confirmRedirect() {
                     if (confirm("Do you want to go to admin_shoes.php?")) {
-                        window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+                        window.location.href = "admin_category.php?admin_id=' . $id . '";
                     }
                 }
                 confirmRedirect();
