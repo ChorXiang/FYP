@@ -193,7 +193,7 @@
             <option value="women">Women</option>
         </select><br>
         <label for="shoe_price">Shoe Price&nbsp;  : RM</label>
-        <input type="text" name="shoe_price" min="1" required>
+        <input type="number" name="shoe_price" min="1" required>
         <br>
         <label for="file"  class="Choose" style="color: black;"><i class="fa fa-camera"></i> Shoe Image</label>
         <br><input type="file" id="file" name="shoe_image" class="form-control" >
