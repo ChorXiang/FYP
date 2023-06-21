@@ -23,8 +23,14 @@
         } else if (!$shoe_image) {
             $msg = "<div style='text-align:center; background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Please Insert Shoe Image</div>";
         } else {
+
+            $result = mysqli_query($conn, "SELECT * FROM `shoes` WHERE `shoe_name`='$shoe_name'");
+            if(mysqli_num_rows($result) > 0) {
+                // Display error message and stop further processing
+                $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>This shoe is already existed.</div>";
+            } else {
+
             mysqli_query($conn, "INSERT INTO shoes (shoe_name, shoe_type, shoe_brand, category, shoe_image, shoe_price,yn) VALUES ('$shoe_name', '$shoe_type', '$shoe_brand', '$category', '$shoe_image', '$shoe_price','$yn')");
-    
             // Get the newly inserted shoe_id
             $newShoeId = mysqli_insert_id($conn);
     
@@ -46,6 +52,7 @@
                 }
                 confirmRedirect();
             </script>';
+            }
         }
     }
     
