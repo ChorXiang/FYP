@@ -107,8 +107,10 @@
     fieldset
     {
       background-color: lightgrey;
+      margin:  auto;
       margin-left: 180px;
-      margin-right: 50%;
+      padding-left:  25%;
+      padding-right:  25%;
     }
 
 
@@ -118,20 +120,21 @@
 </head>
 <body>
 <?php
-                                // $id = $_GET['admin_id'];
-                                $sid = $_REQUEST["shoe_id"];
-                                $sql = "SELECT * FROM shoes where shoe_id = '$sid' ";
-                                $result = mysqli_query($conn,$sql);
-                                // $result = mysqli_query($conn, "select * from shoes where shoe_id = '$sid'"); 
+        // $id = $_GET['admin_id'];
+        $sid = $_REQUEST["shoe_id"];
+        $sql = "SELECT * FROM shoes where shoe_id = '$sid' ";
+        $result = mysqli_query($conn,$sql);
+        // $result = mysqli_query($conn, "select * from shoes where shoe_id = '$sid'"); 
 
-                                $row = mysqli_fetch_assoc($result);
-                                ?>
+        $row = mysqli_fetch_assoc($result);
+        ?>
+
 <fieldset>
 <?php echo "<div>".$msg."</div>"?>
 
         <div class="imgcenter">
         <br><b><?php //echo $row["shoe_name"]; ?></b><br>
-        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"];  ?>" height="200px" width="200px" ><br><br>
+        <img src="image/shoesimg/<?php echo $row["shoe_image"]; ?>" alt="<?php echo $row["shoe_name"];  ?>" height="250px" width="300px" ><br><br>
         </div>
 
         <form name="from1"  method="post" action=""  >
