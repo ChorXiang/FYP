@@ -105,6 +105,7 @@ mysqli_query($conn, "UPDATE orders SET stock='" . $_POST['stockk'] . "' WHERE pr
 <style>
     fieldset
     {
+        background-color: lightgrey;
         margin-left: 180px;
         padding-left: 20px;
         width: 50%;
