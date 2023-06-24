@@ -84,7 +84,7 @@
     
 
 <?php
-        $sql = "select * from shoes";
+        $sql = "select * from shoes where yn = 'y'";
         $result = mysqli_query($conn,$sql);
     ?>
       
