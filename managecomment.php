@@ -35,7 +35,8 @@
     td, th 
     {
       text-align: center;
-      padding: 20px 40px;
+      padding: 10px;
+      padding-right: 50px;
     }
     a:hover
     {

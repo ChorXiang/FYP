@@ -38,7 +38,8 @@
     
     th 
     {
-      padding: 20px;
+      padding: 10px;
+      padding-right: 20px;
     }
     a:hover
     {

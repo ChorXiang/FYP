@@ -108,7 +108,7 @@
     {
       background-color: lightgrey;
       margin:  auto;
-      margin-left: 180px;
+      margin-left: 160px;
       padding-left:  25%;
       padding-right:  25%;
     }

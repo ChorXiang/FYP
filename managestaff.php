@@ -43,8 +43,8 @@
     td, th 
     {
       text-align: left;
-      padding: 20px;
-      padding-right: 70px;
+      padding: 10px;
+      padding-right: 120px;
     }
     a:hover
     {
