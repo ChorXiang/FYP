@@ -3,8 +3,32 @@
     include 'adminheader.php'; 
     $msg = '';
     $admin = $_GET["admin_id"]; 
+    $id =$_GET['user_id'];
+    $order_num=$_GET['order_num'];
+    // $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
+    // $result = mysqli_query($conn, $sql);
 ?>
+<?php
+                if (isset($_POST["savebtn"])) 	
+                {
+                    $mstatus = $_POST['status'];
 
+                        mysqli_query($conn,"UPDATE history set order_status='" . $_POST['status'] . "' where order_num = '$order_num'");            
+                    
+                        $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+                        echo '<script>alert("Update Successfully !");</script>';
+     
+                        echo '<script>
+                            function confirmRedirect() {
+                                if (confirm("Do you want to go to manageorder.php?")) {
+                                    window.location.href = "manageorder.php?admin_id=' . $admin . '";
+                                }
+                            }
+                            confirmRedirect();
+                        </script>';
+                    }
+                
+                ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,18 +93,16 @@
 <div class="middle">
     <div>   
     <div class="box">
+    <?php echo "<div>".$msg."</div>"?>
+
     <div >
         <h3>Order Details</h3>
     
         <?php
-                    $id =$_GET['user_id'];
-                    $order_num=$_GET['order_num'];
-                    // $sql = "SELECT * FROM history where user_id = '$id' && order_num= $order_num"; 
-                    // $result = mysqli_query($conn, $sql);
                     $result = mysqli_query($conn, "select * from history where user_id = '$id' && order_num= $order_num"); 
                     $row = mysqli_fetch_assoc($result);
 
-?>
+        ?>
 
 <br><label>Customer Name&nbsp;&nbsp;&nbsp;&nbsp; :</label> <?php echo $row["his_name"];?>
 
@@ -153,39 +175,11 @@
                             <a href="manageorder.php?admin_id=<?php echo $admin ?>">Back to Previous Page </a>
                         </div>
                     </form>
-                    <div style=text-align:center;>
-                        <?php echo "<div>".$msg."</div>"?>
-                    </div>
+                    
                 </div>
 </div></div>
 
-<?php
-                if (isset($_POST["savebtn"])) 	
-                {
-                    $mstatus = $_POST['status'];
 
-                    if (!$mstatus)
-                    {
-                        $msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Please Key in Order Status !</div>";
-                    }
-                    else
-                    {
-                        mysqli_query($conn,"UPDATE history set order_status='" . $_POST['status'] . "' where order_num = '$order_num'");            
-                    
-                        $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully !</div>";
-                        echo '<script>alert("Update Successfully !");</script>';
-     
-                        echo '<script>
-                            function confirmRedirect() {
-                                if (confirm("Do you want to go to manageorder.php?")) {
-                                    window.location.href = "manageorder.php?admin_id=' . $admin . '";
-                                }
-                            }
-                            confirmRedirect();
-                        </script>';
-                    }
-                }
-                ?>
 
 </body>
 </html>
