@@ -51,7 +51,7 @@
 
   th,td
   {
-    padding: 20px;
+    padding: 15px;
     text-align: center;
   }
 
@@ -59,7 +59,6 @@
       display: block;
       margin-left: auto;
       margin-right: auto;
-      width: 200px;
       padding-left: 20px;
       text-align:"center";  
     }
@@ -147,7 +146,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);
           <td><?php echo $row['shoe_name']; ?></td>
           <td><?php echo $row['category']; ?></td>
           <td>
-            <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="200px" width="100%">
+            <img src="image/shoesimg/<?php echo $row['shoe_image']; ?>" alt="<?php echo $row['shoe_name']; ?>" class="imgcenter" height="190px" width="220px">
           </td>
           <td><?php echo $row['shoe_price']; ?></td>
           <td><?php echo $row['status']; ?></td>
