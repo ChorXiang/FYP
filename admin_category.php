@@ -91,64 +91,9 @@
         </div>
       </a>
       <h4>
-        Select the shoes brand that you want to edit.
+        Select the shoes brand that you want to edit the status.
       </h4>
-      <!--<table border="0px">
-      <thead>
-        <tr>
-        <th>Brand Name</th>
-        <th>Number of Shoes</th>
-        <th>Edit</th>
-        </tr>
-    </thead>
-        <?php /*
 
-        $nikenum = 0; 
-        $pumanum = 0;
-        $adidasnum = 0;
-        $conversenum = 0;
-
-        while($row = mysqli_fetch_array($result)) {
-            
-            $shoe_brand = $row['shoe_brand'];
-
-            
-            if (($shoe_brand) == 'Nike'){
-                $nikenum++;
-            }
-            else if (($shoe_brand) == 'Puma'){
-                $pumanum++;
-            }
-            else if (($shoe_brand) == 'Adidas'){
-                $adidasnum++;
-            }
-            else if (($shoe_brand) == 'Converse'){
-                $conversenum++;
-            }
-        }
-            
-            */?>
-      <tbody>
-      <tr>
-        <th>Nike</th>
-        <th><?php echo $nikenum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Nike&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr>
-      <tr>
-        <th>Puma</th>
-        <th><?php echo $pumanum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Puma&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr>
-      <tr>
-        <th>Adidas</th>
-        <th><?php echo $adidasnum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Adidas&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr>
-      <tr>
-        <th>Converse</th>
-        <th><?php echo $conversenum ?></th>
-        <th><a href="editmanagecategory.php?shoe_brand=Converse&&admin_id=<?php echo $id ?>" alt="edit"><i class="fa fa-cog" style="font-size:36px"></i></a></th>
-      </tr> -->
       <?php
       $count = 1;
       $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
