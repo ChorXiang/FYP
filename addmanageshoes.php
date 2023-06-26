@@ -179,7 +179,7 @@
             <option value="Lifestyle">Lifestyle</option>
         </select>
         <br>
-        <br><label for="state">Shoe Brand : </label>
+        <br><label for="state">Shoe Brand&nbsp; : </label>
 <select id="brand" name="brand">
     <?php
      $sql = "SELECT * FROM shoes ";

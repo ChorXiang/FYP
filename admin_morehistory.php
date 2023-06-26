@@ -61,7 +61,7 @@
         {
         background-color: #f2f2f2;
         padding: 5px 20px 15px 20px;
-        margin-left: 200px;
+        margin-left: 25%;
         border: 1px solid lightgrey;
         border-radius: 15px;
         width:50%;
