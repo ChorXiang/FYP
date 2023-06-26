@@ -21,7 +21,7 @@ if (isset($_POST["savebtn"]))
     }
     else
     {
-        mysqli_query($conn,"UPDATE shoes set status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand'");    
+        mysqli_query($conn,"UPDATE shoes set shoe_brand='" . $_POST['shoe_brand'] . "',status='" . $_POST['status'] . "' where shoe_brand = '$shoe_brand'");    
         //testing
         mysqli_query($conn,"delete from wishlist where shoe_brand = '$shoe_brand'");
         mysqli_query($conn,"delete from orders where shoe_brand = '$shoe_brand'");
@@ -104,8 +104,8 @@ if (isset($_POST["savebtn"]))
     <h1><b style="font-size: 50px;"><i class="fa fa-pencil" style="font-size:50px"></i>Edit Shoes Brand Status</b></h1>
 
     <form name="addfrm" method="post" action="">
-
-        <label>Brand&nbsp;&nbsp; : <?php echo $row["shoe_brand"]; ?></label>
+        <label>Brand&nbsp;&nbsp; :</label>
+        <input type="text" name="shoe_brand" value="<?php echo $row["shoe_brand"]; ?>" required>
         <br>
         <label for="status"  >Status &nbsp;: </label>
                 <select id="status" name="status">
