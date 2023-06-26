@@ -107,7 +107,7 @@ if(!isset($id)) {
 
 
 <div class="sidenav">
-        <a href="#" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
+        <a href="admin_category.php?admin_id=<?php echo $id ?>" class="center" ><img src="image/foot.png" alt="Shop Logo" width="90px"></a><br><br> 
         <a href="admin_category.php?admin_id=<?php echo $id ?>">Manage Brand</a>
         <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Manage Product</a>
         <a href="manageorder.php?admin_id=<?php echo $id ?>">Manage Order</a>
