@@ -176,14 +176,16 @@
                             <br>
                             <label for="state">Shoe Price&nbsp;&nbsp;: RM</label>
                             <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
-                            <br>
+                            <a href="admin_stock.php?shoe_id=<?php echo $sid ?>&&admin_id=<?php echo $id ?>">Edit Stock </a>
+                            <br><br>
+                            
 
                             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
                             <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
                             <br>
                             <input type="submit" name="saveas" value="Update" class="botton" style="float:right;"></from>
 
-                            <a href="admin_stock.php?shoe_id=<?php echo $sid ?>&&admin_id=<?php echo $id ?>">Edit Stock </a>
+                            
 
 </fieldset>
 </body>
