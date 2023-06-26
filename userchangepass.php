@@ -220,6 +220,7 @@ if (isset($_POST["savebtn"]))
                     <input type="hidden" name="userpassword" value="<?php echo $row["userpassword"]?>"> 
 
              </div>
+             <br><br>
              <div class="pbina">
     <p><a href="userprofile.php?user_id=<?php echo $id ?>">Back to previous page</a></p>
                      </div>
