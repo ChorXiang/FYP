@@ -37,10 +37,10 @@
               else
               {
                 mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-    
-                mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
-    
-                mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
+                mysqli_query($conn,"delete from orders where pro_id = '$sid'");
+                //mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                //mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
     
  
  
