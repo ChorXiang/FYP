@@ -5,7 +5,6 @@
     $id =$_GET['admin_id']; 
 ?>
 
-
 <?php
     if(isset($_POST['savebtn']))
     {
@@ -145,8 +144,11 @@
 </head>
 <body>
     
-
+<?php
+        if($id==1){  
+    ?>
 <div class="container">
+    
     <h1>Add New Admin</h1>
     <fieldset>
     <form action="" method="POST" >
@@ -180,7 +182,19 @@
             <a href="managestaff.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
         </div>
     </div>
-
+<?php        
+        }else{
+            ?>
+            <div class="container">
+            <fieldset>
+                <h2>
+                    Please contact the super admin.
+                </h2>
+            </fieldset>
+            </div>
+            <?php
+        }
+    ?>
     </form>
     </fieldset>
     </div>
