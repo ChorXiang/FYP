@@ -78,32 +78,32 @@
 <div>
 <?php
 
-$shoesPerPage = 2;
+$shoesPerPage = 2; // Number of shoes to display per page
 
 
-$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1; // Current page number, default is 1
 
 
-$offset = ($currentPage - 1) * $shoesPerPage;
+$offset = ($currentPage - 1) * $shoesPerPage;// Offset for retrieving the correct range of shoes from the database
 
 if (isset($_GET['search'])) {
-  $search = mysqli_real_escape_string($conn, $_GET['search']);
-  $sql = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' LIMIT $offset, $shoesPerPage";
-  $countSql = "SELECT COUNT(*) AS total FROM shoes WHERE shoe_name LIKE '%$search%'";
+  $search = mysqli_real_escape_string($conn, $_GET['search']);// Get the search query and escape it to prevent SQL injection
+  $sql = "SELECT * FROM shoes WHERE shoe_name LIKE '%$search%' LIMIT $offset, $shoesPerPage";// SQL query to retrieve shoes matching the search query with pagination
+  $countSql = "SELECT COUNT(*) AS total FROM shoes WHERE shoe_name LIKE '%$search%'";// SQL query to count the total number of shoes matching the search query
 } else {
-  $sql = "SELECT * FROM shoes LIMIT $offset, $shoesPerPage";
-  $countSql = "SELECT COUNT(*) AS total FROM shoes";
+  $sql = "SELECT * FROM shoes LIMIT $offset, $shoesPerPage";// SQL query to retrieve all shoes with pagination
+  $countSql = "SELECT COUNT(*) AS total FROM shoes";// SQL query to count the total number of shoes
 }
 
 $result = mysqli_query($conn, $sql);
-$shoes = mysqli_fetch_all($result, MYSQLI_ASSOC);
+$shoes = mysqli_fetch_all($result, MYSQLI_ASSOC);// Fetch all the shoes from the result set into an associative array
 
 
 $countResult = mysqli_query($conn, $countSql);
-$totalShoes = mysqli_fetch_assoc($countResult)['total'];
+$totalShoes = mysqli_fetch_assoc($countResult)['total'];// Get the total number of shoes from the count query result
 
 
-$totalPages = ceil($totalShoes / $shoesPerPage);
+$totalPages = ceil($totalShoes / $shoesPerPage);// Calculate the total number of pages based on the total number of shoes and shoes per page
 ?>
 
 <fieldset>
