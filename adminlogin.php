@@ -3,18 +3,14 @@ include_once 'conn.php';
 // Start the session
 session_start();
 
-// Check if the user is already logged in
-//  
 
-// Check if the login form was submitted
 if (isset($_POST['submit'])) {
-  // Retrieve the email and password entered by the user
   $admin_email = $_POST['admin_email'];
   $admin_password = $_POST['admin_password'];
   $select = "SELECT * FROM admin WHERE admin_email = '$admin_email' && admin_password = '$admin_password'";
   $result = mysqli_query($conn, $select);
 
-  // TODO: Verify the admin's email and password against the database
+  //Verify the admin's email and password against the database
   if(mysqli_num_rows($result) == 1)
       {
         
@@ -32,8 +28,7 @@ if (isset($_POST['submit'])) {
 
         
   } else {
-    // Display an error message if the email or password is incorrect
-    //$error_msg = "Invalid email address or password. Please try again.";
+
     $error_msg = "<div style='background-color: red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Invalid email address or password. Please try again.</div>";
 
   }
@@ -124,9 +119,7 @@ if (isset($_POST['submit'])) {
     <a href="admin_confirmemail.php" alt="insert">Forgot Password</a></span>
     <br><br>
     <button type="submit" class="submitbtn" name="submit">Log In</button>
-    <!-- <div class="submitbtn">
-    <input type="submit" name="submit" value="Log In">
-    </div> -->
+
   </form>
 
 </body>
