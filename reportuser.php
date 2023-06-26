@@ -109,7 +109,6 @@
                 <td><b>Full Name</b></td>
                 <td><b>Contact Number</b></td>
                 <td><b>Email Address</b></td>
-                <td><b>Username</b></td>
                 
              
                 
@@ -124,7 +123,6 @@
                 <td><?php echo $row["full_name"];	?></td>
                 <td><?php echo $row["contact_no"];?></td>
                 <td><?php echo $row["email_address"];?></td>
-                <td><?php echo $row["username"];?></td>
   
             </tr>
             <?php
