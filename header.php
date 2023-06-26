@@ -118,7 +118,7 @@
                         <a href="userprofile.php?user_id=<?php echo $id ?>">My Account</a>
                         <a href="wishlist.php?user_id=<?php echo $id ?>">My Wish List</a>
                         <a href="order_his.php?user_id=<?php echo $id ?>">My Order History</a>
-                        <a href="logout.php" alt="logout">Logout<i class="fa fa-sign-out"></i></a>
+                        <a href="logout.php" alt="logout"><i class="fa fa-sign-out">Logout</i></a>
                     </div>
                     </li>
         </ul>
