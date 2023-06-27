@@ -104,15 +104,37 @@
       padding: 20px;
     }
 
+    .toright{
+        float: right;
+    }
+
     fieldset
     {
       font-size: 20px;
-      background-color: lightgrey;
+      background-color: rgb(200, 200, 200);
       margin:  auto;
       margin-left: 20%;
       margin-right: 20%;
       padding-left:  180px;
-      padding-right:  180px;
+      padding-right:  50px;
+    }
+
+
+
+    input[type='submit']
+    {
+        padding: 10px;
+        border-radius: 20px;
+        background: rgb(160, 160, 160);
+        color: black;
+        border: none;
+    }
+
+    input[type='submit']:hover
+    {
+        cursor: pointer;
+        background: linear-gradient(to left,#ffaa00,#ffea00);
+        color: black;
     }
 
 
@@ -184,7 +206,11 @@
                             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
                             <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
                             <br>
-                            <input type="submit" name="saveas" value="Update" class="botton" style="float:right;"></from>
+                            <div class="toright">
+                                <input type="submit" name="saveas" value="Update" class="botton">
+                                <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
+                            </div>
+                        </from>
 
                             
 
