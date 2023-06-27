@@ -144,7 +144,7 @@
 
             <li class="dropdown"><a href="#" class="dropbtn">Contact Us</a>
                 <div class="dropdown-content">
-                    <a href="contact.php?user_id=<?php echo $id ?>">Comment</a>
+                    <a href="contactnew.php?user_id=<?php echo $id ?>">Rating</a>
                     <a href="commentpage.php?user_id=<?php echo $id ?>">Support</a>
                 </div>
             </li>
