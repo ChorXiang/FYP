@@ -68,7 +68,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Add New Shoe</title>
+    <title> Add New Shoes</title>
 
 
 
@@ -163,15 +163,15 @@
     
 
 <div class="container">
-    <h1>Add New Shoe</h1>
+    <h1>Add New Shoes</h1>
     <fieldset>
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for="shoe_name">Shoe Name&nbsp;&nbsp;&nbsp;:</label>
+        <label for="shoe_name">Shoes Name&nbsp;&nbsp;&nbsp;:</label>
         <input type="text" name="shoe_name" required>
         <br>
-        <label for="shoe_type">Shoe Type&nbsp;&nbsp;&nbsp;:</label>
+        <label for="shoe_type">Shoes Type&nbsp;&nbsp;&nbsp;:</label>
         <select id="shoe_type" name="shoe_type">
             <option value="Running Shoes">Running Shoes</option>
             <option value="Casual Shoes">Casual Shoes</option>
@@ -179,7 +179,7 @@
             <option value="Lifestyle">Lifestyle</option>
         </select>
         <br>
-        <br><label for="state">Shoe Brand&nbsp; : </label>
+        <br><label for="state">Shoes Brand&nbsp; : </label>
 <select id="brand" name="brand">
     <?php
      $sql = "SELECT * FROM shoes ";
@@ -199,10 +199,10 @@
             <option value="men">Men</option>
             <option value="women">Women</option>
         </select><br>
-        <label for="shoe_price">Shoe Price&nbsp;  : RM</label>
+        <label for="shoe_price">Shoes Price&nbsp;  : RM</label>
         <input type="number" name="shoe_price" min="1" required>
         <br>
-        <label for="file"  class="Choose" style="color: black;"><i class="fa fa-camera"></i> Shoe Image</label>
+        <label for="file"  class="Choose" style="color: black;"><i class="fa fa-camera"></i> Shoes Image</label>
         <br><input type="file" id="file" name="shoe_image" class="form-control" >
         <br>
         <input type="hidden" name="status" value="active">
