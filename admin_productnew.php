@@ -90,7 +90,7 @@
 
     form input
     {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     select
@@ -106,11 +106,13 @@
 
     fieldset
     {
+      font-size: 20px;
       background-color: lightgrey;
       margin:  auto;
-      margin-left: 160px;
-      padding-left:  25%;
-      padding-right:  25%;
+      margin-left: 20%;
+      margin-right: 20%;
+      padding-left:  180px;
+      padding-right:  180px;
     }
 
 
@@ -138,11 +140,11 @@
         </div>
 
         <form name="from1"  method="post" action=""  >
-                            <label for="shoe_name">Shoe Name : </label>
+                            <label for="shoe_name">Shoe Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" style="width: 225px;" required>
                             <br>
 
-                            <label for="state"  >Shoe Type&nbsp;&nbsp; :</label>
+                            <label for="state"  >Shoe Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
                                         <select id="" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
@@ -150,7 +152,7 @@
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
                             <br>
-                            <label for="state">Shoe Brand : </label>
+                            <label for="state">Shoe Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <select id="state" name="brand">
                                 <?php
                                 $sql = "SELECT * FROM shoes ";
@@ -167,17 +169,16 @@
 
 
                             <br>
-                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp; : </label>
+                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </label>
                                         <select id="state" name="state">
                                             <option value="men">Men</option>
                                             <option value="women">Women</option>
                                         </select>
 
                             <br>
-                            <label for="state">Shoe Price&nbsp;&nbsp;: RM</label>
+                            <label for="state">Shoe Price (RM) :</label>
                             <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
-                            <a href="admin_stock.php?shoe_id=<?php echo $sid ?>&&admin_id=<?php echo $id ?>">Edit Stock </a>
-                            <br><br>
+                            <br>
                             
 
                             <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
