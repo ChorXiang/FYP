@@ -49,7 +49,7 @@
  
                 echo '<script>
                     function confirmRedirect() {
-                        if (confirm("Do you want to go to admin_shoes.php?")) {
+                        if (confirm("Do you want to go to manage product page?")) {
                             window.location.href = "admin_shoes.php?admin_id=' . $id . '";
                         }
                     }
