@@ -36,26 +36,32 @@
 
               else
               {
-                mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-                mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
-                mysqli_query($conn,"delete from orders where pro_id = '$sid'");
-                //mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
-                //mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                $repeat = mysqli_query($conn, "SELECT * FROM `shoes` WHERE `shoe_name`='$sn'");
+                if(mysqli_num_rows($repeat) > 0) {
+                    // Display error message and stop further processing
+                    $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>'$sn' is already existed in the database!</div>";
+                } else {
+                    mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
+                    mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
+                    mysqli_query($conn,"delete from orders where pro_id = '$sid'");
+                    //mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                    //mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+        
     
- 
- 
-                $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
-                echo '<script>alert("Update Successfully !");</script>';
- 
-                echo '<script>
-                    function confirmRedirect() {
-                        if (confirm("Do you want to go to manage product page?")) {
-                            window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+    
+                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+                    echo '<script>alert("Update Successfully !");</script>';
+    
+                    echo '<script>
+                        function confirmRedirect() {
+                            if (confirm("Do you want to go to manage product page?")) {
+                                window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+                            }
                         }
-                    }
-                    confirmRedirect();
-                </script>';
-              }
+                        confirmRedirect();
+                    </script>';
+                }
+            }
            
             
   
