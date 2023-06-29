@@ -114,7 +114,7 @@ if(!isset($id)) {
         <a href="manageuser.php?admin_id=<?php echo $id ?>">Manage Customer</a>
         <a href="managestaff.php?admin_id=<?php echo $id ?>">Manage Admin </a>
         <a href="managecomment.php?admin_id=<?php echo $id ?>">Manage Comment </a>
-        <a href="managecontactus.php?admin_id=<?php echo $id ?>">Manage Support </a>
+        <a href="managecontactus.php?admin_id=<?php echo $id ?>">Manage Rating </a>
         <br><br><br>
         <a href="adminlogout.php" alt="logout"><i class="fa fa-sign-out"></i>Logout</a>
 
