@@ -168,11 +168,11 @@
         </div>
 
         <form name="from1"  method="post" action=""  >
-                            <label for="shoe_name">Shoe Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
+                            <label for="shoe_name">Shoes Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" style="width: 225px;" required>
                             <br>
 
-                            <label for="state"  >Shoe Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
+                            <label for="state"  >Shoes Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
                                         <select id="" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
@@ -180,7 +180,7 @@
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
                             <br>
-                            <label for="state">Shoe Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
+                            <label for="state">Shoes Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <select id="state" name="brand">
                                 <?php
                                 $sql = "SELECT * FROM shoes ";
@@ -197,14 +197,14 @@
 
 
                             <br>
-                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </label>
+                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                                         <select id="state" name="state">
                                             <option value="men">Men</option>
                                             <option value="women">Women</option>
                                         </select>
 
                             <br>
-                            <label for="state">Shoe Price (RM) :</label>
+                            <label for="state">Shoes Price (RM) :</label>
                             <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
                             <br>
                             
