@@ -209,7 +209,7 @@
                             <br>
                             
 
-                            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
+                            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoes Image</label>
                             <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
                             <br>
                             <div class="toright">
