@@ -256,7 +256,7 @@ p {
           <br><br>
           <input type="submit" name="submit" value="SEND">  
           <p>Company Information</p>
-          <p>ROOT MALAYSIA SDN. BHD.</p>
+          <p>FOOT MALAYSIA SDN. BHD.</p>
           <p>Email: shop@foot-mlk.com</p>
           <p>Contact Number: 03-21817618</p>
           <p>Address: Lot 155, First Floor, Suria KLCC, 50088, Kuala Lumpur, Malaysia.</p>
