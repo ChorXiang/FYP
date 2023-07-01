@@ -182,9 +182,9 @@
           <td>Total Price</td>
           <td>Email</td>
           <td>Date</td>
-          <td>Customer Name</td>
-          <td>Customer Phone Number</td>
-          <td>Customer Address</td>
+          <td>Recipient Name</td>
+          <td>Recipient Phone Number</td>
+          <td>Recipient Address</td>
           <td>Order Status</td>
                 
              
