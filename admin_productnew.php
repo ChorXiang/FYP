@@ -36,26 +36,32 @@
 
               else
               {
-                mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
-                mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
-                mysqli_query($conn,"delete from orders where pro_id = '$sid'");
-                //mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
-                //mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                $repeat = mysqli_query($conn, "SELECT * FROM `shoes` WHERE `shoe_name`='$sn'");
+                if(mysqli_num_rows($repeat) > 0) {
+                    // Display error message and stop further processing
+                    $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>'$sn' is already existed in the database!</div>";
+                } else {
+                    mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
+                    mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
+                    mysqli_query($conn,"delete from orders where pro_id = '$sid'");
+                    //mysqli_query($conn,"UPDATE orders set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "',  shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+                    //mysqli_query($conn,"UPDATE wishlist set shoe_name='" . $_POST['shoe_name'] . "', shoe_brand='" . $_POST['brand'] . "', shoe_image='" . $_POST['shoe_image'] . "', price='" . $_POST['shoe_price'] . "'  where pro_id = '$sid'");            
+        
     
- 
- 
-                $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
-                echo '<script>alert("Update Successfully !");</script>';
- 
-                echo '<script>
-                    function confirmRedirect() {
-                        if (confirm("Do you want to go to admin_shoes.php?")) {
-                            window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+    
+                    $msg = "<div style='text-align:center; background-color:green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Update Successfully!</div>";
+                    echo '<script>alert("Update Successfully !");</script>';
+    
+                    echo '<script>
+                        function confirmRedirect() {
+                            if (confirm("Do you want to go to manage product page?")) {
+                                window.location.href = "admin_shoes.php?admin_id=' . $id . '";
+                            }
                         }
-                    }
-                    confirmRedirect();
-                </script>';
-              }
+                        confirmRedirect();
+                    </script>';
+                }
+            }
            
             
   
@@ -90,7 +96,7 @@
 
     form input
     {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     select
@@ -104,13 +110,37 @@
       padding: 20px;
     }
 
+    .toright{
+        float: right;
+    }
+
     fieldset
     {
-      background-color: lightgrey;
+      font-size: 20px;
+      background-color: rgb(200, 200, 200);
       margin:  auto;
-      margin-left: 160px;
-      padding-left:  25%;
-      padding-right:  25%;
+      margin-left: 20%;
+      margin-right: 20%;
+      padding-left:  180px;
+      padding-right:  50px;
+    }
+
+
+
+    input[type='submit']
+    {
+        padding: 10px;
+        border-radius: 20px;
+        background: rgb(160, 160, 160);
+        color: black;
+        border: none;
+    }
+
+    input[type='submit']:hover
+    {
+        cursor: pointer;
+        background: linear-gradient(to left,#ffaa00,#ffea00);
+        color: black;
     }
 
 
@@ -138,11 +168,11 @@
         </div>
 
         <form name="from1"  method="post" action=""  >
-                            <label for="shoe_name">Shoe Name : </label>
+                            <label for="shoe_name">Shoes Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <input type="text" name="shoe_name" value="<?php echo $row["shoe_name"]; ?>" style="width: 225px;" required>
                             <br>
 
-                            <label for="state"  >Shoe Type&nbsp;&nbsp; :</label>
+                            <label for="state"  >Shoes Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label>
                                         <select id="" name="type">
                                             <option value="Running Shoes">Running Shoes</option>
                                             <option value="Casual Shoes">Casual Shoes</option>
@@ -150,7 +180,7 @@
                                             <option value="Lifestyle">Lifestyle</option>
                                         </select>
                             <br>
-                            <label for="state">Shoe Brand : </label>
+                            <label for="state">Shoes Brand&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                             <select id="state" name="brand">
                                 <?php
                                 $sql = "SELECT * FROM shoes ";
@@ -167,23 +197,26 @@
 
 
                             <br>
-                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp; : </label>
+                            <label for="state"  >Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label>
                                         <select id="state" name="state">
                                             <option value="men">Men</option>
                                             <option value="women">Women</option>
                                         </select>
 
                             <br>
-                            <label for="state">Shoe Price&nbsp;&nbsp;: RM</label>
+                            <label for="state">Shoes Price (RM) :</label>
                             <input type="number" name="shoe_price" value="<?php echo $row["shoe_price"]; ?>" min="1" required><br>
-                            <a href="admin_stock.php?shoe_id=<?php echo $sid ?>&&admin_id=<?php echo $id ?>">Edit Stock </a>
-                            <br><br>
+                            <br>
                             
 
-                            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoe Image</label>
+                            <label for="file"  class="Choose"><i class="fa fa-camera"></i> Shoes Image</label>
                             <br><input type="file" id="file" value="<?php echo $row["shoe_image"]; ?>" name="shoe_image" class="form-control" >
                             <br>
-                            <input type="submit" name="saveas" value="Update" class="botton" style="float:right;"></from>
+                            <div class="toright">
+                                <input type="submit" name="saveas" value="Update" class="botton">
+                                <a href="admin_shoes.php?admin_id=<?php echo $id ?>">Back to Previous Page </a>
+                            </div>
+                        </from>
 
                             
 

@@ -20,7 +20,7 @@
      
                         echo '<script>
                             function confirmRedirect() {
-                                if (confirm("Do you want to go to manageorder.php?")) {
+                                if (confirm("Do you want to go to manage order page?")) {
                                     window.location.href = "manageorder.php?admin_id=' . $admin . '";
                                 }
                             }

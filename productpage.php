@@ -196,8 +196,8 @@ input[type="submit"][name="submit"]{
                     <option value="12.5">12.5</option>
                 </select>
   <br>
-  <label for="quantity"><b>Quantity (Max 5):</b></label>
-  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
+  <label for="quantity"><b>Quantity :</b></label>
+  <input type="number" name="quantity" id="quantity" min="1"  required>
   <span class="error"><?php echo $quantityErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Add to Cart">
@@ -287,8 +287,8 @@ input[type="submit"][name="submit"]{
                     <option value="12.5">12.5</option>
                 </select>
   <br>
-  <label for="quantity"><b>Quantity (Max 5):</b></label>
-  <input type="number" name="quantity" id="quantity" min="1" max="5" required>
+  <label for="quantity"><b>Quantity :</b></label>
+  <input type="number" name="quantity" id="quantity" min="1"  required>
   <span class="error"><?php echo $quantityErr;?></span>
   <br><br>
   <input type="submit" name="cartbeforelogin" value="Add to Cart">

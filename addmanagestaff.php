@@ -154,16 +154,16 @@
     <form action="" method="POST" >
     <?php echo "<div>".$msg."</div>"?>
 
-        <label for=""><i class="fa fa-user"></i> Admin Name&nbsp; :</label>
+        <label for=""><i class="fa fa-user"></i>&nbsp;Admin Name&nbsp;&nbsp;:</label>
         <input name="name" type="text" required>
         <br><br>
-        <label for=""><i class="fa fa-envelope"></i> Admin Email:</label>
+        <label for=""><i class="fa fa-envelope"></i>&nbsp;Admin Email :</label>
         <input type="email" name="email" required>
         <br><br>
-        <label for=""><i class="fa fa-key"></i> Password&nbsp;&nbsp;&nbsp;:</label>
+        <label for=""><i class="fa fa-key"></i> Password&nbsp;&nbsp;&nbsp;&nbsp;:</label>
         <input type="pass" name="pass" required>
         <br><br>
-        <label for=""><i class="fa fa-lock"></i> Secure Code (6 digits):</label>
+        <label for=""><i class="fa fa-lock"></i> &nbsp;Secure Code&nbsp;:</label>
         <input type="text" name="secure" pattern="[0-9]{6}" title="Please enter a 6-digit number" minlength="6" maxlength="6" required>
         
 

@@ -74,10 +74,10 @@
       <table border="0px">
         <tr>
           <td>ID</td>
-          <td>Image</td>
-          <td>Name</td>
+          <td>Profile Picture</td>
+          <td>Username</td>
           <td>Contact No</td>
-          <td>Email</td>
+          <td>Email Address</td>
         </tr>
         <?php
 

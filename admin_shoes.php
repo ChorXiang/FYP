@@ -108,7 +108,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);// Calculate the total number of
 
 <fieldset>
   <form method="get">
-    <input type="text" name="search" placeholder="Search products..." required pattern="[A-Za-z0-9]+">
+    <input type="text" name="search" placeholder="Shoes name..." required pattern="[A-Za-z0-9]+">
     <input type="hidden" name="admin_id" value="<?php echo $id; ?>">
     <button type="submit">Search</button>
   </form>
@@ -119,7 +119,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);// Calculate the total number of
     <span class="left">
       <a href="addmanageshoes.php?admin_id=<?php echo $id ?>" alt="insert">
         <i class="fa fa-plus" style="font-size: 24px;"></i>
-        <input type="button" value="Add New Shoe" style="margin-left: 10px;">
+        <input type="button" value="Add New Shoes" style="margin-left: 10px;">
       </a>
     </span><br><br>
   </div>
@@ -127,13 +127,14 @@ $totalPages = ceil($totalShoes / $shoesPerPage);// Calculate the total number of
   <table border="0px">
     <thead>
       <tr>
-        <th>Shoe ID</th>
-        <th>Shoe Name</th>
+        <th>Shoes ID</th>
+        <th>Shoes Name</th>
         <th>Category</th>
-        <th>Shoe Image</th>
-        <th>Shoe Price(RM)</th>
+        <th>Shoes Image</th>
+        <th>Shoes Price(RM)</th>
         <th>Status</th>
-        <th>Edit Informations</th>
+        <th>Edit Shoes</th>
+        <th>Edit Stock</th>  
         <th>Edit Status</th>
       </tr>
     </thead>
@@ -151,6 +152,7 @@ $totalPages = ceil($totalShoes / $shoesPerPage);// Calculate the total number of
           <td><?php echo $row['shoe_price']; ?></td>
           <td><?php echo $row['status']; ?></td>
           <td><a href="admin_productnew.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
+          <td><a href="admin_stock.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit"><i class="fa fa-cog" style="font-size: 36px;"></i></a></td>
           <td><a href="deleteprod.php?shoe_id=<?php echo $row['shoe_id']; ?>&&admin_id=<?php echo $id; ?>" alt="edit" style="color: red;"><i class="fa fa-close" style="font-size: 36px;"></i></a></td>
         
 

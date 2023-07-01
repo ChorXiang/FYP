@@ -102,12 +102,12 @@
 
             <tr >
            
-            <td>Shoe ID </td>
-            <td>Shoe Name </td>
-            <td>Shoe Type</td>
-            <td>Shoe Brand</td>
+            <td>Shoes ID </td>
+            <td>Shoes Name </td>
+            <td>Shoes Type</td>
+            <td>Shoes Brand</td>
             <td>Category</td>
-            <td>Shoe Price</td>
+            <td>Shoes Price</td>
             <td>Status</td>     
                 
             </tr>

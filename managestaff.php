@@ -44,7 +44,7 @@
     {
       text-align: left;
       padding: 10px;
-      padding-right: 120px;
+      padding-right: 50px;
     }
     a:hover
     {
@@ -79,9 +79,9 @@
 
       <table border="0px">
         <tr>
-          <td>Admin ID</td>
-          <td>Admin Name</td>
-          <td>Admin Email</td>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Email Address</td>
 
         </tr>
         <?php

@@ -105,8 +105,8 @@
             <tr >
            
           
-                <td><b>User ID<b></td>
-                <td><b>Full Name</b></td>
+                <td><b>ID<b></td>
+                <td><b>Username</b></td>
                 <td><b>Contact Number</b></td>
                 <td><b>Email Address</b></td>
                 

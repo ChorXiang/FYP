@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: admin_confirmpass.php?admin_email=' . $email);
         exit(); 
     } else {
-        $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Wrong Email or Secure Code   !</div>";
+        $msg = "<div style='text-align:center; background-color:red; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text-align: center; margin-bottom: 20px;'>Invalid Email or Secure Code   !</div>";
     }
 }
 

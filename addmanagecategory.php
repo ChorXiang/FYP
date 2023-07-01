@@ -26,7 +26,7 @@
     
             echo '<script>
                 function confirmRedirect() {
-                    if (confirm("Do you want to go to admin_shoes.php?")) {
+                    if (confirm("Do you want to go to manage brand page?")) {
                         window.location.href = "admin_category.php?admin_id=' . $id . '";
                     }
                 }

@@ -86,7 +86,7 @@ mysqli_query($conn, "UPDATE orders SET stock='" . $_POST['stockk'] . "' WHERE pr
      
         echo '<script>
             function confirmRedirect() {
-                if (confirm("Do you want to go to admin_shoes.php?")) {
+                if (confirm("Do you want to go to manage product page?")) {
                     window.location.href = "admin_shoes.php?admin_id=' . $id . '";
                 }
             }
@@ -106,14 +106,24 @@ mysqli_query($conn, "UPDATE orders SET stock='" . $_POST['stockk'] . "' WHERE pr
     fieldset
     {
         background-color: #f2f2f2;
-        margin-left: 180px;
+        margin: auto;
+        margin-left: 25%;
+        margin-right: 25%;
         padding-left: 20px;
         width: 50%;
         height: 50%;
     }
+
     .butttonright{
       float:right;
+      font-size: 20px;
     }
+
+    input[type='submit']
+    {
+        font-size: 20px;
+    }
+
 </style>
 </head>
 <body>  

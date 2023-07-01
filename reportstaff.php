@@ -173,9 +173,9 @@
 
             <tr>
            
-          <td>Admin ID</td>
-          <td>Admin Name</td>
-          <td>Admin Email</td>
+          <td>ID</td>
+          <td>Name</td>
+          <td>Email Address</td>
         
             </tr>
          <?php

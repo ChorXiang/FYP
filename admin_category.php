@@ -48,6 +48,10 @@
     text-align: center;
   }
 
+  .fonts{
+    font-size: 20px;
+  }
+
   .imgcenter {
       display: block;
       margin-left: auto;
@@ -58,11 +62,11 @@
     }
 
   .wordcenter {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  }
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
 </style>
 </head>
 <body>  
@@ -93,7 +97,7 @@
       <h4>
         Select the shoes brand that you want to edit the status.
       </h4>
-
+      <div class="fonts">
       <?php
       $count = 1;
       $result = mysqli_query($conn, "SELECT DISTINCT shoe_brand FROM shoes");
@@ -107,11 +111,7 @@
       }
 
             ?>
-
-            
-    </tbody>
-			
-      </table>
+      </div>
       
 </fieldset>
 
