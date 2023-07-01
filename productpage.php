@@ -162,8 +162,7 @@ input[type="submit"][name="submit"]{
  
 
 <fieldset>
-<a href="product.php?user_id=<?php echo $id ?>">Back to previous page</a>
- <input type="hidden" name="user_id" value="<?php echo $id; ?>">
+
 
 <div class="wordcenter">
 <h1><?php echo $row["shoe_name"]; ?></h1>
@@ -231,7 +230,8 @@ input[type="submit"][name="submit"]{
 </form>
 </div>
 
-
+<a href="product.php?user_id=<?php echo $id ?>">Back to previous page</a>
+ <input type="hidden" name="user_id" value="<?php echo $id; ?>">
 
 
 </fieldset>
