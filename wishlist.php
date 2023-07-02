@@ -15,6 +15,7 @@
       $image = $_POST['shoesimage'];
       $status = $_POST['status'];
       $sb = $_POST['shoe_brand'];
+      // $p_id = $_POST['p_id'];
 
       if($stock==0)
       {
@@ -27,15 +28,16 @@
       else
       {
 
-      $product = mysqli_query($conn, "SELECT * FROM wishlist WHERE pro_id = $proo_id");
+      $product = mysqli_query($conn, "SELECT * FROM wishlist WHERE pro_id = $proo_id & size=$size");
       $product = mysqli_fetch_assoc($product);
-      $cart_product = mysqli_query($conn, "SELECT * FROM orders WHERE pro_id = $proo_id");
+      $cart_product = mysqli_query($conn, "SELECT * FROM orders WHERE pro_id = $proo_id & shoessize=$size ");
 
       if(mysqli_num_rows($cart_product) > 0) 
       {
         $cart_product = mysqli_fetch_assoc($cart_product);
         $quantity = $cart_product['quantity'] + $value;
-        mysqli_query($conn, "UPDATE orders SET quantity = $quantity WHERE pro_id = $proo_id");
+        
+        mysqli_query($conn, "UPDATE orders SET quantity = $quantity WHERE pro_id = $proo_id & shoessize=$size");
         $msg = "<div style='background-color: green; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>Add to Cart Successfully !</div>";
       } 
       else 
