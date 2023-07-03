@@ -244,7 +244,7 @@
               }
               
             
-              mysqli_query($conn, "UPDATE wishlist SET stock = stock - $qty WHERE pro_id = '$proo_id'");
+              mysqli_query($conn, "UPDATE wishlist SET stock = stock - $qty WHERE pro_id = '$proo_id' & size=$size");
               mysqli_query($conn, "INSERT INTO history (order_num,her_shoesname,her_size,her_quantity,her_price,her_email,user_id,her_date,shoe_image,his_name,his_email,his_pn,his_address,his_state,his_code,his_cardnum,his_cardname,his_cardmonth,his_cardyear,his_securecode,total) VALUES ('$random ','$shoesname','$size','$qty','$price','$memail','$id','$datetime','$image','$mname','$memail','$mph','$maddress','$mstate','$mpostcode','$mcardnum','$mcardname','$mcardmonth','$mcardyear','$msecurecode','$total')");
               mysqli_query($conn, "DELETE FROM orders WHERE order_ID='$idd' && user_id='$id'");
             
@@ -407,7 +407,7 @@
                             <div class="error"><?php echo $emailErr;?></div><br>
 
                             <label for="fname"><i class="fa fa-phone"></i>(Recipient) Phone number : <sup>*</sup></label>
-                            <input type="text" name="Phonenumber" placeholder="0123456789">
+                            <input type="text" name="Phonenumber" placeholder="0123456789" pattern="[0-9]+" title="Please enter numbers only" maxlength="11" minlength="10">
                             <div class="error"><?php echo $pnErr;?></div><br>
                         <!-- </form> -->
                             
