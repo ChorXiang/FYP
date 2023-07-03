@@ -36,11 +36,7 @@
 
               else
               {
-                $repeat = mysqli_query($conn, "SELECT * FROM `shoes` WHERE `shoe_name`='$sn'");
-                if(mysqli_num_rows($repeat) > 0) {
-                    // Display error message and stop further processing
-                    $msg = "<div style='background-color: red; text-align:center; color: white; font-weight: bold;border-radius: 30px; margin: 20px; margin-bottom: 0; padding: 10px; text_align: center; margin-bottom: 20px;'>'$sn' is already existed in the database!</div>";
-                } else {
+                
                     mysqli_query($conn,"UPDATE shoes set shoe_name='" . $_POST['shoe_name'] . "',shoe_type='" . $_POST['type'] . "', shoe_brand='" . $_POST['brand'] . "', category='" . $_POST['state'] . "' , shoe_image='" . $_POST['shoe_image'] . "', shoe_price='" . $_POST['shoe_price'] . "'  where shoe_id = '$sid'");            
                     mysqli_query($conn,"delete from wishlist where pro_id = '$sid'");
                     mysqli_query($conn,"delete from orders where pro_id = '$sid'");
@@ -61,7 +57,7 @@
                         confirmRedirect();
                     </script>';
                 }
-            }
+            
            
             
   
